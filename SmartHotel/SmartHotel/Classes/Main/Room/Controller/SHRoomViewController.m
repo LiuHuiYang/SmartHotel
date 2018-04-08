@@ -43,7 +43,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gobackhomeController) name:SHControlGoBackHomeControllerNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddTabBarScrollView) name:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddTabBarScrollView:) name:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
     
     // 获得当前房间的信息
     self.currentRoom = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
@@ -61,9 +61,9 @@
 }
 
 /// 隐藏tabBar
-- (void)hiddTabBarScrollView {
+- (void)hiddTabBarScrollView:(NSNotification *)notification {
     
-    self.tabBarScrollView.hidden = YES;
+    self.tabBarScrollView.hidden = [notification.object boolValue];
 }
 
 - (void)gobackhomeController {
@@ -99,8 +99,11 @@
 /// 设置导航栏
 - (void)setUpTabBar {
     
-    [self.tabBar removeFromSuperview];
+//    [self.tabBar removeFromSuperview];
 //    self.tabBar.hidden = YES;
+    
+    [self.tabBar setBackgroundImage:[[UIImage alloc] init]];
+    [self.tabBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
     
     NSArray *tatBarImages = @[ @"hvac", @"light", @"media", @"curtain", @"alarm", @"housekeeping", @"vip", @"camera", @"worldtime" ];
     
@@ -155,7 +158,8 @@
         [self.tabBarScrollView addSubview:moduleButton];
     }
     
-    [self.view addSubview:self.tabBarScrollView];
+//    [self.view addSubview:self.tabBarScrollView];
+    [self.view insertSubview:self.tabBarScrollView aboveSubview:self.tabBar];
 }
 
 
@@ -214,8 +218,23 @@
     [super viewDidLayoutSubviews];
     
     self.tabBarScrollView.frame = CGRectMake(0, self.view.bounds.size.height - customToolBarHeight, self.view.frame.size.width, customToolBarHeight);
-//    self.tabBarScrollView.frame = self.tabBar.bounds;
-    self.tabBarScrollView.backgroundColor = [UIColor orangeColor];
+    
+    CGFloat buttonHeight = customToolBarHeight;
+    CGFloat buttonWidth = customToolBarHeight;
+    
+    // 首页控制器不需要按钮是默认状态
+    NSUInteger count = self.tabBarScrollView.subviews.count;
+
+    CGFloat marign = (self.view.frame_width - (count * buttonWidth)) / (count + 1);
+    
+    for (NSUInteger i = 0; i < count; i++) {
+        
+        SHModuleSwitchButton *button = self.tabBarScrollView.subviews[i];
+        
+        button.frame = CGRectMake(i * (buttonWidth + marign) + marign, 0, buttonWidth, buttonHeight);
+    }
+    
+    self.tabBarScrollView.contentSize = CGSizeMake(self.view.frame_width, 0);
 }
 
 // MARK: - 通知的销毁
