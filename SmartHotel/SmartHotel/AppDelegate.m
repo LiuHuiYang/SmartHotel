@@ -16,7 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // 1.语言环境初始化
+    [[SHLanguageTools shareSHLanguageTools] copyLanguagePlist];
+    [[SHLanguageTools shareSHLanguageTools] setLanguage];
+    
+    
+    
     return YES;
 }
 

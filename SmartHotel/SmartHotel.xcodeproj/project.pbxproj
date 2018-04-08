@@ -13,6 +13,20 @@
 		04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491D2079C51B00EBD1BE /* Assets.xcassets */; };
 		04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491F2079C51B00EBD1BE /* LaunchScreen.storyboard */; };
 		04D249242079C51B00EBD1BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249232079C51B00EBD1BE /* main.m */; };
+		04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249602079C77800EBD1BE /* UIImage+Antialias.m */; };
+		04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249642079C77800EBD1BE /* UIImage+Rotate.m */; };
+		04D249872079C77800EBD1BE /* UIImage+ReSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249652079C77800EBD1BE /* UIImage+ReSize.m */; };
+		04D249882079C77800EBD1BE /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249672079C77800EBD1BE /* UIColor+Hex.m */; };
+		04D249892079C77800EBD1BE /* UIView+frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2496A2079C77800EBD1BE /* UIView+frame.m */; };
+		04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2496D2079C77800EBD1BE /* NSObject+Log.m */; };
+		04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249722079C77800EBD1BE /* UIDevice+DeviceType.m */; };
+		04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249752079C77800EBD1BE /* UIDevice+IPAddresses.m */; };
+		04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2497A2079C77800EBD1BE /* UIImageView+ReSizeImage.m */; };
+		04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2497B2079C77800EBD1BE /* UIImageView+ColorAtPoint.m */; };
+		04D2498F2079C77800EBD1BE /* FileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2497F2079C77800EBD1BE /* FileTools.m */; };
+		04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249832079C77800EBD1BE /* NSDate+Date.m */; };
+		04D249922079C7C100EBD1BE /* Languages in Resources */ = {isa = PBXBuildFile; fileRef = 04D249912079C7C000EBD1BE /* Languages */; };
+		04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249972079C7F100EBD1BE /* SHLanguageTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +42,36 @@
 		04D249232079C51B00EBD1BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04D2495C2079C6E500EBD1BE /* readMe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readMe.h; sourceTree = "<group>"; };
 		04D2495D2079C70000EBD1BE /* SmartHotelPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartHotelPCH.pch; sourceTree = "<group>"; };
+		04D249602079C77800EBD1BE /* UIImage+Antialias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Antialias.m"; sourceTree = "<group>"; };
+		04D249612079C77800EBD1BE /* UIImage+Rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Rotate.h"; sourceTree = "<group>"; };
+		04D249622079C77800EBD1BE /* UIImage+ReSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ReSize.h"; sourceTree = "<group>"; };
+		04D249632079C77800EBD1BE /* UIImage+Antialias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Antialias.h"; sourceTree = "<group>"; };
+		04D249642079C77800EBD1BE /* UIImage+Rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Rotate.m"; sourceTree = "<group>"; };
+		04D249652079C77800EBD1BE /* UIImage+ReSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReSize.m"; sourceTree = "<group>"; };
+		04D249672079C77800EBD1BE /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		04D249682079C77800EBD1BE /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		04D2496A2079C77800EBD1BE /* UIView+frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frame.m"; sourceTree = "<group>"; };
+		04D2496B2079C77800EBD1BE /* UIView+frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frame.h"; sourceTree = "<group>"; };
+		04D2496D2079C77800EBD1BE /* NSObject+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Log.m"; sourceTree = "<group>"; };
+		04D2496E2079C77800EBD1BE /* NSObject+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Log.h"; sourceTree = "<group>"; };
+		04D2496F2079C77800EBD1BE /* PrintLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintLog.h; sourceTree = "<group>"; };
+		04D249722079C77800EBD1BE /* UIDevice+DeviceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+DeviceType.m"; sourceTree = "<group>"; };
+		04D249732079C77800EBD1BE /* UIDevice+DeviceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+DeviceType.h"; sourceTree = "<group>"; };
+		04D249752079C77800EBD1BE /* UIDevice+IPAddresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IPAddresses.m"; sourceTree = "<group>"; };
+		04D249762079C77800EBD1BE /* UIDevice+IPAddresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IPAddresses.h"; sourceTree = "<group>"; };
+		04D249782079C77800EBD1BE /* UIImageView+ReSizeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ReSizeImage.h"; sourceTree = "<group>"; };
+		04D249792079C77800EBD1BE /* UIImageView+ColorAtPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ColorAtPoint.h"; sourceTree = "<group>"; };
+		04D2497A2079C77800EBD1BE /* UIImageView+ReSizeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ReSizeImage.m"; sourceTree = "<group>"; };
+		04D2497B2079C77800EBD1BE /* UIImageView+ColorAtPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ColorAtPoint.m"; sourceTree = "<group>"; };
+		04D2497D2079C77800EBD1BE /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		04D2497F2079C77800EBD1BE /* FileTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTools.m; sourceTree = "<group>"; };
+		04D249802079C77800EBD1BE /* FileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTools.h; sourceTree = "<group>"; };
+		04D249822079C77800EBD1BE /* NSDate+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Date.h"; sourceTree = "<group>"; };
+		04D249832079C77800EBD1BE /* NSDate+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Date.m"; sourceTree = "<group>"; };
+		04D249842079C77800EBD1BE /* Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Additional.h; sourceTree = "<group>"; };
+		04D249912079C7C000EBD1BE /* Languages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Languages; sourceTree = "<group>"; };
+		04D249962079C7F100EBD1BE /* SHLanguageTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLanguageTools.h; sourceTree = "<group>"; };
+		04D249972079C7F100EBD1BE /* SHLanguageTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLanguageTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +112,7 @@
 				04D2491A2079C51A00EBD1BE /* Main.storyboard */,
 				04D2491D2079C51B00EBD1BE /* Assets.xcassets */,
 				04D2491F2079C51B00EBD1BE /* LaunchScreen.storyboard */,
+				04D249912079C7C000EBD1BE /* Languages */,
 				04D249222079C51B00EBD1BE /* Info.plist */,
 				04D249232079C51B00EBD1BE /* main.m */,
 			);
@@ -98,6 +143,7 @@
 		04D2492C2079C6CD00EBD1BE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04D2495E2079C77800EBD1BE /* Additional */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -105,6 +151,8 @@
 		04D2492D2079C6CD00EBD1BE /* Languages */ = {
 			isa = PBXGroup;
 			children = (
+				04D249962079C7F100EBD1BE /* SHLanguageTools.h */,
+				04D249972079C7F100EBD1BE /* SHLanguageTools.m */,
 			);
 			path = Languages;
 			sourceTree = "<group>";
@@ -475,6 +523,128 @@
 			path = Socket;
 			sourceTree = "<group>";
 		};
+		04D2495E2079C77800EBD1BE /* Additional */ = {
+			isa = PBXGroup;
+			children = (
+				04D2495F2079C77800EBD1BE /* UIImage */,
+				04D249662079C77800EBD1BE /* UIColor */,
+				04D249692079C77800EBD1BE /* Frame */,
+				04D2496C2079C77800EBD1BE /* PrintLog */,
+				04D249702079C77800EBD1BE /* UIDevice */,
+				04D249772079C77800EBD1BE /* UIImageView */,
+				04D2497C2079C77800EBD1BE /* Singleton */,
+				04D2497E2079C77800EBD1BE /* FileTools */,
+				04D249812079C77800EBD1BE /* NSDate */,
+				04D249842079C77800EBD1BE /* Additional.h */,
+			);
+			path = Additional;
+			sourceTree = "<group>";
+		};
+		04D2495F2079C77800EBD1BE /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				04D249602079C77800EBD1BE /* UIImage+Antialias.m */,
+				04D249612079C77800EBD1BE /* UIImage+Rotate.h */,
+				04D249622079C77800EBD1BE /* UIImage+ReSize.h */,
+				04D249632079C77800EBD1BE /* UIImage+Antialias.h */,
+				04D249642079C77800EBD1BE /* UIImage+Rotate.m */,
+				04D249652079C77800EBD1BE /* UIImage+ReSize.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		04D249662079C77800EBD1BE /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				04D249672079C77800EBD1BE /* UIColor+Hex.m */,
+				04D249682079C77800EBD1BE /* UIColor+Hex.h */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		04D249692079C77800EBD1BE /* Frame */ = {
+			isa = PBXGroup;
+			children = (
+				04D2496A2079C77800EBD1BE /* UIView+frame.m */,
+				04D2496B2079C77800EBD1BE /* UIView+frame.h */,
+			);
+			path = Frame;
+			sourceTree = "<group>";
+		};
+		04D2496C2079C77800EBD1BE /* PrintLog */ = {
+			isa = PBXGroup;
+			children = (
+				04D2496D2079C77800EBD1BE /* NSObject+Log.m */,
+				04D2496E2079C77800EBD1BE /* NSObject+Log.h */,
+				04D2496F2079C77800EBD1BE /* PrintLog.h */,
+			);
+			path = PrintLog;
+			sourceTree = "<group>";
+		};
+		04D249702079C77800EBD1BE /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
+				04D249712079C77800EBD1BE /* UIDevice+DeviceType */,
+				04D249742079C77800EBD1BE /* UIDevice+IPAddresses */,
+			);
+			path = UIDevice;
+			sourceTree = "<group>";
+		};
+		04D249712079C77800EBD1BE /* UIDevice+DeviceType */ = {
+			isa = PBXGroup;
+			children = (
+				04D249722079C77800EBD1BE /* UIDevice+DeviceType.m */,
+				04D249732079C77800EBD1BE /* UIDevice+DeviceType.h */,
+			);
+			path = "UIDevice+DeviceType";
+			sourceTree = "<group>";
+		};
+		04D249742079C77800EBD1BE /* UIDevice+IPAddresses */ = {
+			isa = PBXGroup;
+			children = (
+				04D249752079C77800EBD1BE /* UIDevice+IPAddresses.m */,
+				04D249762079C77800EBD1BE /* UIDevice+IPAddresses.h */,
+			);
+			path = "UIDevice+IPAddresses";
+			sourceTree = "<group>";
+		};
+		04D249772079C77800EBD1BE /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				04D249782079C77800EBD1BE /* UIImageView+ReSizeImage.h */,
+				04D249792079C77800EBD1BE /* UIImageView+ColorAtPoint.h */,
+				04D2497A2079C77800EBD1BE /* UIImageView+ReSizeImage.m */,
+				04D2497B2079C77800EBD1BE /* UIImageView+ColorAtPoint.m */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		04D2497C2079C77800EBD1BE /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				04D2497D2079C77800EBD1BE /* Singleton.h */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
+		04D2497E2079C77800EBD1BE /* FileTools */ = {
+			isa = PBXGroup;
+			children = (
+				04D2497F2079C77800EBD1BE /* FileTools.m */,
+				04D249802079C77800EBD1BE /* FileTools.h */,
+			);
+			path = FileTools;
+			sourceTree = "<group>";
+		};
+		04D249812079C77800EBD1BE /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				04D249822079C77800EBD1BE /* NSDate+Date.h */,
+				04D249832079C77800EBD1BE /* NSDate+Date.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,6 +703,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D249922079C7C100EBD1BE /* Languages in Resources */,
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
 				04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */,
@@ -546,9 +717,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
+				04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */,
 				04D249192079C51A00EBD1BE /* ViewController.m in Sources */,
+				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
 				04D249242079C51B00EBD1BE /* main.m in Sources */,
+				04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */,
+				04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */,
+				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
+				04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */,
+				04D249882079C77800EBD1BE /* UIColor+Hex.m in Sources */,
+				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
+				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
+				04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */,
+				04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
+				04D249872079C77800EBD1BE /* UIImage+ReSize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>YES</string>
+		<key>NO</key>
+		<string>NO</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>Cancel</key>
+		<string>Cancel</string>
+		<key>Saved</key>
+		<string>Saved</string>
+		<key>Save</key>
+		<string>Save</string>
+		<key>Edit</key>
+		<string>Edit</string>
+		<key>Done</key>
+		<string>Done</string>
+		<key>System Message</key>
+		<string>System Message</string>
+		<key>ON</key>
+		<string>ON</string>
+		<key>OFF</key>
+		<string>OFF</string>
+		<key>No Data!</key>
+		<string>No Data!</string>
+		<key>Subnet ID</key>
+		<string>Subnet ID</string>
+		<key>Device ID</key>
+		<string>Device ID</string>
+		<key>Building ID</key>
+		<string>Building ID</string>
+		<key>Floor ID</key>
+		<string>Floor ID</string>
+		<key>Room NO.</key>
+		<string>Room NO.</string>
+		<key>Room NO. Display</key>
+		<string>Room NO. Display</string>
+		<key>RoomAlias</key>
+		<string>RoomAlias</string>
+		<key>HotelName</key>
+		<string>HotelName</string>
+		<key>Send</key>
+		<string>Send</string>
+		<key>Searching</key>
+		<string>Searching..</string>
+		<key>Favorites</key>
+		<string>Favorites</string>
+		<key>Open</key>
+		<string>Open</string>
+		<key>Close</key>
+		<string>Close</string>
+	</dict>
+	<key>MAINVIEW</key>
+	<dict>
+		<key>Saved Successed!You should to restart app</key>
+		<string>Saved Successed!You should to restart app</string>
+		<key>Change Langguage</key>
+		<string>Change Langguage</string>
+		<key>Room NO</key>
+		<string>Room NO</string>
+		<key>Room T.</key>
+		<string>Room T.</string>
+		<key>AC</key>
+		<string>AC</string>
+		<key>Lights</key>
+		<string>Lights</string>
+		<key>TV</key>
+		<string>TV</string>
+		<key>Curtain</key>
+		<string>Curtain</string>
+		<key>Alarm</key>
+		<string>Alarm</string>
+		<key>HouseKeeping</key>
+		<string>Housekeeping</string>
+		<key>VIP</key>
+		<string>VIP</string>
+		<key>Cameras</key>
+		<string>Cameras</string>
+		<key>WorldClock</key>
+		<string>WorldClock</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>Settings</key>
+		<string>Settings</string>
+		<key>BasicSettings</key>
+		<string>Basic Settings</string>
+		<key>DoorBell</key>
+		<string>DoorBell</string>
+		<key>CardHolder</key>
+		<string>CardHolder</string>
+		<key>ZoneBeast</key>
+		<string>ZoneBeast</string>
+		<key>Bedside</key>
+		<string>Bedside</string>
+		<key>AUXPower</key>
+		<string>AUXPower</string>
+		<key>DDP</key>
+		<string>DDP</string>
+		<key>IR</key>
+		<string>IR</string>
+		<key>Remark</key>
+		<string>Remark</string>
+		<key>User Name</key>
+		<string>User Name</string>
+		<key>Password</key>
+		<string>Password</string>
+	</dict>
+	<key>AC</key>
+	<dict>
+		<key>Cold</key>
+		<string>Cold</string>
+		<key>Cool</key>
+		<string>Cool</string>
+		<key>Heat</key>
+		<string>Heat</string>
+		<key>Fan</key>
+		<string>Fan</string>
+		<key>Auto</key>
+		<string>Auto</string>
+		<key>Desired</key>
+		<string>Desired</string>
+		<key>Current Tempterature</key>
+		<string>Current Tempterature</string>
+	</dict>
+	<key>LIGHTS</key>
+	<dict>
+		<key>Scenes</key>
+		<string>Scenes</string>
+	</dict>
+	<key>CURTAIN</key>
+	<dict>
+		<key>Open</key>
+		<string>Open</string>
+		<key>Close</key>
+		<string>Close</string>
+	</dict>
+	<key>ALARM</key>
+	<dict>
+		<key>Current Local Time</key>
+		<string>Current Local Time</string>
+		<key>Wake Up Time</key>
+		<string>Wake Up Time</string>
+		<key>Remaining Time To Wake Up</key>
+		<string>Remaining Time To Wake Up</string>
+		<key>On Wake Up Activate Wake Up Mode</key>
+		<string>On Wake Up Activate Wake Up Mode</string>
+		<key>Test Wake Up Mode</key>
+		<string>Test Wake Up Mode</string>
+		<key>I Am Ready To Bed Time Mode</key>
+		<string>I Am Ready To Bed Time Mode</string>
+		<key>To Wake Up Healthy Mode</key>
+		<string>To Wake Up Healthy Mode</string>
+	</dict>
+	<key>HouseKeepingAndVIP</key>
+	<dict>
+		<key>Laudry</key>
+		<string>Laundry</string>
+		<key>DND</key>
+		<string>DND</string>
+		<key>Clean</key>
+		<string>Clean</string>
+		<key>CleanShoes</key>
+		<string>CleanShoes</string>
+		<key>TakePlates</key>
+		<string>TakePlates</string>
+		<key>Towels&amp;Robe</key>
+		<string>Towels&amp;Robes</string>
+		<key>RefillMiniBar</key>
+		<string>RefillMiniBar</string>
+		<key>Pillow&amp;Blanket</key>
+		<string>Pillow&amp;Blanket</string>
+		<key>ICE</key>
+		<string>ICE</string>
+		<key>ReadyBed</key>
+		<string>ReadyBed</string>
+		<key>Breakfast</key>
+		<string>Breakfast</string>
+		<key>Taxi</key>
+		<string>Taxi</string>
+		<key>My Car</key>
+		<string>My Car</string>
+		<key>Maint. Needed</key>
+		<string>Maint. Needed</string>
+		<key>Doctor</key>
+		<string>Doctor</string>
+		<key>Buttler</key>
+		<string>Buttler</string>
+		<key>Massage</key>
+		<string>Massage</string>
+		<key>Elevetor</key>
+		<string>Elevator</string>
+		<key>PleaseWait</key>
+		<string>PleaseWait</string>
+		<key>Check Out</key>
+		<string>Check Out</string>
+		<key>Bages</key>
+		<string>Bags</string>
+		<key>Panic</key>
+		<string>Panic</string>
+		<key>Are you sure to select this service?</key>
+		<string>Are you sure to select this service?</string>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>Talk</key>
+		<string>Talk</string>
+		<key>Settings</key>
+		<string>Settings</string>
+		<key>Searching</key>
+		<string>Searching</string>
+	</dict>
+</dict>
+</plist>

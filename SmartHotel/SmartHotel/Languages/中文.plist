@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PUBLIC</key>
+	<dict>
+		<key>YES</key>
+		<string>是</string>
+		<key>NO</key>
+		<string>不</string>
+		<key>OK</key>
+		<string>OK</string>
+		<key>Cancel</key>
+		<string>取消</string>
+		<key>Saved</key>
+		<string>已经保存</string>
+		<key>Save</key>
+		<string>保存</string>
+		<key>Edit</key>
+		<string>编辑</string>
+		<key>Done</key>
+		<string>完成</string>
+		<key>System Message</key>
+		<string>系统消息</string>
+		<key>ON</key>
+		<string>打开</string>
+		<key>OFF</key>
+		<string>关闭</string>
+		<key>No Data!</key>
+		<string>无数据</string>
+		<key>Subnet ID</key>
+		<string>子网 ID</string>
+		<key>Device ID</key>
+		<string>设备 ID</string>
+		<key>Building ID</key>
+		<string>建筑 ID</string>
+		<key>Floor ID</key>
+		<string>楼层 ID</string>
+		<key>Room NO.</key>
+		<string>房间号</string>
+		<key>Room NO. Display</key>
+		<string>显示的房间号</string>
+		<key>RoomAlias</key>
+		<string>别名</string>
+		<key>HotelName</key>
+		<string>酒店名字</string>
+		<key>Send</key>
+		<string>发送</string>
+		<key>Searching</key>
+		<string>搜索...</string>
+		<key>Favorites</key>
+		<string>常用</string>
+		<key>Open</key>
+		<string>打开</string>
+		<key>Close</key>
+		<string>关闭</string>
+	</dict>
+	<key>MAINVIEW</key>
+	<dict>
+		<key>Saved Successed!You should to restart app</key>
+		<string>保存成功！需要重启程序.</string>
+		<key>Change Langguage</key>
+		<string>多语言</string>
+		<key>Room NO</key>
+		<string>房间号</string>
+		<key>Room T.</key>
+		<string>室温</string>
+		<key>AC</key>
+		<string>空调</string>
+		<key>Lights</key>
+		<string>灯光</string>
+		<key>TV</key>
+		<string>电视</string>
+		<key>Curtain</key>
+		<string>窗帘</string>
+		<key>Alarm</key>
+		<string>闹钟</string>
+		<key>HouseKeeping</key>
+		<string>服务</string>
+		<key>VIP</key>
+		<string>VIP</string>
+		<key>Cameras</key>
+		<string>摄像头</string>
+		<key>WorldClock</key>
+		<string>世界时间</string>
+	</dict>
+	<key>SETTINGS</key>
+	<dict>
+		<key>Settings</key>
+		<string>设置</string>
+		<key>BasicSettings</key>
+		<string>基本设置</string>
+		<key>DoorBell</key>
+		<string>门铃</string>
+		<key>CardHolder</key>
+		<string>插卡模块</string>
+		<key>ZoneBeast</key>
+		<string>混合模块</string>
+		<key>Bedside</key>
+		<string>床头面板</string>
+		<key>AUXPower</key>
+		<string>电源</string>
+		<key>DDP</key>
+		<string>DDP</string>
+		<key>IR</key>
+		<string>IR</string>
+		<key>Remark</key>
+		<string>备注</string>
+		<key>User Name</key>
+		<string>用户名</string>
+		<key>Password</key>
+		<string>密码</string>
+	</dict>
+	<key>AC</key>
+	<dict>
+		<key>Cold</key>
+		<string>制冷</string>
+		<key>Cool</key>
+		<string>凉爽</string>
+		<key>Heat</key>
+		<string>制热</string>
+		<key>Fan</key>
+		<string>通风</string>
+		<key>Auto</key>
+		<string>自动</string>
+		<key>Desired</key>
+		<string>控制温度</string>
+		<key>Current Tempterature</key>
+		<string>当前温度</string>
+	</dict>
+	<key>LIGHTS</key>
+	<dict>
+		<key>Scenes</key>
+		<string>场景</string>
+	</dict>
+	<key>CURTAIN</key>
+	<dict>
+		<key>Open</key>
+		<string>打开</string>
+		<key>Close</key>
+		<string>关闭</string>
+	</dict>
+	<key>ALARM</key>
+	<dict>
+		<key>Current Local Time</key>
+		<string>当前时间</string>
+		<key>Wake Up Time</key>
+		<string>醒来时间</string>
+		<key>Remaining Time To Wake Up</key>
+		<string>设置闹钟</string>
+		<key>On Wake Up Activate Wake Up Mode</key>
+		<string>闹钟已开启</string>
+		<key>Test Wake Up Mode</key>
+		<string>测试闹钟</string>
+		<key>I Am Ready To Bed Time Mode</key>
+		<string>准备睡觉模式</string>
+		<key>To Wake Up Healthy Mode</key>
+		<string>健康睡眠模式</string>
+	</dict>
+	<key>HouseKeepingAndVIP</key>
+	<dict>
+		<key>Laudry</key>
+		<string>洗衣服</string>
+		<key>DND</key>
+		<string>请勿打扰</string>
+		<key>Clean</key>
+		<string>打扫房间</string>
+		<key>CleanShoes</key>
+		<string>擦鞋</string>
+		<key>TakePlates</key>
+		<string>收拾餐具</string>
+		<key>Towels&amp;Robe</key>
+		<string>毛巾 浴巾</string>
+		<key>RefillMiniBar</key>
+		<string>叫酒</string>
+		<key>Pillow&amp;Blanket</key>
+		<string>枕头 毛毯</string>
+		<key>ICE</key>
+		<string>冰块</string>
+		<key>ReadyBed</key>
+		<string>收拾床</string>
+		<key>Breakfast</key>
+		<string>早餐</string>
+		<key>Taxi</key>
+		<string>出租车</string>
+		<key>My Car</key>
+		<string>我的车</string>
+		<key>Maint. Needed</key>
+		<string>需要修理</string>
+		<key>Doctor</key>
+		<string>医生</string>
+		<key>Buttler</key>
+		<string>服务生</string>
+		<key>Massage</key>
+		<string>按摩</string>
+		<key>Elevetor</key>
+		<string>电梯</string>
+		<key>PleaseWait</key>
+		<string>稍等</string>
+		<key>Check Out</key>
+		<string>退房</string>
+		<key>Bages</key>
+		<string>行李箱</string>
+		<key>Panic</key>
+		<string>急救</string>
+		<key>Are you sure to select this service?</key>
+		<string>你确定要选择当前服务吗？</string>
+	</dict>
+	<key>CAMERA</key>
+	<dict>
+		<key>Talk</key>
+		<string>对讲</string>
+		<key>Settings</key>
+		<string>设置</string>
+		<key>Searching</key>
+		<string>搜索</string>
+	</dict>
+</dict>
+</plist>
