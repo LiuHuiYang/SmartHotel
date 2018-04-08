@@ -6,8 +6,8 @@
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 
-#import "SHModelViewController.h"
+#import "SHTabBarController.h"
 
-@interface SHRoomViewController : SHModelViewController
+@interface SHRoomViewController : SHTabBarController
 
 @end
