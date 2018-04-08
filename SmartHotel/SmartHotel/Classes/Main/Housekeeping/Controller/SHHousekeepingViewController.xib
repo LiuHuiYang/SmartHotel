@@ -1,22 +1,237 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHousekeepingViewController">
             <connections>
+                <outlet property="breakfastButton" destination="5Pj-39-GOu" id="RVu-HC-DJM"/>
+                <outlet property="cleanButton" destination="BHV-RK-Ch9" id="GjK-Ig-1TJ"/>
+                <outlet property="cleanShoesButton" destination="bcH-dw-co9" id="lOh-Ez-Tz3"/>
+                <outlet property="dndButton" destination="Iit-Tm-QHc" id="clf-BX-0A4"/>
+                <outlet property="iceButton" destination="Hw6-Md-1tJ" id="bVS-hO-HRF"/>
+                <outlet property="laudryButton" destination="c8R-E9-n09" id="cjp-5S-Lw6"/>
+                <outlet property="pillowBlanketButton" destination="Knn-HX-BBG" id="nuN-WE-w9z"/>
+                <outlet property="readyBedButton" destination="FNv-r0-Tqv" id="Kwg-tk-jWi"/>
+                <outlet property="refillMiniBarButton" destination="VNO-lD-JZC" id="uFj-dy-Qs1"/>
+                <outlet property="takePlatesButton" destination="zIu-T1-cEW" id="W2J-AY-Nx8"/>
+                <outlet property="towelsRobeButton" destination="51D-bt-dxp" id="iQY-Ng-DJf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-lP-w1b">
+                    <rect key="frame" x="77" y="163.5" width="870" height="461"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8R-E9-n09" customClass="SHServiceButton">
+                            <rect key="frame" x="133.5" y="27" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKLaudry_normal"/>
+                            <state key="selected" backgroundImage="HKLaudry_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKLaudry_highlighted"/>
+                            <connections>
+                                <action selector="laudryButtonClick" destination="-1" eventType="touchUpInside" id="6Dg-TI-XvN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcH-dw-co9" customClass="SHServiceButton">
+                            <rect key="frame" x="49.5" y="193" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKCleanShoes_normal"/>
+                            <state key="selected" backgroundImage="HKCleanShoes_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKCleanShoes_highlighted"/>
+                            <connections>
+                                <action selector="cleanShoesButtonClick" destination="-1" eventType="touchUpInside" id="2ZU-uB-EGu"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-HX-BBG" customClass="SHServiceButton">
+                            <rect key="frame" x="351" y="300" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKPillowBlanket_normal"/>
+                            <state key="selected" backgroundImage="HKPillowBlanket_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKPillowBlanket_highlighted"/>
+                            <connections>
+                                <action selector="towelsRobeButtonClick" destination="-1" eventType="touchUpInside" id="Pmy-Zi-58c"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-Md-1tJ" customClass="SHServiceButton">
+                            <rect key="frame" x="351" y="407" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKServer_ICE_normal"/>
+                            <state key="selected" backgroundImage="HKServer_ICE_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKServer_ICE_highlighted"/>
+                            <connections>
+                                <action selector="iceButtonClick" destination="-1" eventType="touchUpInside" id="wP4-Xg-lWb"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51D-bt-dxp" customClass="SHServiceButton">
+                            <rect key="frame" x="351" y="86" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKTowelsRobe_normal"/>
+                            <state key="selected" backgroundImage="HKTowelsRobe_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKTowelsRobe_highlighted"/>
+                            <connections>
+                                <action selector="pillowBlanketButtonClick" destination="-1" eventType="touchUpInside" id="lyd-Vp-M2E"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iit-Tm-QHc" customClass="SHServiceButton">
+                            <rect key="frame" x="351" y="-21" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKDND_normal"/>
+                            <state key="selected" backgroundImage="HKDND_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKDND_highlighted"/>
+                            <connections>
+                                <action selector="dndButtonClick" destination="-1" eventType="touchUpInside" id="BQZ-nZ-0Sp"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNv-r0-Tqv" customClass="SHServiceButton">
+                            <rect key="frame" x="652.5" y="193" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKReadyBed_normal"/>
+                            <state key="selected" backgroundImage="HKReadyBed_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKReadyBed_highlighted"/>
+                            <connections>
+                                <action selector="readyBedButtonClick" destination="-1" eventType="touchUpInside" id="pTJ-tb-Fl0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pj-39-GOu" customClass="SHServiceButton">
+                            <rect key="frame" x="568.5" y="359" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKServer_Breakfast_normal"/>
+                            <state key="selected" backgroundImage="HKServer_Breakfast_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKServer_Breakfast_highlighted"/>
+                            <connections>
+                                <action selector="breakfastButtonClick" destination="-1" eventType="touchUpInside" id="SUF-vp-GkS"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHV-RK-Ch9" customClass="SHServiceButton">
+                            <rect key="frame" x="568.5" y="27" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKClean_normal"/>
+                            <state key="selected" backgroundImage="HKClean_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKClean_highlighted"/>
+                            <connections>
+                                <action selector="cleanButtonClick" destination="-1" eventType="touchUpInside" id="6cX-9l-eZJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-T1-cEW" customClass="SHServiceButton">
+                            <rect key="frame" x="133.5" y="359" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" backgroundImage="HKTakePlates_normal"/>
+                            <state key="selected" backgroundImage="HKTakePlates_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKTakePlates_highlighted"/>
+                            <connections>
+                                <action selector="takePlatesButtonClick" destination="-1" eventType="touchUpInside" id="P3y-Ty-nUa"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNO-lD-JZC" customClass="SHServiceButton">
+                            <rect key="frame" x="351" y="193.5" width="168" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="iwU-a4-34u"/>
+                                <constraint firstAttribute="width" constant="168" id="ukE-iu-gkI"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="HKRefillMiniBar_normal"/>
+                            <state key="selected" backgroundImage="HKRefillMiniBar_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKRefillMiniBar_highlighted"/>
+                            <connections>
+                                <action selector="refillMiniBarButtonClick" destination="-1" eventType="touchUpInside" id="WQW-LE-xFj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="FNv-r0-Tqv" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="0AI-hm-Rrg"/>
+                        <constraint firstItem="Iit-Tm-QHc" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="0eR-9f-6ac"/>
+                        <constraint firstItem="Knn-HX-BBG" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="1El-af-kIU"/>
+                        <constraint firstItem="Knn-HX-BBG" firstAttribute="centerX" secondItem="VNO-lD-JZC" secondAttribute="centerX" id="29B-KR-YIN"/>
+                        <constraint firstItem="BHV-RK-Ch9" firstAttribute="height" secondItem="c8R-E9-n09" secondAttribute="height" id="2af-EY-EZI"/>
+                        <constraint firstItem="BHV-RK-Ch9" firstAttribute="trailing" secondItem="FNv-r0-Tqv" secondAttribute="centerX" id="3ca-kD-gBE"/>
+                        <constraint firstItem="51D-bt-dxp" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="4BG-Im-9sJ"/>
+                        <constraint firstItem="FNv-r0-Tqv" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="5iy-T6-Zjv"/>
+                        <constraint firstItem="VNO-lD-JZC" firstAttribute="centerX" secondItem="f5D-lP-w1b" secondAttribute="centerX" id="6Qx-j6-0qE"/>
+                        <constraint firstItem="VNO-lD-JZC" firstAttribute="centerY" secondItem="f5D-lP-w1b" secondAttribute="centerY" id="6Sg-lh-p8m"/>
+                        <constraint firstItem="Hw6-Md-1tJ" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="77v-9W-dRK"/>
+                        <constraint firstItem="c8R-E9-n09" firstAttribute="leading" secondItem="bcH-dw-co9" secondAttribute="centerX" id="7I9-48-g4T"/>
+                        <constraint firstItem="Hw6-Md-1tJ" firstAttribute="top" secondItem="Knn-HX-BBG" secondAttribute="bottom" constant="32" id="9Mw-v9-MMV"/>
+                        <constraint firstItem="Iit-Tm-QHc" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="9P9-4S-XXW"/>
+                        <constraint firstItem="5Pj-39-GOu" firstAttribute="centerX" secondItem="BHV-RK-Ch9" secondAttribute="centerX" id="BCb-Nv-A54"/>
+                        <constraint firstItem="c8R-E9-n09" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="Bd4-iO-eAh"/>
+                        <constraint firstItem="VNO-lD-JZC" firstAttribute="centerX" secondItem="f5D-lP-w1b" secondAttribute="centerX" id="NhL-FS-ebj"/>
+                        <constraint firstItem="zIu-T1-cEW" firstAttribute="width" secondItem="c8R-E9-n09" secondAttribute="width" id="OPn-BX-Czi"/>
+                        <constraint firstItem="51D-bt-dxp" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="OVY-z6-O3m"/>
+                        <constraint firstItem="bcH-dw-co9" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="Oyc-jy-Q1d"/>
+                        <constraint firstItem="Hw6-Md-1tJ" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="PVf-p3-2iZ"/>
+                        <constraint firstItem="51D-bt-dxp" firstAttribute="top" secondItem="Iit-Tm-QHc" secondAttribute="bottom" constant="32" id="RgK-ww-pFE"/>
+                        <constraint firstItem="bcH-dw-co9" firstAttribute="trailing" secondItem="f5D-lP-w1b" secondAttribute="centerX" multiplier="0.5" id="TNC-Sn-K1D"/>
+                        <constraint firstItem="VNO-lD-JZC" firstAttribute="centerY" secondItem="f5D-lP-w1b" secondAttribute="centerY" id="Tpt-ch-bkK"/>
+                        <constraint firstItem="zIu-T1-cEW" firstAttribute="height" secondItem="c8R-E9-n09" secondAttribute="height" id="VW7-nS-jdh"/>
+                        <constraint firstItem="Hw6-Md-1tJ" firstAttribute="centerX" secondItem="VNO-lD-JZC" secondAttribute="centerX" id="VnL-CL-SHh"/>
+                        <constraint firstItem="5Pj-39-GOu" firstAttribute="height" secondItem="BHV-RK-Ch9" secondAttribute="height" id="Yhs-oa-92o"/>
+                        <constraint firstItem="Knn-HX-BBG" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="b3T-wa-PPh"/>
+                        <constraint firstItem="5Pj-39-GOu" firstAttribute="centerY" secondItem="zIu-T1-cEW" secondAttribute="centerY" id="e19-cB-8Tg"/>
+                        <constraint firstItem="BHV-RK-Ch9" firstAttribute="centerY" secondItem="c8R-E9-n09" secondAttribute="centerY" id="e6J-u0-iEQ"/>
+                        <constraint firstItem="bcH-dw-co9" firstAttribute="top" secondItem="c8R-E9-n09" secondAttribute="bottom" constant="91" id="ehH-D5-bQr"/>
+                        <constraint firstItem="bcH-dw-co9" firstAttribute="height" secondItem="VNO-lD-JZC" secondAttribute="height" id="fLH-xb-SW5"/>
+                        <constraint firstItem="zIu-T1-cEW" firstAttribute="centerX" secondItem="c8R-E9-n09" secondAttribute="centerX" id="g2M-nT-PKk"/>
+                        <constraint firstItem="BHV-RK-Ch9" firstAttribute="width" secondItem="c8R-E9-n09" secondAttribute="width" id="iF1-dB-BPA"/>
+                        <constraint firstItem="Knn-HX-BBG" firstAttribute="top" secondItem="VNO-lD-JZC" secondAttribute="bottom" constant="32" id="iGw-bc-QV6"/>
+                        <constraint firstItem="51D-bt-dxp" firstAttribute="centerX" secondItem="VNO-lD-JZC" secondAttribute="centerX" id="iJq-0C-B3q"/>
+                        <constraint firstItem="5Pj-39-GOu" firstAttribute="width" secondItem="BHV-RK-Ch9" secondAttribute="width" id="mcX-Z0-abc"/>
+                        <constraint firstItem="bcH-dw-co9" firstAttribute="centerY" secondItem="VNO-lD-JZC" secondAttribute="centerY" id="mks-kb-bBP"/>
+                        <constraint firstItem="c8R-E9-n09" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="oGC-0l-OAO"/>
+                        <constraint firstItem="VNO-lD-JZC" firstAttribute="top" secondItem="51D-bt-dxp" secondAttribute="bottom" constant="32" id="oQn-Tc-lc7"/>
+                        <constraint firstItem="FNv-r0-Tqv" firstAttribute="centerY" secondItem="VNO-lD-JZC" secondAttribute="centerY" id="smv-02-nXO"/>
+                        <constraint firstItem="FNv-r0-Tqv" firstAttribute="leading" secondItem="f5D-lP-w1b" secondAttribute="centerX" multiplier="1.5" id="suE-BZ-Dx9"/>
+                        <constraint firstItem="zIu-T1-cEW" firstAttribute="top" secondItem="bcH-dw-co9" secondAttribute="bottom" constant="91" id="uRi-VQ-Cm3"/>
+                        <constraint firstItem="Iit-Tm-QHc" firstAttribute="centerX" secondItem="VNO-lD-JZC" secondAttribute="centerX" id="vwS-Pm-88v"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="9gm-Sd-DS3"/>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="atg-3c-3En"/>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="eP4-PL-Gcf"/>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="rMS-Tt-19p"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
+    <resources>
+        <image name="HKCleanShoes_highlighted" width="169" height="80"/>
+        <image name="HKCleanShoes_normal" width="169" height="80"/>
+        <image name="HKClean_highlighted" width="169" height="80"/>
+        <image name="HKClean_normal" width="169" height="80"/>
+        <image name="HKDND_highlighted" width="169" height="80"/>
+        <image name="HKDND_normal" width="169" height="80"/>
+        <image name="HKLaudry_highlighted" width="169" height="80"/>
+        <image name="HKLaudry_normal" width="169" height="80"/>
+        <image name="HKPillowBlanket_highlighted" width="169" height="80"/>
+        <image name="HKPillowBlanket_normal" width="169" height="80"/>
+        <image name="HKReadyBed_highlighted" width="169" height="80"/>
+        <image name="HKReadyBed_normal" width="169" height="80"/>
+        <image name="HKRefillMiniBar_highlighted" width="169" height="80"/>
+        <image name="HKRefillMiniBar_normal" width="169" height="80"/>
+        <image name="HKServer_Breakfast_highlighted" width="169" height="80"/>
+        <image name="HKServer_Breakfast_normal" width="169" height="80"/>
+        <image name="HKServer_ICE_highlighted" width="169" height="80"/>
+        <image name="HKServer_ICE_normal" width="169" height="80"/>
+        <image name="HKTakePlates_highlighted" width="169" height="80"/>
+        <image name="HKTakePlates_normal" width="169" height="80"/>
+        <image name="HKTowelsRobe_highlighted" width="169" height="80"/>
+        <image name="HKTowelsRobe_normal" width="169" height="80"/>
+    </resources>
 </document>
