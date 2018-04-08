@@ -1,0 +1,6 @@
+framework module Pods_SmartHotel {
+  umbrella header "Pods-SmartHotel-umbrella.h"
+
+  export *
+  module * { export * }
+}

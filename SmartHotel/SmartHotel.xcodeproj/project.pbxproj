@@ -27,6 +27,11 @@
 		04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249832079C77800EBD1BE /* NSDate+Date.m */; };
 		04D249922079C7C100EBD1BE /* Languages in Resources */ = {isa = PBXBuildFile; fileRef = 04D249912079C7C000EBD1BE /* Languages */; };
 		04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249972079C7F100EBD1BE /* SHLanguageTools.m */; };
+		04D249A12079C90200EBD1BE /* SHConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249992079C90000EBD1BE /* SHConstraint.m */; };
+		04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2499A2079C90100EBD1BE /* TYCustomAlertView.m */; };
+		04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2499D2079C90100EBD1BE /* UIButton+init.m */; };
+		04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2499E2079C90100EBD1BE /* UIBarButtonItem+init.m */; };
+		3CDD5A3288C65F63BF117317 /* Pods_SmartHotel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +77,17 @@
 		04D249912079C7C000EBD1BE /* Languages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Languages; sourceTree = "<group>"; };
 		04D249962079C7F100EBD1BE /* SHLanguageTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLanguageTools.h; sourceTree = "<group>"; };
 		04D249972079C7F100EBD1BE /* SHLanguageTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLanguageTools.m; sourceTree = "<group>"; };
+		04D249992079C90000EBD1BE /* SHConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstraint.m; sourceTree = "<group>"; };
+		04D2499A2079C90100EBD1BE /* TYCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCustomAlertView.m; sourceTree = "<group>"; };
+		04D2499B2079C90100EBD1BE /* UIBarButtonItem+init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+init.h"; sourceTree = "<group>"; };
+		04D2499C2079C90100EBD1BE /* TYCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCustomAlertView.h; sourceTree = "<group>"; };
+		04D2499D2079C90100EBD1BE /* UIButton+init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+init.m"; sourceTree = "<group>"; };
+		04D2499E2079C90100EBD1BE /* UIBarButtonItem+init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+init.m"; sourceTree = "<group>"; };
+		04D2499F2079C90100EBD1BE /* UIButton+init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+init.h"; sourceTree = "<group>"; };
+		04D249A02079C90200EBD1BE /* SHConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstraint.h; sourceTree = "<group>"; };
+		2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.release.xcconfig"; sourceTree = "<group>"; };
+		E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartHotel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDD5A3288C65F63BF117317 /* Pods_SmartHotel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +107,8 @@
 			children = (
 				04D249132079C51900EBD1BE /* SmartHotel */,
 				04D249122079C51900EBD1BE /* Products */,
+				6DC06081E1657E4BAE899CA4 /* Pods */,
+				81B7E115BE7CF804344A87D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,10 +143,10 @@
 			children = (
 				04D2495C2079C6E500EBD1BE /* readMe.h */,
 				04D2495D2079C70000EBD1BE /* SmartHotelPCH.pch */,
+				04D2492E2079C6CD00EBD1BE /* Main */,
 				04D2492B2079C6CD00EBD1BE /* DataBase */,
 				04D2492C2079C6CD00EBD1BE /* Tools */,
 				04D2492D2079C6CD00EBD1BE /* Languages */,
-				04D2492E2079C6CD00EBD1BE /* Main */,
 				04D2495B2079C6CD00EBD1BE /* Socket */,
 			);
 			path = Classes;
@@ -143,6 +162,14 @@
 		04D2492C2079C6CD00EBD1BE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04D249A02079C90200EBD1BE /* SHConstraint.h */,
+				04D249992079C90000EBD1BE /* SHConstraint.m */,
+				04D2499C2079C90100EBD1BE /* TYCustomAlertView.h */,
+				04D2499A2079C90100EBD1BE /* TYCustomAlertView.m */,
+				04D2499B2079C90100EBD1BE /* UIBarButtonItem+init.h */,
+				04D2499E2079C90100EBD1BE /* UIBarButtonItem+init.m */,
+				04D2499F2079C90100EBD1BE /* UIButton+init.h */,
+				04D2499D2079C90100EBD1BE /* UIButton+init.m */,
 				04D2495E2079C77800EBD1BE /* Additional */,
 			);
 			path = Tools;
@@ -645,6 +672,23 @@
 			path = NSDate;
 			sourceTree = "<group>";
 		};
+		6DC06081E1657E4BAE899CA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */,
+				2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		81B7E115BE7CF804344A87D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -652,9 +696,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04D249272079C51B00EBD1BE /* Build configuration list for PBXNativeTarget "SmartHotel" */;
 			buildPhases = (
+				DF657210FB103E7866B57ECC /* [CP] Check Pods Manifest.lock */,
 				04D2490D2079C51900EBD1BE /* Sources */,
 				04D2490E2079C51900EBD1BE /* Frameworks */,
 				04D2490F2079C51900EBD1BE /* Resources */,
+				C6207CE7B2E5151507876E7F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -712,6 +758,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C6207CE7B2E5151507876E7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TYAlertController/TYAlertController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TYAlertController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF657210FB103E7866B57ECC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartHotel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04D2490D2079C51900EBD1BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -727,11 +822,15 @@
 				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
 				04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */,
 				04D249882079C77800EBD1BE /* UIColor+Hex.m in Sources */,
+				04D249A12079C90200EBD1BE /* SHConstraint.m in Sources */,
+				04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */,
+				04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
 				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
 				04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */,
 				04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
+				04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */,
 				04D249872079C77800EBD1BE /* UIImage+ReSize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,6 +969,7 @@
 		};
 		04D249282079C51B00EBD1BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -890,6 +990,7 @@
 		};
 		04D249292079C51B00EBD1BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
