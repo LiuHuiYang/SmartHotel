@@ -14,6 +14,19 @@
 
 @implementation SHNavigationController
 
++ (void)load {
+    
+    // 设置navigationBar为透明
+    [[UINavigationBar appearance] setBackgroundImage:
+     [[UIImage alloc] init] forBarPosition:UIBarPositionAny
+    barMetrics:UIBarMetricsDefault];
+    
+    // 去掉navigationBar底部的线条
+    [[UINavigationBar appearance] setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:36], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
