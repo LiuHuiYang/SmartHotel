@@ -46,23 +46,6 @@ typedef NS_ENUM(Byte, SHRoomServerType) {
     
 };
 
-
-/**
- 标注不同的设备类型
- */
-typedef NS_ENUM(NSUInteger, SHDeviceType)
-{
-    SHDevTypeDoorBell = 5000,
-    SHDevTypeCardHolder = 5010,
-    SHDevTypeZoneBeast = 5020,
-    SHDevTypeBedside = 5030,
-    SHDevTypeAuxPower = 5040,
-    SHDevTypeDDP = 5070,
-    SHDevTypeIR = 5080,
-    SHDevTypeZAudio = 5090,
-    SHDevTypeCurtain = 5100,
-} ;
-
 /// 自定义工具条的高度
 UIKIT_EXTERN const CGFloat customToolBarHeight;
 

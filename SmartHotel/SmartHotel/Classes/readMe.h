@@ -10,4 +10,8 @@
  
  home:进入房间后的第一个页面
  
+ 
+ 功能模块说明：
+    Service(HouseKeeping) 对应的是 CardHolder (插卡模块服务)
+ 
  */

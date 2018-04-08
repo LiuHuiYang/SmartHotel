@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SHRoomBaseInfomation.h"
+#import "SHRoomDevice.h"
+
 @interface SHSQLManager : NSObject
 
 // MARK: - 数据操作
 
+/// 查询当前房间的指定设备
+- (SHRoomDevice *)getRoomDevice:(SHRoomBaseInfomation *)room deviceType:(SHDeviceType)deviceType;
 
 /// 获得所有的房间信息
 - (NSMutableArray *)getRoomBaseInformation;

@@ -44,6 +44,8 @@
 /// 早餐
 @property (weak, nonatomic) IBOutlet SHServiceButton *breakfastButton;
 
+/// 当前模块设备
+@property (strong, nonatomic) SHRoomDevice *currentDevice;
 
 @end
 
@@ -108,7 +110,14 @@
     printLog(@"%@", self.laudryButton.currentTitle);
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    // 获得服务的相关参数
+    self.currentDevice = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.roomInfo deviceType:SHDeviceTypeCardHolder];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

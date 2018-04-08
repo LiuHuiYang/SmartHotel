@@ -21,6 +21,17 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 查询当前房间的指定设备
+- (SHRoomDevice *)getRoomDevice:(SHRoomBaseInfomation *)room deviceType:(SHDeviceType)deviceType {
+    
+    NSString *selectSQL = [NSString stringWithFormat:@"select BuildingID, FloorID, RoomNo, DeviceType, SubnetID, DeviceID, DeciceNO, BuildingName, RoomName, DeviceRemark from CurrentRoomDevices where  DeviceType = %zd; ", deviceType];
+    
+    NSArray *array = [self selectProprty:selectSQL];
+    
+    SHRoomDevice *device = [SHRoomDevice roomDeviceWithDictionary:array.lastObject];
+    
+    return device;
+}
 
 /// 获得所有的房间信息
 - (NSMutableArray *)getRoomBaseInformation {
