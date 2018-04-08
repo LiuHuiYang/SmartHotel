@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SHRoomViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,13 @@
     
     // 2.数据库文件拷贝
     [SHSQLManager shareSHSQLManager];
+    
+    // 3.启动窗口
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    self.window.rootViewController = [[SHRoomViewController alloc] init];
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

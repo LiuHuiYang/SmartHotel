@@ -2,7 +2,7 @@
 //  NSDate+Date.m
 //  Smart-Bus
 //
-//  Created by LHY on 2017/11/30.
+//  Created by Mac on 2017/11/30.
 //  Copyright © 2017年 SmartHome. All rights reserved.
 //
 

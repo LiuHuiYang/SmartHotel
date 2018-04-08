@@ -2,7 +2,7 @@
 //  SHSQLManager.m
 //  SmartHotel
 //
-//  Created by LHY on 2018/4/2.
+//  Created by Mac on 2018/4/2.
 //  Copyright © 2018年 Mark. All rights reserved.
 //
 
