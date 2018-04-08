@@ -90,6 +90,9 @@
     
     viewController.roomInfo = roomInfomation;
     
+    viewController.tabBarItem.image = [[UIImage imageNamed:@"alarmTabBar_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    viewController.tabBarItem.selectedImage = [[UIImage imageNamed:@"alarmTabBar_highlighted"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     SHNavigationController *nav = [[SHNavigationController  alloc] initWithRootViewController:viewController];
     
     [self addChildViewController:nav];
