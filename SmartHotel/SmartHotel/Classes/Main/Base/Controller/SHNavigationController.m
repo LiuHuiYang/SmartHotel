@@ -32,10 +32,18 @@
     
     if (self.childViewControllers.count) {
         
-        viewController.hidesBottomBarWhenPushed = YES;
+//        viewController.hidesBottomBarWhenPushed = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
     }
     
     [super pushViewController:viewController animated:animated];
+}
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
+    
+    return [super popViewControllerAnimated:animated];
 }
 
 - (void)viewDidLoad {
@@ -58,5 +66,12 @@
     
     return NO;
 }
+
+- (void)dealloc {
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
+
 
 @end

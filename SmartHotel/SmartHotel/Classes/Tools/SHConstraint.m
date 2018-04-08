@@ -66,3 +66,6 @@ NSString *SHSchedualPrepareExecuteNotification = @"SHSchedualPrepareExecuteNotif
 
 /// 回到首页控制器的通知
 NSString *SHControlGoBackHomeControllerNotification = @"SHControlGoBackHomeControllerNotification";
+
+/// 控制器堆栈时进行隐藏 
+NSString *SHNavigationBarControllerPushHidderTabBarNotification = @"SHNavigationBarControllerPushHidderTabBarNotification";

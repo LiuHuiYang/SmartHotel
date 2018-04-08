@@ -120,6 +120,8 @@ UIKIT_EXTERN NSString *SHSchedualPrepareExecuteNotification;
 /// 回到首页控制器的通知
 UIKIT_EXTERN NSString *SHControlGoBackHomeControllerNotification;
 
+/// 控制器堆栈时进行隐藏
+UIKIT_EXTERN NSString *SHNavigationBarControllerPushHidderTabBarNotification;
 
 #endif /* SHConstraint_h */
 
