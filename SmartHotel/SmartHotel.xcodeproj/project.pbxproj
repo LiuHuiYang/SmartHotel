@@ -31,6 +31,14 @@
 		04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2499A2079C90100EBD1BE /* TYCustomAlertView.m */; };
 		04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2499D2079C90100EBD1BE /* UIButton+init.m */; };
 		04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D2499E2079C90100EBD1BE /* UIBarButtonItem+init.m */; };
+		04D249A72079C95500EBD1BE /* SHUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249A52079C95500EBD1BE /* SHUdpSocket.m */; };
+		04D249AC2079C9B800EBD1BE /* SQL.sql in Resources */ = {isa = PBXBuildFile; fileRef = 04D249A92079C9B800EBD1BE /* SQL.sql */; };
+		04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249AA2079C9B800EBD1BE /* SHSQLManager.m */; };
+		04D249AE2079C9B800EBD1BE /* SHDB.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 04D249AB2079C9B800EBD1BE /* SHDB.sqlite3 */; };
+		04D249B52079CA6500EBD1BE /* SHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249B42079CA6500EBD1BE /* SHViewController.m */; };
+		04D249B82079CA9400EBD1BE /* SHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249B72079CA9400EBD1BE /* SHNavigationController.m */; };
+		04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249BA2079CAA700EBD1BE /* SHTabBarController.m */; };
+		04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249BD2079CAC000EBD1BE /* SHModelViewController.m */; };
 		3CDD5A3288C65F63BF117317 /* Pods_SmartHotel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +93,20 @@
 		04D2499E2079C90100EBD1BE /* UIBarButtonItem+init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+init.m"; sourceTree = "<group>"; };
 		04D2499F2079C90100EBD1BE /* UIButton+init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+init.h"; sourceTree = "<group>"; };
 		04D249A02079C90200EBD1BE /* SHConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstraint.h; sourceTree = "<group>"; };
+		04D249A52079C95500EBD1BE /* SHUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHUdpSocket.m; sourceTree = "<group>"; };
+		04D249A62079C95500EBD1BE /* SHUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHUdpSocket.h; sourceTree = "<group>"; };
+		04D249A82079C9B700EBD1BE /* SHSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSQLManager.h; sourceTree = "<group>"; };
+		04D249A92079C9B800EBD1BE /* SQL.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SQL.sql; sourceTree = "<group>"; };
+		04D249AA2079C9B800EBD1BE /* SHSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSQLManager.m; sourceTree = "<group>"; };
+		04D249AB2079C9B800EBD1BE /* SHDB.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SHDB.sqlite3; sourceTree = "<group>"; };
+		04D249B32079CA6500EBD1BE /* SHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHViewController.h; sourceTree = "<group>"; };
+		04D249B42079CA6500EBD1BE /* SHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHViewController.m; sourceTree = "<group>"; };
+		04D249B62079CA9400EBD1BE /* SHNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHNavigationController.h; sourceTree = "<group>"; };
+		04D249B72079CA9400EBD1BE /* SHNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHNavigationController.m; sourceTree = "<group>"; };
+		04D249B92079CAA700EBD1BE /* SHTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTabBarController.h; sourceTree = "<group>"; };
+		04D249BA2079CAA700EBD1BE /* SHTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTabBarController.m; sourceTree = "<group>"; };
+		04D249BC2079CAC000EBD1BE /* SHModelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHModelViewController.h; sourceTree = "<group>"; };
+		04D249BD2079CAC000EBD1BE /* SHModelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHModelViewController.m; sourceTree = "<group>"; };
 		2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.release.xcconfig"; sourceTree = "<group>"; };
 		E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartHotel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +177,10 @@
 		04D2492B2079C6CD00EBD1BE /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				04D249AB2079C9B800EBD1BE /* SHDB.sqlite3 */,
+				04D249A82079C9B700EBD1BE /* SHSQLManager.h */,
+				04D249AA2079C9B800EBD1BE /* SHSQLManager.m */,
+				04D249A92079C9B800EBD1BE /* SQL.sql */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -187,6 +213,7 @@
 		04D2492E2079C6CD00EBD1BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				04D249AF2079CA5900EBD1BE /* Base */,
 				04D2492F2079C6CD00EBD1BE /* Home */,
 				04D249332079C6CD00EBD1BE /* VIP */,
 				04D249372079C6CD00EBD1BE /* Room */,
@@ -546,6 +573,8 @@
 		04D2495B2079C6CD00EBD1BE /* Socket */ = {
 			isa = PBXGroup;
 			children = (
+				04D249A62079C95500EBD1BE /* SHUdpSocket.h */,
+				04D249A52079C95500EBD1BE /* SHUdpSocket.m */,
 			);
 			path = Socket;
 			sourceTree = "<group>";
@@ -672,6 +701,45 @@
 			path = NSDate;
 			sourceTree = "<group>";
 		};
+		04D249AF2079CA5900EBD1BE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				04D249B02079CA5900EBD1BE /* Controller */,
+				04D249B12079CA5900EBD1BE /* Model */,
+				04D249B22079CA5900EBD1BE /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		04D249B02079CA5900EBD1BE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04D249B32079CA6500EBD1BE /* SHViewController.h */,
+				04D249B42079CA6500EBD1BE /* SHViewController.m */,
+				04D249BC2079CAC000EBD1BE /* SHModelViewController.h */,
+				04D249BD2079CAC000EBD1BE /* SHModelViewController.m */,
+				04D249B62079CA9400EBD1BE /* SHNavigationController.h */,
+				04D249B72079CA9400EBD1BE /* SHNavigationController.m */,
+				04D249B92079CAA700EBD1BE /* SHTabBarController.h */,
+				04D249BA2079CAA700EBD1BE /* SHTabBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04D249B12079CA5900EBD1BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04D249B22079CA5900EBD1BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6DC06081E1657E4BAE899CA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -751,7 +819,9 @@
 			files = (
 				04D249922079C7C100EBD1BE /* Languages in Resources */,
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
+				04D249AE2079C9B800EBD1BE /* SHDB.sqlite3 in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
+				04D249AC2079C9B800EBD1BE /* SQL.sql in Resources */,
 				04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,11 +883,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
+				04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */,
 				04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */,
+				04D249B82079CA9400EBD1BE /* SHNavigationController.m in Sources */,
 				04D249192079C51A00EBD1BE /* ViewController.m in Sources */,
 				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
+				04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */,
+				04D249A72079C95500EBD1BE /* SHUdpSocket.m in Sources */,
+				04D249B52079CA6500EBD1BE /* SHViewController.m in Sources */,
 				04D249242079C51B00EBD1BE /* main.m in Sources */,
 				04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */,
+				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
 				04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */,
 				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
 				04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */,

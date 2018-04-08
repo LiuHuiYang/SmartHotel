@@ -2,7 +2,7 @@
 //  SHAlertView.m
 //  Smart-Bus
 //
-//  Created by Mark Liu on 2018/3/1.
+//  Created by Mac on 2018/3/1.
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 

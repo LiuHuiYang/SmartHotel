@@ -21,7 +21,8 @@
     [[SHLanguageTools shareSHLanguageTools] copyLanguagePlist];
     [[SHLanguageTools shareSHLanguageTools] setLanguage];
     
-    
+    // 2.数据库文件拷贝
+    [SHSQLManager shareSHSQLManager];
     
     return YES;
 }
