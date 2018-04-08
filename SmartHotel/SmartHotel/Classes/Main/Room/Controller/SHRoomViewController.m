@@ -8,6 +8,20 @@
 
 #import "SHRoomViewController.h"
 
+#import "SHNavigationController.h"
+#import "SHHomeViewController.h"
+#import "SHLightViewController.h"
+#import "SHHVACViewController.h"
+#import "SHTVViewController.h"
+#import "SHCurtainViewController.h"
+#import "SHAlarmViewController.h"
+#import "SHHousekeepingViewController.h"
+#import "SHVIPViewController.h"
+#import "SHCameraViewController.h"
+#import "SHWorldTimeViewController.h"
+
+
+
 @interface SHRoomViewController ()
 
 @end

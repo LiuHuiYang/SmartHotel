@@ -40,6 +40,28 @@
 		04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249BA2079CAA700EBD1BE /* SHTabBarController.m */; };
 		04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249BD2079CAC000EBD1BE /* SHModelViewController.m */; };
 		04D249C12079CBEC00EBD1BE /* SHRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249C02079CBEC00EBD1BE /* SHRoomViewController.m */; };
+		04D249C52079E1B200EBD1BE /* SHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249C32079E1B200EBD1BE /* SHHomeViewController.m */; };
+		04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249C42079E1B200EBD1BE /* SHHomeViewController.xib */; };
+		04D249CA2079E1CC00EBD1BE /* SHLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249C82079E1CC00EBD1BE /* SHLightViewController.m */; };
+		04D249CB2079E1CC00EBD1BE /* SHLightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249C92079E1CC00EBD1BE /* SHLightViewController.xib */; };
+		04D249CF2079E1E100EBD1BE /* SHHVACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249CD2079E1E100EBD1BE /* SHHVACViewController.m */; };
+		04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249CE2079E1E100EBD1BE /* SHHVACViewController.xib */; };
+		04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249D22079E1F300EBD1BE /* SHTVViewController.m */; };
+		04D249D52079E1F300EBD1BE /* SHTVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249D32079E1F300EBD1BE /* SHTVViewController.xib */; };
+		04D249D92079E20D00EBD1BE /* SHCurtainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249D72079E20D00EBD1BE /* SHCurtainViewController.m */; };
+		04D249DA2079E20D00EBD1BE /* SHCurtainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249D82079E20D00EBD1BE /* SHCurtainViewController.xib */; };
+		04D249DE2079E22300EBD1BE /* SHVIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249DC2079E22300EBD1BE /* SHVIPViewController.m */; };
+		04D249DF2079E22300EBD1BE /* SHVIPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249DD2079E22300EBD1BE /* SHVIPViewController.xib */; };
+		04D249E32079E24A00EBD1BE /* SHAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249E12079E24A00EBD1BE /* SHAlarmViewController.m */; };
+		04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249E22079E24A00EBD1BE /* SHAlarmViewController.xib */; };
+		04D249EC2079E29600EBD1BE /* SHHousekeepingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249EA2079E29600EBD1BE /* SHHousekeepingViewController.m */; };
+		04D249ED2079E29600EBD1BE /* SHHousekeepingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249EB2079E29600EBD1BE /* SHHousekeepingViewController.xib */; };
+		04D249F12079E2AA00EBD1BE /* SHCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249EF2079E2AA00EBD1BE /* SHCameraViewController.m */; };
+		04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249F02079E2AA00EBD1BE /* SHCameraViewController.xib */; };
+		04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249F42079E2C000EBD1BE /* SHWorldTimeViewController.m */; };
+		04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249F52079E2C000EBD1BE /* SHWorldTimeViewController.xib */; };
+		04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249F92079E2D100EBD1BE /* SHSettingViewController.m */; };
+		04D249FC2079E2D100EBD1BE /* SHSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */; };
 		3CDD5A3288C65F63BF117317 /* Pods_SmartHotel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +132,39 @@
 		04D249BD2079CAC000EBD1BE /* SHModelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHModelViewController.m; sourceTree = "<group>"; };
 		04D249BF2079CBEC00EBD1BE /* SHRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRoomViewController.h; sourceTree = "<group>"; };
 		04D249C02079CBEC00EBD1BE /* SHRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRoomViewController.m; sourceTree = "<group>"; };
+		04D249C22079E1B200EBD1BE /* SHHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHomeViewController.h; sourceTree = "<group>"; };
+		04D249C32079E1B200EBD1BE /* SHHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHomeViewController.m; sourceTree = "<group>"; };
+		04D249C42079E1B200EBD1BE /* SHHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHomeViewController.xib; sourceTree = "<group>"; };
+		04D249C72079E1CC00EBD1BE /* SHLightViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightViewController.h; sourceTree = "<group>"; };
+		04D249C82079E1CC00EBD1BE /* SHLightViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightViewController.m; sourceTree = "<group>"; };
+		04D249C92079E1CC00EBD1BE /* SHLightViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLightViewController.xib; sourceTree = "<group>"; };
+		04D249CC2079E1E100EBD1BE /* SHHVACViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACViewController.h; sourceTree = "<group>"; };
+		04D249CD2079E1E100EBD1BE /* SHHVACViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVACViewController.m; sourceTree = "<group>"; };
+		04D249CE2079E1E100EBD1BE /* SHHVACViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHVACViewController.xib; sourceTree = "<group>"; };
+		04D249D12079E1F300EBD1BE /* SHTVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVViewController.h; sourceTree = "<group>"; };
+		04D249D22079E1F300EBD1BE /* SHTVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVViewController.m; sourceTree = "<group>"; };
+		04D249D32079E1F300EBD1BE /* SHTVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTVViewController.xib; sourceTree = "<group>"; };
+		04D249D62079E20D00EBD1BE /* SHCurtainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainViewController.h; sourceTree = "<group>"; };
+		04D249D72079E20D00EBD1BE /* SHCurtainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtainViewController.m; sourceTree = "<group>"; };
+		04D249D82079E20D00EBD1BE /* SHCurtainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCurtainViewController.xib; sourceTree = "<group>"; };
+		04D249DB2079E22300EBD1BE /* SHVIPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHVIPViewController.h; sourceTree = "<group>"; };
+		04D249DC2079E22300EBD1BE /* SHVIPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHVIPViewController.m; sourceTree = "<group>"; };
+		04D249DD2079E22300EBD1BE /* SHVIPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHVIPViewController.xib; sourceTree = "<group>"; };
+		04D249E02079E24A00EBD1BE /* SHAlarmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlarmViewController.h; sourceTree = "<group>"; };
+		04D249E12079E24A00EBD1BE /* SHAlarmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlarmViewController.m; sourceTree = "<group>"; };
+		04D249E22079E24A00EBD1BE /* SHAlarmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHAlarmViewController.xib; sourceTree = "<group>"; };
+		04D249E92079E29600EBD1BE /* SHHousekeepingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHousekeepingViewController.h; sourceTree = "<group>"; };
+		04D249EA2079E29600EBD1BE /* SHHousekeepingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHousekeepingViewController.m; sourceTree = "<group>"; };
+		04D249EB2079E29600EBD1BE /* SHHousekeepingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHousekeepingViewController.xib; sourceTree = "<group>"; };
+		04D249EE2079E2AA00EBD1BE /* SHCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCameraViewController.h; sourceTree = "<group>"; };
+		04D249EF2079E2AA00EBD1BE /* SHCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCameraViewController.m; sourceTree = "<group>"; };
+		04D249F02079E2AA00EBD1BE /* SHCameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCameraViewController.xib; sourceTree = "<group>"; };
+		04D249F32079E2C000EBD1BE /* SHWorldTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWorldTimeViewController.h; sourceTree = "<group>"; };
+		04D249F42079E2C000EBD1BE /* SHWorldTimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWorldTimeViewController.m; sourceTree = "<group>"; };
+		04D249F52079E2C000EBD1BE /* SHWorldTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHWorldTimeViewController.xib; sourceTree = "<group>"; };
+		04D249F82079E2D100EBD1BE /* SHSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingViewController.h; sourceTree = "<group>"; };
+		04D249F92079E2D100EBD1BE /* SHSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingViewController.m; sourceTree = "<group>"; };
+		04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingViewController.xib; sourceTree = "<group>"; };
 		2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.release.xcconfig"; sourceTree = "<group>"; };
 		E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartHotel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,18 +271,19 @@
 		04D2492E2079C6CD00EBD1BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				04D249532079C6CD00EBD1BE /* Setting */,
+				04D249572079C6CD00EBD1BE /* WorldTime */,
+				04D2493F2079C6CD00EBD1BE /* Camera */,
+				04D249332079C6CD00EBD1BE /* VIP */,
+				04D249E52079E28900EBD1BE /* Housekeeping */,
+				04D2494F2079C6CD00EBD1BE /* Alarm */,
+				04D2493B2079C6CD00EBD1BE /* Curtain */,
+				04D249472079C6CD00EBD1BE /* TV */,
+				04D249432079C6CD00EBD1BE /* HVAC */,
+				04D2494B2079C6CD00EBD1BE /* Light */,
 				04D2492F2079C6CD00EBD1BE /* Home */,
 				04D249372079C6CD00EBD1BE /* Room */,
 				04D249AF2079CA5900EBD1BE /* Base */,
-				04D249332079C6CD00EBD1BE /* VIP */,
-				04D2493B2079C6CD00EBD1BE /* Curtain */,
-				04D2493F2079C6CD00EBD1BE /* Camera */,
-				04D249432079C6CD00EBD1BE /* HVAC */,
-				04D249472079C6CD00EBD1BE /* TV */,
-				04D2494B2079C6CD00EBD1BE /* Light */,
-				04D2494F2079C6CD00EBD1BE /* Alarm */,
-				04D249532079C6CD00EBD1BE /* Setting */,
-				04D249572079C6CD00EBD1BE /* WorldTime */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -245,6 +301,9 @@
 		04D249302079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249C22079E1B200EBD1BE /* SHHomeViewController.h */,
+				04D249C32079E1B200EBD1BE /* SHHomeViewController.m */,
+				04D249C42079E1B200EBD1BE /* SHHomeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -276,6 +335,9 @@
 		04D249342079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249DB2079E22300EBD1BE /* SHVIPViewController.h */,
+				04D249DC2079E22300EBD1BE /* SHVIPViewController.m */,
+				04D249DD2079E22300EBD1BE /* SHVIPViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -340,6 +402,9 @@
 		04D2493C2079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249D62079E20D00EBD1BE /* SHCurtainViewController.h */,
+				04D249D72079E20D00EBD1BE /* SHCurtainViewController.m */,
+				04D249D82079E20D00EBD1BE /* SHCurtainViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -371,6 +436,9 @@
 		04D249402079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249EE2079E2AA00EBD1BE /* SHCameraViewController.h */,
+				04D249EF2079E2AA00EBD1BE /* SHCameraViewController.m */,
+				04D249F02079E2AA00EBD1BE /* SHCameraViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -402,6 +470,9 @@
 		04D249442079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249CC2079E1E100EBD1BE /* SHHVACViewController.h */,
+				04D249CD2079E1E100EBD1BE /* SHHVACViewController.m */,
+				04D249CE2079E1E100EBD1BE /* SHHVACViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -433,6 +504,9 @@
 		04D249482079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249D12079E1F300EBD1BE /* SHTVViewController.h */,
+				04D249D22079E1F300EBD1BE /* SHTVViewController.m */,
+				04D249D32079E1F300EBD1BE /* SHTVViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -464,6 +538,9 @@
 		04D2494C2079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249C72079E1CC00EBD1BE /* SHLightViewController.h */,
+				04D249C82079E1CC00EBD1BE /* SHLightViewController.m */,
+				04D249C92079E1CC00EBD1BE /* SHLightViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -495,6 +572,9 @@
 		04D249502079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249E02079E24A00EBD1BE /* SHAlarmViewController.h */,
+				04D249E12079E24A00EBD1BE /* SHAlarmViewController.m */,
+				04D249E22079E24A00EBD1BE /* SHAlarmViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -526,6 +606,9 @@
 		04D249542079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249F82079E2D100EBD1BE /* SHSettingViewController.h */,
+				04D249F92079E2D100EBD1BE /* SHSettingViewController.m */,
+				04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -557,6 +640,9 @@
 		04D249582079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D249F32079E2C000EBD1BE /* SHWorldTimeViewController.h */,
+				04D249F42079E2C000EBD1BE /* SHWorldTimeViewController.m */,
+				04D249F52079E2C000EBD1BE /* SHWorldTimeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -745,6 +831,40 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		04D249E52079E28900EBD1BE /* Housekeeping */ = {
+			isa = PBXGroup;
+			children = (
+				04D249E62079E28900EBD1BE /* Controller */,
+				04D249E72079E28900EBD1BE /* Model */,
+				04D249E82079E28900EBD1BE /* View */,
+			);
+			path = Housekeeping;
+			sourceTree = "<group>";
+		};
+		04D249E62079E28900EBD1BE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04D249E92079E29600EBD1BE /* SHHousekeepingViewController.h */,
+				04D249EA2079E29600EBD1BE /* SHHousekeepingViewController.m */,
+				04D249EB2079E29600EBD1BE /* SHHousekeepingViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04D249E72079E28900EBD1BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04D249E82079E28900EBD1BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6DC06081E1657E4BAE899CA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,11 +943,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D249922079C7C100EBD1BE /* Languages in Resources */,
+				04D249DF2079E22300EBD1BE /* SHVIPViewController.xib in Resources */,
+				04D249ED2079E29600EBD1BE /* SHHousekeepingViewController.xib in Resources */,
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
 				04D249AE2079C9B800EBD1BE /* SHDB.sqlite3 in Resources */,
+				04D249D52079E1F300EBD1BE /* SHTVViewController.xib in Resources */,
+				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
+				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
+				04D249DA2079E20D00EBD1BE /* SHCurtainViewController.xib in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
+				04D249CB2079E1CC00EBD1BE /* SHLightViewController.xib in Resources */,
+				04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */,
+				04D249FC2079E2D100EBD1BE /* SHSettingViewController.xib in Resources */,
 				04D249AC2079C9B800EBD1BE /* SQL.sql in Resources */,
+				04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */,
 				04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */,
+				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,9 +1019,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
+				04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */,
 				04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */,
 				04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */,
 				04D249B82079CA9400EBD1BE /* SHNavigationController.m in Sources */,
+				04D249D92079E20D00EBD1BE /* SHCurtainViewController.m in Sources */,
 				04D249192079C51A00EBD1BE /* ViewController.m in Sources */,
 				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
 				04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */,
@@ -903,16 +1036,25 @@
 				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
 				04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */,
 				04D249882079C77800EBD1BE /* UIColor+Hex.m in Sources */,
+				04D249C52079E1B200EBD1BE /* SHHomeViewController.m in Sources */,
 				04D249C12079CBEC00EBD1BE /* SHRoomViewController.m in Sources */,
+				04D249CA2079E1CC00EBD1BE /* SHLightViewController.m in Sources */,
 				04D249A12079C90200EBD1BE /* SHConstraint.m in Sources */,
+				04D249EC2079E29600EBD1BE /* SHHousekeepingViewController.m in Sources */,
 				04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */,
 				04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */,
+				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
+				04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
 				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
 				04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */,
+				04D249DE2079E22300EBD1BE /* SHVIPViewController.m in Sources */,
 				04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
+				04D249CF2079E1E100EBD1BE /* SHHVACViewController.m in Sources */,
+				04D249E32079E24A00EBD1BE /* SHAlarmViewController.m in Sources */,
 				04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */,
+				04D249F12079E2AA00EBD1BE /* SHCameraViewController.m in Sources */,
 				04D249872079C77800EBD1BE /* UIImage+ReSize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
