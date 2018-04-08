@@ -9,6 +9,8 @@
 #import "SHSQLManager.h"
 #import <FMDB/FMDB.h>
 
+#import "SHRoomBaseInfomation.h"
+
 /// 数据库的名称
 NSString *dataBaseName = @"SHDB.sqlite3";
 
@@ -23,21 +25,21 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 
 /// 获得所有的房间信息
-//- (NSMutableArray *)getRoomBaseInformation {
-//
-//    NSString *selectSQL = @"SELECT SHBuildID, SHFloorID, SHRoomNumber, SHRoomNumberDisplay, SHRoomAlias, SHHotelName FROM SHRoomBasicInfo;";
-//
-//    NSMutableArray *array = [self selectProprty:selectSQL];
-//
-//    NSMutableArray *infos = [NSMutableArray arrayWithCapacity:array.count];
-//
-//    for (NSDictionary *dict in array) {
-//
-//        [infos addObject:[SHRoomBaseInfomation roomBaseInfomationWithDictionary:dict]];
-//    }
-//
-//    return infos;
-//}
+- (NSMutableArray *)getRoomBaseInformation {
+
+    NSString *selectSQL = @"SELECT SHBuildID, SHFloorID, SHRoomNumber, SHRoomNumberDisplay, SHRoomAlias, SHHotelName FROM SHRoomBasicInfo;";
+
+    NSMutableArray *array = [self selectProprty:selectSQL];
+
+    NSMutableArray *infos = [NSMutableArray arrayWithCapacity:array.count];
+
+    for (NSDictionary *dict in array) {
+
+        [infos addObject:[SHRoomBaseInfomation roomBaseInfomationWithDictionary:dict]];
+    }
+
+    return infos;
+}
 
 // MARK: - 创建表格
 

@@ -62,6 +62,7 @@
 		04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249F52079E2C000EBD1BE /* SHWorldTimeViewController.xib */; };
 		04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249F92079E2D100EBD1BE /* SHSettingViewController.m */; };
 		04D249FC2079E2D100EBD1BE /* SHSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */; };
+		04D249FF2079E3A400EBD1BE /* SHRoomBaseInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249FE2079E3A400EBD1BE /* SHRoomBaseInfomation.m */; };
 		3CDD5A3288C65F63BF117317 /* Pods_SmartHotel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +166,8 @@
 		04D249F82079E2D100EBD1BE /* SHSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingViewController.h; sourceTree = "<group>"; };
 		04D249F92079E2D100EBD1BE /* SHSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingViewController.m; sourceTree = "<group>"; };
 		04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingViewController.xib; sourceTree = "<group>"; };
+		04D249FD2079E3A400EBD1BE /* SHRoomBaseInfomation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRoomBaseInfomation.h; sourceTree = "<group>"; };
+		04D249FE2079E3A400EBD1BE /* SHRoomBaseInfomation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRoomBaseInfomation.m; sourceTree = "<group>"; };
 		2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.release.xcconfig"; sourceTree = "<group>"; };
 		E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartHotel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 		04D249392079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04D249FD2079E3A400EBD1BE /* SHRoomBaseInfomation.h */,
+				04D249FE2079E3A400EBD1BE /* SHRoomBaseInfomation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1018,6 +1023,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D249FF2079E3A400EBD1BE /* SHRoomBaseInfomation.m in Sources */,
 				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
 				04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */,
 				04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */,

@@ -13,8 +13,8 @@
 // MARK: - 数据操作
 
 
-/// 获得所有的
-//- (NSMutableArray *)getRoomBaseInformation;
+/// 获得所有的房间信息
+- (NSMutableArray *)getRoomBaseInformation;
 
 
 
