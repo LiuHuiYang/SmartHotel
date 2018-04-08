@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-lP-w1b">
-                    <rect key="frame" x="77" y="163.5" width="870" height="461"/>
+                    <rect key="frame" x="77" y="144" width="870" height="461"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8R-E9-n09" customClass="SHServiceButton">
                             <rect key="frame" x="133.5" y="27" width="168" height="75"/>
@@ -151,7 +151,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.75575871138949235" green="0.71934921719781486" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="FNv-r0-Tqv" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="0AI-hm-Rrg"/>
                         <constraint firstItem="Iit-Tm-QHc" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="0eR-9f-6ac"/>
@@ -202,10 +202,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="342-Xn-7gG"/>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="9gm-Sd-DS3"/>
-                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="atg-3c-3En"/>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="Fjc-qp-TPo"/>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="eP4-PL-Gcf"/>
-                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="rMS-Tt-19p"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>

@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAV-Z6-8cg">
-                    <rect key="frame" x="77" y="163.5" width="870" height="461"/>
+                    <rect key="frame" x="77" y="144" width="870" height="461"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-JR-tst" customClass="SHServiceButton">
                             <rect key="frame" x="133.5" y="27" width="168" height="75"/>
@@ -206,7 +206,7 @@
                 <constraint firstItem="NAV-Z6-8cg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="4PZ-8c-KTe"/>
                 <constraint firstItem="NAV-Z6-8cg" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="dBD-hP-Xpb"/>
                 <constraint firstItem="NAV-Z6-8cg" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="hCt-DZ-Kgd"/>
-                <constraint firstItem="NAV-Z6-8cg" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="k4G-zs-E8r"/>
+                <constraint firstItem="NAV-Z6-8cg" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="k4G-zs-E8r"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
