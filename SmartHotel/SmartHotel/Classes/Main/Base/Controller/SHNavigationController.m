@@ -46,10 +46,7 @@
     return [super popViewControllerAnimated:animated];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

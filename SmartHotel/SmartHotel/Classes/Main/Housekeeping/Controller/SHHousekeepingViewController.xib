@@ -151,7 +151,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.75575871138949235" green="0.71934921719781486" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="FNv-r0-Tqv" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="0AI-hm-Rrg"/>
                         <constraint firstItem="Iit-Tm-QHc" firstAttribute="width" secondItem="VNO-lD-JZC" secondAttribute="width" id="0eR-9f-6ac"/>
