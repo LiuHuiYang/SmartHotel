@@ -26,5 +26,16 @@
 }
 
 
+// MARK: - 状态栏的管理
+- (UIStatusBarStyle)preferredStatusBarStyle {
+
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    
+    return NO;
+}
+
 
 @end
