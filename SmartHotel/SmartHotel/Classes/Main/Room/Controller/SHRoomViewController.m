@@ -20,12 +20,16 @@
 #import "SHCameraViewController.h"
 #import "SHWorldTimeViewController.h"
 
-#import "SHRoomBaseInfomation.h"
+#import "SHModuleSwitchButton.h"
 
 @interface SHRoomViewController ()
 
 /// 当前的房间
 @property (strong, nonatomic) SHRoomBaseInfomation *currentRoom;
+
+/// 上一次选中的按钮
+@property (weak, nonatomic) SHModuleSwitchButton *preivousButton;
+
 
 
 @end
@@ -40,11 +44,22 @@
     
     [self addChildViewControllers];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gobackhomeController) name:SHControlGoBackHomeControllerNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)gobackhomeController {
+    
+    self.preivousButton.selected = NO;
+    self.preivousButton = nil;
+    [self setSelectedIndex:0];
 }
 
 

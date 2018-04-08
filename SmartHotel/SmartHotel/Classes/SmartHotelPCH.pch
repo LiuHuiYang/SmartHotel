@@ -23,7 +23,8 @@
 #import "SHUdpSocket.h"
 
 #import "SHLanguageTools.h"
- 
+#import "SHRoomBaseInfomation.h"
+
 #endif
 
 #endif /* SmartHotelPCH_pch */

@@ -9,8 +9,6 @@
 #import "SHSQLManager.h"
 #import <FMDB/FMDB.h>
 
-#import "SHRoomBaseInfomation.h"
-
 /// 数据库的名称
 NSString *dataBaseName = @"SHDB.sqlite3";
 

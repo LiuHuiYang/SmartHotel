@@ -27,6 +27,17 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:28], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 }
 
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if (self.childViewControllers.count) {
+        
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
+    
+    [super pushViewController:viewController animated:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

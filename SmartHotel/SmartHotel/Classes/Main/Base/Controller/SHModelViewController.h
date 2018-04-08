@@ -7,7 +7,6 @@
 //
 
 #import "SHViewController.h"
-#import "SHRoomBaseInfomation.h"
 
 
 @interface SHModelViewController : SHViewController
