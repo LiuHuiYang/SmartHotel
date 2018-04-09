@@ -6,12 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHomeViewController">
             <connections>
+                <outlet property="clockView" destination="gOk-dF-gwg" id="WhF-pX-aVZ"/>
+                <outlet property="currentTimeLabel" destination="BYs-TC-L1x" id="6FO-rH-HO0"/>
                 <outlet property="languageButton" destination="4Na-s3-5PK" id="aWx-lf-bal"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,37 +24,88 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_language" translatesAutoresizingMaskIntoConstraints="NO" id="DTk-9r-a80">
-                    <rect key="frame" x="384" y="556" width="256" height="84"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAy-LO-5vX">
+                    <rect key="frame" x="77" y="125" width="870" height="499"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_language" translatesAutoresizingMaskIntoConstraints="NO" id="DTk-9r-a80">
+                            <rect key="frame" x="307" y="400" width="256" height="84"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="84" id="6AC-Jd-SK9"/>
+                                <constraint firstAttribute="width" constant="256" id="7gQ-Nx-NNd"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-s3-5PK">
+                            <rect key="frame" x="307" y="400" width="256" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="uio-Ep-k2A"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <state key="normal" title="中文 "/>
+                            <connections>
+                                <action selector="setLanguage" destination="-1" eventType="touchUpInside" id="fF6-UO-4P0"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_showTime_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="m0B-WS-bLr">
+                            <rect key="frame" x="307" y="0.0" width="256" height="84"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14:58 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYs-TC-L1x">
+                            <rect key="frame" x="332.5" y="17.5" width="205" height="50"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="SUS-t9-J7v">
+                            <rect key="frame" x="292" y="94" width="286" height="286"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_ClockBG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="gOk-dF-gwg">
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="286"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="gOk-dF-gwg" firstAttribute="centerY" secondItem="SUS-t9-J7v" secondAttribute="centerY" id="1PN-qS-wF7"/>
+                                <constraint firstAttribute="height" constant="286" id="Wn6-bY-lA1"/>
+                                <constraint firstItem="gOk-dF-gwg" firstAttribute="width" secondItem="SUS-t9-J7v" secondAttribute="width" id="icE-hQ-Y4s"/>
+                                <constraint firstItem="gOk-dF-gwg" firstAttribute="centerX" secondItem="SUS-t9-J7v" secondAttribute="centerX" id="k8h-k8-Vlj"/>
+                                <constraint firstItem="gOk-dF-gwg" firstAttribute="height" secondItem="SUS-t9-J7v" secondAttribute="height" id="kJE-JN-C3x"/>
+                                <constraint firstAttribute="width" constant="286" id="va8-cx-tZ1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="84" id="8n1-nq-d9e"/>
-                        <constraint firstAttribute="width" constant="256" id="QfE-Zx-9wo"/>
+                        <constraint firstItem="m0B-WS-bLr" firstAttribute="height" secondItem="DTk-9r-a80" secondAttribute="height" id="2E6-ht-3hx"/>
+                        <constraint firstItem="4Na-s3-5PK" firstAttribute="top" secondItem="DTk-9r-a80" secondAttribute="top" id="9xI-h6-Mhf"/>
+                        <constraint firstItem="m0B-WS-bLr" firstAttribute="centerX" secondItem="4Na-s3-5PK" secondAttribute="centerX" id="Ek0-sP-7It"/>
+                        <constraint firstItem="BYs-TC-L1x" firstAttribute="centerY" secondItem="m0B-WS-bLr" secondAttribute="centerY" id="I1l-sj-oQa"/>
+                        <constraint firstItem="m0B-WS-bLr" firstAttribute="top" secondItem="BAy-LO-5vX" secondAttribute="top" id="NXT-10-OXT"/>
+                        <constraint firstItem="SUS-t9-J7v" firstAttribute="centerX" secondItem="BAy-LO-5vX" secondAttribute="centerX" id="NbZ-lY-xOv"/>
+                        <constraint firstItem="SUS-t9-J7v" firstAttribute="centerY" secondItem="BAy-LO-5vX" secondAttribute="centerY" multiplier="0.95" id="VCf-TH-r3E"/>
+                        <constraint firstItem="4Na-s3-5PK" firstAttribute="width" secondItem="DTk-9r-a80" secondAttribute="width" id="WOk-eO-0DN"/>
+                        <constraint firstItem="BYs-TC-L1x" firstAttribute="centerX" secondItem="m0B-WS-bLr" secondAttribute="centerX" id="Wsw-ud-HAd"/>
+                        <constraint firstAttribute="bottom" secondItem="DTk-9r-a80" secondAttribute="bottom" constant="15" id="YBI-4I-XG2"/>
+                        <constraint firstItem="BYs-TC-L1x" firstAttribute="width" secondItem="m0B-WS-bLr" secondAttribute="width" multiplier="0.8" id="bBu-7j-Xk6"/>
+                        <constraint firstItem="BYs-TC-L1x" firstAttribute="height" secondItem="m0B-WS-bLr" secondAttribute="height" multiplier="0.6" id="fAq-3N-p3k"/>
+                        <constraint firstItem="DTk-9r-a80" firstAttribute="centerX" secondItem="BAy-LO-5vX" secondAttribute="centerX" id="g1R-p9-COg"/>
+                        <constraint firstItem="4Na-s3-5PK" firstAttribute="centerX" secondItem="DTk-9r-a80" secondAttribute="centerX" id="h5v-Q1-ZKR"/>
+                        <constraint firstItem="m0B-WS-bLr" firstAttribute="width" secondItem="4Na-s3-5PK" secondAttribute="width" id="wO6-dz-SxO"/>
                     </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-s3-5PK">
-                    <rect key="frame" x="384" y="556" width="256" height="49"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="49" id="p1D-fX-32v"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                    <state key="normal" title="中文 "/>
-                    <connections>
-                        <action selector="setLanguage" destination="-1" eventType="touchUpInside" id="fF6-UO-4P0"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="4Na-s3-5PK" firstAttribute="width" secondItem="DTk-9r-a80" secondAttribute="width" id="1nw-NC-6AM"/>
-                <constraint firstItem="4Na-s3-5PK" firstAttribute="top" secondItem="DTk-9r-a80" secondAttribute="top" id="H6z-wT-WgW"/>
-                <constraint firstItem="DTk-9r-a80" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="dFK-k4-pwH"/>
-                <constraint firstItem="4Na-s3-5PK" firstAttribute="centerX" secondItem="DTk-9r-a80" secondAttribute="centerX" id="oob-hq-Agh"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="DTk-9r-a80" secondAttribute="bottom" constant="128" id="vY6-34-Cgp"/>
+                <constraint firstItem="BAy-LO-5vX" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="QNj-ef-T4c"/>
+                <constraint firstItem="BAy-LO-5vX" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="c4G-sX-ENi"/>
+                <constraint firstItem="BAy-LO-5vX" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="f4y-kI-Sr4"/>
+                <constraint firstItem="BAy-LO-5vX" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="kh8-FQ-75v"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
     <resources>
         <image name="home_language" width="513" height="134"/>
+        <image name="main_ClockBG_iPad" width="292" height="296"/>
+        <image name="main_showTime_iPad" width="258" height="59"/>
     </resources>
 </document>

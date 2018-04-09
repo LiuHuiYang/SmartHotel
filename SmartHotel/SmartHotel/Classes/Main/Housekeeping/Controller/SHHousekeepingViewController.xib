@@ -35,10 +35,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-lP-w1b">
-                    <rect key="frame" x="77" y="144" width="870" height="461"/>
+                    <rect key="frame" x="77" y="125" width="870" height="499"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8R-E9-n09" customClass="SHServiceButton">
-                            <rect key="frame" x="133.5" y="27" width="168" height="75"/>
+                            <rect key="frame" x="133.5" y="46" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKLaudry_normal"/>
                             <state key="selected" backgroundImage="HKLaudry_highlighted"/>
@@ -48,7 +48,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcH-dw-co9" customClass="SHServiceButton">
-                            <rect key="frame" x="49.5" y="193" width="168" height="75"/>
+                            <rect key="frame" x="49.5" y="212" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKCleanShoes_normal"/>
                             <state key="selected" backgroundImage="HKCleanShoes_highlighted"/>
@@ -58,7 +58,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-HX-BBG" customClass="SHServiceButton">
-                            <rect key="frame" x="351" y="300" width="168" height="75"/>
+                            <rect key="frame" x="351" y="319" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKPillowBlanket_normal"/>
                             <state key="selected" backgroundImage="HKPillowBlanket_highlighted"/>
@@ -68,7 +68,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-Md-1tJ" customClass="SHServiceButton">
-                            <rect key="frame" x="351" y="407" width="168" height="75"/>
+                            <rect key="frame" x="351" y="426" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKServer_ICE_normal"/>
                             <state key="selected" backgroundImage="HKServer_ICE_highlighted"/>
@@ -78,7 +78,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51D-bt-dxp" customClass="SHServiceButton">
-                            <rect key="frame" x="351" y="86" width="168" height="75"/>
+                            <rect key="frame" x="351" y="105" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKTowelsRobe_normal"/>
                             <state key="selected" backgroundImage="HKTowelsRobe_highlighted"/>
@@ -88,7 +88,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iit-Tm-QHc" customClass="SHServiceButton">
-                            <rect key="frame" x="351" y="-21" width="168" height="75"/>
+                            <rect key="frame" x="351" y="-2" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKDND_normal"/>
                             <state key="selected" backgroundImage="HKDND_highlighted"/>
@@ -98,7 +98,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNv-r0-Tqv" customClass="SHServiceButton">
-                            <rect key="frame" x="652.5" y="193" width="168" height="75"/>
+                            <rect key="frame" x="652.5" y="212" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKReadyBed_normal"/>
                             <state key="selected" backgroundImage="HKReadyBed_highlighted"/>
@@ -108,7 +108,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pj-39-GOu" customClass="SHServiceButton">
-                            <rect key="frame" x="568.5" y="359" width="168" height="75"/>
+                            <rect key="frame" x="568.5" y="378" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKServer_Breakfast_normal"/>
                             <state key="selected" backgroundImage="HKServer_Breakfast_highlighted"/>
@@ -118,7 +118,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHV-RK-Ch9" customClass="SHServiceButton">
-                            <rect key="frame" x="568.5" y="27" width="168" height="75"/>
+                            <rect key="frame" x="568.5" y="46" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKClean_normal"/>
                             <state key="selected" backgroundImage="HKClean_highlighted"/>
@@ -128,7 +128,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-T1-cEW" customClass="SHServiceButton">
-                            <rect key="frame" x="133.5" y="359" width="168" height="75"/>
+                            <rect key="frame" x="133.5" y="378" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKTakePlates_normal"/>
                             <state key="selected" backgroundImage="HKTakePlates_highlighted"/>
@@ -138,7 +138,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNO-lD-JZC" customClass="SHServiceButton">
-                            <rect key="frame" x="351" y="193.5" width="168" height="75"/>
+                            <rect key="frame" x="351" y="212.5" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="75" id="iwU-a4-34u"/>
@@ -206,7 +206,7 @@
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="342-Xn-7gG"/>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="9gm-Sd-DS3"/>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="Fjc-qp-TPo"/>
-                <constraint firstItem="f5D-lP-w1b" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.6" id="eP4-PL-Gcf"/>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="eP4-PL-Gcf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
