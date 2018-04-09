@@ -23,6 +23,7 @@
                 <outlet property="pillowBlanketButton" destination="Knn-HX-BBG" id="nuN-WE-w9z"/>
                 <outlet property="readyBedButton" destination="FNv-r0-Tqv" id="Kwg-tk-jWi"/>
                 <outlet property="refillMiniBarButton" destination="VNO-lD-JZC" id="uFj-dy-Qs1"/>
+                <outlet property="serviceButtonView" destination="f5D-lP-w1b" id="sHD-ax-H48"/>
                 <outlet property="takePlatesButton" destination="zIu-T1-cEW" id="W2J-AY-Nx8"/>
                 <outlet property="towelsRobeButton" destination="51D-bt-dxp" id="iQY-Ng-DJf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -63,7 +64,7 @@
                             <state key="selected" backgroundImage="HKPillowBlanket_highlighted"/>
                             <state key="highlighted" backgroundImage="HKPillowBlanket_highlighted"/>
                             <connections>
-                                <action selector="towelsRobeButtonClick" destination="-1" eventType="touchUpInside" id="Pmy-Zi-58c"/>
+                                <action selector="pillowBlanketButtonClick" destination="-1" eventType="touchUpInside" id="eBq-0u-qJu"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-Md-1tJ" customClass="SHServiceButton">
@@ -83,7 +84,7 @@
                             <state key="selected" backgroundImage="HKTowelsRobe_highlighted"/>
                             <state key="highlighted" backgroundImage="HKTowelsRobe_highlighted"/>
                             <connections>
-                                <action selector="pillowBlanketButtonClick" destination="-1" eventType="touchUpInside" id="lyd-Vp-M2E"/>
+                                <action selector="towelsRobeButtonClick" destination="-1" eventType="touchUpInside" id="Q4b-eM-dDr"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iit-Tm-QHc" customClass="SHServiceButton">

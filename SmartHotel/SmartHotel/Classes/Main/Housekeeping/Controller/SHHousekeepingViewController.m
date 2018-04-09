@@ -11,6 +11,9 @@
 
 @interface SHHousekeepingViewController ()
 
+/// 服务按钮视图
+@property (weak, nonatomic) IBOutlet UIView *serviceButtonView;
+
 /// 洗衣服
 @property (weak, nonatomic) IBOutlet SHServiceButton *laudryButton;
 
@@ -54,61 +57,134 @@
 
 /// 早餐
 - (IBAction)breakfastButtonClick {
-    printLog(@"%@", self.breakfastButton.currentTitle);
+    
+    [self serviceButtonPress:self.breakfastButton];
 }
 
 /// 铺床
 - (IBAction)readyBedButtonClick {
-    printLog(@"%@", self.readyBedButton.currentTitle);
+    
+    [self serviceButtonPress:self.readyBedButton];
 }
 
 /// 打扫
 - (IBAction)cleanButtonClick {
-    printLog(@"%@", self.cleanButton.currentTitle);
+    
+    [self serviceButtonPress:self.cleanButton];
 }
 
 /// 冰激凌
 - (IBAction)iceButtonClick {
-    printLog(@"%@", self.iceButton.currentTitle);
+    
+    [self serviceButtonPress:self.iceButton];
 }
 
 
 /// 毛巾 浴巾
 - (IBAction)towelsRobeButtonClick {
-    printLog(@"%@", self.towelsRobeButton.currentTitle);
+    
+    [self serviceButtonPress:self.towelsRobeButton];
 }
 
 /// 红酒
 - (IBAction)refillMiniBarButtonClick {
-    printLog(@"%@", self.refillMiniBarButton.currentTitle);
+    
+    [self serviceButtonPress:self.refillMiniBarButton];
 }
 
 /// 枕头 毛毯
 - (IBAction)pillowBlanketButtonClick {
-    printLog(@"%@", self.pillowBlanketButton.currentTitle);
+    
+    [self serviceButtonPress:self.pillowBlanketButton];
 }
 
 
 /// 请勿打扰
 - (IBAction)dndButtonClick {
-    printLog(@"%@", self.dndButton.currentTitle);
+    
+    [self serviceButtonPress:self.dndButton];
 }
 
 /// 收拾餐具
 - (IBAction)takePlatesButtonClick {
-    printLog(@"%@", self.takePlatesButton.currentTitle);
+   
+    [self serviceButtonPress:self.takePlatesButton];
 }
 
 /// 擦鞋
 - (IBAction)cleanShoesButtonClick {
-    printLog(@"%@", self.cleanShoesButton.currentTitle);
+   
+    [self serviceButtonPress:self.cleanShoesButton];
 }
-
 
 /// 洗衣服
 - (IBAction)laudryButtonClick {
-    printLog(@"%@", self.laudryButton.currentTitle);
+ 
+    [self serviceButtonPress:self.laudryButton];
 }
+
+/// 服务按钮按下
+- (void)serviceButtonPress:(SHServiceButton *)serverButton {
+    
+    // 如果当前是打扰模式
+    if (serverButton.serverType == SHRoomServerTypeDND) {
+        
+        for (SHServiceButton *button in self.serviceButtonView.subviews) {
+            
+            if (button != self.dndButton && button.selected) {
+                
+                button.selected = NO;
+            }
+        }
+    
+    } else {  // 非打扰模式下
+        
+        // 打扫 && 洗衣服关闭打扰模式
+        [self turnOffDNDService: (serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )];
+    }
+    
+    // 更新当前按钮的状态
+    serverButton.selected = !serverButton.selected;
+    
+    // 分服务发送指令
+    if (serverButton.serverType == SHRoomServerTypeLaudry ||
+        serverButton.serverType == SHRoomServerTypeClean  ||
+        serverButton.serverType == SHRoomServerTypeDND) {
+        
+        Byte data[2] = {serverButton.serverType, serverButton.selected};
+        
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:self.currentDevice.subnetID targetDeviceID:self.currentDevice.deviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    
+    // 其它服务发送给计算机 (主动报告状态)
+    } else {
+    
+        Byte data[5] = {serverButton.serverType, serverButton.selected, self.currentDevice.buildingID, self.currentDevice.floorID, self.currentDevice.roomNo};
+        
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X044F targetSubnetID:0XFF targetDeviceID:0XFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    }
+    
+}
+
+/// 关闭DND模式
+- (void)turnOffDNDService:(BOOL)off {
+    
+    // 关闭
+    if (self.dndButton.selected) {
+        self.dndButton.selected = NO;
+    }
+    
+    // 关闭DND服务
+    if (off) {
+    
+        Byte data[2] = {SHRoomServerTypeDND, 0};
+        
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:self.currentDevice.subnetID targetDeviceID:self.currentDevice.deviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    }
+}
+
+
+
+// MARK: - 视图初始化
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -117,6 +193,8 @@
     // 获得服务的相关参数
     self.currentDevice = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.roomInfo deviceType:SHDeviceTypeCardHolder];
     
+    // 测试数据
+    self.currentDevice.deviceID = 117;
 }
 
 - (void)viewDidLoad {
