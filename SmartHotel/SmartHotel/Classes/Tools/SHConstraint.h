@@ -46,6 +46,8 @@ typedef NS_ENUM(Byte, SHRoomServerType) {
     
 };
 
+
+
 /// 自定义工具条的高度
 UIKIT_EXTERN const CGFloat customToolBarHeight;
 
@@ -105,6 +107,8 @@ UIKIT_EXTERN NSString *SHControlGoBackHomeControllerNotification;
 
 /// 控制器堆栈时进行隐藏
 UIKIT_EXTERN NSString *SHNavigationBarControllerPushHidderTabBarNotification;
+
+ 
 
 #endif /* SHConstraint_h */
 

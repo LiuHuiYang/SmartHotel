@@ -11,6 +11,11 @@
 
 #ifdef __OBJC__
 
+// ========相关的宏=================
+
+/// 默认文字颜色
+#define SHDefualtTextColor ([UIColor colorWithWhite:215/255.0 alpha:1.0])
+
 // ========导入相关的头文件===========
 
 #import "Additional.h"

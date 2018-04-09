@@ -27,6 +27,7 @@
 //    button.titleLabel.textAlignment = image ? NSTextAlignmentCenter : NSTextAlignmentRight;
     
     [button setTitle:text forState:UIControlStateNormal];
+    [button setTitleColor:SHDefualtTextColor forState:UIControlStateNormal];
     
     button.titleLabel.font = font;
     

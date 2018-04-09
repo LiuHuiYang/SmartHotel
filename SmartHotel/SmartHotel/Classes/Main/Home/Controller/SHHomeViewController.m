@@ -130,14 +130,14 @@
     self.hourLayer.transform = CATransform3DMakeRotation(angle2Rad(hour * perHourA + minute * perMinHour), 0, 0, 1);
     
     // 更新当前时间
-    self.currentTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute];
+    self.currentTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute]; 
 }
 
 /// 添加时钟动画
 - (void)addClockLayer {
     
     CALayer *hourLayer = [CALayer layer];
-    hourLayer.bounds = CGRectMake(0, 0, 15, navigationBarHeight + navigationBarHeight);
+    hourLayer.bounds = CGRectMake(0, 0, 15, navigationBarHeight + navigationBarHeight + statusBarHeight);
     hourLayer.contents = (id)[UIImage imageNamed:@"main_ClockH_iPad"].CGImage;
     hourLayer.anchorPoint = CGPointMake(0.5, 0.64);
     hourLayer.position = CGPointMake(self.clockView.bounds.size.width * 0.5, self.clockView.bounds.size.height * 0.5);
@@ -166,7 +166,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

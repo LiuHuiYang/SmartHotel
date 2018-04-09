@@ -26,7 +26,7 @@
     self.titleLabel.numberOfLines = 0;
     
     [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [self setTitleColor:SHDefualtTextColor forState:UIControlStateSelected];
 }
 
 - (void)layoutSubviews {
