@@ -45,6 +45,9 @@
 /// 当前时间
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel;
 
+/// 日期
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @end
 
 @implementation SHHomeViewController
@@ -129,8 +132,7 @@
     NSUInteger hour = currentTime.hour;
     self.hourLayer.transform = CATransform3DMakeRotation(angle2Rad(hour * perHourA + minute * perMinHour), 0, 0, 1);
     
-    // 更新当前时间
-    self.currentTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute]; 
+    [self updateTimeShow];
 }
 
 /// 添加时钟动画
@@ -161,6 +163,109 @@
     self.secLayer = secLayer;
 }
 
+
+/// 更新时间显示
+- (void)updateTimeShow {
+    
+    // 获得当前时间
+    NSDateComponents *currentTime = [NSDate getCurrentDateComponents];
+    
+    // 更新当前时间
+    self.currentTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute];
+    
+   
+    // 更新日期
+    NSString *week = nil;
+    switch (currentTime.weekday) {
+        case NSDateWeekSunday:
+            week = @"Sunday";
+            break;
+            
+        case NSDateWeekMonday:
+            week = @"Monday";
+            break;
+            
+        case NSDateWeekTuesday:
+            week = @"Tuesday";
+            break;
+            
+        case NSDateWeekWednesday:
+            week = @"Wednesday";
+            break;
+            
+        case NSDateWeekThuesday:
+            week = @"Thuesday";
+            break;
+            
+        case NSDateWeekFriday:
+            week = @"Friday";
+            break;
+            
+        case NSDateWeekSaturday:
+            week = @"Saturday";
+            break;
+            
+        default:
+            break;
+    }
+    
+    NSString *month = nil;
+    
+    switch (currentTime.month) {
+        
+        case NSDateMonthJanuary:
+            month = @"January";
+            break;
+            
+        case NSDateMonthFebruary:
+            month = @"February";
+            break;
+            
+        case NSDateMonthMarch:
+            month = @"March";
+            break;
+            
+        case NSDateMonthApril:
+            month = @"April";
+            break;
+            
+        case NSDateMonthMay:
+            month = @"May";
+            break;
+            
+        case NSDateMonthJune:
+            month = @"June";
+            break;
+            
+        case NSDateMonthJuly:
+            month = @"July";
+            break;
+            
+        case NSDateMonthAugust:
+            month = @"August";
+            break;
+            
+        case NSDateMonthSeptember:
+            month = @"September";
+            break;
+        case NSDateMonthOctober:
+            month = @"October";
+            break;
+            
+        case NSDateMonthNovember:
+            month = @"November";
+            break;
+            
+        case NSDateMonthDecember:
+            month = @"December";
+            break;
+            
+        default:
+            break;
+    }
+    
+    self.dateLabel.text = [NSString stringWithFormat:@"%@ %@ %d, %d", week, month, currentTime.day, currentTime.year];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

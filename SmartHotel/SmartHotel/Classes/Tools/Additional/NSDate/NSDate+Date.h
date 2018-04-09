@@ -8,6 +8,35 @@
 
 #import <Foundation/Foundation.h>
 
+/// 星期
+typedef NS_ENUM(NSUInteger, NSDateWeek) {
+    
+    NSDateWeekSunday = 1,
+    NSDateWeekMonday,
+    NSDateWeekTuesday,
+    NSDateWeekWednesday,
+    NSDateWeekThuesday,
+    NSDateWeekFriday,
+    NSDateWeekSaturday
+};
+
+/// 月份
+typedef NS_ENUM(NSUInteger, NSDateMonth) {
+    
+    NSDateMonthJanuary = 1,
+    NSDateMonthFebruary,
+    NSDateMonthMarch,
+    NSDateMonthApril,
+    NSDateMonthMay,
+    NSDateMonthJune,
+    NSDateMonthJuly,
+    NSDateMonthAugust,
+    NSDateMonthSeptember,
+    NSDateMonthOctober,
+    NSDateMonthNovember,
+    NSDateMonthDecember
+};
+
 @interface NSDate (Date)
 
 /**
