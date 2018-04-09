@@ -91,6 +91,15 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Share_BG_iPad"]]];
     
     [self setUpNavigationBar];
+    
+    
+    // 增加监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(analyzeReceiveData:) name:SHUdpSocketBroadcastNotification object:nil];
+}
+
+/// 接收到了数据
+- (void)analyzeReceiveData:(NSNotification *)notification {
+    
 }
 
 - (void)didReceiveMemoryWarning {

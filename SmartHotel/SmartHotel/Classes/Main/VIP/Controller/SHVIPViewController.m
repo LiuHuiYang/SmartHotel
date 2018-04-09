@@ -49,6 +49,8 @@
 @implementation SHVIPViewController
 
 
+// MARK: - 事件交互
+
 /// 急救
 - (IBAction)panicButtonButtonClick {
     printLog(@"%@", self.panicButton.currentTitle);
@@ -106,6 +108,26 @@
 - (IBAction)taxiButtonClick {
     printLog(@"%@", self.taxiButton.currentTitle);
 }
+
+// MARK: - 数据传递
+
+/// 服务按钮按下
+- (void)serviceButtonPress:(SHServiceButton *)serverButton {
+    
+    // 等待
+    if (serverButton.serverType == SHRoomServerTypePleaseWait) {
+        
+    
+    // 其它情况
+    } else {
+        
+        
+    }
+    
+}
+
+
+// MARK: - UI初始化
 
 - (void)viewDidLoad {
     [super viewDidLoad];
