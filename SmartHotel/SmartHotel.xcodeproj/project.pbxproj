@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04AE6BD7207C5AC9001EDF73 /* SHSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE6BD6207C5AC9001EDF73 /* SHSwitch.m */; };
 		04D249162079C51900EBD1BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249152079C51900EBD1BE /* AppDelegate.m */; };
 		04D249192079C51A00EBD1BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249182079C51A00EBD1BE /* ViewController.m */; };
 		04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491A2079C51A00EBD1BE /* Main.storyboard */; };
@@ -71,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04AE6BD5207C5AC9001EDF73 /* SHSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSwitch.h; sourceTree = "<group>"; };
+		04AE6BD6207C5AC9001EDF73 /* SHSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSwitch.m; sourceTree = "<group>"; };
 		04D249112079C51900EBD1BE /* SmartHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D249142079C51900EBD1BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04D249152079C51900EBD1BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -197,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04AE6BD4207C5A9E001EDF73 /* SHControlSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				04AE6BD5207C5AC9001EDF73 /* SHSwitch.h */,
+				04AE6BD6207C5AC9001EDF73 /* SHSwitch.m */,
+			);
+			path = SHControlSwitch;
+			sourceTree = "<group>";
+		};
 		04D249082079C51900EBD1BE = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +414,7 @@
 		04D2493A2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04AE6BD4207C5A9E001EDF73 /* SHControlSwitch */,
 				04D24A032079EE1900EBD1BE /* SHModuleSwitchButton */,
 			);
 			path = View;
@@ -1085,6 +1098,7 @@
 				04D249192079C51A00EBD1BE /* ViewController.m in Sources */,
 				04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */,
 				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
+				04AE6BD7207C5AC9001EDF73 /* SHSwitch.m in Sources */,
 				04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */,
 				04D249A72079C95500EBD1BE /* SHUdpSocket.m in Sources */,
 				04D249B52079CA6500EBD1BE /* SHViewController.m in Sources */,

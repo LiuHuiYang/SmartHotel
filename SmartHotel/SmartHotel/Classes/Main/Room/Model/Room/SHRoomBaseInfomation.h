@@ -63,7 +63,7 @@
 // MARK: - 公共属性
 
 /// 建筑
-@property (assign, nonatomic) NSUInteger buildID;
+@property (assign, nonatomic) NSUInteger buildID;  
 
 /// 楼层
 @property (assign, nonatomic) NSUInteger floorID;

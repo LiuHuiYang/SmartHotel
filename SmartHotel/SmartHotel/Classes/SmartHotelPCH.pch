@@ -30,6 +30,7 @@
 #import "SHLanguageTools.h"
 #import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
+#import "SHSwitch.h"
 
 #endif
 
