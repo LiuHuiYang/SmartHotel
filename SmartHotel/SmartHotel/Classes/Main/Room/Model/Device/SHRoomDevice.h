@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, SHDeviceType)
 @property (assign, nonatomic) NSUInteger roomNo;
 
 /// 设备类型
-@property (assign, nonatomic) NSUInteger deviceType;
+@property (assign, nonatomic) SHDeviceType deviceType;
 
 /// 子网ID
 @property (assign, nonatomic) NSUInteger subnetID;

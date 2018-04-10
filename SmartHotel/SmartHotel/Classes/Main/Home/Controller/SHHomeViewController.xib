@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHomeViewController">
             <connections>
                 <outlet property="clockView" destination="gOk-dF-gwg" id="WhF-pX-aVZ"/>
+                <outlet property="currentTemperatureLabel" destination="X0K-fQ-QZg" id="BbL-Yv-GMI"/>
                 <outlet property="currentTimeLabel" destination="BYs-TC-L1x" id="6FO-rH-HO0"/>
                 <outlet property="dateLabel" destination="Eev-dF-Umy" id="qbP-ga-Eb6"/>
                 <outlet property="languageButton" destination="4Na-s3-5PK" id="aWx-lf-bal"/>
@@ -75,11 +76,17 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOr-cO-pcd">
                             <rect key="frame" x="622" y="114" width="248" height="64"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="czz-3O-WLg"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0K-fQ-QZg">
+                            <rect key="frame" x="622" y="114" width="248" height="64"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                            <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKG-KW-nvF">
                             <rect key="frame" x="622" y="296.5" width="248" height="64"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,7 +97,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWC-Nu-mO9">
                             <rect key="frame" x="0.0" y="114" width="248" height="64"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eev-dF-Umy">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eev-dF-Umy">
                                     <rect key="frame" x="0.0" y="0.0" width="248" height="64"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                     <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,13 +139,17 @@
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="centerX" secondItem="m0B-WS-bLr" secondAttribute="centerX" id="Wsw-ud-HAd"/>
                         <constraint firstAttribute="bottom" secondItem="DTk-9r-a80" secondAttribute="bottom" constant="15" id="YBI-4I-XG2"/>
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="width" secondItem="m0B-WS-bLr" secondAttribute="width" multiplier="0.8" id="bBu-7j-Xk6"/>
+                        <constraint firstItem="X0K-fQ-QZg" firstAttribute="height" secondItem="hOr-cO-pcd" secondAttribute="height" id="c9c-pR-Li3"/>
                         <constraint firstItem="JKG-KW-nvF" firstAttribute="centerX" secondItem="hOr-cO-pcd" secondAttribute="centerX" id="eKK-2v-u96"/>
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="height" secondItem="m0B-WS-bLr" secondAttribute="height" multiplier="0.6" id="fAq-3N-p3k"/>
                         <constraint firstItem="DTk-9r-a80" firstAttribute="centerX" secondItem="BAy-LO-5vX" secondAttribute="centerX" id="g1R-p9-COg"/>
                         <constraint firstItem="4Na-s3-5PK" firstAttribute="centerX" secondItem="DTk-9r-a80" secondAttribute="centerX" id="h5v-Q1-ZKR"/>
+                        <constraint firstItem="X0K-fQ-QZg" firstAttribute="centerX" secondItem="hOr-cO-pcd" secondAttribute="centerX" id="iTD-Nc-iQN"/>
                         <constraint firstItem="JKG-KW-nvF" firstAttribute="width" secondItem="hOr-cO-pcd" secondAttribute="width" id="k84-0G-4XC"/>
                         <constraint firstItem="hOr-cO-pcd" firstAttribute="leading" secondItem="SUS-t9-J7v" secondAttribute="trailing" constant="44" id="kEf-lb-td1"/>
+                        <constraint firstItem="X0K-fQ-QZg" firstAttribute="width" secondItem="hOr-cO-pcd" secondAttribute="width" id="mBG-2t-Sus"/>
                         <constraint firstItem="N7E-Tg-lpG" firstAttribute="centerX" secondItem="MWC-Nu-mO9" secondAttribute="centerX" id="n1A-sh-OX0"/>
+                        <constraint firstItem="X0K-fQ-QZg" firstAttribute="centerY" secondItem="hOr-cO-pcd" secondAttribute="centerY" id="oFa-0s-UvV"/>
                         <constraint firstItem="MWC-Nu-mO9" firstAttribute="centerY" secondItem="hOr-cO-pcd" secondAttribute="centerY" id="vPj-aM-TNW"/>
                         <constraint firstItem="m0B-WS-bLr" firstAttribute="width" secondItem="4Na-s3-5PK" secondAttribute="width" id="wO6-dz-SxO"/>
                         <constraint firstItem="N7E-Tg-lpG" firstAttribute="width" secondItem="MWC-Nu-mO9" secondAttribute="width" id="z4z-Di-5D9"/>

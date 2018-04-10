@@ -48,52 +48,80 @@
 /// 日期
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+/// 环境温度显示
+@property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
+
+
 @end
 
 @implementation SHHomeViewController
 
-/// 保存语言设置
-- (void)saveLanguageSetting:(NSString *)languageName {
+// MARK: -  数据传输
+
+
+/// 接收到了数据
+- (void)analyzeReceiveData:(NSNotification *)notification {
+ 
+    const Byte startIndex = 9;
     
-    if (languageName.length <= 0 || [self.selectLanguageName isEqualToString:languageName]) {
-        return;
+    NSData *data = notification.object;
+    
+    Byte *recivedData = ((Byte *) [data bytes]);
+    
+    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
+   
+    Byte subNetID = recivedData[1];
+    Byte deviceID = recivedData[2];
+    
+    if (subNetID != self.roomInfo.subNetIDForDDP ||
+        deviceID != self.roomInfo.deviceIDForDDP) {
+        return ;
     }
     
-    self.selectLanguageName = languageName;
+    switch (operatorCode) {
+            
+        case 0XE3E8: {
+            
+            if (!recivedData[startIndex]) { // 返回摄氏温度有效
+                return;
+            }
+            
+            // 温度绝对值
+            NSInteger temperature = recivedData[startIndex + 1]; // 只要第一个通道
+            temperature = (recivedData[startIndex + 8 + 1]) ? (0 - temperature) : temperature;
+            
+            [self showCurrentTemperature:temperature];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+/// 读取温度
+- (void)readTemperature {
     
-    [self.languageButton setTitle:self.selectLanguageName forState:UIControlStateNormal];
+    Byte readTemperatureFlag[] = { 1 }; // 暂时先读摄氏度
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.selectLanguageName forKey:@"LAGUAGEZ_NAME"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [[SHLanguageTools shareSHLanguageTools] setLanguage];
-    
-    [SVProgressHUD showSuccessWithStatus:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Saved Successed!You should to restart app"]];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3E7 targetSubnetID:self.roomInfo.subNetIDForDDP targetDeviceID:self.roomInfo.deviceIDForDDP additionalContentData:[NSMutableData dataWithBytes:readTemperatureFlag length:sizeof(readTemperatureFlag)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 
-/// 设置语言
-- (IBAction)setLanguage {
+// MARK: - 视图加载 与显示
+
+/// 显示当前温度
+- (void)showCurrentTemperature:(NSInteger)temperature {
     
-    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:nil message:nil isCustom:YES];
+    self.currentTemperatureLabel.text = [NSString stringWithFormat:@"%@ %zd °C ( %zd°F )", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room T."], temperature, (NSInteger)(temperature * 1.8 + 32)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
-    [alertView addAction:[TYAlertAction actionWithTitle:@"中文" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
-        
-        [self saveLanguageSetting:@"中文"];
-        
-    }]];
+    [super viewWillAppear:animated];
     
-    [alertView addAction:[TYAlertAction actionWithTitle:@"English" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
-        
-        [self saveLanguageSetting:@"English"];
-        
-    }]];
-    
-    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
-    
-    alertController.backgoundTapDismissEnable = YES;
-    
-    [self presentViewController:alertController animated:YES completion:nil];
+    /// 读取温度
+    [self readTemperature];
 }
 
 
@@ -264,7 +292,53 @@
             break;
     }
     
-    self.dateLabel.text = [NSString stringWithFormat:@"%@ %@ %d, %d", week, month, currentTime.day, currentTime.year];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@ %@ %zd, %zd", week, month, currentTime.day, currentTime.year];
+}
+
+// MARK: - 语言设置
+
+/// 保存语言设置
+- (void)saveLanguageSetting:(NSString *)languageName {
+    
+    if (languageName.length <= 0 || [self.selectLanguageName isEqualToString:languageName]) {
+        return;
+    }
+    
+    self.selectLanguageName = languageName;
+    
+    [self.languageButton setTitle:self.selectLanguageName forState:UIControlStateNormal];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.selectLanguageName forKey:@"LAGUAGEZ_NAME"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[SHLanguageTools shareSHLanguageTools] setLanguage];
+    
+    [SVProgressHUD showSuccessWithStatus:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Saved Successed!You should to restart app"]];
+}
+
+
+/// 设置语言
+- (IBAction)setLanguage {
+    
+    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:nil message:nil isCustom:YES];
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:@"中文" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+        
+        [self saveLanguageSetting:@"中文"];
+        
+    }]];
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:@"English" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+        
+        [self saveLanguageSetting:@"English"];
+        
+    }]];
+    
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+    
+    alertController.backgoundTapDismissEnable = YES;
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

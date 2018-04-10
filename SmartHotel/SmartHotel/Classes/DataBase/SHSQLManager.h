@@ -15,6 +15,9 @@
 
 // MARK: - 数据操作
 
+/// 获得该房间的所有设备
+- (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room;
+
 /// 查询当前房间的指定设备
 - (SHRoomDevice *)getRoomDevice:(SHRoomBaseInfomation *)room deviceType:(SHDeviceType)deviceType;
 

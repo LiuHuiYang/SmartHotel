@@ -38,19 +38,89 @@
 
 @implementation SHRoomViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    // 获得当前房间的信息
+    self.currentRoom = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+
+    // 查询这个房间的所有设备
+    NSMutableArray *devices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoom];
+    
+    // 主要是获取每个设备模块的子网ID && 设备ID
+    for (SHRoomDevice *device in devices) {
+        
+        switch (device.deviceType) {
+            
+            case SHDeviceTypeDoorBell: {
+                
+                self.currentRoom.subNetIDForDoorBell = device.subnetID;
+                self.currentRoom.deviceIDForDoorBell = device.deviceID;
+            }
+                break;
+                
+            case SHDeviceTypeCardHolder: {
+                
+                self.currentRoom.subNetIDForCardHolder = device.subnetID;
+                self.currentRoom.deviceIDForCardHolder = device.deviceID;
+            }
+                break;
+                
+            case SHDeviceTypeBedside: {
+                
+                self.currentRoom.subNetIDForBedSide = device.subnetID;
+                self.currentRoom.deviceIDForBedSide = device.deviceID;
+            }
+                break;
+                
+            case SHDeviceTypeZoneBeast: {
+             
+                self.currentRoom.subNetIDForZoneBeast = device.subnetID;
+                self.currentRoom.deviceIDForZoneBeast = device.deviceID;
+            }
+                break;
+                
+            case SHDeviceTypeDDP: {
+                
+                self.currentRoom.subNetIDForDDP = device.subnetID;
+                self.currentRoom.deviceIDForDDP = device.deviceID;
+            }
+                break;
+                
+            case SHDeviceTypeIR: {
+                
+                self.currentRoom.subNetIDForIR = device.subnetID;
+                self.currentRoom.deviceIDForIR = device.deviceID;
+            }
+                break;
+                
+            case SHDeviceTypeZAudio: {
+             
+                self.currentRoom.subNetIDForZAudio = device.subnetID;
+                self.currentRoom.deviceIDForZAudio = device.deviceID;
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    [self addChildViewControllers];
+    
+    [self setUpTabBar];
+    
+    // 测试数据
+    self.currentRoom.deviceIDForDDP = 113;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gobackhomeController) name:SHControlGoBackHomeControllerNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddTabBarScrollView:) name:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
-    
-    // 获得当前房间的信息
-    self.currentRoom = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
-    
-    [self addChildViewControllers];
-    
-    [self setUpTabBar];
 }
 
 
@@ -91,6 +161,7 @@
     if (button.selected) {
         
         [self setSelectedIndex:button.tag];
+        
     }
 }
 
