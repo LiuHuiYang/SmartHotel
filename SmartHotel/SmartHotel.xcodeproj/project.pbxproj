@@ -69,6 +69,8 @@
 		04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */; };
 		04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A19207A175A00EBD1BE /* SHRoomDevice.m */; };
 		04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */; };
+		04FE7B42207E06030003FC85 /* SHCurtainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */; };
+		04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */; };
 		3CDD5A3288C65F63BF117317 /* Pods_SmartHotel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */; };
 /* End PBXBuildFile section */
 
@@ -186,6 +188,9 @@
 		04D24A19207A175A00EBD1BE /* SHRoomDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRoomDevice.m; sourceTree = "<group>"; };
 		04FE7B3C207DFD7B0003FC85 /* SHCurtain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtain.h; sourceTree = "<group>"; };
 		04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtain.m; sourceTree = "<group>"; };
+		04FE7B3F207E06030003FC85 /* SHCurtainViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainViewCell.h; sourceTree = "<group>"; };
+		04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtainViewCell.m; sourceTree = "<group>"; };
+		04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCurtainViewCell.xib; sourceTree = "<group>"; };
 		2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.release.xcconfig"; sourceTree = "<group>"; };
 		E1D019A058C1E73AEC6D17EB /* Pods_SmartHotel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartHotel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E278600741FEE69D1675FB92 /* Pods-SmartHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartHotel/Pods-SmartHotel.debug.xcconfig"; sourceTree = "<group>"; };
@@ -455,6 +460,9 @@
 		04D2493E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04FE7B3F207E06030003FC85 /* SHCurtainViewCell.h */,
+				04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */,
+				04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1023,6 +1031,7 @@
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
 				04D249AE2079C9B800EBD1BE /* SHDB.sqlite3 in Resources */,
 				04D249D52079E1F300EBD1BE /* SHTVViewController.xib in Resources */,
+				04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */,
 				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
 				04D249DA2079E20D00EBD1BE /* SHCurtainViewController.xib in Resources */,
@@ -1119,6 +1128,7 @@
 				04D249C52079E1B200EBD1BE /* SHHomeViewController.m in Sources */,
 				04D249C12079CBEC00EBD1BE /* SHRoomViewController.m in Sources */,
 				04D249CA2079E1CC00EBD1BE /* SHLightViewController.m in Sources */,
+				04FE7B42207E06030003FC85 /* SHCurtainViewCell.m in Sources */,
 				04D249A12079C90200EBD1BE /* SHConstraint.m in Sources */,
 				04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */,
 				04D249EC2079E29600EBD1BE /* SHHousekeepingViewController.m in Sources */,

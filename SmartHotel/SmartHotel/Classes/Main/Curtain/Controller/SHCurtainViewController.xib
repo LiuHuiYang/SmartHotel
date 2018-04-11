@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHCurtainViewController">
             <connections>
+                <outlet property="listView" destination="dHU-KL-1Z1" id="Sog-PF-k3b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +24,22 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HN5-E7-Hum">
                     <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
-                    <color key="backgroundColor" red="0.75575871139999995" green="0.7193492172" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-KL-1Z1">
+                            <rect key="frame" x="0.0" y="0.0" width="870" height="499.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="jb7-rg-nnE"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dHU-KL-1Z1" secondAttribute="trailing" id="4sX-fH-WCG"/>
+                        <constraint firstItem="dHU-KL-1Z1" firstAttribute="top" secondItem="HN5-E7-Hum" secondAttribute="top" id="GRn-j3-hLe"/>
+                        <constraint firstAttribute="bottom" secondItem="dHU-KL-1Z1" secondAttribute="bottom" id="WhS-X9-2c0"/>
+                        <constraint firstItem="dHU-KL-1Z1" firstAttribute="leading" secondItem="HN5-E7-Hum" secondAttribute="leading" id="p5s-Md-FfF"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
