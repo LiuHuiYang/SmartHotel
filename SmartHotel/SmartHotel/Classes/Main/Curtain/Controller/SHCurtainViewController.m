@@ -10,9 +10,22 @@
 
 @interface SHCurtainViewController ()
 
+/// 所有的窗帘
+@property (strong, nonatomic) NSMutableArray *allCurtains;
+
 @end
 
 @implementation SHCurtainViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    // 查询所有的窗帘
+    self.allCurtains = [[SHSQLManager shareSHSQLManager] getRoomCurtains];
+    
+    printLog(@"所有的窗帘: %@", self.allCurtains);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,14 +38,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

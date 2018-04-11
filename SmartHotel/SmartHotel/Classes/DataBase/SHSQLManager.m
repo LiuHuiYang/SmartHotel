@@ -21,6 +21,23 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 查询当前房间的所有窗帘
+- (NSMutableArray *)getRoomCurtains {
+    
+    NSString *selectSQL = @"select SHCurtainID, CurtainName, CurtainType, SubnetID, DeviceID, OpenChannelNO, CloseChannelNO, StopChannelNO, RelayTimeS from SHCurtain;";
+    
+    NSArray *array = [self selectProprty:selectSQL];
+    
+    NSMutableArray *curtains = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [curtains addObject:[SHCurtain curtainWithDictionary:dict]];
+    }
+    
+    return curtains;
+}
+
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room {
     

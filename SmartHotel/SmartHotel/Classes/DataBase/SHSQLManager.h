@@ -10,14 +10,17 @@
 
 #import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
+#import "SHCurtain.h"
 
 @interface SHSQLManager : NSObject
 
 // MARK: - 数据操作
 
+/// 查询当前房间的所有窗帘
+- (NSMutableArray *)getRoomCurtains;
+
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room;
-
 
 /// 获得所有的房间信息
 - (NSMutableArray *)getRoomBaseInformation;
