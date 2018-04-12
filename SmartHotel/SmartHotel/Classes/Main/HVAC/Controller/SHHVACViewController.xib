@@ -13,6 +13,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHVACViewController">
             <connections>
+                <outlet property="autoModelButton" destination="iT1-XI-RIs" id="GLt-u4-XwT"/>
+                <outlet property="coldModelButton" destination="WUD-AI-Fng" id="IdV-i1-7Xm"/>
+                <outlet property="coolModelButton" destination="hF2-j1-EBu" id="Tdj-bj-hnn"/>
+                <outlet property="fanModelButton" destination="c7v-pM-4sr" id="8Ob-l6-b0p"/>
+                <outlet property="heatModelButton" destination="278-1W-UtR" id="xMX-rN-xdG"/>
                 <outlet property="powerButton" destination="KQY-0C-BcW" id="bAl-OH-gxc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,11 +30,95 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phP-cI-SK2">
                     <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-uw-Oz6">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-uw-Oz6" userLabel="modelView">
                             <rect key="frame" x="0.0" y="371.5" width="870" height="84"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="278-1W-UtR">
+                                    <rect key="frame" x="371.5" y="10.5" width="128" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="WzS-4j-hAR"/>
+                                        <constraint firstAttribute="width" constant="128" id="bFk-g4-3yk"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Heat" image="ac_heat_normal" backgroundImage="CameraListBtn">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="selected" image="ac_heat_hightlighted"/>
+                                    <state key="highlighted" image="ac_heat_hightlighted"/>
+                                    <connections>
+                                        <action selector="heatModelButtonClick" destination="-1" eventType="touchUpInside" id="zpA-Eo-fko"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hF2-j1-EBu">
+                                    <rect key="frame" x="199.5" y="10.5" width="128" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Heat" image="ac_cool_normal" backgroundImage="CameraListBtn">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="selected" image="ac_cool_hightlighted"/>
+                                    <state key="highlighted" image="ac_cool_hightlighted"/>
+                                    <connections>
+                                        <action selector="coolModelButtonClick" destination="-1" eventType="touchUpInside" id="u7a-fP-Y4Q"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7v-pM-4sr">
+                                    <rect key="frame" x="543.5" y="10.5" width="128" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Heat" image="ac_fan_normal" backgroundImage="CameraListBtn">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="selected" image="ac_fan_hightlighted"/>
+                                    <state key="highlighted" image="ac_fan_hightlighted"/>
+                                    <connections>
+                                        <action selector="fanModelButtonClick" destination="-1" eventType="touchUpInside" id="zAJ-Ua-IRD"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iT1-XI-RIs">
+                                    <rect key="frame" x="715.5" y="10.5" width="128" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Heat" image="ac_auto_normal" backgroundImage="CameraListBtn">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="selected" image="ac_auto_hightlighted"/>
+                                    <state key="highlighted" image="ac_auto_hightlighted"/>
+                                    <connections>
+                                        <action selector="autoModelButtonClick" destination="-1" eventType="touchUpInside" id="OpH-QW-Soa"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUD-AI-Fng">
+                                    <rect key="frame" x="27.5" y="10.5" width="128" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Heat" image="ac_cold_normal" backgroundImage="CameraListBtn"/>
+                                    <state key="selected" image="ac_cold_hightlighted">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <state key="highlighted" image="ac_cold_hightlighted"/>
+                                    <connections>
+                                        <action selector="coldModelButtonClick" destination="-1" eventType="touchUpInside" id="cdE-VT-JCl"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="84" id="0Ox-OA-cyF"/>
+                                <constraint firstItem="WUD-AI-Fng" firstAttribute="height" secondItem="278-1W-UtR" secondAttribute="height" id="0Ru-Cj-gsc"/>
+                                <constraint firstItem="hF2-j1-EBu" firstAttribute="width" secondItem="278-1W-UtR" secondAttribute="width" id="1FR-x5-ea5"/>
+                                <constraint firstItem="hF2-j1-EBu" firstAttribute="centerY" secondItem="278-1W-UtR" secondAttribute="centerY" id="5FZ-QS-DH5"/>
+                                <constraint firstItem="WUD-AI-Fng" firstAttribute="centerY" secondItem="278-1W-UtR" secondAttribute="centerY" id="8kU-bl-6GI"/>
+                                <constraint firstItem="WUD-AI-Fng" firstAttribute="width" secondItem="278-1W-UtR" secondAttribute="width" id="Cno-VG-x9f"/>
+                                <constraint firstItem="c7v-pM-4sr" firstAttribute="width" secondItem="278-1W-UtR" secondAttribute="width" id="DJh-Iq-dMN"/>
+                                <constraint firstItem="iT1-XI-RIs" firstAttribute="width" secondItem="278-1W-UtR" secondAttribute="width" id="HPc-T8-glz"/>
+                                <constraint firstItem="c7v-pM-4sr" firstAttribute="height" secondItem="278-1W-UtR" secondAttribute="height" id="MNJ-PI-qcv"/>
+                                <constraint firstItem="278-1W-UtR" firstAttribute="centerX" secondItem="nSr-uw-Oz6" secondAttribute="centerX" id="VVf-dg-jHG"/>
+                                <constraint firstItem="iT1-XI-RIs" firstAttribute="height" secondItem="278-1W-UtR" secondAttribute="height" id="WVj-fU-jSY"/>
+                                <constraint firstItem="278-1W-UtR" firstAttribute="leading" secondItem="hF2-j1-EBu" secondAttribute="trailing" constant="44" id="al1-Ka-QGw"/>
+                                <constraint firstItem="278-1W-UtR" firstAttribute="centerY" secondItem="nSr-uw-Oz6" secondAttribute="centerY" id="eZG-i3-Y0m"/>
+                                <constraint firstItem="c7v-pM-4sr" firstAttribute="leading" secondItem="278-1W-UtR" secondAttribute="trailing" constant="44" id="ewE-kS-XcF"/>
+                                <constraint firstItem="iT1-XI-RIs" firstAttribute="centerY" secondItem="278-1W-UtR" secondAttribute="centerY" id="mqi-EI-lhJ"/>
+                                <constraint firstItem="iT1-XI-RIs" firstAttribute="leading" secondItem="c7v-pM-4sr" secondAttribute="trailing" constant="44" id="sUY-9B-Qxm"/>
+                                <constraint firstItem="c7v-pM-4sr" firstAttribute="centerY" secondItem="278-1W-UtR" secondAttribute="centerY" id="wGq-sn-2nA"/>
+                                <constraint firstItem="hF2-j1-EBu" firstAttribute="leading" secondItem="WUD-AI-Fng" secondAttribute="trailing" constant="44" id="xM7-e9-xQD"/>
+                                <constraint firstItem="hF2-j1-EBu" firstAttribute="height" secondItem="278-1W-UtR" secondAttribute="height" id="xtB-gR-hz9"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1V-5r-Qfj">
@@ -82,8 +171,19 @@
         </view>
     </objects>
     <resources>
+        <image name="CameraListBtn" width="123" height="61"/>
         <image name="SHSwitchThumb_Off" width="40" height="33"/>
         <image name="SHSwitchThumb_On" width="40" height="33"/>
         <image name="Share_SmallBG" width="783" height="402"/>
+        <image name="ac_auto_hightlighted" width="45" height="45"/>
+        <image name="ac_auto_normal" width="45" height="45"/>
+        <image name="ac_cold_hightlighted" width="45" height="45"/>
+        <image name="ac_cold_normal" width="45" height="45"/>
+        <image name="ac_cool_hightlighted" width="45" height="45"/>
+        <image name="ac_cool_normal" width="45" height="45"/>
+        <image name="ac_fan_hightlighted" width="45" height="45"/>
+        <image name="ac_fan_normal" width="45" height="45"/>
+        <image name="ac_heat_hightlighted" width="45" height="45"/>
+        <image name="ac_heat_normal" width="45" height="45"/>
     </resources>
 </document>

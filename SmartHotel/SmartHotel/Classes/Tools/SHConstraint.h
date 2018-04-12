@@ -63,6 +63,19 @@ typedef NS_ENUM(Byte, SHAirConditioningControlType) {
     
 } ;
 
+/// 工作模式
+typedef NS_ENUM(NSUInteger, SHAirConditioningModeKind) {
+    
+    SHAirConditioningModeKindCool,
+    
+    SHAirConditioningModeKindHeat,
+    
+    SHAirConditioningModeKindFan,
+    
+    SHAirConditioningModeKindAuto
+    
+} ;
+
 /// 自定义工具条的高度
 UIKIT_EXTERN const CGFloat customToolBarHeight;
 
