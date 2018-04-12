@@ -70,9 +70,7 @@
     } else {
         
         self.imageView.frame_x = self.frame_width * 0.05;
-        
     }
-    
 }
 
 - (void)setOn:(BOOL)on {

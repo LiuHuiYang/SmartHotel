@@ -16,6 +16,12 @@
                 <outlet property="autoModelButton" destination="iT1-XI-RIs" id="GLt-u4-XwT"/>
                 <outlet property="coldModelButton" destination="WUD-AI-Fng" id="IdV-i1-7Xm"/>
                 <outlet property="coolModelButton" destination="hF2-j1-EBu" id="Tdj-bj-hnn"/>
+                <outlet property="currentCelsTemperatureButton" destination="q7z-Ww-wKi" id="udg-7f-NSc"/>
+                <outlet property="currentFahrenheitTemperatureButton" destination="UhV-yC-Zl3" id="dOU-Fa-97d"/>
+                <outlet property="currentTemperatureLabel" destination="Dzv-lC-7kX" id="jw7-4r-TcB"/>
+                <outlet property="desiredCelsTemperatureButton" destination="tBH-eS-3K8" id="RPG-fc-nUe"/>
+                <outlet property="desiredFahrenheitTemperatureButton" destination="0au-JH-q1a" id="TbL-e2-Ydb"/>
+                <outlet property="desiredLabel" destination="i7Q-dF-6cG" id="me3-Pd-MHF"/>
                 <outlet property="fanModelButton" destination="c7v-pM-4sr" id="8Ob-l6-b0p"/>
                 <outlet property="heatModelButton" destination="278-1W-UtR" id="xMX-rN-xdG"/>
                 <outlet property="powerButton" destination="KQY-0C-BcW" id="bAl-OH-gxc"/>
@@ -121,20 +127,80 @@
                                 <constraint firstItem="hF2-j1-EBu" firstAttribute="height" secondItem="278-1W-UtR" secondAttribute="height" id="xtB-gR-hz9"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1V-5r-Qfj">
-                            <rect key="frame" x="118" y="107" width="209" height="178"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-en-nip" userLabel="ModelTem">
+                            <rect key="frame" x="388.5" y="44" width="177" height="263.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前温度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7Q-dF-6cG">
+                                    <rect key="frame" x="0.0" y="0.0" width="177" height="49"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="49" id="dHh-HG-4r9"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBH-eS-3K8">
+                                    <rect key="frame" x="0.0" y="59" width="177" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=" " backgroundImage="AC_ShowLabImg">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0au-JH-q1a">
+                                    <rect key="frame" x="0.0" y="128" width="177" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=" " backgroundImage="AC_ShowLabImg">
+                                        <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="tBH-eS-3K8" firstAttribute="height" secondItem="i7Q-dF-6cG" secondAttribute="height" id="0Yd-Iw-Vfs"/>
+                                <constraint firstItem="tBH-eS-3K8" firstAttribute="width" secondItem="i7Q-dF-6cG" secondAttribute="width" id="6Lp-mq-mdo"/>
+                                <constraint firstItem="0au-JH-q1a" firstAttribute="top" secondItem="tBH-eS-3K8" secondAttribute="bottom" constant="20" id="97Y-pc-A65"/>
+                                <constraint firstItem="0au-JH-q1a" firstAttribute="height" secondItem="tBH-eS-3K8" secondAttribute="height" id="CPK-Ko-9pz"/>
+                                <constraint firstItem="tBH-eS-3K8" firstAttribute="centerX" secondItem="i7Q-dF-6cG" secondAttribute="centerX" id="Iqi-9k-mnf"/>
+                                <constraint firstItem="i7Q-dF-6cG" firstAttribute="centerX" secondItem="TEt-en-nip" secondAttribute="centerX" id="LNL-Ew-fse"/>
+                                <constraint firstItem="0au-JH-q1a" firstAttribute="centerX" secondItem="tBH-eS-3K8" secondAttribute="centerX" id="Y2b-QE-0MF"/>
+                                <constraint firstItem="i7Q-dF-6cG" firstAttribute="width" secondItem="TEt-en-nip" secondAttribute="width" id="ZeA-W1-6Yl"/>
+                                <constraint firstItem="i7Q-dF-6cG" firstAttribute="top" secondItem="TEt-en-nip" secondAttribute="top" id="fmi-Eo-i9Q"/>
+                                <constraint firstItem="0au-JH-q1a" firstAttribute="width" secondItem="tBH-eS-3K8" secondAttribute="width" id="nDS-g1-wLa"/>
+                                <constraint firstItem="tBH-eS-3K8" firstAttribute="top" secondItem="i7Q-dF-6cG" secondAttribute="bottom" constant="10" id="vRr-PO-ur4"/>
+                            </constraints>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-en-nip">
-                            <rect key="frame" x="405" y="99" width="139" height="184"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3t7-56-W1j">
-                            <rect key="frame" x="611" y="123" width="191" height="137"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3t7-56-W1j" userLabel="currentTem">
+                            <rect key="frame" x="629.5" y="44" width="176.5" height="263.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前温度" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzv-lC-7kX">
+                                    <rect key="frame" x="-0.5" y="0.0" width="177" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7z-Ww-wKi">
+                                    <rect key="frame" x="0.0" y="59" width="177" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=" " backgroundImage="AC_ShowLabImg">
+                                        <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhV-yC-Zl3">
+                                    <rect key="frame" x="0.0" y="128" width="177" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title=" " backgroundImage="AC_ShowLabImg">
+                                        <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="UhV-yC-Zl3" firstAttribute="height" secondItem="q7z-Ww-wKi" secondAttribute="height" id="44F-Wa-LVy"/>
+                                <constraint firstItem="UhV-yC-Zl3" firstAttribute="centerX" secondItem="q7z-Ww-wKi" secondAttribute="centerX" id="87b-Ex-2wy"/>
+                                <constraint firstItem="Dzv-lC-7kX" firstAttribute="centerX" secondItem="3t7-56-W1j" secondAttribute="centerX" id="ZX3-KF-T6t"/>
+                                <constraint firstItem="UhV-yC-Zl3" firstAttribute="width" secondItem="q7z-Ww-wKi" secondAttribute="width" id="n8N-UO-alg"/>
+                                <constraint firstItem="q7z-Ww-wKi" firstAttribute="centerX" secondItem="Dzv-lC-7kX" secondAttribute="centerX" id="ssa-gr-lQR"/>
+                            </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQY-0C-BcW" customClass="SHSwitchButton">
                             <rect key="frame" x="0.0" y="100.5" width="84" height="49"/>
@@ -149,14 +215,37 @@
                                 <action selector="powerButtonClick" destination="-1" eventType="touchUpInside" id="2RC-v9-9c3"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1V-5r-Qfj">
+                            <rect key="frame" x="148" y="44" width="176.5" height="263.5"/>
+                            <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="UhV-yC-Zl3" firstAttribute="centerY" secondItem="0au-JH-q1a" secondAttribute="centerY" id="0uC-pz-dmg"/>
                         <constraint firstItem="nSr-uw-Oz6" firstAttribute="width" secondItem="phP-cI-SK2" secondAttribute="width" id="4Yj-yt-zOU"/>
+                        <constraint firstItem="3t7-56-W1j" firstAttribute="width" secondItem="x1V-5r-Qfj" secondAttribute="width" id="5vx-FA-CwE"/>
+                        <constraint firstItem="q7z-Ww-wKi" firstAttribute="centerY" secondItem="tBH-eS-3K8" secondAttribute="centerY" id="68L-Uw-cwV"/>
+                        <constraint firstItem="3t7-56-W1j" firstAttribute="height" secondItem="x1V-5r-Qfj" secondAttribute="height" id="93F-zX-xgg"/>
+                        <constraint firstItem="Dzv-lC-7kX" firstAttribute="centerY" secondItem="i7Q-dF-6cG" secondAttribute="centerY" id="Ipq-pq-v8m"/>
+                        <constraint firstItem="x1V-5r-Qfj" firstAttribute="leading" secondItem="KQY-0C-BcW" secondAttribute="trailing" constant="64" id="K1c-ve-C8e"/>
+                        <constraint firstItem="TEt-en-nip" firstAttribute="leading" secondItem="x1V-5r-Qfj" secondAttribute="trailing" constant="64" id="LpR-zc-eKl"/>
+                        <constraint firstItem="Dzv-lC-7kX" firstAttribute="height" secondItem="i7Q-dF-6cG" secondAttribute="height" id="O4K-Ib-uYM"/>
+                        <constraint firstItem="3t7-56-W1j" firstAttribute="leading" secondItem="TEt-en-nip" secondAttribute="trailing" constant="64" id="R3A-YP-7tt"/>
+                        <constraint firstAttribute="trailing" secondItem="3t7-56-W1j" secondAttribute="trailing" constant="64" id="XGq-Yk-nQP"/>
+                        <constraint firstItem="q7z-Ww-wKi" firstAttribute="width" secondItem="tBH-eS-3K8" secondAttribute="width" id="Z3N-71-A5w"/>
+                        <constraint firstItem="q7z-Ww-wKi" firstAttribute="height" secondItem="tBH-eS-3K8" secondAttribute="height" id="bfM-KO-UrN"/>
                         <constraint firstItem="KQY-0C-BcW" firstAttribute="centerY" secondItem="phP-cI-SK2" secondAttribute="centerY" multiplier="0.5" id="cNB-xN-N6v"/>
+                        <constraint firstItem="TEt-en-nip" firstAttribute="centerY" secondItem="x1V-5r-Qfj" secondAttribute="centerY" id="cto-lf-mnO"/>
+                        <constraint firstItem="nSr-uw-Oz6" firstAttribute="top" secondItem="x1V-5r-Qfj" secondAttribute="bottom" constant="64" id="dwx-aJ-6Vw"/>
+                        <constraint firstItem="TEt-en-nip" firstAttribute="height" secondItem="x1V-5r-Qfj" secondAttribute="height" id="fH1-C4-L25"/>
+                        <constraint firstItem="Dzv-lC-7kX" firstAttribute="width" secondItem="i7Q-dF-6cG" secondAttribute="width" id="gqw-UA-pyS"/>
                         <constraint firstAttribute="bottom" secondItem="nSr-uw-Oz6" secondAttribute="bottom" constant="44" id="kaN-jf-KEq"/>
+                        <constraint firstItem="TEt-en-nip" firstAttribute="width" secondItem="x1V-5r-Qfj" secondAttribute="width" id="mDT-PX-muL"/>
                         <constraint firstItem="KQY-0C-BcW" firstAttribute="leading" secondItem="phP-cI-SK2" secondAttribute="leading" id="wcb-h2-Kzx"/>
                         <constraint firstItem="nSr-uw-Oz6" firstAttribute="centerX" secondItem="phP-cI-SK2" secondAttribute="centerX" id="wdx-2T-FhC"/>
+                        <constraint firstItem="3t7-56-W1j" firstAttribute="centerY" secondItem="x1V-5r-Qfj" secondAttribute="centerY" id="x3x-Fi-egg"/>
+                        <constraint firstItem="x1V-5r-Qfj" firstAttribute="top" secondItem="phP-cI-SK2" secondAttribute="top" constant="44" id="xuP-Ka-cO3"/>
                     </constraints>
                 </view>
             </subviews>
@@ -171,6 +260,7 @@
         </view>
     </objects>
     <resources>
+        <image name="AC_ShowLabImg" width="143" height="80"/>
         <image name="CameraListBtn" width="123" height="61"/>
         <image name="SHSwitchThumb_Off" width="40" height="33"/>
         <image name="SHSwitchThumb_On" width="40" height="33"/>

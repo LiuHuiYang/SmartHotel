@@ -112,7 +112,7 @@
     [self setUpTabBar];
     
     // 测试数据
-    self.currentRoom.deviceIDForDDP = 113;
+    self.currentRoom.deviceIDForDDP = 212;
     self.currentRoom.deviceIDForCardHolder = 117;
     self.currentRoom.deviceIDForDoorBell= 118;
 }
