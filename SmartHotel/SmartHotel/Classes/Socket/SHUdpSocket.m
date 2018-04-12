@@ -393,7 +393,7 @@ void pack_crc(Byte *ptr, unichar len);
  */
 + (NSString *)getRemoteControlMacAddress {
 
-    printLog(@"注意，这个项目暂时没有远程功能");
+//    printLog(@"注意，这个项目暂时没有远程功能");
     return nil;
 //    return [[NSKeyedUnarchiver unarchiveObjectWithFile:[[FileTools documentPath] stringByAppendingPathComponent:selectMacAddress]] macAddress];
 }

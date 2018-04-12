@@ -41,14 +41,12 @@
 
 // MARK: - 视图加载
 
+/// 获得所有的窗帘
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
-    // 查询所有的窗帘
     self.allCurtains = [[SHSQLManager shareSHSQLManager] getRoomCurtains];
-    
-    printLog(@"所有的窗帘: %@", self.allCurtains);
 
     [self.listView reloadData];
 }
