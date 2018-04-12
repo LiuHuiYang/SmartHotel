@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHHVACViewController">
             <connections>
-                <outlet property="testButton" destination="aAS-Jw-eFY" id="ROi-oB-o9b"/>
+                <outlet property="powerButton" destination="KQY-0C-BcW" id="bAl-OH-gxc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,17 +25,50 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phP-cI-SK2">
                     <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAS-Jw-eFY" customClass="SHSwitchButton">
-                            <rect key="frame" x="390" y="218" width="61" height="34"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-uw-Oz6">
+                            <rect key="frame" x="0.0" y="371.5" width="870" height="84"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="84" id="0Ox-OA-cyF"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1V-5r-Qfj">
+                            <rect key="frame" x="118" y="107" width="209" height="178"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="SHSwitchThumb_Off" backgroundImage="ShareButtonBG"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEt-en-nip">
+                            <rect key="frame" x="405" y="99" width="139" height="184"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3t7-56-W1j">
+                            <rect key="frame" x="611" y="123" width="191" height="137"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQY-0C-BcW" customClass="SHSwitchButton">
+                            <rect key="frame" x="0.0" y="100.5" width="84" height="49"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="LhQ-0g-7go"/>
+                                <constraint firstAttribute="width" constant="84" id="evR-qg-Lp3"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
                             <state key="selected" image="SHSwitchThumb_On"/>
                             <connections>
-                                <action selector="testButtonClick" destination="-1" eventType="touchUpInside" id="IrG-fT-YwE"/>
+                                <action selector="powerButtonClick" destination="-1" eventType="touchUpInside" id="2RC-v9-9c3"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="nSr-uw-Oz6" firstAttribute="width" secondItem="phP-cI-SK2" secondAttribute="width" id="4Yj-yt-zOU"/>
+                        <constraint firstItem="KQY-0C-BcW" firstAttribute="centerY" secondItem="phP-cI-SK2" secondAttribute="centerY" multiplier="0.5" id="cNB-xN-N6v"/>
+                        <constraint firstAttribute="bottom" secondItem="nSr-uw-Oz6" secondAttribute="bottom" constant="44" id="kaN-jf-KEq"/>
+                        <constraint firstItem="KQY-0C-BcW" firstAttribute="leading" secondItem="phP-cI-SK2" secondAttribute="leading" id="wcb-h2-Kzx"/>
+                        <constraint firstItem="nSr-uw-Oz6" firstAttribute="centerX" secondItem="phP-cI-SK2" secondAttribute="centerX" id="wdx-2T-FhC"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,6 +84,6 @@
     <resources>
         <image name="SHSwitchThumb_Off" width="40" height="33"/>
         <image name="SHSwitchThumb_On" width="40" height="33"/>
-        <image name="ShareButtonBG" width="61" height="34"/>
+        <image name="Share_SmallBG" width="783" height="402"/>
     </resources>
 </document>

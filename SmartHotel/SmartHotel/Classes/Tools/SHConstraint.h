@@ -46,7 +46,22 @@ typedef NS_ENUM(Byte, SHRoomServerType) {
     
 };
 
-
+/// 控制类型
+typedef NS_ENUM(Byte, SHAirConditioningControlType) {
+    
+    SHAirConditioningControlTypeOnAndOFF = 0X03,
+    
+    SHAirConditioningControlTypeCoolTemperatureSet = 0X04,
+    
+    SHAirConditioningControlTypeFanSpeedSet = 0X05,
+    
+    SHAirConditioningControlTypeAcModeSet = 0X06,
+    
+    SHAirConditioningControlTypeHeatTemperatureSet = 0X07,
+    
+    SHAirConditioningControlTypeAutoTemperatureSet = 0X08
+    
+} ;
 
 /// 自定义工具条的高度
 UIKIT_EXTERN const CGFloat customToolBarHeight;

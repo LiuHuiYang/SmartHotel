@@ -10,18 +10,19 @@
 
 @interface SHHVACViewController ()
 
-@property (weak, nonatomic) IBOutlet SHSwitchButton *testButton;
+@property (weak, nonatomic) IBOutlet SHSwitchButton *powerButton;
 
 @end
 
 @implementation SHHVACViewController
 
-- (IBAction)testButtonClick {
+- (IBAction)powerButtonClick {
 
-    printLog(@"on: %d", self.testButton.isOn);
-    self.testButton.on = !self.testButton.on;
+    self.powerButton.on = !self.powerButton.on;
     
-    printLog(@"on: %d", self.testButton.isOn);
+    Byte controlData[2] = {SHAirConditioningControlTypeOnAndOFF, self.powerButton.isOn};
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3D8 targetSubnetID:self.roomInfo.subNetIDForDDP targetDeviceID:self.roomInfo.deviceIDForDDP additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
 }
 
 
