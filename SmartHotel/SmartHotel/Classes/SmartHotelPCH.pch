@@ -32,7 +32,7 @@
 #import "SHRoomDevice.h"
 #import "SHCurtain.h"
 
-#import "SHSwitch.h"
+#import "SHSwitchButton.h"
 
 #endif
 
