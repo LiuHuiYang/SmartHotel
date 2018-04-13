@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="lightListView" destination="19i-RJ-jjm" id="KbV-R2-elp"/>
                 <outlet property="realayListView" destination="qDh-P8-AyJ" id="ef2-5J-Qsb"/>
+                <outlet property="senceLabel" destination="lUZ-hc-hbO" id="FQT-lh-XTk"/>
                 <outlet property="senceListView" destination="jwG-Qr-dxa" id="G6S-zJ-szC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -61,6 +62,12 @@
                                 <outlet property="delegate" destination="-1" id="2Li-mC-BMd"/>
                             </connections>
                         </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="84" translatesAutoresizingMaskIntoConstraints="NO" id="lUZ-hc-hbO">
+                            <rect key="frame" x="20" y="388" width="91" height="90"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -71,11 +78,15 @@
                         <constraint firstItem="jwG-Qr-dxa" firstAttribute="top" secondItem="qDh-P8-AyJ" secondAttribute="bottom" constant="64" id="Emu-fp-vlk"/>
                         <constraint firstItem="19i-RJ-jjm" firstAttribute="width" secondItem="qDh-P8-AyJ" secondAttribute="width" id="OFz-MP-W9t"/>
                         <constraint firstItem="jwG-Qr-dxa" firstAttribute="height" secondItem="19i-RJ-jjm" secondAttribute="height" id="T32-XU-XDy"/>
+                        <constraint firstItem="lUZ-hc-hbO" firstAttribute="leading" secondItem="nmG-Ba-L3L" secondAttribute="leading" constant="20" id="e39-Sv-k0g"/>
                         <constraint firstItem="qDh-P8-AyJ" firstAttribute="centerX" secondItem="nmG-Ba-L3L" secondAttribute="centerX" multiplier="1.1" id="g9P-kM-Xoz"/>
                         <constraint firstItem="19i-RJ-jjm" firstAttribute="centerX" secondItem="qDh-P8-AyJ" secondAttribute="centerX" id="kqc-6V-zTo"/>
                         <constraint firstItem="qDh-P8-AyJ" firstAttribute="centerY" secondItem="nmG-Ba-L3L" secondAttribute="centerY" id="ljB-HH-JZy"/>
+                        <constraint firstItem="jwG-Qr-dxa" firstAttribute="leading" secondItem="lUZ-hc-hbO" secondAttribute="trailing" constant="20" id="mbP-ET-VnW"/>
                         <constraint firstItem="jwG-Qr-dxa" firstAttribute="width" secondItem="19i-RJ-jjm" secondAttribute="width" id="qXd-vL-BIX"/>
+                        <constraint firstItem="lUZ-hc-hbO" firstAttribute="centerY" secondItem="jwG-Qr-dxa" secondAttribute="centerY" id="u8A-lO-aom"/>
                         <constraint firstItem="qDh-P8-AyJ" firstAttribute="top" secondItem="19i-RJ-jjm" secondAttribute="bottom" constant="64" id="urC-gn-fss"/>
+                        <constraint firstItem="lUZ-hc-hbO" firstAttribute="height" secondItem="jwG-Qr-dxa" secondAttribute="height" id="xLR-Ae-73b"/>
                     </constraints>
                 </view>
             </subviews>

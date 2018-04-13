@@ -23,6 +23,8 @@
 /// 场景列表(底部)
 @property (weak, nonatomic) IBOutlet UICollectionView *senceListView;
 
+/// 场景标签
+@property (weak, nonatomic) IBOutlet UILabel *senceLabel;
 
 // MARK: - 其它
 
@@ -80,7 +82,6 @@
     
     [super viewDidLayoutSubviews];
     
-    
     // 场景的布局
     CGFloat sencesItemMarign  = defaultHeight;
     NSUInteger sencesTotalCols = 5;
@@ -107,6 +108,8 @@
     [super viewDidLoad];
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Lights"];
+    
+    self.senceLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"LIGHTS" withSubTitle:@"Scenes"];
     
     self.lightListView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Share_SmallBG"]];
     
