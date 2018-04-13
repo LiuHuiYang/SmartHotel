@@ -33,6 +33,7 @@
 #import "SHCurtain.h"
 #import "SHMacro.h"
 #import "SHMacroCommand.h"
+#import "SHLight.h"
 
 #import "SHSwitchButton.h"
 

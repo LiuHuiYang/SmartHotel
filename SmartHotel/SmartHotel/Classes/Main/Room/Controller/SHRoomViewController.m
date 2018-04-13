@@ -115,6 +115,7 @@
     self.currentRoom.deviceIDForDDP = 212;
     self.currentRoom.deviceIDForCardHolder = 117;
     self.currentRoom.deviceIDForDoorBell= 118;
+    self.currentRoom.deviceIDForZoneBeast = 213;
 }
 
 - (void)viewDidLoad {

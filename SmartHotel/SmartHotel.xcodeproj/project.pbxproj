@@ -13,6 +13,9 @@
 		0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0497252720805C2F00B62A9E /* SHMacroCollectionViewCell.xib */; };
 		0497252D208081B200B62A9E /* SHMacroCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252C208081B200B62A9E /* SHMacroCommand.m */; };
 		04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252F208084FE00B62A9E /* SHOperatorCode.m */; };
+		049725342080905400B62A9E /* SHLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725332080905400B62A9E /* SHLight.m */; };
+		04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */; };
+		0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */; };
 		04D249162079C51900EBD1BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249152079C51900EBD1BE /* AppDelegate.m */; };
 		04D249192079C51A00EBD1BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249182079C51A00EBD1BE /* ViewController.m */; };
 		04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491A2079C51A00EBD1BE /* Main.storyboard */; };
@@ -91,6 +94,11 @@
 		0497252C208081B200B62A9E /* SHMacroCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroCommand.m; sourceTree = "<group>"; };
 		0497252E208084FE00B62A9E /* SHOperatorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOperatorCode.h; sourceTree = "<group>"; };
 		0497252F208084FE00B62A9E /* SHOperatorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOperatorCode.m; sourceTree = "<group>"; };
+		049725322080905400B62A9E /* SHLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLight.h; sourceTree = "<group>"; };
+		049725332080905400B62A9E /* SHLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLight.m; sourceTree = "<group>"; };
+		04972536208091DD00B62A9E /* SHDimmerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDimmerCollectionViewCell.h; sourceTree = "<group>"; };
+		04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDimmerCollectionViewCell.m; sourceTree = "<group>"; };
+		04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDimmerCollectionViewCell.xib; sourceTree = "<group>"; };
 		04D249112079C51900EBD1BE /* SmartHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D249142079C51900EBD1BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04D249152079C51900EBD1BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -248,6 +256,25 @@
 				0497252C208081B200B62A9E /* SHMacroCommand.m */,
 			);
 			path = MacroCommand;
+			sourceTree = "<group>";
+		};
+		049725312080904B00B62A9E /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				049725322080905400B62A9E /* SHLight.h */,
+				049725332080905400B62A9E /* SHLight.m */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
+		04972535208091B800B62A9E /* DimmerCell */ = {
+			isa = PBXGroup;
+			children = (
+				04972536208091DD00B62A9E /* SHDimmerCollectionViewCell.h */,
+				04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */,
+				04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */,
+			);
+			path = DimmerCell;
 			sourceTree = "<group>";
 		};
 		04AE6BD4207C5A9E001EDF73 /* SHControlSwitch */ = {
@@ -634,6 +661,7 @@
 		04D2494D2079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				049725312080904B00B62A9E /* Light */,
 				0497252A208081A000B62A9E /* MacroCommand */,
 				049725202080545C00B62A9E /* Macro */,
 			);
@@ -643,6 +671,7 @@
 		04D2494E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04972535208091B800B62A9E /* DimmerCell */,
 				0497252420805C1900B62A9E /* MacroCell */,
 			);
 			path = View;
@@ -1091,6 +1120,7 @@
 				04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */,
 				04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
+				0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,6 +1199,7 @@
 				04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */,
 				04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */,
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
+				04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */,
 				04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */,
 				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
 				04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */,
@@ -1183,6 +1214,7 @@
 				04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */,
 				04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */,
 				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
+				049725342080905400B62A9E /* SHLight.m in Sources */,
 				04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */,
 				04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,

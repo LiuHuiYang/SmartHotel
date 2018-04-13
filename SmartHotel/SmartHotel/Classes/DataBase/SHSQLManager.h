@@ -13,10 +13,14 @@
 #import "SHCurtain.h"
 #import "SHMacro.h"
 #import "SHMacroCommand.h"
+#import "SHLight.h"
 
 @interface SHSQLManager : NSObject
 
 // MARK: - 数据操作
+
+/// 获得指定种类的灯泡
+- (NSMutableArray *)getLight:(BOOL)canDim;
 
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro;

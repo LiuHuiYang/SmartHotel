@@ -21,6 +21,23 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 获得指定种类的灯泡
+- (NSMutableArray *)getLight:(BOOL)canDim {
+    
+    NSString *selectSQL = [NSString stringWithFormat:@"select LightID, LightName, ChannelNo, CanDim, LightTypeID, SequenceNo from SHLights where canDim = %d order by SequenceNo;", canDim];
+    
+    NSArray *array = [self selectProprty:selectSQL];
+    
+    NSMutableArray *lights = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [lights addObject:[SHLight lightWithDictionary:dict]];
+    }
+    
+    return lights;
+}
+
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro {
     
