@@ -66,6 +66,9 @@
     _light = light;
     
     self.nameLabel.text = light.lightName;
+    self.iconButton.selected = light.brightness;
+    self.brightnessSlider.value = light.brightness;
+    self.brightnessLabel.text = [NSString stringWithFormat:@"%d%%", light.brightness];
 }
 
 - (void)awakeFromNib {

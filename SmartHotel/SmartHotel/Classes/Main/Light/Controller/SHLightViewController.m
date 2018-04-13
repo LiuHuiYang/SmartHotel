@@ -58,16 +58,102 @@
     Byte channelNumber = recivedData[startIndex];
     
     switch (operatorCode) {
+            
+        case 0XEFFF: {  // 继电器模块 // 调光器 每五秒广播一次，或者用户触发广播按钮指令
+            
+            // 1.获得区域总数
+            Byte zoneCount = recivedData[startIndex];
+            
+            // 2.获得模块的总通道数量
+            Byte channelCount = recivedData[startIndex + zoneCount + 1];
+            
+            // 3.获得每个通道的具体状态
+            // 所有通道的状态，通道状态的字节数(每个通道的状态用一个bit来表示)
+            Byte statusForChannel[channelCount];
+            Byte channelIndex = 0; // 所有通道的状态索引
+            for (Byte i = 0; i < channelCount/8 + 1; i++) {
+                
+                // 获得具体的值 -- 代表一个字节
+                Byte channelStatus = recivedData[startIndex + zoneCount + 2 + i];
+                
+                for (Byte bit = 0; bit < 8; bit++) {
+                    
+                    Byte lightBress = ((channelStatus & 0x01) == 1) ? lightMaxBrightness : 0;
+                    statusForChannel[channelIndex] = lightBress;
+                    ++channelIndex;
+                    
+                    channelStatus >>= 1;
+                }
+            }
+            
+            for (Byte i = 0; i < channelCount; i++) {
+                
+                // 顶部的调光器
+                for (SHLight *light in self.allDimmers) {
+                    
+                    if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
+                        
+                        light.brightness = statusForChannel[i];
+                    }
+                }
+            }
+        }
+            break;
+            
+            
+        case 0X0032: {
+            
+            Byte brightness = recivedData[11];
+            
+            if (recivedData[10] == 0XF8) {
+                
+                
+                /// 顶部的调光部分
+                for (SHLight *light in self.allDimmers) {
+                    
+                    if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == channelNumber) {
+                        
+                        light.brightness = brightness;
+                    }
+                }
+            }
+        }
+            break;
         
         case 0X0034: {
             
-            
+            // 这是LED
+            if ((data.length == startIndex + 4 + 2 + 1) && recivedData[3] == 0X03 && recivedData[4] == 0X82) {
+                
+                
+            } else {  // 普通灯泡
+                
+                Byte totalChannels = recivedData[startIndex];
+                
+                for (Byte i = 0; i < totalChannels; i++) {
+                    
+                    // 顶部的调光器部分
+                    for (SHLight *light in self.allDimmers) {
+                        
+                        if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
+                            
+                            light.brightness = recivedData[startIndex + i + 1];
+                            
+                        }
+                    }
+                }
+            }
         }
             
             break;
             
         default:
             break;
+    }
+    
+    if (operatorCode == 0X0032 || operatorCode == 0X0034) {
+        
+        [self.lightListView reloadData];
     }
 }
 

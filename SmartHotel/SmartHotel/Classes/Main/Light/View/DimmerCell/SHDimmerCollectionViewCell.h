@@ -10,6 +10,7 @@
 
 @interface SHDimmerCollectionViewCell : UICollectionViewCell
 
+
 @property (strong, nonatomic) SHLight *light;
 
 @end
