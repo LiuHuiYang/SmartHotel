@@ -9,6 +9,7 @@
 #import "SHLightViewController.h"
 #import "SHMacroCollectionViewCell.h"
 #import "SHDimmerCollectionViewCell.h"
+#import "SHRelayCollectionViewCell.h"
 
 @interface SHLightViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -32,7 +33,13 @@
 @property (strong, nonatomic) NSMutableArray *allSences;
 
 /// 可以调光的灯泡
-@property (strong, nonatomic) NSMutableArray *allDimmers;
+@property (strong, nonatomic) NSMutableArray * allLightsCanDim;
+
+/// 不可以调光的灯泡
+@property (strong, nonatomic) NSMutableArray * allLightsForRelay;
+
+/// 所有灯泡 (包含调光和不调光)
+@property (strong, nonatomic) NSMutableArray *allLights;
 
 @end
 
@@ -88,8 +95,7 @@
             
             for (Byte i = 0; i < channelCount; i++) {
                 
-                // 顶部的调光器
-                for (SHLight *light in self.allDimmers) {
+                for (SHLight *light in self.allLights) {
                     
                     if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
                         
@@ -107,9 +113,7 @@
             
             if (recivedData[10] == 0XF8) {
                 
-                
-                /// 顶部的调光部分
-                for (SHLight *light in self.allDimmers) {
+                for (SHLight *light in self.allLights) {
                     
                     if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == channelNumber) {
                         
@@ -131,9 +135,8 @@
                 Byte totalChannels = recivedData[startIndex];
                 
                 for (Byte i = 0; i < totalChannels; i++) {
-                    
-                    // 顶部的调光器部分
-                    for (SHLight *light in self.allDimmers) {
+                   
+                    for (SHLight *light in self.allLights) {
                         
                         if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
                             
@@ -174,7 +177,18 @@
         
         SHDimmerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHDimmerCollectionViewCell class]) forIndexPath:indexPath];
         
-        SHLight *light = self.allDimmers[indexPath.item];
+        SHLight *light = self. allLightsCanDim[indexPath.item];
+        light.subnetID = self.roomInfo.subNetIDForZoneBeast;
+        light.deviceID = self.roomInfo.deviceIDForZoneBeast;
+        cell.light = light;
+        
+        return cell;
+    
+    } else if (collectionView == self.realayListView) {
+        
+        SHRelayCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHRelayCollectionViewCell class]) forIndexPath:indexPath];
+        
+        SHLight *light = self. allLightsForRelay[indexPath.item];
         light.subnetID = self.roomInfo.subNetIDForZoneBeast;
         light.deviceID = self.roomInfo.deviceIDForZoneBeast;
         cell.light = light;
@@ -193,7 +207,12 @@
     
     } else if (collectionView == self.lightListView) {
         
-        return self.allDimmers.count;
+        return self. allLightsCanDim.count;
+    
+    } else if (collectionView == self.realayListView) {
+    
+        return self.allLightsForRelay.count;
+        
     }
     
     return 0;
@@ -205,28 +224,40 @@
     
     [super viewDidLayoutSubviews];
     
+    CGFloat itemMarign  = defaultHeight;
+    
     // 调光器的布局
-    CGFloat dimmerItemMarign  = defaultHeight;
+    
     NSUInteger dimmerTotalCols = 3;
     
-    CGFloat dimmerItemWidth = (self.lightListView.frame_width - (dimmerTotalCols * dimmerItemMarign)) / dimmerTotalCols;
+    CGFloat dimmerItemWidth = (self.lightListView.frame_width - (dimmerTotalCols * itemMarign)) / dimmerTotalCols;
     
     UICollectionViewFlowLayout *dimmerFlowLayout = (UICollectionViewFlowLayout *)self.self.lightListView.collectionViewLayout;
     
     dimmerFlowLayout.itemSize = CGSizeMake(dimmerItemWidth, self.lightListView.frame_height);
-    dimmerFlowLayout.minimumLineSpacing = dimmerItemMarign;
+    dimmerFlowLayout.minimumLineSpacing = itemMarign;
     dimmerFlowLayout.minimumInteritemSpacing = 0;
     
+    // 继电器布局
+    NSUInteger relayTotalCols = 3;
+    
+    CGFloat relayItemWidth = (self.realayListView.frame_width - (relayTotalCols * itemMarign)) / relayTotalCols;
+    
+    UICollectionViewFlowLayout *realyFlowLayout = (UICollectionViewFlowLayout *)self.self.realayListView.collectionViewLayout;
+    
+    realyFlowLayout.itemSize = CGSizeMake(relayItemWidth, self.realayListView.frame_height * 0.4);
+    realyFlowLayout.minimumLineSpacing = itemMarign;
+    realyFlowLayout.minimumInteritemSpacing = statusBarHeight;
+    
     // 场景的布局
-    CGFloat sencesItemMarign  = defaultHeight;
     NSUInteger sencesTotalCols = 5;
     
-    CGFloat sencesItemWidth = (self.senceListView.frame_width - (sencesTotalCols * sencesItemMarign)) / sencesTotalCols;
+    CGFloat sencesItemWidth = (self.senceListView.frame_width - (sencesTotalCols * itemMarign)) / sencesTotalCols;
     
     UICollectionViewFlowLayout *sencesFlowLayout = (UICollectionViewFlowLayout *)self.self.senceListView.collectionViewLayout;
     
-    sencesFlowLayout.itemSize = CGSizeMake(sencesItemWidth, self.senceListView.frame_height);
-    sencesFlowLayout.minimumLineSpacing = sencesItemMarign;
+    sencesFlowLayout.itemSize = CGSizeMake(sencesItemWidth, self.senceListView.frame_height * 0.98);
+    sencesFlowLayout.minimumLineSpacing = itemMarign;
     sencesFlowLayout.minimumInteritemSpacing = 0;
 }
 
@@ -235,16 +266,22 @@
     
     [super viewWillAppear:animated];
     
+    self.allLightsCanDim = [[SHSQLManager shareSHSQLManager] getLight:YES];
+    [self.lightListView reloadData];
+    
+    self.allLightsForRelay = [[SHSQLManager shareSHSQLManager] getLight:NO];
+    [self.realayListView reloadData];
+    
     self.allSences = [[SHSQLManager shareSHSQLManager] getAllSences];
     [self.senceListView reloadData];
     
-    self.allDimmers = [[SHSQLManager shareSHSQLManager] getLight:YES];
-    [self.lightListView reloadData];
-    
-    
-    
     // 读取所有Light的状态
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X0033 targetSubnetID:self.roomInfo.subNetIDForZoneBeast targetDeviceID:self.roomInfo.deviceIDForZoneBeast additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    
+    NSMutableArray *lights = [NSMutableArray arrayWithArray:self.allLightsCanDim];
+    [lights addObjectsFromArray:self.allLightsForRelay];
+    
+    self.allLights = lights;
 }
 
 - (void)viewDidLoad {
@@ -259,6 +296,8 @@
     [self.lightListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDimmerCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHDimmerCollectionViewCell class])];
     
     self.realayListView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Share_SmallBG"]];
+    
+    [self.realayListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHRelayCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHRelayCollectionViewCell class])];
     
     self.senceListView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Share_SmallBG"]];
     

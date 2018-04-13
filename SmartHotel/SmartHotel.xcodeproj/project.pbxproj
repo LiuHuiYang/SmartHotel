@@ -16,6 +16,9 @@
 		049725342080905400B62A9E /* SHLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725332080905400B62A9E /* SHLight.m */; };
 		04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */; };
 		0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */; };
+		04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */; };
+		04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */; };
+		04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C5C2080B1E30027E889 /* SHLightButton.m */; };
 		04D249162079C51900EBD1BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249152079C51900EBD1BE /* AppDelegate.m */; };
 		04D249192079C51A00EBD1BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249182079C51A00EBD1BE /* ViewController.m */; };
 		04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491A2079C51A00EBD1BE /* Main.storyboard */; };
@@ -99,6 +102,11 @@
 		04972536208091DD00B62A9E /* SHDimmerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDimmerCollectionViewCell.h; sourceTree = "<group>"; };
 		04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDimmerCollectionViewCell.m; sourceTree = "<group>"; };
 		04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDimmerCollectionViewCell.xib; sourceTree = "<group>"; };
+		04B05C552080A9A60027E889 /* SHRelayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRelayCollectionViewCell.h; sourceTree = "<group>"; };
+		04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRelayCollectionViewCell.m; sourceTree = "<group>"; };
+		04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRelayCollectionViewCell.xib; sourceTree = "<group>"; };
+		04B05C5B2080B1E30027E889 /* SHLightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightButton.h; sourceTree = "<group>"; };
+		04B05C5C2080B1E30027E889 /* SHLightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightButton.m; sourceTree = "<group>"; };
 		04D249112079C51900EBD1BE /* SmartHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D249142079C51900EBD1BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04D249152079C51900EBD1BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -284,6 +292,25 @@
 				04484D75207F079C00F6FEB9 /* SHSwitchButton.m */,
 			);
 			path = SHControlSwitch;
+			sourceTree = "<group>";
+		};
+		04B05C4F2080A9750027E889 /* RelayCell */ = {
+			isa = PBXGroup;
+			children = (
+				04B05C552080A9A60027E889 /* SHRelayCollectionViewCell.h */,
+				04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */,
+				04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */,
+			);
+			path = RelayCell;
+			sourceTree = "<group>";
+		};
+		04B05C5A2080B1D50027E889 /* lightButton */ = {
+			isa = PBXGroup;
+			children = (
+				04B05C5B2080B1E30027E889 /* SHLightButton.h */,
+				04B05C5C2080B1E30027E889 /* SHLightButton.m */,
+			);
+			path = lightButton;
 			sourceTree = "<group>";
 		};
 		04D249082079C51900EBD1BE = {
@@ -671,6 +698,8 @@
 		04D2494E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04B05C5A2080B1D50027E889 /* lightButton */,
+				04B05C4F2080A9750027E889 /* RelayCell */,
 				04972535208091B800B62A9E /* DimmerCell */,
 				0497252420805C1900B62A9E /* MacroCell */,
 			);
@@ -1113,6 +1142,7 @@
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
 				04D249DA2079E20D00EBD1BE /* SHCurtainViewController.xib in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
+				04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */,
 				04D249CB2079E1CC00EBD1BE /* SHLightViewController.xib in Resources */,
 				04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */,
 				04D249FC2079E2D100EBD1BE /* SHSettingViewController.xib in Resources */,
@@ -1183,9 +1213,11 @@
 				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
 				04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */,
 				04D24A062079EE1900EBD1BE /* SHModuleSwitchButton.m in Sources */,
+				04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */,
 				04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */,
 				04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */,
 				04D249B82079CA9400EBD1BE /* SHNavigationController.m in Sources */,
+				04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */,
 				04D249D92079E20D00EBD1BE /* SHCurtainViewController.m in Sources */,
 				04D249192079C51A00EBD1BE /* ViewController.m in Sources */,
 				04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */,
