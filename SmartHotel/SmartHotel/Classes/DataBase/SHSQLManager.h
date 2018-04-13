@@ -11,10 +11,18 @@
 #import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
 #import "SHCurtain.h"
+#import "SHMacro.h"
+#import "SHMacroCommand.h"
 
 @interface SHSQLManager : NSObject
 
 // MARK: - 数据操作
+
+/// 获取Sences对应的命令集
+- (NSMutableArray *)getSenceCommands:(SHMacro *)macro;
+
+/// 查询所有的场景
+- (NSMutableArray *)getAllSences;
 
 /// 查询当前房间的所有窗帘
 - (NSMutableArray *)getRoomCurtains;

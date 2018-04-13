@@ -21,6 +21,41 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 获取Sences对应的命令集
+- (NSMutableArray *)getSenceCommands:(SHMacro *)macro {
+    
+    NSString *selectSQL = [NSString stringWithFormat:@"select ScenesID, SequenceNo, Remark, SubnetID, DeviceID, CommandTypeID, FirstParameter, SecondParameter, ThirdParameter, DelayMillisecondAfterSend from ScenesCommands where ScenesID = %zd order by SequenceNo;", macro.macroID];
+    
+    NSArray *array = [self selectProprty:selectSQL];
+    
+    NSMutableArray *commands = [NSMutableArray arrayWithCapacity:array.count];
+
+    for (NSDictionary *dict in array) {
+        
+        [commands addObject:[SHMacroCommand macroCommandWithDictionary:dict]];
+    }
+    
+    return commands;
+}
+
+/// 查询所有的场景
+- (NSMutableArray *)getAllSences {
+    
+    NSString *selectSQL = @"select MacroID, MacroName, MacroIconID, SequenceNO  \
+        from Scenes order by SequenceNO;";
+    
+    NSArray *array = [self selectProprty:selectSQL];
+    
+    NSMutableArray *sences = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [sences addObject:[SHMacro macroinitWithDictionary:dict]];
+    }
+    
+    return sences;
+}
+
 /// 查询当前房间的所有窗帘
 - (NSMutableArray *)getRoomCurtains {
     

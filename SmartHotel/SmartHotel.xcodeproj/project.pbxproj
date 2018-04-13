@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04484D75207F079C00F6FEB9 /* SHSwitchButton.m */; };
+		049725232080546A00B62A9E /* SHMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725222080546A00B62A9E /* SHMacro.m */; };
+		0497252820805C2F00B62A9E /* SHMacroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252620805C2F00B62A9E /* SHMacroCollectionViewCell.m */; };
+		0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0497252720805C2F00B62A9E /* SHMacroCollectionViewCell.xib */; };
+		0497252D208081B200B62A9E /* SHMacroCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252C208081B200B62A9E /* SHMacroCommand.m */; };
+		04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252F208084FE00B62A9E /* SHOperatorCode.m */; };
 		04D249162079C51900EBD1BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249152079C51900EBD1BE /* AppDelegate.m */; };
 		04D249192079C51A00EBD1BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249182079C51A00EBD1BE /* ViewController.m */; };
 		04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491A2079C51A00EBD1BE /* Main.storyboard */; };
@@ -77,6 +82,15 @@
 /* Begin PBXFileReference section */
 		04484D74207F079C00F6FEB9 /* SHSwitchButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSwitchButton.h; sourceTree = "<group>"; };
 		04484D75207F079C00F6FEB9 /* SHSwitchButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSwitchButton.m; sourceTree = "<group>"; };
+		049725212080546A00B62A9E /* SHMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacro.h; sourceTree = "<group>"; };
+		049725222080546A00B62A9E /* SHMacro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacro.m; sourceTree = "<group>"; };
+		0497252520805C2F00B62A9E /* SHMacroCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroCollectionViewCell.h; sourceTree = "<group>"; };
+		0497252620805C2F00B62A9E /* SHMacroCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroCollectionViewCell.m; sourceTree = "<group>"; };
+		0497252720805C2F00B62A9E /* SHMacroCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMacroCollectionViewCell.xib; sourceTree = "<group>"; };
+		0497252B208081B200B62A9E /* SHMacroCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroCommand.h; sourceTree = "<group>"; };
+		0497252C208081B200B62A9E /* SHMacroCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroCommand.m; sourceTree = "<group>"; };
+		0497252E208084FE00B62A9E /* SHOperatorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHOperatorCode.h; sourceTree = "<group>"; };
+		0497252F208084FE00B62A9E /* SHOperatorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOperatorCode.m; sourceTree = "<group>"; };
 		04D249112079C51900EBD1BE /* SmartHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D249142079C51900EBD1BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04D249152079C51900EBD1BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -208,6 +222,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049725202080545C00B62A9E /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				049725212080546A00B62A9E /* SHMacro.h */,
+				049725222080546A00B62A9E /* SHMacro.m */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		0497252420805C1900B62A9E /* MacroCell */ = {
+			isa = PBXGroup;
+			children = (
+				0497252520805C2F00B62A9E /* SHMacroCollectionViewCell.h */,
+				0497252620805C2F00B62A9E /* SHMacroCollectionViewCell.m */,
+				0497252720805C2F00B62A9E /* SHMacroCollectionViewCell.xib */,
+			);
+			path = MacroCell;
+			sourceTree = "<group>";
+		};
+		0497252A208081A000B62A9E /* MacroCommand */ = {
+			isa = PBXGroup;
+			children = (
+				0497252B208081B200B62A9E /* SHMacroCommand.h */,
+				0497252C208081B200B62A9E /* SHMacroCommand.m */,
+			);
+			path = MacroCommand;
+			sourceTree = "<group>";
+		};
 		04AE6BD4207C5A9E001EDF73 /* SHControlSwitch */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +634,8 @@
 		04D2494D2079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0497252A208081A000B62A9E /* MacroCommand */,
+				049725202080545C00B62A9E /* Macro */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -599,6 +643,7 @@
 		04D2494E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0497252420805C1900B62A9E /* MacroCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,6 +753,8 @@
 		04D2495B2079C6CD00EBD1BE /* Socket */ = {
 			isa = PBXGroup;
 			children = (
+				0497252E208084FE00B62A9E /* SHOperatorCode.h */,
+				0497252F208084FE00B62A9E /* SHOperatorCode.m */,
 				04D249A62079C95500EBD1BE /* SHUdpSocket.h */,
 				04D249A52079C95500EBD1BE /* SHUdpSocket.m */,
 			);
@@ -1031,6 +1078,7 @@
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
 				04D249AE2079C9B800EBD1BE /* SHDB.sqlite3 in Resources */,
 				04D249D52079E1F300EBD1BE /* SHTVViewController.xib in Resources */,
+				0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */,
 				04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */,
 				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
@@ -1113,6 +1161,7 @@
 				04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */,
 				04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */,
 				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
+				0497252D208081B200B62A9E /* SHMacroCommand.m in Sources */,
 				04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */,
 				04D249A72079C95500EBD1BE /* SHUdpSocket.m in Sources */,
 				04D249B52079CA6500EBD1BE /* SHViewController.m in Sources */,
@@ -1137,12 +1186,15 @@
 				04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */,
 				04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
+				049725232080546A00B62A9E /* SHMacro.m in Sources */,
 				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
 				04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */,
 				04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */,
 				04D249DE2079E22300EBD1BE /* SHVIPViewController.m in Sources */,
+				04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */,
 				04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
+				0497252820805C2F00B62A9E /* SHMacroCollectionViewCell.m in Sources */,
 				04D249CF2079E1E100EBD1BE /* SHHVACViewController.m in Sources */,
 				04D249E32079E24A00EBD1BE /* SHAlarmViewController.m in Sources */,
 				04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */,

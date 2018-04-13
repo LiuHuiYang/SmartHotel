@@ -31,6 +31,8 @@
 #import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
 #import "SHCurtain.h"
+#import "SHMacro.h"
+#import "SHMacroCommand.h"
 
 #import "SHSwitchButton.h"
 
