@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ac_PowerOff.png",
+      "filename" : "PowerOn.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ac_PowerOff@2x.png",
+      "filename" : "PowerOn@2x.png",
       "scale" : "2x"
     },
     {

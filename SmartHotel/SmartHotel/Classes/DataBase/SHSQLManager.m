@@ -21,6 +21,31 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 获得房间的电视
+- (NSMutableArray *)getTV {
+    
+    NSString *selectSQL = @"select SHCTVID, TVName, TVType, SubnetID, DeviceID, \
+        OpenUniversalSwitchID, CloseUniversalSwitchID, MuteOnUniversalSwitchID, \
+        MuteOffUniversalSwitchID, VolUpUniversalSwitchID, VolDownUniversalSwitchID, \
+        ChannelUpUniversalSwitchID, ChannelDownUniversalSwitchID, OKUniversalSwitchID, \
+        UniversalSwitchIDFor1, UniversalSwitchIDFor2, UniversalSwitchIDFor3, \
+        UniversalSwitchIDFor4, UniversalSwitchIDFor5, UniversalSwitchIDFor6, \
+        UniversalSwitchIDFor7, UniversalSwitchIDFor8, UniversalSwitchIDFor9, \
+    UniversalSwitchIDFor0, OpenIrMacroNo, CloseMactroNo from SHTV;";
+    
+    NSArray *array = [self selectProprty:selectSQL];
+    
+    NSMutableArray *tvs = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [tvs addObject:[SHTV tvWithDictionary:dict]];
+    }
+    
+    return tvs;
+}
+
+
 /// 获得指定种类的灯泡
 - (NSMutableArray *)getLight:(BOOL)canDim {
     

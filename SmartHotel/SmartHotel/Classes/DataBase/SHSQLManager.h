@@ -14,10 +14,15 @@
 #import "SHMacro.h"
 #import "SHMacroCommand.h"
 #import "SHLight.h"
+#import "SHTV.h"
+
 
 @interface SHSQLManager : NSObject
 
 // MARK: - 数据操作
+
+/// 获得房间的电视 
+- (NSMutableArray *)getTV;
 
 /// 获得指定种类的灯泡
 - (NSMutableArray *)getLight:(BOOL)canDim;

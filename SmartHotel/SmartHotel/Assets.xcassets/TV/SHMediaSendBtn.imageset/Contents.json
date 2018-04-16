@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ac_PowerOn.png",
+      "filename" : "SHMediaSendBtn.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ac_PowerOn@2x.png",
+      "filename" : "SHMediaSendBtn@2x.png",
       "scale" : "2x"
     },
     {
