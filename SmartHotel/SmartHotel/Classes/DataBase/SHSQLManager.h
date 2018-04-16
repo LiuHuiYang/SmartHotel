@@ -15,6 +15,7 @@
 #import "SHMacroCommand.h"
 #import "SHLight.h"
 #import "SHTV.h"
+#import "SHChannel.h"
 
 
 @interface SHSQLManager : NSObject

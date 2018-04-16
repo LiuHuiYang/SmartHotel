@@ -59,9 +59,9 @@
     
     alertView.buttonSpace = statusBarHeight;
     
-    alertView.buttonHeight = [UIDevice is_iPad] ? navigationBarHeight + statusBarHeight : tabBarHeight;
+    alertView.buttonHeight = [UIDevice is_iPad] ? navigationBarHeight : tabBarHeight;
     
-    alertView.buttonCornerRadius = [UIDevice is_iPad] ? statusBarHeight : statusBarHeight * 0.5;
+    alertView.buttonCornerRadius = statusBarHeight * 0.5;
     
     alertView.buttonFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:28] : [UIFont boldSystemFontOfSize:16];
     

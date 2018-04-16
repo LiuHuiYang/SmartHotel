@@ -79,7 +79,8 @@
 		04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A092079F58100EBD1BE /* SHServiceButton.m */; };
 		04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */; };
 		04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A19207A175A00EBD1BE /* SHRoomDevice.m */; };
-		04DAFEAC20847167009AA5EB /* SHTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEAB20847167009AA5EB /* SHTV.m */; };
+		04DAFEB220849779009AA5EB /* SHTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEB020849779009AA5EB /* SHTV.m */; };
+		04DAFEB520849788009AA5EB /* SHChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEB420849788009AA5EB /* SHChannel.m */; };
 		04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */; };
 		04FE7B42207E06030003FC85 /* SHCurtainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */; };
 		04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */; };
@@ -217,8 +218,10 @@
 		04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRoomBaseInfomation.m; sourceTree = "<group>"; };
 		04D24A18207A175A00EBD1BE /* SHRoomDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRoomDevice.h; sourceTree = "<group>"; };
 		04D24A19207A175A00EBD1BE /* SHRoomDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRoomDevice.m; sourceTree = "<group>"; };
-		04DAFEAA20847167009AA5EB /* SHTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTV.h; sourceTree = "<group>"; };
-		04DAFEAB20847167009AA5EB /* SHTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTV.m; sourceTree = "<group>"; };
+		04DAFEB020849779009AA5EB /* SHTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTV.m; sourceTree = "<group>"; };
+		04DAFEB120849779009AA5EB /* SHTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTV.h; sourceTree = "<group>"; };
+		04DAFEB320849788009AA5EB /* SHChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHChannel.h; sourceTree = "<group>"; };
+		04DAFEB420849788009AA5EB /* SHChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHChannel.m; sourceTree = "<group>"; };
 		04FE7B3C207DFD7B0003FC85 /* SHCurtain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtain.h; sourceTree = "<group>"; };
 		04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtain.m; sourceTree = "<group>"; };
 		04FE7B3F207E06030003FC85 /* SHCurtainViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainViewCell.h; sourceTree = "<group>"; };
@@ -657,8 +660,9 @@
 		04D249492079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04DAFEAA20847167009AA5EB /* SHTV.h */,
-				04DAFEAB20847167009AA5EB /* SHTV.m */,
+				04DAFEAE20849779009AA5EB /* Channel */,
+				04DAFEAD20849779009AA5EB /* ChannelType */,
+				04DAFEAF20849779009AA5EB /* TV */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1058,6 +1062,31 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		04DAFEAD20849779009AA5EB /* ChannelType */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChannelType;
+			sourceTree = "<group>";
+		};
+		04DAFEAE20849779009AA5EB /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				04DAFEB320849788009AA5EB /* SHChannel.h */,
+				04DAFEB420849788009AA5EB /* SHChannel.m */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		04DAFEAF20849779009AA5EB /* TV */ = {
+			isa = PBXGroup;
+			children = (
+				04DAFEB020849779009AA5EB /* SHTV.m */,
+				04DAFEB120849779009AA5EB /* SHTV.h */,
+			);
+			path = TV;
+			sourceTree = "<group>";
+		};
 		6DC06081E1657E4BAE899CA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1249,6 +1278,7 @@
 				04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */,
 				04D249EC2079E29600EBD1BE /* SHHousekeepingViewController.m in Sources */,
 				04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */,
+				04DAFEB520849788009AA5EB /* SHChannel.m in Sources */,
 				04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */,
 				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
 				049725342080905400B62A9E /* SHLight.m in Sources */,
@@ -1260,7 +1290,7 @@
 				04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */,
 				04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */,
 				04D249DE2079E22300EBD1BE /* SHVIPViewController.m in Sources */,
-				04DAFEAC20847167009AA5EB /* SHTV.m in Sources */,
+				04DAFEB220849779009AA5EB /* SHTV.m in Sources */,
 				04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */,
 				04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
