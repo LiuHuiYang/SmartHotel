@@ -8,10 +8,17 @@
 
 #import "SHTVViewController.h"
 #import "SHSwitchButton.h"
+#import "SHChannelTypeViewCell.h"
 
-@interface SHTVViewController ()
+@interface SHTVViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) SHTV *currentTV;
+
+/// 所有的通道类型
+@property (strong, nonatomic) NSMutableArray *channelTypes;
+
+/// 当前选择的通道类型
+@property (strong, nonatomic) SHChannelType *selectChannelType;
 
 /// 开关机按钮图片
 @property (weak, nonatomic) IBOutlet UIButton *powerIconButton;
@@ -22,20 +29,9 @@
 /// 静单开关
 @property (weak, nonatomic) IBOutlet SHSwitchButton *muteButton;
 
-/// 频道 +
-@property (weak, nonatomic) IBOutlet UIButton *channelUpButton;
 
-/// 频道 -
-@property (weak, nonatomic) IBOutlet UIButton *channelDownButton;
-
-/// 声音 -
-@property (weak, nonatomic) IBOutlet UIButton *volDownButton;
-
-/// 声音 +
-@property (weak, nonatomic) IBOutlet UIButton *volUpButton;
-
-/// OK
-@property (weak, nonatomic) IBOutlet UIButton *sureButton;
+/// 通道类型列表
+@property (weak, nonatomic) IBOutlet UITableView *channelTypeListView;
 
 @end
 
@@ -163,6 +159,29 @@
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.currentTV.subnetID targetDeviceID:self.currentTV.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
+// MARK: - tableView的数据源与代理
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.selectChannelType = self.channelTypes[indexPath.row];
+    
+    printLog(@"选择了%@", self.selectChannelType.typeName);
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.channelTypes.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SHChannelTypeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHChannelTypeViewCell class]) forIndexPath:indexPath];
+    
+    cell.channelType = self.channelTypes[indexPath.row];
+    
+    return cell;
+}
+
 // MARK: - UI
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -171,8 +190,9 @@
     
     self.currentTV = [[[SHSQLManager shareSHSQLManager] getTV] lastObject];
     
+    self.channelTypes  = [[SHSQLManager shareSHSQLManager] getAllChannelTypes:self.currentTV];
     
-    
+    printLog(@"==== %@", self.channelTypes);
 }
 
 - (void)viewDidLoad {
@@ -180,12 +200,9 @@
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"TV"];
     
-    self.channelUpButton.showsTouchWhenHighlighted = YES;
-    self.channelDownButton.showsTouchWhenHighlighted = YES;
-    self.volUpButton.showsTouchWhenHighlighted = YES;
-    self.volDownButton.showsTouchWhenHighlighted = YES;
-    self.sureButton.showsTouchWhenHighlighted = YES;
+    [self.channelTypeListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHChannelTypeViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHChannelTypeViewCell class])];
     
+    self.channelTypeListView.rowHeight = [SHChannelTypeViewCell rowHeightForChannelTypeViewCell];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -21,6 +21,43 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 获得指定电视的频道类型
+- (NSMutableArray *)getAllChannelTypes:(SHTV *)tv {
+    
+    // 1.先找出所有的种类
+    NSString *typeSQL = [NSString stringWithFormat:@"select distinct SHChannelType from SHTVChannels where SHTVID = %zd;", tv.tvID];
+    
+    NSArray *typeArray = [self selectProprty:typeSQL];
+    
+    NSMutableArray *types = [NSMutableArray arrayWithCapacity:typeArray.count];
+    
+    for (NSDictionary *typeDict in typeArray) {
+        
+        SHChannelType *channelType = [[SHChannelType alloc] init];
+        channelType.typeName = [typeDict objectForKey:@"SHChannelType"];
+        
+        // 查询对应的所有频道
+//        printLog(@"当前字典: %@", dict);
+        NSString *channelSQL = [NSString stringWithFormat:@"select SHTVID, SHChannelType, SHChannelID, ChannelName, ChannelIRNumber, ChannelIconID, SubnetID, DeviceID, DelayTimeBetweenTowIRMillisecend from SHTVChannels where SHChannelType = '%@' and SHTVID = %zd", channelType.typeName, tv.tvID];
+        
+        NSArray *channelArray = [self selectProprty:channelSQL];
+        
+        NSMutableArray *channels = [NSMutableArray arrayWithCapacity:channelArray.count];
+        
+        for (NSDictionary *channelDict in channelArray) {
+            
+//            printLog(@"==== %@", channelDict);
+            [channels addObject: [SHChannel channelWithDictionary:channelDict]];
+        }
+        
+        channelType.channels = channels;
+        
+        [types addObject:channelType];
+    }
+    
+    return types;
+}
+
 /// 获得房间的电视
 - (NSMutableArray *)getTV {
     

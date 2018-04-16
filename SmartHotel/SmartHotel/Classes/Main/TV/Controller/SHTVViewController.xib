@@ -13,15 +13,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHTVViewController">
             <connections>
-                <outlet property="channelDownButton" destination="sUR-Uq-26E" id="g3q-wL-FBQ"/>
-                <outlet property="channelUpButton" destination="jyC-zK-XDF" id="kFC-d4-UUR"/>
+                <outlet property="channelTypeListView" destination="aul-eS-e3b" id="iIJ-Xl-CGq"/>
                 <outlet property="muteButton" destination="p2q-dQ-7Rn" id="cj6-W5-Esd"/>
                 <outlet property="powerIconButton" destination="3YW-MW-L5e" id="6gr-Y4-Wxc"/>
                 <outlet property="powerSwitchButton" destination="AQS-NK-ZRd" id="LTx-i7-Khu"/>
-                <outlet property="sureButton" destination="OU1-Aj-LKe" id="D8S-YH-Rbd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="volDownButton" destination="EwT-gu-r33" id="vSp-jG-u30"/>
-                <outlet property="volUpButton" destination="V3P-ne-qmf" id="4v7-Zo-Ogm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,11 +30,45 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBj-X4-yuA">
                             <rect key="frame" x="370.5" y="25" width="130.5" height="449.5"/>
-                            <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="w1T-qr-fqj">
+                                    <rect key="frame" x="-0.5" y="0.0" width="130.5" height="449.5"/>
+                                </imageView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aul-eS-e3b">
+                                    <rect key="frame" x="0.0" y="0.5" width="130.5" height="449.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="Fkm-n5-L0a"/>
+                                        <outlet property="delegate" destination="-1" id="Dsb-Fn-xQ7"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="w1T-qr-fqj" firstAttribute="centerY" secondItem="wBj-X4-yuA" secondAttribute="centerY" id="Lvb-kX-nK7"/>
+                                <constraint firstItem="aul-eS-e3b" firstAttribute="width" secondItem="wBj-X4-yuA" secondAttribute="width" id="MCf-i6-FBe"/>
+                                <constraint firstItem="aul-eS-e3b" firstAttribute="centerY" secondItem="wBj-X4-yuA" secondAttribute="centerY" id="Omy-Xb-0xo"/>
+                                <constraint firstItem="w1T-qr-fqj" firstAttribute="centerX" secondItem="wBj-X4-yuA" secondAttribute="centerX" id="bIY-2d-TYe"/>
+                                <constraint firstItem="w1T-qr-fqj" firstAttribute="height" secondItem="wBj-X4-yuA" secondAttribute="height" id="hsq-Gw-c1P"/>
+                                <constraint firstItem="w1T-qr-fqj" firstAttribute="width" secondItem="wBj-X4-yuA" secondAttribute="width" id="nDz-pZ-JCh"/>
+                                <constraint firstItem="aul-eS-e3b" firstAttribute="centerX" secondItem="wBj-X4-yuA" secondAttribute="centerX" id="qmR-yo-tKX"/>
+                                <constraint firstItem="aul-eS-e3b" firstAttribute="height" secondItem="wBj-X4-yuA" secondAttribute="height" id="s9H-eI-ohH"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1v-b4-qwI">
                             <rect key="frame" x="550" y="25" width="326" height="449.5"/>
-                            <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="L5f-vb-5og">
+                                    <rect key="frame" x="0.0" y="0.0" width="326" height="449.5"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="L5f-vb-5og" firstAttribute="centerY" secondItem="n1v-b4-qwI" secondAttribute="centerY" id="H0e-hH-5Ld"/>
+                                <constraint firstItem="L5f-vb-5og" firstAttribute="width" secondItem="n1v-b4-qwI" secondAttribute="width" id="QRw-HP-GH7"/>
+                                <constraint firstItem="L5f-vb-5og" firstAttribute="height" secondItem="n1v-b4-qwI" secondAttribute="height" id="qpv-Jj-1zd"/>
+                                <constraint firstItem="L5f-vb-5og" firstAttribute="centerX" secondItem="n1v-b4-qwI" secondAttribute="centerX" id="sPX-x1-RtG"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jID-WW-Cml">
                             <rect key="frame" x="-5" y="25" width="326.5" height="449.5"/>
@@ -129,7 +159,7 @@
                                         <action selector="sureButtonClick" destination="-1" eventType="touchUpInside" id="5sA-x4-eHh"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUR-Uq-26E">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUR-Uq-26E">
                                     <rect key="frame" x="216" y="155" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -140,7 +170,7 @@
                                         <action selector="channelDownButtonClick" destination="-1" eventType="touchUpInside" id="C86-DT-3IW"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3P-ne-qmf">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3P-ne-qmf">
                                     <rect key="frame" x="139" y="79" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -154,7 +184,7 @@
                                         <action selector="volUpButtonClick" destination="-1" eventType="touchUpInside" id="8Xx-3i-m8d"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-zK-XDF">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-zK-XDF">
                                     <rect key="frame" x="62" y="155.5" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -165,7 +195,7 @@
                                         <action selector="channelUpButtonClick" destination="-1" eventType="touchUpInside" id="Bq0-Gc-dsX"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwT-gu-r33">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwT-gu-r33">
                                     <rect key="frame" x="139" y="232" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -182,7 +212,9 @@
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l17-W5-yuH">
                                             <rect key="frame" x="0.5" y="0.0" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="1" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="1" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor1Click" destination="-1" eventType="touchUpInside" id="PKH-yO-IHB"/>
                                             </connections>
@@ -190,7 +222,9 @@
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWg-e6-ipf">
                                             <rect key="frame" x="68.5" y="0.0" width="53.5" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="2" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="2" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor2Click" destination="-1" eventType="touchUpInside" id="WBw-QB-EHC"/>
                                             </connections>
@@ -198,7 +232,9 @@
                                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45J-57-lNX">
                                             <rect key="frame" x="137" y="0.0" width="53.5" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="3" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="3" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor3Click" destination="-1" eventType="touchUpInside" id="13h-t3-OjW"/>
                                             </connections>
@@ -206,7 +242,9 @@
                                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-Li-piK">
                                             <rect key="frame" x="205.5" y="0.0" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="4" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="4" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor4Click" destination="-1" eventType="touchUpInside" id="pE5-Cv-qDT"/>
                                             </connections>
@@ -214,7 +252,9 @@
                                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHo-VP-kkM">
                                             <rect key="frame" x="273.5" y="0.0" width="53.5" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="5" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="5" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor5Click" destination="-1" eventType="touchUpInside" id="ISA-Ld-ee5"/>
                                             </connections>
@@ -222,7 +262,9 @@
                                         <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TN-v8-yC2">
                                             <rect key="frame" x="0.5" y="83" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="6" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="6" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor6Click" destination="-1" eventType="touchUpInside" id="3R5-2u-ofq"/>
                                             </connections>
@@ -230,7 +272,9 @@
                                         <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxe-Hf-UH1">
                                             <rect key="frame" x="68.5" y="82.5" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="7" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="7" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor7Click" destination="-1" eventType="touchUpInside" id="HU5-WE-ni3"/>
                                             </connections>
@@ -238,7 +282,9 @@
                                         <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5C-A7-FQt">
                                             <rect key="frame" x="137.5" y="83" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="8" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="8" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor8Click" destination="-1" eventType="touchUpInside" id="4jN-wA-hgC"/>
                                             </connections>
@@ -246,7 +292,9 @@
                                         <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCk-7H-bwk">
                                             <rect key="frame" x="205.5" y="83" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="9" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="9" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor9Click" destination="-1" eventType="touchUpInside" id="LSm-2V-b7T"/>
                                             </connections>
@@ -254,7 +302,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-g3-Mro">
                                             <rect key="frame" x="274" y="83" width="53" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="0" backgroundImage="SHMediaSendBtn"/>
+                                            <state key="normal" title="0" backgroundImage="SHMediaSendBtn">
+                                                <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <connections>
                                                 <action selector="numberPadFor0Click" destination="-1" eventType="touchUpInside" id="9X5-ZV-FoE"/>
                                             </connections>

@@ -36,6 +36,7 @@
 #import "SHLight.h"
 #import "SHTV.h"
 #import "SHChannel.h"
+#import "SHChannelType.h"
 
 #import "SHSwitchButton.h"
 

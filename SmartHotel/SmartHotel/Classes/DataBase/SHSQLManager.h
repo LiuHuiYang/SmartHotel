@@ -16,11 +16,14 @@
 #import "SHLight.h"
 #import "SHTV.h"
 #import "SHChannel.h"
-
+#import "SHChannelType.h"
 
 @interface SHSQLManager : NSObject
 
 // MARK: - 数据操作
+
+/// 获得指定电视的频道类型
+- (NSMutableArray *)getAllChannelTypes:(SHTV *)tv;
 
 /// 获得房间的电视 
 - (NSMutableArray *)getTV;

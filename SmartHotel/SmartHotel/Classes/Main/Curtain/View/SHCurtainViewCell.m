@@ -160,7 +160,7 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
     
     self.openLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Open"];
     
-    self.openLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Close"];
+    self.closeLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Close"];
     
     [self.slider setThumbImage:[UIImage imageNamed:@"Curtain_Sld_Thumb"] forState:UIControlStateNormal];
     
