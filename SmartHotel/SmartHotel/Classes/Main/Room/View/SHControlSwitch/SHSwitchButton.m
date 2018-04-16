@@ -62,15 +62,6 @@
     self.imageView.frame_height = self.frame_height * 0.8;
     self.imageView.frame_width = self.frame_width * 0.4;
     
-    
-    if (self.selected) {
-        
-        self.imageView.frame_x = self.frame_width * 0.55;
-        
-    } else {
-        
-        self.imageView.frame_x = self.frame_width * 0.05;
-    }
 }
 
 - (void)setOn:(BOOL)on {
@@ -84,11 +75,11 @@
     [super setSelected:selected];
     _on = selected;
     
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:(self.isTouchInside ? 0.2 : 0) animations:^{
+       
+         self.imageView.frame_x = self.frame_width * (self.selected ? 0.55 : 0.05);
         
-        [self layoutIfNeeded];
     }];
- 
 }
 
 - (void)setHighlighted:(BOOL)highlighted {}

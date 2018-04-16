@@ -68,41 +68,48 @@
             
         case 0XEFFF: {  // 继电器模块 // 调光器 每五秒广播一次，或者用户触发广播按钮指令
             
-            // 1.获得区域总数
-            Byte zoneCount = recivedData[startIndex];
+//            // 1.获得区域总数
+//            Byte zoneCount = recivedData[startIndex];
+//
+//            // 2.获得模块的总通道数量
+//            Byte channelCount = recivedData[startIndex + zoneCount + 1];
+//
+//            // 3.获得每个通道的具体状态
+//            // 所有通道的状态，通道状态的字节数(每个通道的状态用一个bit来表示)
+//            Byte statusForChannel[channelCount];
+//            Byte channelIndex = 0; // 所有通道的状态索引
+//            for (Byte i = 0; i < channelCount/8 + 1; i++) {
+//
+//                // 获得具体的值 -- 代表一个字节
+//                Byte channelStatus = recivedData[startIndex + zoneCount + 2 + i];
+//
+//                for (Byte bit = 0; bit < 8; bit++) {
+//
+//                    Byte lightBress = ((channelStatus & 0x01) == 1) ? lightMaxBrightness : 0;
+//                    statusForChannel[channelIndex] = lightBress;
+//                    ++channelIndex;
+//
+//                    channelStatus >>= 1;
+//                }
+//            }
+//
+//            for (Byte i = 0; i < channelCount; i++) {
+//
+//                for (SHLight *light in self.allLights) {
+//
+//                    if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
+//
+//                        light.brightness = statusForChannel[i];
+//                    }
+//                }
+//            }
             
-            // 2.获得模块的总通道数量
-            Byte channelCount = recivedData[startIndex + zoneCount + 1];
-            
-            // 3.获得每个通道的具体状态
-            // 所有通道的状态，通道状态的字节数(每个通道的状态用一个bit来表示)
-            Byte statusForChannel[channelCount];
-            Byte channelIndex = 0; // 所有通道的状态索引
-            for (Byte i = 0; i < channelCount/8 + 1; i++) {
+            if (subNetID == self.roomInfo.subNetIDForZoneBeast && deviceID == self.roomInfo.deviceIDForZoneBeast) {
                 
-                // 获得具体的值 -- 代表一个字节
-                Byte channelStatus = recivedData[startIndex + zoneCount + 2 + i];
-                
-                for (Byte bit = 0; bit < 8; bit++) {
-                    
-                    Byte lightBress = ((channelStatus & 0x01) == 1) ? lightMaxBrightness : 0;
-                    statusForChannel[channelIndex] = lightBress;
-                    ++channelIndex;
-                    
-                    channelStatus >>= 1;
-                }
+                // 再读一下状态
+                [self readStatus];
             }
-            
-            for (Byte i = 0; i < channelCount; i++) {
-                
-                for (SHLight *light in self.allLights) {
-                    
-                    if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
-                        
-                        light.brightness = statusForChannel[i];
-                    }
-                }
-            }
+           
         }
             break;
             
@@ -141,7 +148,6 @@
                         if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
                             
                             light.brightness = recivedData[startIndex + i + 1];
-                            
                         }
                     }
                 }
@@ -154,9 +160,10 @@
             break;
     }
     
-    if (operatorCode == 0X0032 || operatorCode == 0X0034) {
+    if (operatorCode == 0X0032 || operatorCode == 0x0034) {
         
         [self.lightListView reloadData];
+        [self.realayListView reloadData];
     }
 }
 
@@ -262,6 +269,12 @@
 }
 
 
+/// 读取状态
+- (void)readStatus {
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X0033 targetSubnetID:self.roomInfo.subNetIDForZoneBeast targetDeviceID:self.roomInfo.deviceIDForZoneBeast additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
@@ -275,8 +288,7 @@
     self.allSences = [[SHSQLManager shareSHSQLManager] getAllSences];
     [self.senceListView reloadData];
     
-    // 读取所有Light的状态
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X0033 targetSubnetID:self.roomInfo.subNetIDForZoneBeast targetDeviceID:self.roomInfo.deviceIDForZoneBeast additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    [self readStatus];
     
     NSMutableArray *lights = [NSMutableArray arrayWithArray:self.allLightsCanDim];
     [lights addObjectsFromArray:self.allLightsForRelay];
