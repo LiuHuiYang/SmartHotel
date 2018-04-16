@@ -84,6 +84,8 @@
 		04DAFEB820849D1A009AA5EB /* SHChannelType.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEB720849D1A009AA5EB /* SHChannelType.m */; };
 		04DAFEBD2084A464009AA5EB /* SHChannelTypeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEBB2084A464009AA5EB /* SHChannelTypeViewCell.m */; };
 		04DAFEBE2084A464009AA5EB /* SHChannelTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAFEBC2084A464009AA5EB /* SHChannelTypeViewCell.xib */; };
+		04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEC12084AA88009AA5EB /* SHChannelCollectionViewCell.m */; };
+		04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */; };
 		04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */; };
 		04FE7B42207E06030003FC85 /* SHCurtainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */; };
 		04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */; };
@@ -230,6 +232,9 @@
 		04DAFEBA2084A464009AA5EB /* SHChannelTypeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHChannelTypeViewCell.h; sourceTree = "<group>"; };
 		04DAFEBB2084A464009AA5EB /* SHChannelTypeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHChannelTypeViewCell.m; sourceTree = "<group>"; };
 		04DAFEBC2084A464009AA5EB /* SHChannelTypeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHChannelTypeViewCell.xib; sourceTree = "<group>"; };
+		04DAFEC02084AA88009AA5EB /* SHChannelCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHChannelCollectionViewCell.h; sourceTree = "<group>"; };
+		04DAFEC12084AA88009AA5EB /* SHChannelCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHChannelCollectionViewCell.m; sourceTree = "<group>"; };
+		04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHChannelCollectionViewCell.xib; sourceTree = "<group>"; };
 		04FE7B3C207DFD7B0003FC85 /* SHCurtain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtain.h; sourceTree = "<group>"; };
 		04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtain.m; sourceTree = "<group>"; };
 		04FE7B3F207E06030003FC85 /* SHCurtainViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainViewCell.h; sourceTree = "<group>"; };
@@ -678,6 +683,7 @@
 		04D2494A2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04DAFEBF2084AA72009AA5EB /* ChannelCell */,
 				04DAFEB92084A44C009AA5EB /* ChannelTypeCell */,
 			);
 			path = View;
@@ -1108,6 +1114,16 @@
 			path = ChannelTypeCell;
 			sourceTree = "<group>";
 		};
+		04DAFEBF2084AA72009AA5EB /* ChannelCell */ = {
+			isa = PBXGroup;
+			children = (
+				04DAFEC02084AA88009AA5EB /* SHChannelCollectionViewCell.h */,
+				04DAFEC12084AA88009AA5EB /* SHChannelCollectionViewCell.m */,
+				04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */,
+			);
+			path = ChannelCell;
+			sourceTree = "<group>";
+		};
 		6DC06081E1657E4BAE899CA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,6 +1210,7 @@
 				0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */,
 				04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */,
 				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
+				04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
 				04D249DA2079E20D00EBD1BE /* SHCurtainViewController.xib in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
@@ -1309,6 +1326,7 @@
 				04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
 				049725232080546A00B62A9E /* SHMacro.m in Sources */,
+				04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */,
 				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
 				04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */,
 				04D249982079C7F100EBD1BE /* SHLanguageTools.m in Sources */,

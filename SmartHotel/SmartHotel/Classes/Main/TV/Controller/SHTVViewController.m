@@ -9,8 +9,9 @@
 #import "SHTVViewController.h"
 #import "SHSwitchButton.h"
 #import "SHChannelTypeViewCell.h"
+#import "SHChannelCollectionViewCell.h"
 
-@interface SHTVViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SHTVViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) SHTV *currentTV;
 
@@ -32,6 +33,9 @@
 
 /// 通道类型列表
 @property (weak, nonatomic) IBOutlet UITableView *channelTypeListView;
+
+/// 具体的频道列表
+@property (weak, nonatomic) IBOutlet UICollectionView *channelListView;
 
 @end
 
@@ -159,13 +163,35 @@
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.currentTV.subnetID targetDeviceID:self.currentTV.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
+// MARK: - collectionView的数据源与代理
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.selectChannelType.channels.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SHChannelCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHChannelCollectionViewCell class]) forIndexPath:indexPath];
+    
+    cell.channel = self.selectChannelType.channels[indexPath.item];
+    printLog(@"%@ == ", self.selectChannelType.channels);
+    
+    return cell;
+}
+
 // MARK: - tableView的数据源与代理
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     self.selectChannelType = self.channelTypes[indexPath.row];
     
-    printLog(@"选择了%@", self.selectChannelType.typeName);
+    [self.channelListView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -190,9 +216,7 @@
     
     self.currentTV = [[[SHSQLManager shareSHSQLManager] getTV] lastObject];
     
-    self.channelTypes  = [[SHSQLManager shareSHSQLManager] getAllChannelTypes:self.currentTV];
-    
-    printLog(@"==== %@", self.channelTypes);
+    self.channelTypes = [[SHSQLManager shareSHSQLManager] getAllChannelTypes:self.currentTV];
 }
 
 - (void)viewDidLoad {
@@ -203,6 +227,8 @@
     [self.channelTypeListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHChannelTypeViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHChannelTypeViewCell class])];
     
     self.channelTypeListView.rowHeight = [SHChannelTypeViewCell rowHeightForChannelTypeViewCell];
+    
+    [self.channelListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHChannelCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHChannelCollectionViewCell class])];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHTVViewController">
             <connections>
+                <outlet property="channelListView" destination="v3g-B1-SrP" id="5Qa-qg-goA"/>
                 <outlet property="channelTypeListView" destination="aul-eS-e3b" id="iIJ-Xl-CGq"/>
                 <outlet property="muteButton" destination="p2q-dQ-7Rn" id="cj6-W5-Esd"/>
                 <outlet property="powerIconButton" destination="3YW-MW-L5e" id="6gr-Y4-Wxc"/>
@@ -61,11 +62,29 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="L5f-vb-5og">
                                     <rect key="frame" x="0.0" y="0.0" width="326" height="449.5"/>
                                 </imageView>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v3g-B1-SrP">
+                                    <rect key="frame" x="0.0" y="0.0" width="326" height="449.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="n1W-Ez-QCQ">
+                                        <size key="itemSize" width="0.0" height="0.0"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="TdQ-DY-jqY"/>
+                                        <outlet property="delegate" destination="-1" id="mrr-nq-su9"/>
+                                    </connections>
+                                </collectionView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="v3g-B1-SrP" firstAttribute="height" secondItem="L5f-vb-5og" secondAttribute="height" id="6mD-kH-dtg"/>
+                                <constraint firstItem="v3g-B1-SrP" firstAttribute="trailing" secondItem="L5f-vb-5og" secondAttribute="trailing" id="BZD-sm-dNk"/>
+                                <constraint firstItem="v3g-B1-SrP" firstAttribute="width" secondItem="L5f-vb-5og" secondAttribute="width" id="FM4-qb-zVz"/>
                                 <constraint firstItem="L5f-vb-5og" firstAttribute="centerY" secondItem="n1v-b4-qwI" secondAttribute="centerY" id="H0e-hH-5Ld"/>
                                 <constraint firstItem="L5f-vb-5og" firstAttribute="width" secondItem="n1v-b4-qwI" secondAttribute="width" id="QRw-HP-GH7"/>
+                                <constraint firstItem="v3g-B1-SrP" firstAttribute="centerY" secondItem="L5f-vb-5og" secondAttribute="centerY" id="ZMM-gG-PYQ"/>
                                 <constraint firstItem="L5f-vb-5og" firstAttribute="height" secondItem="n1v-b4-qwI" secondAttribute="height" id="qpv-Jj-1zd"/>
                                 <constraint firstItem="L5f-vb-5og" firstAttribute="centerX" secondItem="n1v-b4-qwI" secondAttribute="centerX" id="sPX-x1-RtG"/>
                             </constraints>
