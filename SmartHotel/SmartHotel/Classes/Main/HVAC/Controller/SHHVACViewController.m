@@ -7,6 +7,7 @@
 //
 
 #import "SHHVACViewController.h"
+#import "SHHVACRotationControlView.h"
 
 @interface SHHVACViewController ()
 
@@ -337,7 +338,7 @@
 }
 
 /// 修改模式温度
-- (void)changeModelTemperature:(SInt8)temperature {
+- (void)changeModelTemperature:(NSInteger)temperature {
     
     // 发送温度
     Byte temperatureData[2] = { 0 };
@@ -412,7 +413,6 @@
     
     // FIXME: 统一取成0，如果有问题再说。
     Byte readHVACdata[] = { 0 };
-    
     
     // 2.读取空调的温度范围
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X1900 targetSubnetID:self.roomInfo.subNetIDForDDP targetDeviceID:self.roomInfo.deviceIDForDDP additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];

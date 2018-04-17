@@ -87,6 +87,7 @@
 		04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEC12084AA88009AA5EB /* SHChannelCollectionViewCell.m */; };
 		04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */; };
 		04E4DCFC20859A4C00AB17E2 /* UIImage+SaveAndGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */; };
+		04E4DD042085CDD000AB17E2 /* SHHVACRotationControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DD032085CDD000AB17E2 /* SHHVACRotationControlView.m */; };
 		04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */; };
 		04FE7B42207E06030003FC85 /* SHCurtainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */; };
 		04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */; };
@@ -238,6 +239,8 @@
 		04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHChannelCollectionViewCell.xib; sourceTree = "<group>"; };
 		04E4DCFA20859A4B00AB17E2 /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
 		04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
+		04E4DD022085CDD000AB17E2 /* SHHVACRotationControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACRotationControlView.h; sourceTree = "<group>"; };
+		04E4DD032085CDD000AB17E2 /* SHHVACRotationControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVACRotationControlView.m; sourceTree = "<group>"; };
 		04FE7B3C207DFD7B0003FC85 /* SHCurtain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtain.h; sourceTree = "<group>"; };
 		04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtain.m; sourceTree = "<group>"; };
 		04FE7B3F207E06030003FC85 /* SHCurtainViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainViewCell.h; sourceTree = "<group>"; };
@@ -651,6 +654,7 @@
 		04D249462079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04E4DD012085CDB300AB17E2 /* RotationControlView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1129,6 +1133,15 @@
 			path = ChannelCell;
 			sourceTree = "<group>";
 		};
+		04E4DD012085CDB300AB17E2 /* RotationControlView */ = {
+			isa = PBXGroup;
+			children = (
+				04E4DD022085CDD000AB17E2 /* SHHVACRotationControlView.h */,
+				04E4DD032085CDD000AB17E2 /* SHHVACRotationControlView.m */,
+			);
+			path = RotationControlView;
+			sourceTree = "<group>";
+		};
 		6DC06081E1657E4BAE899CA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1313,6 +1326,7 @@
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
 				04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */,
 				04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */,
+				04E4DD042085CDD000AB17E2 /* SHHVACRotationControlView.m in Sources */,
 				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
 				04D2498A2079C77800EBD1BE /* NSObject+Log.m in Sources */,
 				04D249882079C77800EBD1BE /* UIColor+Hex.m in Sources */,

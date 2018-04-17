@@ -43,6 +43,7 @@
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:title attributes: @{NSFontAttributeName:([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue-Bold" size:32] : [UIFont fontWithName:@"HelveticaNeue-Bold" size:22]), NSForegroundColorAttributeName: [UIColor whiteColor]} ];
         
         alertView.titleLable.attributedText = attributedText;
+        alertView.titleLable.numberOfLines = 0;
         
     }
     
@@ -53,6 +54,7 @@
         NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:@{NSFontAttributeName: ([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue" size:28] : [UIFont fontWithName:@"HelveticaNeue" size:16]), NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
         
         alertView.messageLabel.attributedText = attributedMessage;
+        alertView.messageLabel.numberOfLines = 0;
     }
     
     // =============  中间的按钮 ======================
