@@ -73,7 +73,6 @@
                                     </collectionViewFlowLayout>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="TdQ-DY-jqY"/>
-                                        <outlet property="delegate" destination="-1" id="mrr-nq-su9"/>
                                     </connections>
                                 </collectionView>
                             </subviews>
@@ -167,7 +166,7 @@
                                         <constraint firstAttribute="width" constant="203" id="FXf-2O-VeP"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OU1-Aj-LKe">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OU1-Aj-LKe">
                                     <rect key="frame" x="138.5" y="155.5" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>

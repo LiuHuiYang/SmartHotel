@@ -41,5 +41,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow current applications access to Camera?</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Allow current applications to add photos to the album？</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow current applications access to Photo Libary?</string>
 </dict>
 </plist>

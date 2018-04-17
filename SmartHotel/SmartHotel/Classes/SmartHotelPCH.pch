@@ -40,6 +40,8 @@
 
 #import "SHSwitchButton.h"
 
+#import "UIImage+SaveAndGet.h"
+
 #endif
 
 #endif /* SmartHotelPCH_pch */

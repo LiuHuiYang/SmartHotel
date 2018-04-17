@@ -201,7 +201,6 @@
     // 更新当前时间
     self.currentTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute];
     
-   
     // 更新日期
     NSString *week = nil;
     switch (currentTime.weekday) {

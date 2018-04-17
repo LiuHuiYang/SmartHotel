@@ -86,6 +86,7 @@
 		04DAFEBE2084A464009AA5EB /* SHChannelTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAFEBC2084A464009AA5EB /* SHChannelTypeViewCell.xib */; };
 		04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEC12084AA88009AA5EB /* SHChannelCollectionViewCell.m */; };
 		04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */; };
+		04E4DCFC20859A4C00AB17E2 /* UIImage+SaveAndGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */; };
 		04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */; };
 		04FE7B42207E06030003FC85 /* SHCurtainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B40207E06030003FC85 /* SHCurtainViewCell.m */; };
 		04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FE7B41207E06030003FC85 /* SHCurtainViewCell.xib */; };
@@ -235,6 +236,8 @@
 		04DAFEC02084AA88009AA5EB /* SHChannelCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHChannelCollectionViewCell.h; sourceTree = "<group>"; };
 		04DAFEC12084AA88009AA5EB /* SHChannelCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHChannelCollectionViewCell.m; sourceTree = "<group>"; };
 		04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHChannelCollectionViewCell.xib; sourceTree = "<group>"; };
+		04E4DCFA20859A4B00AB17E2 /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
+		04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
 		04FE7B3C207DFD7B0003FC85 /* SHCurtain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtain.h; sourceTree = "<group>"; };
 		04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtain.m; sourceTree = "<group>"; };
 		04FE7B3F207E06030003FC85 /* SHCurtainViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainViewCell.h; sourceTree = "<group>"; };
@@ -396,6 +399,8 @@
 		04D2492C2079C6CD00EBD1BE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04E4DCFA20859A4B00AB17E2 /* UIImage+SaveAndGet.h */,
+				04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */,
 				04D249A02079C90200EBD1BE /* SHConstraint.h */,
 				04D249992079C90000EBD1BE /* SHConstraint.m */,
 				04D2499C2079C90100EBD1BE /* TYCustomAlertView.h */,
@@ -1284,6 +1289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
+				04E4DCFC20859A4C00AB17E2 /* UIImage+SaveAndGet.m in Sources */,
 				04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */,
 				04D24A062079EE1900EBD1BE /* SHModuleSwitchButton.m in Sources */,
 				04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */,

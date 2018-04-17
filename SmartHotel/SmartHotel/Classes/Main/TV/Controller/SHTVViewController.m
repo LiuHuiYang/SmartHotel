@@ -21,6 +21,9 @@
 /// 当前选择的通道类型
 @property (strong, nonatomic) SHChannelType *selectChannelType;
 
+/// 播放通道
+@property (strong, nonatomic) SHChannel *currentChannel;
+
 /// 开关机按钮图片
 @property (weak, nonatomic) IBOutlet UIButton *powerIconButton;
 
@@ -36,6 +39,9 @@
 
 /// 具体的频道列表
 @property (weak, nonatomic) IBOutlet UICollectionView *channelListView;
+
+/// 长按手势
+@property (weak, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @end
 
@@ -157,7 +163,6 @@
 /// 发送电视的控制信号
 - (void)sendControlTVData:(NSUInteger)switchNumber {
     
-    
     Byte controlData[2] = {switchNumber, 0XFF};
     
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.currentTV.subnetID targetDeviceID:self.currentTV.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
@@ -180,7 +185,6 @@
     SHChannelCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHChannelCollectionViewCell class]) forIndexPath:indexPath];
     
     cell.channel = self.selectChannelType.channels[indexPath.item];
-    printLog(@"%@ == ", self.selectChannelType.channels);
     
     return cell;
 }
@@ -210,6 +214,22 @@
 
 // MARK: - UI
 
+- (void)viewDidLayoutSubviews {
+    
+    [super viewDidLayoutSubviews];
+   
+    CGFloat itemMarign = statusBarHeight;
+    NSUInteger totalCols = 3;
+    
+    CGFloat itemWidth = (self.channelListView.frame_width - (totalCols * itemMarign)) / totalCols;
+    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.channelListView.collectionViewLayout;
+    
+    flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
+    flowLayout.minimumLineSpacing = itemMarign;
+    flowLayout.minimumInteritemSpacing = itemMarign;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
@@ -217,7 +237,14 @@
     self.currentTV = [[[SHSQLManager shareSHSQLManager] getTV] lastObject];
     
     self.channelTypes = [[SHSQLManager shareSHSQLManager] getAllChannelTypes:self.currentTV];
+    
+    // 默认选择第一组
+    [self.channelTypeListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    
+    [self tableView:self.channelTypeListView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -229,11 +256,106 @@
     self.channelTypeListView.rowHeight = [SHChannelTypeViewCell rowHeightForChannelTypeViewCell];
     
     [self.channelListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHChannelCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHChannelCollectionViewCell class])];
+    
+    // 增加长按手势
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(settingChannelPicture:)];
+    
+    longPress.minimumPressDuration = 1.0;
+    
+    [self.channelListView addGestureRecognizer:longPress];
+    
+    self.longPressGestureRecognizer = longPress;
+}
+
+/// 设置频道的图片
+- (void)settingChannelPicture:(UILongPressGestureRecognizer *) longPressGestureRecognizer {
+    
+    if (longPressGestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        
+        return;
+    }
+    
+    NSIndexPath *selectIndexPath = [self.channelListView indexPathForItemAtPoint:[self.longPressGestureRecognizer locationInView:self.channelListView]];
+    
+    self.currentChannel = self.selectChannelType.channels[selectIndexPath.item];
+    printLog(@"=== %@", self.currentChannel.channelName);
+    
+    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Change Picture?" message:nil isCustom:YES];
+    
+    // 相册中获取
+    [alertView addAction:[TYAlertAction actionWithTitle:@"Photos" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+        
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            
+            return;
+        }
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.delegate = self;
+        
+        [self presentViewController:picker animated:YES completion:nil];
+        
+    }]];
+    
+    // 相机中获取
+    [alertView addAction:[TYAlertAction actionWithTitle:@"Camera" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+        
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            return;
+        }
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        picker.delegate = self;
+        
+        [self presentViewController:picker animated:YES completion:nil];
+        
+    }]];
+    
+    // 取消
+    [alertView addAction:[TYAlertAction actionWithTitle:@"Cancel" style:TYAlertActionStyleCancel handler:nil]];
+    
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationDropDown];
+    
+    alertController.backgoundTapDismissEnable = YES;
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// MARK: - 照片的代理
+
+/// 取消操作
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil  ];
+}
+
+/// 获得照片
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *sourceImage = [UIImage darwNewImage:[UIImage fixOrientation:info[UIImagePickerControllerOriginalImage]] width:navigationBarHeight * 2];
+    
+    // 如果是相机，保存到相册中去
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        
+        UIImageWriteToSavedPhotosAlbum(sourceImage, self, nil, nil);
+    }
+    
+   // 保存
+    [UIImage writeImageToDocument:self.currentChannel.channelType imageName:[NSString stringWithFormat:@"%@", @(self.currentChannel.channelIconID)] image:sourceImage];
+   
+//    [self.channelListView reloadData];
 }
 
  

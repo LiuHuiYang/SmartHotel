@@ -38,7 +38,7 @@ NSString *dataBaseName = @"SHDB.sqlite3";
         
         // 查询对应的所有频道
 //        printLog(@"当前字典: %@", dict);
-        NSString *channelSQL = [NSString stringWithFormat:@"select SHTVID, SHChannelType, SHChannelID, ChannelName, ChannelIRNumber, ChannelIconID, SubnetID, DeviceID, DelayTimeBetweenTowIRMillisecend from SHTVChannels where SHChannelType = '%@' and SHTVID = %zd", channelType.typeName, tv.tvID];
+        NSString *channelSQL = [NSString stringWithFormat:@"select SHTVID, SHChannelType, SHChannelID, ChannelName, ChannelIRNumber, ChannelIconID, SubnetID, DeviceID, DelayTimeBetweenTowIRMillisecend from SHTVChannels where SHChannelType = '%@' and SHTVID = %zd order by SHChannelID;", channelType.typeName, tv.tvID];
         
         NSArray *channelArray = [self selectProprty:channelSQL];
         

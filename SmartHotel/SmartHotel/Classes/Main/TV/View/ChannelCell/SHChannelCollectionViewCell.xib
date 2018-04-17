@@ -21,7 +21,25 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBw-Aj-oNH">
                         <rect key="frame" x="0.0" y="0.0" width="190" height="92"/>
-                        <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJD-uV-xzf" customClass="SHLightButton">
+                                <rect key="frame" x="0.5" y="0.0" width="190" height="92"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="TV_ChannelDefault">
+                                    <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fJD-uV-xzf" firstAttribute="centerX" secondItem="MBw-Aj-oNH" secondAttribute="centerX" id="6GB-gq-51T"/>
+                            <constraint firstItem="fJD-uV-xzf" firstAttribute="centerY" secondItem="MBw-Aj-oNH" secondAttribute="centerY" id="A8Y-h0-hYm"/>
+                            <constraint firstItem="fJD-uV-xzf" firstAttribute="width" secondItem="MBw-Aj-oNH" secondAttribute="width" id="DrI-V1-RIT"/>
+                            <constraint firstItem="fJD-uV-xzf" firstAttribute="height" secondItem="MBw-Aj-oNH" secondAttribute="height" id="dXy-s8-hHB"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -34,7 +52,13 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="190" height="92"/>
+            <connections>
+                <outlet property="channelButton" destination="fJD-uV-xzf" id="Lds-eV-asn"/>
+            </connections>
             <point key="canvasLocation" x="24" y="73"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="TV_ChannelDefault" width="89" height="70"/>
+    </resources>
 </document>

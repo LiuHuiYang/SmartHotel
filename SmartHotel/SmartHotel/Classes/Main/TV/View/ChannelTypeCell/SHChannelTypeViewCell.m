@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *nameButton;
 
 
+
 @end
 
 @implementation SHChannelTypeViewCell
