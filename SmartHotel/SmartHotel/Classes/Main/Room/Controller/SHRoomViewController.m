@@ -107,9 +107,7 @@
         }
     }
     
-    [self addChildViewControllers];
     
-    [self setUpTabBar];
     
     // 测试数据
     self.currentRoom.deviceIDForDDP = 212;
@@ -120,6 +118,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self addChildViewControllers];
+    
+    [self setUpTabBar];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gobackhomeController) name:SHControlGoBackHomeControllerNotification object:nil];
     
@@ -165,6 +167,9 @@
         
         [self setSelectedIndex:button.tag];
         
+        SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[button.tag]) topViewController];
+        
+        childController.roomInfo = self.currentRoom;
     }
 }
 
@@ -274,7 +279,7 @@
 /// 设置单个子控制器
 - (void)setUpChildController:(SHModelViewController *)viewController roomInfomation:(SHRoomBaseInfomation *)roomInfomation {
     
-    viewController.roomInfo = roomInfomation;
+//    viewController.roomInfo = roomInfomation;
     
 //    viewController.tabBarItem.image = [[UIImage imageNamed:@"alarmTabBar_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 //    viewController.tabBarItem.selectedImage = [[UIImage imageNamed:@"alarmTabBar_highlighted"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
