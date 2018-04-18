@@ -32,7 +32,7 @@
 
 - (void)setUpUi {
     
-    _on = self.selected;  // 获取它的默认值 
+    _on = self.selected;  // 获取它的默认值
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -62,6 +62,7 @@
     self.imageView.frame_height = self.frame_height * 0.8;
     self.imageView.frame_width = self.frame_width * 0.4;
     
+     self.imageView.frame_x = self.frame_width * (_on ? 0.55 : 0.05);
 }
 
 - (void)setOn:(BOOL)on {

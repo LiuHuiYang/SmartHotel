@@ -23,7 +23,6 @@
 - (void)setLight:(SHLight *)light {
 
     _light = light;
-    
     [self.iconButton setTitle:light.lightName forState:UIControlStateNormal];
 
     self.iconButton.selected = light.brightness;
@@ -61,6 +60,8 @@
     [self.iconButton setTitleColor:SHDefualtTextColor forState:UIControlStateNormal];
 
 //    [self controlButtonClick];
+    
+    
 }
 
 @end
