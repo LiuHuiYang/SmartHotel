@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SHHVACRotationControlViewDelegate <NSObject>
+
+@optional
+
+- (void)changeTemperature:(CGFloat)angle;
+
+@end
+
 @interface SHHVACRotationControlView : UIView
+
+@property (weak, nonatomic) id<SHHVACRotationControlViewDelegate> delegate;
 
 @end

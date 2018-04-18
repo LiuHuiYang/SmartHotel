@@ -9,11 +9,10 @@
 #import "SHHVACViewController.h"
 #import "SHHVACRotationControlView.h"
 
-@interface SHHVACViewController ()
+@interface SHHVACViewController () <SHHVACRotationControlViewDelegate>
 
 /// 电源开关
 @property (weak, nonatomic) IBOutlet SHSwitchButton *powerButton;
-
 
 /// 制冷模式
 @property (weak, nonatomic) IBOutlet UIButton *coldModelButton;
@@ -48,6 +47,12 @@
 /// 控制华氏温度按钮
 @property (weak, nonatomic) IBOutlet UIButton *currentFahrenheitTemperatureButton;
 
+/// 旋转控制温度
+@property (weak, nonatomic) IBOutlet SHHVACRotationControlView *rotationControlView;
+
+/// 旋转图片
+@property (weak, nonatomic) IBOutlet UIImageView *rotateImageView;
+
 
 // MARK: ------------------    增加几个属性 开关，模式，几个温度
 
@@ -74,6 +79,8 @@
 @property (assign, nonatomic) NSInteger startAutoTemperatureRange;
 
 @property (assign, nonatomic) NSInteger endAutoTemperatureRange;
+
+
 
 @end
 
@@ -408,6 +415,22 @@
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3D8 targetSubnetID:self.roomInfo.subNetIDForDDP targetDeviceID:self.roomInfo.deviceIDForDDP additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
 }
 
+// MARK: - UI
+
+- (void)changeTemperature:(CGFloat)angle {
+    
+    // 温度转换
+    NSInteger temperature = 15 + angle * 20 / M_PI;
+    
+    self.rotateImageView.layer.transform = CATransform3DMakeRotation(angle , 0, 0, 1);
+    printLog(@"旋转角度%g", angle);
+    printLog(@"目标温度: %zd", temperature);
+    
+//    [self changeModelTemperature:temperature];
+    [self updateDescriedTemperture:temperature];
+    
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -425,6 +448,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.rotationControlView.delegate = self;
    
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"AC"];
     

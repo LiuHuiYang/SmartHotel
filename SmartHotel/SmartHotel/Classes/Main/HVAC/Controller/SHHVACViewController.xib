@@ -25,6 +25,8 @@
                 <outlet property="fanModelButton" destination="c7v-pM-4sr" id="8Ob-l6-b0p"/>
                 <outlet property="heatModelButton" destination="278-1W-UtR" id="xMX-rN-xdG"/>
                 <outlet property="powerButton" destination="KQY-0C-BcW" id="bAl-OH-gxc"/>
+                <outlet property="rotateImageView" destination="GQT-R9-GAg" id="CmH-nU-Eso"/>
+                <outlet property="rotationControlView" destination="Px6-0Z-WUl" id="yYG-Cz-VaD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -218,16 +220,38 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1V-5r-Qfj">
                             <rect key="frame" x="148" y="44" width="176.5" height="263.5"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ac_circle_thumb" translatesAutoresizingMaskIntoConstraints="NO" id="UoY-I6-2z6">
+                                    <rect key="frame" x="-13" y="-39.5" width="211.5" height="263.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ac_circle_bg" translatesAutoresizingMaskIntoConstraints="NO" id="6lJ-oW-7id">
+                                    <rect key="frame" x="0.0" y="0.0" width="176.5" height="263.5"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ac_circle_In" translatesAutoresizingMaskIntoConstraints="NO" id="GQT-R9-GAg">
+                                    <rect key="frame" x="0.0" y="0.0" width="176.5" height="263.5"/>
+                                </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Px6-0Z-WUl" customClass="SHHVACRotationControlView">
                                     <rect key="frame" x="0.0" y="0.0" width="176.5" height="263.5"/>
-                                    <color key="backgroundColor" red="1" green="0.73246039699999999" blue="0.38300101040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="GQT-R9-GAg" firstAttribute="centerY" secondItem="6lJ-oW-7id" secondAttribute="centerY" id="1uI-WT-d22"/>
                                 <constraint firstItem="Px6-0Z-WUl" firstAttribute="width" secondItem="x1V-5r-Qfj" secondAttribute="width" id="3Xs-WE-vej"/>
+                                <constraint firstItem="UoY-I6-2z6" firstAttribute="centerY" secondItem="x1V-5r-Qfj" secondAttribute="centerY" multiplier="0.7" id="4jl-Hy-cbK"/>
                                 <constraint firstItem="Px6-0Z-WUl" firstAttribute="height" secondItem="x1V-5r-Qfj" secondAttribute="height" id="OoH-qY-md9"/>
+                                <constraint firstItem="GQT-R9-GAg" firstAttribute="width" secondItem="6lJ-oW-7id" secondAttribute="width" id="UeV-nW-Mb3"/>
+                                <constraint firstItem="UoY-I6-2z6" firstAttribute="centerX" secondItem="x1V-5r-Qfj" secondAttribute="centerX" multiplier="1.05" id="Vfu-kQ-RRU"/>
+                                <constraint firstItem="GQT-R9-GAg" firstAttribute="height" secondItem="6lJ-oW-7id" secondAttribute="height" id="aSF-Tw-zR5"/>
+                                <constraint firstItem="6lJ-oW-7id" firstAttribute="centerX" secondItem="x1V-5r-Qfj" secondAttribute="centerX" id="bAs-CM-dQM"/>
                                 <constraint firstItem="Px6-0Z-WUl" firstAttribute="centerX" secondItem="x1V-5r-Qfj" secondAttribute="centerX" id="jx3-cC-jAZ"/>
+                                <constraint firstItem="UoY-I6-2z6" firstAttribute="width" secondItem="x1V-5r-Qfj" secondAttribute="width" multiplier="1.2" id="m1V-ex-UeF"/>
+                                <constraint firstItem="GQT-R9-GAg" firstAttribute="centerX" secondItem="6lJ-oW-7id" secondAttribute="centerX" id="nhg-sE-D0J"/>
+                                <constraint firstItem="6lJ-oW-7id" firstAttribute="height" secondItem="x1V-5r-Qfj" secondAttribute="height" id="qUO-BU-CgV"/>
+                                <constraint firstItem="UoY-I6-2z6" firstAttribute="height" secondItem="x1V-5r-Qfj" secondAttribute="height" id="r3t-yy-Og4"/>
+                                <constraint firstItem="6lJ-oW-7id" firstAttribute="centerY" secondItem="x1V-5r-Qfj" secondAttribute="centerY" id="tKB-qR-jLV"/>
+                                <constraint firstItem="6lJ-oW-7id" firstAttribute="width" secondItem="x1V-5r-Qfj" secondAttribute="width" id="wea-jy-m6S"/>
                                 <constraint firstItem="Px6-0Z-WUl" firstAttribute="centerY" secondItem="x1V-5r-Qfj" secondAttribute="centerY" id="zXB-P0-IgJ"/>
                             </constraints>
                         </view>
@@ -279,6 +303,9 @@
         <image name="Share_SmallBG" width="783" height="402"/>
         <image name="ac_auto_hightlighted" width="45" height="45"/>
         <image name="ac_auto_normal" width="45" height="45"/>
+        <image name="ac_circle_In" width="172" height="172"/>
+        <image name="ac_circle_bg" width="193" height="204"/>
+        <image name="ac_circle_thumb" width="215" height="153"/>
         <image name="ac_cold_hightlighted" width="45" height="45"/>
         <image name="ac_cold_normal" width="45" height="45"/>
         <image name="ac_cool_hightlighted" width="45" height="45"/>
