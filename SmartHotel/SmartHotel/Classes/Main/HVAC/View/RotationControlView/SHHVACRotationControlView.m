@@ -10,92 +10,65 @@
 
 @interface SHHVACRotationControlView ()
 
-@property (nonatomic, strong) UIImage *rotateImage;
-@property (nonatomic, strong) CALayer *rotateLayer;
 
 @end
 
 @implementation SHHVACRotationControlView
 
-/// 设置界面
-- (void)setUpUi {
-    
-    // 背景图片
-//    UIImage *backgrounImage = [UIImage imageNamed:@"ac_circle_bg"];
-//    CALayer *backgroundLayer = [CALayer layer];
-//    backgroundLayer.contents = (id)(backgrounImage.CGImage);
-//    backgroundLayer.anchorPoint = CGPointMake(0.5 , 0.5);
-//
-//    backgroundLayer.frame = CGRectMake(self.frame_width* 0.5- backgrounImage.size.width* 0.5, self.frame_height * 0.5 - backgrounImage.size.height* 0.5 + 7, backgrounImage.size.width, backgrounImage.size.height);
-//
-//    backgroundLayer.contentsCenter = CGRectMake(self.frame_width * 0.5, self.frame_height * 0.5, backgrounImage.size.width, backgrounImage.size.height);
-//
-//    [self.layer addSublayer:backgroundLayer];
-    
-//    // 旋转图片
-//    self.rotateImage = [UIImage imageNamed:@"ac_circle_In"];
-//    CALayer *rotateLayer = [CALayer layer];
-//    rotateLayer.contentsScale = [UIScreen mainScreen].scale;
-//    rotateLayer.contents = (id)self.rotateImage.CGImage;
-//    rotateLayer.anchorPoint = CGPointMake(0.5 , 0.5);
-//  
-//    self.rotateLayer.frame = CGRectMake(self.frame_width * 0.5 - self.rotateImage.size.width * 0.5, self.frame_height * 0.5 - self.rotateImage.size.height * 0.5, self.rotateImage.size.width, self.rotateImage.size.height);
-//    
-//    
-//    self.rotateLayer.contentsCenter = CGRectMake(self.frame_width * 0.5, self.frame_height * 0.5, self.rotateImage.size.width, self.rotateImage.size.height);
-//    
-//    [self.layer addSublayer:rotateLayer];
-//    
-//    self.rotateLayer = rotateLayer;
-}
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+
+    [self getRotateAngle:touches isMoveEnd:NO];
     
-    if (self = [super initWithCoder:aDecoder]) {
-        
-        [self setUpUi];
+    CGPoint currentPoint = [[touches anyObject] locationInView:self];
+    CGFloat x = currentPoint.x - self.frame_width * 0.5;
+    CGFloat y = currentPoint.y - self.frame_height * 0.5;
+
+    CGFloat square = fabs(x * x) + fabs(y * y);
+    CGFloat base = (self.frame_width * 0.5) * (self.frame_width * 0.5);
+
+    if (square < base) {
+
+        CGFloat adjustedAngle = [self angleBetweenCenterAndPoint:currentPoint];
+
+        if (adjustedAngle >= 0 && adjustedAngle <= M_PI) {
+
+            if ([self.delegate respondsToSelector:@selector(changeTemperature: isEndRotate:)]) {
+
+                [self.delegate changeTemperature:adjustedAngle isEndRotate:NO];
+            }
+        }
     }
-    
-    return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    if (self = [super initWithFrame:frame]) {
+    [self getRotateAngle:touches isMoveEnd:YES];
+}
+
+- (void)getRotateAngle:(NSSet<UITouch *> *)touches isMoveEnd:(BOOL)isMoveEnd {
+    
+    CGPoint currentPoint = [[touches anyObject] locationInView:self];
+    CGFloat x = currentPoint.x - self.frame_width * 0.5;
+    CGFloat y = currentPoint.y - self.frame_height * 0.5;
+    
+    CGFloat square = fabs(x * x) + fabs(y * y);
+    CGFloat base = (self.frame_width * 0.5) * (self.frame_width * 0.5);
+    
+    if (square < base) {
         
-        [self setUpUi];
+        CGFloat adjustedAngle = [self angleBetweenCenterAndPoint:currentPoint];
+        
+        if (adjustedAngle >= 0 && adjustedAngle <= M_PI) {
+            
+            if ([self.delegate respondsToSelector:@selector(changeTemperature: isEndRotate:)]) {
+                
+                [self.delegate changeTemperature:adjustedAngle isEndRotate:isMoveEnd];
+            }
+        }
     }
-    
-    return self;
 }
-
-//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    
-//    CGPoint currentPoint = [[touches anyObject] locationInView:self];
-//    CGFloat x = currentPoint.x - self.frame_width * 0.5;
-//    CGFloat y = currentPoint.y - self.frame_height * 0.5;
-//    
-//    CGFloat square = fabs(x * x) + fabs(y * y);
-//    CGFloat base = (self.frame_width * 0.5 - 10) * (self.frame_width * 0.5 - 10);
-//    
-//    if (square > 50 && square < base) {
-//       
-//        printLog(@"达到要求");
-//        CGFloat adjustedAngle = [self angleBetweenCenterAndPoint:currentPoint];
-//        
-//        if (adjustedAngle >= 0 && adjustedAngle <= M_PI)
-//        {
-//            
-//            self.rotateLayer.transform = CATransform3DMakeRotation(adjustedAngle , 0, 0, 1);
-// 
-//            if ([self.delegate respondsToSelector:@selector(changeTemperature:)]) {
-//                
-//                [self.delegate changeTemperature:adjustedAngle];
-//            }
-//        }
-//    }
-//}
-
 
 - (CGFloat)angleBetweenCenterAndPoint:(CGPoint)point {
     

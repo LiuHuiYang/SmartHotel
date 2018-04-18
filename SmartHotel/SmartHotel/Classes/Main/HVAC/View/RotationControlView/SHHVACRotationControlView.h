@@ -12,12 +12,13 @@
 
 @optional
 
-- (void)changeTemperature:(CGFloat)angle;
+- (void)changeTemperature:(CGFloat)angle isEndRotate:(BOOL)isEndRotate;
 
 @end
 
 @interface SHHVACRotationControlView : UIView
 
 @property (weak, nonatomic) id<SHHVACRotationControlViewDelegate> delegate;
+
 
 @end

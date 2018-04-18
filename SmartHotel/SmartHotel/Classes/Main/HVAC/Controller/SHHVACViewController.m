@@ -53,6 +53,7 @@
 /// 旋转图片
 @property (weak, nonatomic) IBOutlet UIImageView *rotateImageView;
 
+@property (assign, nonatomic) NSInteger lastSendModelTemperature;
 
 // MARK: ------------------    增加几个属性 开关，模式，几个温度
 
@@ -282,6 +283,11 @@
     [self.desiredCelsTemperatureButton setTitle:[NSString stringWithFormat:@"%d °C", temperature] forState:UIControlStateNormal];
     
     [self.desiredFahrenheitTemperatureButton setTitle:[NSString stringWithFormat:@"%zd °F", (NSInteger)(temperature * 1.8 + 32)] forState:UIControlStateNormal];
+    
+    // 转动转盘
+    CGFloat angle = (temperature - 16) * M_PI / 17;
+    self.rotateImageView.layer.transform = CATransform3DMakeRotation(angle , 0, 0, 1);
+    
 }
 
 // MARK: - 控制数据
@@ -417,19 +423,21 @@
 
 // MARK: - UI
 
-- (void)changeTemperature:(CGFloat)angle {
+- (void)changeTemperature:(CGFloat)angle isEndRotate:(BOOL)isEndRotate {
     
-    // 温度转换
-    NSInteger temperature = 15 + angle * 20 / M_PI;
+    if (!isEndRotate) {
+        
+        NSInteger temperature = 16 + angle * 17 / M_PI;
+        
+        self.rotateImageView.layer.transform = CATransform3DMakeRotation(angle , 0, 0, 1);
     
-    self.rotateImageView.layer.transform = CATransform3DMakeRotation(angle , 0, 0, 1);
-    printLog(@"旋转角度%g", angle);
-    printLog(@"目标温度: %zd", temperature);
+        [self updateDescriedTemperture:temperature];
+        
+        self.lastSendModelTemperature = temperature;
+        return;
+    }
     
-//    [self changeModelTemperature:temperature];
-    [self updateDescriedTemperture:temperature];
-    
-    
+    [self changeModelTemperature:self.lastSendModelTemperature];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
