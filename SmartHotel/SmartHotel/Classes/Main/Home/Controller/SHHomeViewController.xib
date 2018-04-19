@@ -90,10 +90,37 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKG-KW-nvF">
-                            <rect key="frame" x="648" y="296.5" width="274" height="64"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="696" y="296.5" width="178" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbj-fa-94G" customClass="SHSwitchButton">
+                                    <rect key="frame" x="104.5" y="7.5" width="73.5" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
+                                    <state key="selected" image="SHSwitchThumb_On"/>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DND" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAp-Ia-2CA">
+                                    <rect key="frame" x="54" y="8" width="45.5" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Main_DND" highlightedImage="Main_DND_Open" translatesAutoresizingMaskIntoConstraints="NO" id="Zzf-El-n3P">
+                                    <rect key="frame" x="0.0" y="7.5" width="49" height="49"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="49" id="G6O-7h-x0e"/>
+                                        <constraint firstAttribute="height" constant="49" id="Rhv-Hi-zOh"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="TAp-Ia-2CA" firstAttribute="leading" secondItem="Zzf-El-n3P" secondAttribute="trailing" constant="5" id="0Ws-0B-tY8"/>
+                                <constraint firstItem="Xbj-fa-94G" firstAttribute="leading" secondItem="TAp-Ia-2CA" secondAttribute="trailing" constant="5" id="7Ua-ku-dEZ"/>
                                 <constraint firstAttribute="height" constant="64" id="DXW-vU-dM7"/>
+                                <constraint firstAttribute="trailing" secondItem="Xbj-fa-94G" secondAttribute="trailing" id="aKP-a9-7ih"/>
+                                <constraint firstItem="Zzf-El-n3P" firstAttribute="leading" secondItem="JKG-KW-nvF" secondAttribute="leading" id="gLJ-SP-xwJ"/>
+                                <constraint firstItem="TAp-Ia-2CA" firstAttribute="height" secondItem="Zzf-El-n3P" secondAttribute="height" id="n5T-cP-R17"/>
+                                <constraint firstItem="TAp-Ia-2CA" firstAttribute="centerY" secondItem="Zzf-El-n3P" secondAttribute="centerY" id="vnQ-lX-ZWG"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWC-Nu-mO9">
@@ -161,9 +188,12 @@
                         <constraint firstItem="N7E-Tg-lpG" firstAttribute="height" secondItem="MWC-Nu-mO9" secondAttribute="height" id="6xA-Ip-RwL"/>
                         <constraint firstItem="4Na-s3-5PK" firstAttribute="top" secondItem="DTk-9r-a80" secondAttribute="top" id="9xI-h6-Mhf"/>
                         <constraint firstItem="MWC-Nu-mO9" firstAttribute="height" secondItem="hOr-cO-pcd" secondAttribute="height" id="AGS-Gf-dho"/>
+                        <constraint firstItem="Xbj-fa-94G" firstAttribute="width" secondItem="ORv-sN-Hl0" secondAttribute="width" id="BTz-Xa-N4O"/>
                         <constraint firstItem="m0B-WS-bLr" firstAttribute="centerX" secondItem="4Na-s3-5PK" secondAttribute="centerX" id="Ek0-sP-7It"/>
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="centerY" secondItem="m0B-WS-bLr" secondAttribute="centerY" id="I1l-sj-oQa"/>
                         <constraint firstItem="MWC-Nu-mO9" firstAttribute="width" secondItem="hOr-cO-pcd" secondAttribute="width" id="IVA-Ek-BZU"/>
+                        <constraint firstItem="Zzf-El-n3P" firstAttribute="width" secondItem="mST-ef-H3N" secondAttribute="width" id="JZb-uC-rOE"/>
+                        <constraint firstItem="Xbj-fa-94G" firstAttribute="height" secondItem="ORv-sN-Hl0" secondAttribute="height" id="Jj7-VF-2a7"/>
                         <constraint firstAttribute="trailing" secondItem="hOr-cO-pcd" secondAttribute="trailing" id="Jjn-gE-Z35"/>
                         <constraint firstItem="JKG-KW-nvF" firstAttribute="height" secondItem="hOr-cO-pcd" secondAttribute="height" id="Mjm-03-mHg"/>
                         <constraint firstItem="m0B-WS-bLr" firstAttribute="top" secondItem="BAy-LO-5vX" secondAttribute="top" id="NXT-10-OXT"/>
@@ -175,16 +205,19 @@
                         <constraint firstItem="hOr-cO-pcd" firstAttribute="bottom" secondItem="gOk-dF-gwg" secondAttribute="centerY" multiplier="0.75" id="VXZ-L0-OtO"/>
                         <constraint firstItem="4Na-s3-5PK" firstAttribute="width" secondItem="DTk-9r-a80" secondAttribute="width" id="WOk-eO-0DN"/>
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="centerX" secondItem="m0B-WS-bLr" secondAttribute="centerX" id="Wsw-ud-HAd"/>
+                        <constraint firstItem="Zzf-El-n3P" firstAttribute="centerY" secondItem="mST-ef-H3N" secondAttribute="centerY" id="Y8r-Vg-vHU"/>
                         <constraint firstAttribute="bottom" secondItem="DTk-9r-a80" secondAttribute="bottom" constant="15" id="YBI-4I-XG2"/>
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="width" secondItem="m0B-WS-bLr" secondAttribute="width" multiplier="0.8" id="bBu-7j-Xk6"/>
                         <constraint firstItem="X0K-fQ-QZg" firstAttribute="height" secondItem="hOr-cO-pcd" secondAttribute="height" id="c9c-pR-Li3"/>
                         <constraint firstItem="JKG-KW-nvF" firstAttribute="centerX" secondItem="hOr-cO-pcd" secondAttribute="centerX" id="eKK-2v-u96"/>
                         <constraint firstItem="BYs-TC-L1x" firstAttribute="height" secondItem="m0B-WS-bLr" secondAttribute="height" multiplier="0.6" id="fAq-3N-p3k"/>
+                        <constraint firstItem="Xbj-fa-94G" firstAttribute="centerY" secondItem="ORv-sN-Hl0" secondAttribute="centerY" id="fpw-CG-AIL"/>
                         <constraint firstItem="DTk-9r-a80" firstAttribute="centerX" secondItem="BAy-LO-5vX" secondAttribute="centerX" id="g1R-p9-COg"/>
                         <constraint firstItem="4Na-s3-5PK" firstAttribute="centerX" secondItem="DTk-9r-a80" secondAttribute="centerX" id="h5v-Q1-ZKR"/>
                         <constraint firstItem="X0K-fQ-QZg" firstAttribute="centerX" secondItem="hOr-cO-pcd" secondAttribute="centerX" id="iTD-Nc-iQN"/>
-                        <constraint firstItem="JKG-KW-nvF" firstAttribute="width" secondItem="hOr-cO-pcd" secondAttribute="width" id="k84-0G-4XC"/>
+                        <constraint firstItem="JKG-KW-nvF" firstAttribute="width" secondItem="hOr-cO-pcd" secondAttribute="width" multiplier="0.65" id="k84-0G-4XC"/>
                         <constraint firstItem="hOr-cO-pcd" firstAttribute="leading" secondItem="SUS-t9-J7v" secondAttribute="trailing" constant="44" id="kEf-lb-td1"/>
+                        <constraint firstItem="Zzf-El-n3P" firstAttribute="height" secondItem="mST-ef-H3N" secondAttribute="height" id="kk0-lY-MAR"/>
                         <constraint firstItem="X0K-fQ-QZg" firstAttribute="width" secondItem="hOr-cO-pcd" secondAttribute="width" id="mBG-2t-Sus"/>
                         <constraint firstItem="N7E-Tg-lpG" firstAttribute="centerX" secondItem="MWC-Nu-mO9" secondAttribute="centerX" id="n1A-sh-OX0"/>
                         <constraint firstItem="X0K-fQ-QZg" firstAttribute="centerY" secondItem="hOr-cO-pcd" secondAttribute="centerY" id="oFa-0s-UvV"/>
@@ -206,6 +239,8 @@
     </objects>
     <resources>
         <image name="Main_Alarm" width="37" height="49"/>
+        <image name="Main_DND" width="47" height="52"/>
+        <image name="Main_DND_Open" width="47" height="52"/>
         <image name="SHSwitchThumb_Off" width="40" height="33"/>
         <image name="SHSwitchThumb_On" width="40" height="33"/>
         <image name="Share_SmallBG" width="783" height="402"/>
