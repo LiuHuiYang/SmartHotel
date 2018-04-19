@@ -69,3 +69,6 @@ NSString *SHControlGoBackHomeControllerNotification = @"SHControlGoBackHomeContr
 
 /// 控制器堆栈时进行隐藏 
 NSString *SHNavigationBarControllerPushHidderTabBarNotification = @"SHNavigationBarControllerPushHidderTabBarNotification";
+
+/// 闹钟开关的通知
+NSString *SHAlarmTimeEnabelNotification = @"SHAlarmTimeEnabelNotification";

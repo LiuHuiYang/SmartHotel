@@ -51,6 +51,11 @@
 /// 环境温度显示
 @property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
 
+/// 闹钟时间显示
+@property (weak, nonatomic) IBOutlet UILabel *alarmTimeLabel;
+
+/// 开关按钮
+@property (weak, nonatomic) IBOutlet SHSwitchButton *alarmTimeButton ;
 
 @end
 
@@ -110,6 +115,21 @@
 
 // MARK: - 视图加载 与显示
 
+/// 闹钟打开与关闭
+- (IBAction)alarmTimeButtonClick {
+    
+    self.alarmTimeButton.on = !self.alarmTimeButton.on;
+    
+    // 发出通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHAlarmTimeEnabelNotification object:@(self.alarmTimeButton.on)];
+}
+
+/// 设置闹钟是否开启
+- (void)setAlalrmTimeEnable:(NSNotification *)notification {
+    
+    self.alarmTimeButton.on = [notification.object boolValue];
+}
+
 /// 显示当前温度
 - (void)showCurrentTemperature:(NSInteger)temperature {
     
@@ -127,6 +147,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAlalrmTimeEnable:) name:SHAlarmTimeEnabelNotification object:nil];
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumberDisplay];
     
@@ -343,6 +365,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

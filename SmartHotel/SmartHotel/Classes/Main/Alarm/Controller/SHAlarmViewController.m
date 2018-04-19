@@ -33,6 +33,8 @@
 
 @property (weak, nonatomic) NSTimer *timer;
 
+
+
 @end
 
 @implementation SHAlarmViewController
@@ -40,6 +42,9 @@
 - (IBAction)alarmEnableButtonClick {
     
     self.alarmEnableButton.on = !self.alarmEnableButton.on;
+    
+    // 发出通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHAlarmTimeEnabelNotification object:@(self.alarmEnableButton.on)];
 }
 
 
@@ -53,8 +58,16 @@
     
 }
 
+/// 设置闹钟是否开启
+- (void)setAlalrmTimeEnable:(NSNotification *)notification {
+    
+    self.alarmEnableButton.on = [notification.object boolValue];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAlalrmTimeEnable:) name:SHAlarmTimeEnabelNotification object:nil];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showCurrentLocalTime) userInfo:nil repeats:YES];
     
@@ -80,6 +93,9 @@
     
     [self.timer invalidate];
     self.timer = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
  
 @end

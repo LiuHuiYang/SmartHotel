@@ -136,7 +136,8 @@ UIKIT_EXTERN NSString *SHControlGoBackHomeControllerNotification;
 /// 控制器堆栈时进行隐藏
 UIKIT_EXTERN NSString *SHNavigationBarControllerPushHidderTabBarNotification;
 
- 
+/// 闹钟开关的通知 
+UIKIT_EXTERN NSString *SHAlarmTimeEnabelNotification;
 
 #endif /* SHConstraint_h */
 
