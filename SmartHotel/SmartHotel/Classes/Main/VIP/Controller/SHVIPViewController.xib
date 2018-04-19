@@ -33,8 +33,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="Y0T-7l-Bde">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAV-Z6-8cg">
-                    <rect key="frame" x="77" y="125" width="870" height="499"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-JR-tst" customClass="SHServiceButton">
                             <rect key="frame" x="133.5" y="46" width="168" height="75"/>
@@ -203,10 +206,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Y0T-7l-Bde" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="0qc-bX-BPh"/>
                 <constraint firstItem="NAV-Z6-8cg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="4PZ-8c-KTe"/>
+                <constraint firstItem="Y0T-7l-Bde" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="Oph-Ne-nq5"/>
                 <constraint firstItem="NAV-Z6-8cg" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="dBD-hP-Xpb"/>
                 <constraint firstItem="NAV-Z6-8cg" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="hCt-DZ-Kgd"/>
-                <constraint firstItem="NAV-Z6-8cg" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="k4G-zs-E8r"/>
+                <constraint firstItem="Y0T-7l-Bde" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="jeB-F7-OfK"/>
+                <constraint firstItem="NAV-Z6-8cg" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="k4G-zs-E8r"/>
+                <constraint firstItem="Y0T-7l-Bde" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="ykq-UX-yYX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
@@ -233,5 +240,6 @@
         <image name="HKServer_Panic_highlighted" width="169" height="80"/>
         <image name="HKServer_Panic_normal" width="169" height="80"/>
         <image name="HKServer_Taxi_normal" width="169" height="80"/>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
     </resources>
 </document>

@@ -26,8 +26,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="8Bv-yI-GyX">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHF-kP-hKJ">
-                    <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THH-vA-3Z4">
                             <rect key="frame" x="0.0" y="37.5" width="174" height="424.5"/>
@@ -59,7 +62,7 @@
                                     <rect key="frame" x="15" y="340.5" width="602" height="84"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8R-1J-Ndw" customClass="SHCameraButton">
-                                            <rect key="frame" x="0.0" y="10" width="139.5" height="64"/>
+                                            <rect key="frame" x="0.0" y="10.5" width="139.5" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="64" id="XN4-n7-edF"/>
                                             </constraints>
@@ -70,7 +73,7 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmA-PE-1pL" customClass="SHCameraButton">
-                                            <rect key="frame" x="154.5" y="10" width="139" height="64"/>
+                                            <rect key="frame" x="154.5" y="10.5" width="139" height="64"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="Button" backgroundImage="CameraDND">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,7 +81,7 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvU-cH-v7F" customClass="SHCameraButton">
-                                            <rect key="frame" x="463" y="9.5" width="139" height="64"/>
+                                            <rect key="frame" x="463" y="10" width="139" height="64"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" backgroundImage="CameraSettings">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,7 +89,7 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aee-Co-6oa" customClass="SHCameraButton">
-                                            <rect key="frame" x="308.5" y="10" width="139.5" height="64"/>
+                                            <rect key="frame" x="308.5" y="10.5" width="139.5" height="64"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="Button" backgroundImage="CameraTalk">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -142,8 +145,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="8Bv-yI-GyX" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="9C2-u7-AyE"/>
                 <constraint firstItem="kHF-kP-hKJ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="BbX-OB-KEH"/>
-                <constraint firstItem="kHF-kP-hKJ" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="IuS-8h-w5k"/>
+                <constraint firstItem="kHF-kP-hKJ" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="IuS-8h-w5k"/>
+                <constraint firstItem="8Bv-yI-GyX" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="bWn-JU-eRW"/>
+                <constraint firstItem="8Bv-yI-GyX" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="elV-9f-adO"/>
+                <constraint firstItem="8Bv-yI-GyX" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="hfj-M9-nRG"/>
                 <constraint firstItem="kHF-kP-hKJ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="pOL-LW-BNP"/>
                 <constraint firstItem="kHF-kP-hKJ" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="y3P-pt-gp7"/>
             </constraints>
@@ -156,5 +163,6 @@
         <image name="CameraTalk" width="137" height="53"/>
         <image name="CameraViewBg" width="643" height="337"/>
         <image name="CameraWait" width="137" height="53"/>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
     </resources>
 </document>

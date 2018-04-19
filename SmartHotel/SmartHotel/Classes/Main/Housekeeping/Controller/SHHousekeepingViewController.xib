@@ -34,8 +34,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-zi-iur">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-lP-w1b">
-                    <rect key="frame" x="77" y="125" width="870" height="499"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8R-E9-n09" customClass="SHServiceButton">
                             <rect key="frame" x="133.5" y="46" width="168" height="75"/>
@@ -204,9 +207,13 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="342-Xn-7gG"/>
+                <constraint firstItem="qdd-zi-iur" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="8hJ-ef-bbr"/>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="9gm-Sd-DS3"/>
-                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="Fjc-qp-TPo"/>
+                <constraint firstItem="f5D-lP-w1b" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="Fjc-qp-TPo"/>
                 <constraint firstItem="f5D-lP-w1b" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="eP4-PL-Gcf"/>
+                <constraint firstItem="qdd-zi-iur" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="gKH-bj-sWR"/>
+                <constraint firstItem="qdd-zi-iur" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="wcs-dI-Tjj"/>
+                <constraint firstItem="qdd-zi-iur" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="ytR-w4-W35"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
@@ -234,5 +241,6 @@
         <image name="HKTakePlates_normal" width="169" height="80"/>
         <image name="HKTowelsRobe_highlighted" width="169" height="80"/>
         <image name="HKTowelsRobe_normal" width="169" height="80"/>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
     </resources>
 </document>

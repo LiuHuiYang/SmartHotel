@@ -22,8 +22,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="0oY-mX-bAS">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HN5-E7-Hum">
-                    <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-KL-1Z1">
                             <rect key="frame" x="0.0" y="0.0" width="870" height="499.5"/>
@@ -44,12 +47,19 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="15P-j0-Zfz"/>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="6Tn-8L-j4Z"/>
                 <constraint firstItem="HN5-E7-Hum" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="F1f-l2-hp8"/>
-                <constraint firstItem="HN5-E7-Hum" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="Qdr-Lv-UzB"/>
+                <constraint firstItem="HN5-E7-Hum" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="Qdr-Lv-UzB"/>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="fn7-UC-2ug"/>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="gCt-61-q0S"/>
                 <constraint firstItem="HN5-E7-Hum" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="m79-lr-rRA"/>
                 <constraint firstItem="HN5-E7-Hum" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="qNF-sx-Xao"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
+    <resources>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
+    </resources>
 </document>

@@ -155,7 +155,8 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room {
     
-    NSString *selectSQL = @"select BuildingID, FloorID, RoomNo, DeviceType, SubnetID, DeviceID, DeciceNO, BuildingName, RoomName, DeviceRemark from CurrentRoomDevices";
+    // IR 以后的暂时没有，所以不获取
+    NSString *selectSQL = @"select BuildingID, FloorID, RoomNo, DeviceType, SubnetID, DeviceID, DeciceNO, BuildingName, RoomName, DeviceRemark from CurrentRoomDevices where DeviceType < 5090 order by DeviceType;";
     
     NSArray *array = [self selectProprty:selectSQL];
     

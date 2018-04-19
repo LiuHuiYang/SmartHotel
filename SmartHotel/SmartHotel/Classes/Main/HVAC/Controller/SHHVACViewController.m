@@ -429,7 +429,9 @@
         
         NSInteger temperature = 16 + angle * 17 / M_PI;
         
-        self.rotateImageView.layer.transform = CATransform3DMakeRotation(angle , 0, 0, 1);
+        [UIView animateWithDuration:0.3 animations:^{
+            self.rotateImageView.layer.transform = CATransform3DMakeRotation(angle , 0, 0, 1);
+        }];
     
         [self updateDescriedTemperture:temperature];
         

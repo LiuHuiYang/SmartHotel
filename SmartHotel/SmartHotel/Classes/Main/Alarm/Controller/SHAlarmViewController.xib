@@ -28,8 +28,11 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="lwV-Wc-vaP">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-lQ-rWv">
-                    <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qno-bf-oBr" userLabel="localView">
                             <rect key="frame" x="225" y="29.5" width="420" height="64"/>
@@ -276,7 +279,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qJY-lQ-rWv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="21j-qS-Jte"/>
-                <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="7IB-gf-VVk"/>
+                <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="7IB-gf-VVk"/>
+                <constraint firstItem="lwV-Wc-vaP" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="Qt6-0p-b3H"/>
+                <constraint firstItem="lwV-Wc-vaP" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="VIX-sk-kz3"/>
+                <constraint firstItem="lwV-Wc-vaP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="bns-G9-GuX"/>
+                <constraint firstItem="lwV-Wc-vaP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="t33-Cu-Yd0"/>
                 <constraint firstItem="qJY-lQ-rWv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="utH-Hl-X7b"/>
                 <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="xRK-eJ-rJS"/>
             </constraints>
@@ -287,6 +294,7 @@
         <image name="CameraListBtn" width="123" height="61"/>
         <image name="SHSwitchThumb_Off" width="40" height="33"/>
         <image name="SHSwitchThumb_On" width="40" height="33"/>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
         <image name="Share_SmallBG" width="783" height="402"/>
         <image name="main_showTime_iPad" width="258" height="59"/>
     </resources>

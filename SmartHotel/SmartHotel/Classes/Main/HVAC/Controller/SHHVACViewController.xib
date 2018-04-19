@@ -35,14 +35,17 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="jq0-mj-aUm">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phP-cI-SK2">
-                    <rect key="frame" x="77" y="124.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSr-uw-Oz6" userLabel="modelView">
                             <rect key="frame" x="0.0" y="371.5" width="870" height="84"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="278-1W-UtR">
-                                    <rect key="frame" x="371.5" y="10.5" width="128" height="64"/>
+                                    <rect key="frame" x="371.5" y="11" width="128" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="WzS-4j-hAR"/>
                                         <constraint firstAttribute="width" constant="128" id="bFk-g4-3yk"/>
@@ -58,7 +61,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hF2-j1-EBu">
-                                    <rect key="frame" x="199.5" y="10.5" width="128" height="64"/>
+                                    <rect key="frame" x="199.5" y="11" width="128" height="64"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Heat" image="ac_cool_normal" backgroundImage="CameraListBtn">
                                         <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,7 +73,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7v-pM-4sr">
-                                    <rect key="frame" x="543.5" y="10.5" width="128" height="64"/>
+                                    <rect key="frame" x="543.5" y="11" width="128" height="64"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Heat" image="ac_fan_normal" backgroundImage="CameraListBtn">
                                         <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,7 +85,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iT1-XI-RIs">
-                                    <rect key="frame" x="715.5" y="10.5" width="128" height="64"/>
+                                    <rect key="frame" x="715.5" y="11" width="128" height="64"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Heat" image="ac_auto_normal" backgroundImage="CameraListBtn">
                                         <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,7 +97,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUD-AI-Fng">
-                                    <rect key="frame" x="27.5" y="10.5" width="128" height="64"/>
+                                    <rect key="frame" x="27.5" y="11" width="128" height="64"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="Heat" image="ac_cold_normal" backgroundImage="CameraListBtn"/>
                                     <state key="selected" image="ac_cold_hightlighted">
@@ -288,7 +291,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="phP-cI-SK2" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="1DN-2u-3Pw"/>
-                <constraint firstItem="phP-cI-SK2" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" multiplier="0.95" id="2MA-hr-VLm"/>
+                <constraint firstItem="phP-cI-SK2" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="2MA-hr-VLm"/>
+                <constraint firstItem="jq0-mj-aUm" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="8Ga-KM-mWd"/>
+                <constraint firstItem="jq0-mj-aUm" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="L8K-y8-q5v"/>
+                <constraint firstItem="jq0-mj-aUm" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="XLQ-xE-dLa"/>
+                <constraint firstItem="jq0-mj-aUm" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="mkv-Jg-U6b"/>
                 <constraint firstItem="phP-cI-SK2" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="vOG-3D-j9v"/>
                 <constraint firstItem="phP-cI-SK2" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="zfQ-ry-t1v"/>
             </constraints>
@@ -300,6 +307,7 @@
         <image name="CameraListBtn" width="123" height="61"/>
         <image name="SHSwitchThumb_Off" width="40" height="33"/>
         <image name="SHSwitchThumb_On" width="40" height="33"/>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
         <image name="Share_SmallBG" width="783" height="402"/>
         <image name="ac_auto_hightlighted" width="45" height="45"/>
         <image name="ac_auto_normal" width="45" height="45"/>

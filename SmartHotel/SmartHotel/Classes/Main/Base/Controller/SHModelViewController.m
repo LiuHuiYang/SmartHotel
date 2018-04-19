@@ -15,7 +15,6 @@
 
 @interface SHModelViewController ()
 
-
 @end
 
 @implementation SHModelViewController
@@ -88,7 +87,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Share_BG_iPad"]]];
+    // 由于在 10.5/12.9的屏幕上位伸变形，所以使用每个模块控制器都添加一张图片
+//    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage resizeImage:@"Share_BG_iPad"]]];
+    
+    self.view.backgroundColor = [UIColor clearColor];
     
     [self setUpNavigationBar];
     

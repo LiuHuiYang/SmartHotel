@@ -120,7 +120,6 @@
     
     self.alarmTimeButton.on = !self.alarmTimeButton.on;
     
-    // 发出通知
     [[NSNotificationCenter defaultCenter] postNotificationName:SHAlarmTimeEnabelNotification object:@(self.alarmTimeButton.on)];
 }
 
