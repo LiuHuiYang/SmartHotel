@@ -50,25 +50,13 @@ NSString *selectMacAddress = @"SHSelectDeviceMacAddress.data";
 
 /// 所有设备网卡地址路径
 NSString *allDeviceMacAddressListPath = @"AllDeviceList.plist";
-
-
-/// 允许修改区域设备是否允许的key
-NSString *authorChangeDeviceisAllow = @"SHAuthorChangeDeviceisAllow";
-
-/// 启与关闭修改设备配置的密码的key
-NSString *authorChangeDevicePasswordKey = @"SHAuthorChangeDevicePasswordKey";
-
-/// 计划保存的值
-NSString *SHSchedualSaveDataNotification = @"SHSchedualSaveDataNotification";
-
-/// 计划执行的通知
-NSString *SHSchedualPrepareExecuteNotification = @"SHSchedualPrepareExecuteNotification";
+ 
 
 /// 回到首页控制器的通知
-NSString *SHControlGoBackHomeControllerNotification = @"SHControlGoBackHomeControllerNotification";
+NSNotificationName SHControlGoBackHomeControllerNotification = @"SHControlGoBackHomeControllerNotification";
 
 /// 控制器堆栈时进行隐藏 
-NSString *SHNavigationBarControllerPushHidderTabBarNotification = @"SHNavigationBarControllerPushHidderTabBarNotification";
+NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification = @"SHNavigationBarControllerPushHidderTabBarNotification";
 
 /// 闹钟开关的通知
-NSString *SHAlarmTimeEnabelNotification = @"SHAlarmTimeEnabelNotification";
+NSNotificationName SHAlarmTimeEnabelNotification = @"SHAlarmTimeEnabelNotification";

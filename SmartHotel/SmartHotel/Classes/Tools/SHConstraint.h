@@ -118,26 +118,15 @@ UIKIT_EXTERN NSString *selectMacAddress;
 /// 所有设备网卡地址路径
 UIKIT_EXTERN NSString *allDeviceMacAddressListPath;
 
-/// 允许修改区域设备是否允许的key
-UIKIT_EXTERN NSString *authorChangeDeviceisAllow;
-
-/// 启与关闭修改设备配置的密码的key
-UIKIT_EXTERN NSString *authorChangeDevicePasswordKey;
-
-/// 计划保存的通知
-UIKIT_EXTERN NSString *SHSchedualSaveDataNotification;
-
-/// 计划执行的通知
-UIKIT_EXTERN NSString *SHSchedualPrepareExecuteNotification;
 
 /// 回到首页控制器的通知
-UIKIT_EXTERN NSString *SHControlGoBackHomeControllerNotification;
+UIKIT_EXTERN NSNotificationName SHControlGoBackHomeControllerNotification;
 
 /// 控制器堆栈时进行隐藏
-UIKIT_EXTERN NSString *SHNavigationBarControllerPushHidderTabBarNotification;
+UIKIT_EXTERN NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification;
 
 /// 闹钟开关的通知 
-UIKIT_EXTERN NSString *SHAlarmTimeEnabelNotification;
+UIKIT_EXTERN NSNotificationName SHAlarmTimeEnabelNotification;
 
 #endif /* SHConstraint_h */
 
