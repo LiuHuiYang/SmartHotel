@@ -8,7 +8,7 @@
 
 #import "SHCameraViewController.h"
 #import "SHCameraViewCell.h"
-#import "SHCameraButton.h"
+#import "SHServiceButton.h"
 
 @interface SHCameraViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -19,16 +19,16 @@
 @property (strong, nonatomic) NSMutableArray *cameraNames;
 
 /// 稍等
-@property (weak, nonatomic) IBOutlet SHCameraButton *waitButton;
+@property (weak, nonatomic) IBOutlet SHServiceButton *waitButton;
 
 /// 请勿打扰
-@property (weak, nonatomic) IBOutlet SHCameraButton *dndButton;
+@property (weak, nonatomic) IBOutlet SHServiceButton *dndButton;
 
 /// 对讲
-@property (weak, nonatomic) IBOutlet SHCameraButton *talkButton;
+@property (weak, nonatomic) IBOutlet SHServiceButton *talkButton;
 
 /// 设置
-@property (weak, nonatomic) IBOutlet SHCameraButton *settingButton;
+@property (weak, nonatomic) IBOutlet SHServiceButton *settingButton;
 
 @end
 
