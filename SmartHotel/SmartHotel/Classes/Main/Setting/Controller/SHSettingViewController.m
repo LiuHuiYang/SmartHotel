@@ -40,9 +40,35 @@
 /// 设置类型
 @property (assign, nonatomic) BOOL isSettingRoomInfo;
 
+/// 保存按钮
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
 @end
 
 @implementation SHSettingViewController
+
+
+/// 点击保存
+- (IBAction)saveButtonClick {
+    
+    // 房间信息
+    printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
+             roomNumber - %zd", self.currentRoomInfo.hotelName,
+             self.currentRoomInfo.buildID, self.currentRoomInfo.floorID,
+             self.currentRoomInfo.roomNumber);
+    
+    // 更新房间信息
+    [[SHSQLManager shareSHSQLManager] updateRoomInfo:self.currentRoomInfo];
+    
+    for (SHRoomDevice *device in self.allDevices) {
+        
+        printLog(@"设备信息: subNetID-%zd, deviceID - %zd, remark - %@ ", device.subnetID, device.deviceID, device.deviceRemark);
+        
+        [[SHSQLManager shareSHSQLManager] updateRoomDevice:device];
+    }
+    
+    [SVProgressHUD showSuccessWithStatus:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Saved"]];
+}
 
 
 // MARK: - 数据源和代理
@@ -55,6 +81,8 @@
         
         if (indexPath.row) {
             
+            printLog(@"当前的设备信息: %zd", indexPath.row - 1);
+            printLog(@"总数: %@", self.allDevices);
             self.selectDevice = self.allDevices[indexPath.row - 1];
         }
         
@@ -118,7 +146,6 @@
     self.currentRoomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
     
     self.allDevices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoomInfo];
-     
     
     // 默认选择第一个
     [self.deviceListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -130,7 +157,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"Settings" withSubTitle:@"Settings"];
+    self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"SETTINGS" withSubTitle:@"Settings"];
+    
+    [self.saveButton setTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Save"] forState:UIControlStateNormal];
     
     [self.deviceListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSettingDeiviceTypeViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSettingDeiviceTypeViewCell class])];
     self.deviceListView.rowHeight = [SHSettingDeiviceTypeViewCell rowHeightForDeviceTypeViewCell];

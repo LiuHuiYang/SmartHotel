@@ -22,6 +22,12 @@
 
 // MARK: - 数据操作
 
+/// 更新房间设备信息
+- (BOOL)updateRoomDevice:(SHRoomDevice *)device;
+
+/// 更新房间信息
+- (BOOL)updateRoomInfo:(SHRoomBaseInfomation *)roomInfo;
+
 /// 获得指定电视的频道类型
 - (NSMutableArray *)getAllChannelTypes:(SHTV *)tv;
 

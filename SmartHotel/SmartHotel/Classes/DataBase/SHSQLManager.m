@@ -21,6 +21,45 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 
 @implementation SHSQLManager
 
+/// 更新房间设备信息
+- (BOOL)updateRoomDevice:(SHRoomDevice *)device {
+    
+    /// 删除这个房间中的这个设备模块(同一类型只有一个)
+    NSString *deleteSQL = [NSString stringWithFormat:@"delete from CurrentRoomDevices   \
+                           where BuildingID = %zd and FloorID = %zd and RoomNo = %zd    \
+                           and DeviceType = %zd;",
+                            device.buildingID, device.floorID, device.roomNo, device.deviceType];
+    
+    [self executeSql:deleteSQL];
+    
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into CurrentRoomDevices   \
+                        (BuildingID , FloorID, RoomNo, DeviceType, SubnetID, DeviceID, \
+                           DeciceNO, BuildingName, RoomName, DeviceRemark) \
+                           values(%zd, %zd, %zd, %zd, %zd, %zd, %zd, '%@', '%@', '%@')",
+                           device.buildingID, device.floorID, device.roomNo, device.deviceType,
+                           device.subnetID, device.deviceID, device.deciceNO, device.buildingName,
+                           device.roomName, device.deviceRemark];
+    
+    return [self executeSql:insertSQL];
+}
+
+/// 更新房间信息
+- (BOOL)updateRoomInfo:(SHRoomBaseInfomation *)roomInfo {
+    
+    //   因为只有一个房间，所以是全部数据都更新
+    
+    NSString *updateSQL = [NSString stringWithFormat:@"update SHRoomBasicInfo set \
+                           SHBuildID = %zd, SHFloorID = %zd, SHRoomNumber = %zd, \
+                           SHRoomNumberDisplay = %zd, SHRoomAlias = '%@',       \
+                           SHHotelName = '%@';", roomInfo.buildID, roomInfo.floorID,
+                           roomInfo.roomNumber, roomInfo.roomNumberDisplay,
+                           roomInfo.roomAlias, roomInfo.hotelName];
+    
+    
+    return [self executeSql:updateSQL];
+}
+
 /// 获得指定电视的频道类型
 - (NSMutableArray *)getAllChannelTypes:(SHTV *)tv {
     
@@ -156,7 +195,9 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room {
     
     // IR 以后的暂时没有，所以不获取
-    NSString *selectSQL = @"select BuildingID, FloorID, RoomNo, DeviceType, SubnetID, DeviceID, DeciceNO, BuildingName, RoomName, DeviceRemark from CurrentRoomDevices where DeviceType < 5090 order by DeviceType;";
+    NSString *selectSQL = @"select BuildingID, FloorID, RoomNo, DeviceType, SubnetID, \
+            DeviceID, DeciceNO, BuildingName, RoomName, DeviceRemark from   \
+    CurrentRoomDevices where DeviceType < 5090 order by DeviceType;";
     
     NSArray *array = [self selectProprty:selectSQL];
     

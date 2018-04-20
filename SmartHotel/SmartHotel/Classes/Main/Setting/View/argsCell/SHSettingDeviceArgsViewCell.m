@@ -24,6 +24,8 @@
 
 // MARK: - 代理
 
+
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     printLog(@"编辑结束");
@@ -43,6 +45,7 @@
     _selectDevice = selectDevice;
     
     switch (self.indexPath.row) {
+            
         case 0:
             self.valueTextField.text = [NSString stringWithFormat:@"%@", @(selectDevice.subnetID)];
             break;
@@ -58,6 +61,9 @@
         default:
             break;
     }
+    
+    self.valueTextField.keyboardType =  self.indexPath.row ? UIKeyboardTypeNumberPad :
+        UIKeyboardTypeDefault;
 }
 
 - (void)setCurrentRoomInfo:(SHRoomBaseInfomation *)currentRoomInfo {
@@ -118,7 +124,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
 
 }
 
