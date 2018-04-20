@@ -51,10 +51,10 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlw-yH-JkC">
-                            <rect key="frame" x="371" y="431.5" width="128" height="64"/>
+                            <rect key="frame" x="307" y="431.5" width="256" height="64"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="128" id="2KB-Nb-Q7n"/>
+                                <constraint firstAttribute="width" constant="256" id="2KB-Nb-Q7n"/>
                                 <constraint firstAttribute="height" constant="64" id="Txg-27-egm"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>

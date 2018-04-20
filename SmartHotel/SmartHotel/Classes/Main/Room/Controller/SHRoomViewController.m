@@ -107,13 +107,16 @@
         }
     }
     
-    
-    
     // 测试数据
     self.currentRoom.deviceIDForDDP = 212;
     self.currentRoom.deviceIDForCardHolder = 117;
     self.currentRoom.deviceIDForDoorBell= 118;
     self.currentRoom.deviceIDForZoneBeast = 213;
+    
+    // 首页要进行传值
+    SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers.firstObject) topViewController];
+    
+    childController.roomInfo = self.currentRoom;
 }
 
 - (void)viewDidLoad {
