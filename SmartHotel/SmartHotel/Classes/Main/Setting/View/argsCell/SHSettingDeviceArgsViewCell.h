@@ -16,6 +16,16 @@
 /// 参数值
 @property (copy, nonatomic) NSString *argValue;
 
+
+/// 当前的房间信息
+@property (strong, nonatomic) SHRoomBaseInfomation *currentRoomInfo;
+
+/// 选择的设备
+@property (strong, nonatomic) SHRoomDevice *selectDevice;
+
+/// 位置
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
 /// 行高
 + (CGFloat)rowHeightForDeviceArgsViewCell;
 

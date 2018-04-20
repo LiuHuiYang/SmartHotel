@@ -76,73 +76,15 @@
     
         SHSettingDeviceArgsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class]) forIndexPath:indexPath];
         
+        cell.indexPath = indexPath;
+        
         if (self.isSettingRoomInfo) {
             
-            cell.argName = self.roomArgNames[indexPath.row];
-            
-            switch (indexPath.row) {
-                    
-                case 0: {
-                 
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.buildID)];
-                }
-                    break;
-                    
-                case 1: {
-                 
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.floorID)];
-                }
-                    break;
-                    
-                case 2: {
-                 
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.roomNumber)];
-                }
-                    break;
-                    
-                case 3: {
-                 
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.roomNumberDisplay)];
-                }
-                    break;
-                    
-                case 4: {
-                 
-                    cell.argValue = self.currentRoomInfo.roomAlias;
-                }
-                    break;
-                    
-                case 5: {
-                    
-                    cell.argValue = self.currentRoomInfo.hotelName;
-                }
-                    break;
-                    
-                    
-                default:
-                    break;
-            }
+            cell.currentRoomInfo = self.currentRoomInfo;
         
         } else {
             
-            cell.argName = self.deviceArgNames[indexPath.row];
-            
-            switch (indexPath.row) {
-                case 0:
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.selectDevice.subnetID)];
-                    break;
-                    
-                case 1:
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.selectDevice.deviceID)];
-                    break;
-                    
-                case 2:
-                    cell.argValue = self.selectDevice.deviceRemark;
-                    break;
-                    
-                default:
-                    break;
-            }
+            cell.selectDevice = self.selectDevice;
         }
         
         return cell;
