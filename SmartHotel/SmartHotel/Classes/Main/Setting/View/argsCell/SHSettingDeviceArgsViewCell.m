@@ -8,7 +8,7 @@
 
 #import "SHSettingDeviceArgsViewCell.h"
 
-@interface SHSettingDeviceArgsViewCell ()
+@interface SHSettingDeviceArgsViewCell () <UITextFieldDelegate>
 
 /// 参数名称
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -16,22 +16,31 @@
 /// 参数值
 @property (weak, nonatomic) IBOutlet UITextField *valueTextField;
 
-/// 房间参数名称
-@property (strong, nonatomic) NSMutableArray *roomArgNames;
-
-/// 设备参数信息
-@property (strong, nonatomic) NSMutableArray *deviceArgNames;
 
 @end
 
 
 @implementation SHSettingDeviceArgsViewCell
 
+// MARK: - 代理
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    printLog(@"编辑结束");
+}
+
+/// 确定返回
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+// MARK: - 设置属性
+
 - (void)setSelectDevice:(SHRoomDevice *)selectDevice {
     
     _selectDevice = selectDevice;
-    
-    self.nameLabel.text = self.deviceArgNames[self.indexPath.row];
     
     switch (self.indexPath.row) {
         case 0:
@@ -54,9 +63,7 @@
 - (void)setCurrentRoomInfo:(SHRoomBaseInfomation *)currentRoomInfo {
     
     _currentRoomInfo = currentRoomInfo;
-    
-    self.nameLabel.text = self.roomArgNames[self.indexPath.row];
-    
+
     switch (self.indexPath.row) {
             
         case 0: {
@@ -101,46 +108,18 @@
     }
 }
 
-//- (void)setArgName:(NSString *)argName {
-//    
-//    _argName = argName.copy;
-//    
-//    self.nameLabel.text = argName;
-//}
-//
-//- (void)setArgValue:(NSString *)argValue {
-//    
-//    _argValue = argValue;
-//    
-//    self.valueTextField.text = argValue;
-//}
+- (void)setArgName:(NSString *)argName {
+    
+    _argName = argName.copy;
+    
+    self.nameLabel.text = argName;
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.roomArgNames = [NSMutableArray arrayWithObjects:
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Building ID"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Floor ID"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Room NO."],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Room NO. Display"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"RoomAlias"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"HotelName"],
-                     
-                     nil];
-    
-    
-    self.deviceArgNames = [NSMutableArray arrayWithObjects:
-                      [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Subnet ID"],
-                      [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Device ID"],
-                      [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"SETTINGS" withSubTitle:@"Remark"],
-                      
-                      nil];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

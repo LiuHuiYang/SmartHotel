@@ -13,10 +13,6 @@
 /// 参数名称
 @property (copy, nonatomic) NSString *argName;
 
-/// 参数值
-@property (copy, nonatomic) NSString *argValue;
-
-
 /// 当前的房间信息
 @property (strong, nonatomic) SHRoomBaseInfomation *currentRoomInfo;
 

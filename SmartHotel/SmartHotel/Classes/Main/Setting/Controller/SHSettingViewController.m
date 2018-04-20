@@ -80,10 +80,12 @@
         
         if (self.isSettingRoomInfo) {
             
+            cell.argName = self.roomArgNames[indexPath.row];
             cell.currentRoomInfo = self.currentRoomInfo;
         
         } else {
             
+            cell.argName = self.deviceArgNames[indexPath.row];
             cell.selectDevice = self.selectDevice;
         }
         
