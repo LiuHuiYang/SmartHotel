@@ -22,16 +22,95 @@
 
 @implementation SHSettingDeviceArgsViewCell
 
+/// 更新相关的值
+- (void)updateValue:(NSString *)value {
+    
+    if (self.currentRoomInfo) {
+        
+        switch (self.indexPath.row) {
+                
+            case 0: {
+                
+                self.currentRoomInfo.buildID = [value integerValue];
+            }
+                break;
+                
+            case 1: {
+                
+                self.currentRoomInfo.floorID = [value integerValue];
+            }
+                break;
+                
+            case 2: {
+                
+                self.currentRoomInfo.roomNumber = [value integerValue];
+            }
+                break;
+                
+            case 3: {
+                
+                self.currentRoomInfo.roomNumberDisplay = [value integerValue];
+            }
+                break;
+                
+            case 4: {
+                
+                self.currentRoomInfo.roomAlias = value;
+            }
+                break;
+                
+            case 5: {
+                
+                self.currentRoomInfo.hotelName = value;
+            }
+                break;
+                
+                
+            default:
+                break;
+        }
+    
+    } else if(self.selectDevice) {
+        
+        switch (self.indexPath.row) {
+            
+            case 0: {
+                
+                self.selectDevice.subnetID = [value integerValue];
+            }
+                break;
+                
+            case 1: {
+                self.selectDevice.deviceID = [value integerValue];
+            }
+                break;
+                
+            case 2: {
+                
+                self.selectDevice.deviceRemark = value;
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 // MARK: - 代理
 
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    [self updateValue:textField.text];
+    
+    return YES;
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    printLog(@"编辑结束");
+    [self updateValue:textField.text];
 }
 
-/// 确定返回
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
@@ -107,7 +186,6 @@
             self.valueTextField.text = currentRoomInfo.hotelName;
         }
             break;
-            
             
         default:
             break;

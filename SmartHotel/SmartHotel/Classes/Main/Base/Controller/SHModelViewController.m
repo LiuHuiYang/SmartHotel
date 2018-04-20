@@ -84,6 +84,13 @@
     self.navigationItem.rightBarButtonItem.customView.frame = CGRectMake(self.view.frame_width - navigationBarHeight * 4, 0, navigationBarHeight * 4, navigationBarHeight);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self setUpNavigationBar];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -91,9 +98,6 @@
 //    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage resizeImage:@"Share_BG_iPad"]]];
     
     self.view.backgroundColor = [UIColor clearColor];
-    
-    [self setUpNavigationBar];
-    
     
     // 增加监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(analyzeReceiveData:) name:SHUdpSocketBroadcastNotification object:nil];

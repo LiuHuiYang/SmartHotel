@@ -51,23 +51,19 @@
 /// 点击保存
 - (IBAction)saveButtonClick {
     
-    // 房间信息
-    printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
-             roomNumber - %zd", self.currentRoomInfo.hotelName,
-             self.currentRoomInfo.buildID, self.currentRoomInfo.floorID,
-             self.currentRoomInfo.roomNumber);
-    
     // 更新房间信息
     [[SHSQLManager shareSHSQLManager] updateRoomInfo:self.currentRoomInfo];
     
+    // 更新设备信息
     for (SHRoomDevice *device in self.allDevices) {
-        
-        printLog(@"设备信息: subNetID-%zd, deviceID - %zd, remark - %@ ", device.subnetID, device.deviceID, device.deviceRemark);
         
         [[SHSQLManager shareSHSQLManager] updateRoomDevice:device];
     }
     
     [SVProgressHUD showSuccessWithStatus:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Saved"]];
+    
+    /// 发出回到首页的通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHControlGoBackHomeControllerNotification object:nil];
 }
 
 
@@ -81,8 +77,6 @@
         
         if (indexPath.row) {
             
-            printLog(@"当前的设备信息: %zd", indexPath.row - 1);
-            printLog(@"总数: %@", self.allDevices);
             self.selectDevice = self.allDevices[indexPath.row - 1];
         }
         
@@ -105,6 +99,8 @@
         SHSettingDeviceArgsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class]) forIndexPath:indexPath];
         
         cell.indexPath = indexPath;
+        cell.selectDevice = nil;
+        cell.currentRoomInfo = nil;  // 消除重用机制的影响
         
         if (self.isSettingRoomInfo) {
             
@@ -235,5 +231,6 @@
     
     return _roomArgNames;
 }
+
 
 @end

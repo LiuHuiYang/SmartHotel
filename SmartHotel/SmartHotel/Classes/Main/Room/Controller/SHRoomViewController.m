@@ -42,9 +42,15 @@
     
     [super viewWillAppear:animated];
     
+    [self resetRoomAndDeviceInfo];
+}
+
+/// 初始化信息
+- (void)resetRoomAndDeviceInfo {
+    
     // 获得当前房间的信息
     self.currentRoom = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
-
+    
     // 查询这个房间的所有设备
     NSMutableArray *devices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoom];
     
@@ -52,7 +58,7 @@
     for (SHRoomDevice *device in devices) {
         
         switch (device.deviceType) {
-            
+                
             case SHDeviceTypeDoorBell: {
                 
                 self.currentRoom.subNetIDForDoorBell = device.subnetID;
@@ -75,7 +81,7 @@
                 break;
                 
             case SHDeviceTypeZoneBeast: {
-             
+                
                 self.currentRoom.subNetIDForZoneBeast = device.subnetID;
                 self.currentRoom.deviceIDForZoneBeast = device.deviceID;
             }
@@ -96,7 +102,7 @@
                 break;
                 
             case SHDeviceTypeZAudio: {
-             
+                
                 self.currentRoom.subNetIDForZAudio = device.subnetID;
                 self.currentRoom.deviceIDForZAudio = device.deviceID;
             }
@@ -107,16 +113,23 @@
         }
     }
     
-    // 测试数据
-    self.currentRoom.deviceIDForDDP = 212;
-    self.currentRoom.deviceIDForCardHolder = 117;
-    self.currentRoom.deviceIDForDoorBell= 118;
-    self.currentRoom.deviceIDForZoneBeast = 213;
-    
     // 首页要进行传值
-    SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers.firstObject) topViewController];
+    SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[0]) topViewController];
     
     childController.roomInfo = self.currentRoom;
+    
+    printLog("============================================");
+    
+    // 房间信息
+    printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
+             roomNumber - %zd", self.currentRoom.hotelName,
+             self.currentRoom.buildID, self.currentRoom.floorID,
+             self.currentRoom.roomNumber);
+    
+    for (SHRoomDevice *device in devices) {
+        
+//        printLog(@"设备信息: subNetID-%zd, deviceID - %zd, remark - %@ ", device.subnetID, device.deviceID, device.deviceRemark);
+    }
 }
 
 - (void)viewDidLoad {
@@ -130,8 +143,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddTabBarScrollView:) name:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -149,6 +160,8 @@
     self.preivousButton.selected = NO;
     self.preivousButton = nil;
     [self setSelectedIndex:0];
+    
+    [self resetRoomAndDeviceInfo];
 }
 
 

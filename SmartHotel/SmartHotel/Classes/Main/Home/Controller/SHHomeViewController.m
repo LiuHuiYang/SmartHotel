@@ -139,6 +139,8 @@
     
     [super viewWillAppear:animated];
     
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumberDisplay];
+    
     /// 读取温度
     [self readTemperature];
 }
@@ -149,7 +151,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAlalrmTimeEnable:) name:SHAlarmTimeEnabelNotification object:nil];
     
-    self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumberDisplay];
+    
     
     // 当前选择的语言
     self.selectLanguageName = [[NSUserDefaults standardUserDefaults] objectForKey:@"LAGUAGEZ_NAME"];

@@ -60,3 +60,4 @@ NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification = @"SHN
 
 /// 闹钟开关的通知
 NSNotificationName SHAlarmTimeEnabelNotification = @"SHAlarmTimeEnabelNotification";
+

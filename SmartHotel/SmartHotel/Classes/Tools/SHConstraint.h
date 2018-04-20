@@ -128,6 +128,9 @@ UIKIT_EXTERN NSNotificationName SHNavigationBarControllerPushHidderTabBarNotific
 /// 闹钟开关的通知 
 UIKIT_EXTERN NSNotificationName SHAlarmTimeEnabelNotification;
 
+/// 设置模块完成后发出更新的通知 
+UIKIT_EXTERN NSNotificationName SHUpdateRoomAndDeviceInfomationNotification;
+
 #endif /* SHConstraint_h */
 
 
