@@ -7,9 +7,8 @@
 //
 
 #import "SHSettingViewController.h"
-
+#import "SHSettingDeiviceTypeViewCell.h"
 #import "SHSettingDeviceArgsViewCell.h"
-
 
 
 @interface SHSettingViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -67,9 +66,9 @@
     
     if (tableView == self.deviceListView) {
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class]) forIndexPath:indexPath];
+        SHSettingDeiviceTypeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeiviceTypeViewCell class]) forIndexPath:indexPath];
         
-        cell.textLabel.text = self.typeNames[indexPath.row];
+        cell.deviceName = self.typeNames[indexPath.row];
         
         return cell;
     
@@ -162,7 +161,6 @@
     [super viewWillAppear:animated];
     
     self.currentRoomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
-    
     self.allDevices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoomInfo];
      
     
@@ -170,7 +168,6 @@
     [self.deviceListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
     
     [self tableView:self.deviceListView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    
 }
 
 
@@ -179,7 +176,9 @@
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"Settings" withSubTitle:@"Settings"];
     
-    self.deviceListView.rowHeight = navigationBarHeight;
+    [self.deviceListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSettingDeiviceTypeViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSettingDeiviceTypeViewCell class])];
+    self.deviceListView.rowHeight = [SHSettingDeiviceTypeViewCell rowHeightForDeviceTypeViewCell];
+    
     [self.deviceListView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
     
     [self.argsListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSettingDeviceArgsViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class])];

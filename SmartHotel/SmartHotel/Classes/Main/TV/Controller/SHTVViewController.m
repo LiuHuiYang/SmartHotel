@@ -11,7 +11,7 @@
 #import "SHChannelTypeViewCell.h"
 #import "SHChannelCollectionViewCell.h"
 
-@interface SHTVViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface SHTVViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) SHTV *currentTV;
 

@@ -269,7 +269,7 @@
     // vip
     [self setUpChildController:[[SHVIPViewController alloc] init] roomInfomation:self.currentRoom];
     
-    // camear
+    // camera
     [self setUpChildController:[[SHCameraViewController alloc] init] roomInfomation:self.currentRoom];
     
     // worldtime
