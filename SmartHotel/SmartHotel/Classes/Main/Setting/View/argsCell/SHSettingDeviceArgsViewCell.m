@@ -38,6 +38,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+//    self.valueTextField
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

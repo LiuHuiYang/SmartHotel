@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,20 +22,50 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whv-Y4-Tzu">
                         <rect key="frame" x="0.0" y="0.0" width="457" height="105.5"/>
-                        <color key="backgroundColor" red="1" green="0.1369917131" blue="0.16966379579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYG-Vw-jRq">
+                                <rect key="frame" x="23" y="10.5" width="182.5" height="84.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ndU-Ap-Eeq">
+                                <rect key="frame" x="225.5" y="10.5" width="182.5" height="84.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ndU-Ap-Eeq" firstAttribute="height" secondItem="HYG-Vw-jRq" secondAttribute="height" id="GCc-7r-7w6"/>
+                            <constraint firstItem="ndU-Ap-Eeq" firstAttribute="leading" secondItem="HYG-Vw-jRq" secondAttribute="trailing" constant="20" id="Ibo-8B-7gA"/>
+                            <constraint firstItem="HYG-Vw-jRq" firstAttribute="centerX" secondItem="Whv-Y4-Tzu" secondAttribute="centerX" multiplier="0.5" id="LX0-oK-A8V"/>
+                            <constraint firstItem="ndU-Ap-Eeq" firstAttribute="centerY" secondItem="HYG-Vw-jRq" secondAttribute="centerY" id="Mfv-xZ-w8u"/>
+                            <constraint firstItem="HYG-Vw-jRq" firstAttribute="height" secondItem="Whv-Y4-Tzu" secondAttribute="height" multiplier="0.8" id="Qsg-OO-Gfn"/>
+                            <constraint firstItem="HYG-Vw-jRq" firstAttribute="centerY" secondItem="Whv-Y4-Tzu" secondAttribute="centerY" id="Xdh-rG-mAy"/>
+                            <constraint firstItem="HYG-Vw-jRq" firstAttribute="width" secondItem="Whv-Y4-Tzu" secondAttribute="width" multiplier="0.4" id="Z3x-Ah-9NT"/>
+                            <constraint firstItem="ndU-Ap-Eeq" firstAttribute="width" secondItem="HYG-Vw-jRq" secondAttribute="width" id="lHJ-yN-I4F"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="Whv-Y4-Tzu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="KOv-0Y-Qbb"/>
-                    <constraint firstItem="Whv-Y4-Tzu" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="m9u-wp-wEV"/>
-                    <constraint firstItem="Whv-Y4-Tzu" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="pb1-uA-h2i"/>
-                    <constraint firstItem="Whv-Y4-Tzu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vYI-HW-yZv"/>
+                    <constraint firstAttribute="trailing" secondItem="Whv-Y4-Tzu" secondAttribute="trailing" id="9Jf-Zv-zym"/>
+                    <constraint firstItem="Whv-Y4-Tzu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GZ6-qb-ArL"/>
+                    <constraint firstAttribute="bottom" secondItem="Whv-Y4-Tzu" secondAttribute="bottom" id="SUh-bQ-pjQ"/>
+                    <constraint firstItem="Whv-Y4-Tzu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Sof-cg-JN8"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <point key="canvasLocation" x="216" y="79"/>
+            <connections>
+                <outlet property="nameLabel" destination="HYG-Vw-jRq" id="psi-3X-VCT"/>
+                <outlet property="valueTextField" destination="ndU-Ap-Eeq" id="vv3-PW-NLr"/>
+            </connections>
+            <point key="canvasLocation" x="215.5" y="79"/>
         </tableViewCell>
     </objects>
 </document>

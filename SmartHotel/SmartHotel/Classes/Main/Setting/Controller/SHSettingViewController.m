@@ -76,35 +76,48 @@
     
         SHSettingDeviceArgsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class]) forIndexPath:indexPath];
         
-        if (self.isSettingRoomInfo && !indexPath.row) {
+        if (self.isSettingRoomInfo) {
             
             cell.argName = self.roomArgNames[indexPath.row];
+            
             switch (indexPath.row) {
-                
-                case 0:
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.roomInfo.buildID)];
-                    break;
-                
-                case 1:
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.roomInfo.floorID)];
+                    
+                case 0: {
+                 
+                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.buildID)];
+                }
                     break;
                     
-                case 2:
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.roomInfo.roomNumber)];
+                case 1: {
+                 
+                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.floorID)];
+                }
                     break;
                     
-                case 3:
-                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.roomInfo.roomNumberDisplay)];
+                case 2: {
+                 
+                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.roomNumber)];
+                }
                     break;
                     
-                case 4:
-                    cell.argValue = self.roomInfo.roomAlias;
+                case 3: {
+                 
+                    cell.argValue = [NSString stringWithFormat:@"%@", @(self.currentRoomInfo.roomNumberDisplay)];
+                }
                     break;
                     
-                case 5:
-                    cell.argValue = self.roomInfo.hotelName;
+                case 4: {
+                 
+                    cell.argValue = self.currentRoomInfo.roomAlias;
+                }
                     break;
-                
+                    
+                case 5: {
+                    
+                    cell.argValue = self.currentRoomInfo.hotelName;
+                }
+                    break;
+                    
                     
                 default:
                     break;
@@ -113,7 +126,7 @@
         } else {
             
             cell.argName = self.deviceArgNames[indexPath.row];
-         
+            
             switch (indexPath.row) {
                 case 0:
                     cell.argValue = [NSString stringWithFormat:@"%@", @(self.selectDevice.subnetID)];
@@ -145,10 +158,8 @@
         return self.typeNames.count;
     
     } else {
-     
-       
-        return self.deviceArgNames.count;
-//        return self.isSettingRoomInfo ? self.roomArgNames.count : self.deviceArgNames.count;
+      
+        return self.isSettingRoomInfo ? self.roomArgNames.count : self.deviceArgNames.count;
     }
     
     return 0;
@@ -161,6 +172,7 @@
     [super viewWillAppear:animated];
     
     self.currentRoomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    
     self.allDevices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoomInfo];
      
     
