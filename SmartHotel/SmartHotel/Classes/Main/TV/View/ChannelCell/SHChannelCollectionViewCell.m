@@ -44,6 +44,8 @@
      
     [self.channelButton setTitle:channel.channelName forState:UIControlStateNormal];
     
+    [self.channelButton setImage:[UIImage imageNamed:@"TV_ChannelDefault"] forState:UIControlStateNormal];
+    
     UIImage *image = [UIImage getImaageFromDoucment:channel.channelType imageName:[NSString stringWithFormat:@"%@", @(channel.channelIconID)]];
     
     if (image) {
@@ -55,7 +57,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
  
-     
+    
 }
 
  

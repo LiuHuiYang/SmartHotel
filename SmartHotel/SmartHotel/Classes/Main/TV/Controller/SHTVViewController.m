@@ -15,6 +15,15 @@
 
 @property (strong, nonatomic) SHTV *currentTV;
 
+/// 左边控制的所有的基准键盘
+@property (weak, nonatomic) IBOutlet UIView *leftControlBaseView;
+
+/// 高度约束
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *middleIconViewHeightConstraint;
+
+/// 宽度约束
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *middleIconViewWidthConstraint;
+
 /// 所有的通道类型
 @property (strong, nonatomic) NSMutableArray *channelTypes;
 
@@ -217,7 +226,11 @@
 - (void)viewDidLayoutSubviews {
     
     [super viewDidLayoutSubviews];
-   
+    
+    self.middleIconViewWidthConstraint.constant = self.leftControlBaseView.frame_height * 0.55;
+    self.middleIconViewHeightConstraint.constant = self.leftControlBaseView.frame_height * 0.55;
+    
+    // 右边的自定义按钮
     CGFloat itemMarign = statusBarHeight;
     NSUInteger totalCols = 3;
     
@@ -357,7 +370,5 @@
    
 //    [self.channelListView reloadData];
 }
-
  
-
 @end

@@ -59,36 +59,57 @@
 /// 接收到了数据
 - (void)analyzeReceiveData:(NSNotification *)notification {
     
-//    const Byte startIndex = 9;
-//
-//    NSData *data = notification.object;
-//
-//    Byte *recivedData = ((Byte *) [data bytes]);
-//
-//    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
-//
-//    Byte subNetID = recivedData[1];
-//    Byte deviceID = recivedData[2];
-//
-//    for (int i = 0; i < data.length; i++) {
-//        printf(" %#02X ", recivedData[i]);
-//    }
-//    printLog(@"分析结束");
+    const Byte startIndex = 9;
+
+    NSData *data = notification.object;
+
+    Byte *recivedData = ((Byte *) [data bytes]);
+
+    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
+
+    Byte subNetID = recivedData[1];
+    Byte deviceID = recivedData[2];
+ 
     
-//    if (subNetID != self.currentDevice.subnetID ||
-//        deviceID != self.currentDevice.deviceID) {
-//
-//        return;
-//    }
-//
-//    switch (operatorCode) {
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//
-//        default:
-//            break;
-//    }
+    if (subNetID != self.roomInfo.subNetIDForCardHolder ||
+        deviceID != self.roomInfo.deviceIDForCardHolder) {
+
+        return;
+    }
+
+    switch (operatorCode) {
+        
+            // 服务反馈
+        case 0X043F: {
+            
+            Byte servcieStatus = recivedData[startIndex];
+            
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+            
+        }
+            break;
+            
+        case 0X040B: {
+            
+            if (recivedData[startIndex + 1]  == 0XF8) {
+                
+                Byte servcieStatus = recivedData[startIndex];
+                
+                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+            }
+        }
+            break;
+
+        default:
+            break;
+    }
+    
+    if (operatorCode == 0X043F || operatorCode == 0X040B) {
+        
+        // 设置状态
+//        [self setServiceStatusForButton]
+        [SVProgressHUD showSuccessWithStatus:@"准备进行设置状态"];
+    }
 }
 
 
