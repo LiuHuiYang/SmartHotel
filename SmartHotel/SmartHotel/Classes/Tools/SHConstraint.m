@@ -8,11 +8,12 @@
 
 #include "SHConstraint.h"
 
+/// UIPickerView的默认高度(216)
+const CGFloat pickerViewHeight = 216;
+
 /// 自定义工具条的高度
 const CGFloat customToolBarHeight = 98;
 
-/// UIPickerView的默认高度(216)
-const CGFloat pickerViewHeight = 216;
 
 /// 灯泡的最大亮度值
 const Byte lightMaxBrightness= 100;

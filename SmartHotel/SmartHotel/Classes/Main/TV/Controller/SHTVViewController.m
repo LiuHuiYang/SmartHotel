@@ -291,7 +291,6 @@
     NSIndexPath *selectIndexPath = [self.channelListView indexPathForItemAtPoint:[self.longPressGestureRecognizer locationInView:self.channelListView]];
     
     self.currentChannel = self.selectChannelType.channels[selectIndexPath.item];
-    printLog(@"=== %@", self.currentChannel.channelName);
     
     TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Change Picture?" message:nil isCustom:YES];
     

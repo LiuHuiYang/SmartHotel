@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04484D75207F079C00F6FEB9 /* SHSwitchButton.m */; };
+		046E3307208F095000F78690 /* SHTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E3306208F095000F78690 /* SHTimeZoneWrapper.m */; };
 		049725232080546A00B62A9E /* SHMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725222080546A00B62A9E /* SHMacro.m */; };
 		0497252820805C2F00B62A9E /* SHMacroCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252620805C2F00B62A9E /* SHMacroCollectionViewCell.m */; };
 		0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0497252720805C2F00B62A9E /* SHMacroCollectionViewCell.xib */; };
@@ -103,6 +104,8 @@
 /* Begin PBXFileReference section */
 		04484D74207F079C00F6FEB9 /* SHSwitchButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSwitchButton.h; sourceTree = "<group>"; };
 		04484D75207F079C00F6FEB9 /* SHSwitchButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSwitchButton.m; sourceTree = "<group>"; };
+		046E3305208F095000F78690 /* SHTimeZoneWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTimeZoneWrapper.h; sourceTree = "<group>"; };
+		046E3306208F095000F78690 /* SHTimeZoneWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTimeZoneWrapper.m; sourceTree = "<group>"; };
 		049725212080546A00B62A9E /* SHMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacro.h; sourceTree = "<group>"; };
 		049725222080546A00B62A9E /* SHMacro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacro.m; sourceTree = "<group>"; };
 		0497252520805C2F00B62A9E /* SHMacroCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroCollectionViewCell.h; sourceTree = "<group>"; };
@@ -848,6 +851,8 @@
 		04D249592079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				046E3305208F095000F78690 /* SHTimeZoneWrapper.h */,
+				046E3306208F095000F78690 /* SHTimeZoneWrapper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1377,6 +1382,7 @@
 				04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */,
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
 				04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */,
+				046E3307208F095000F78690 /* SHTimeZoneWrapper.m in Sources */,
 				04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */,
 				04E4DD042085CDD000AB17E2 /* SHHVACRotationControlView.m in Sources */,
 				04D249862079C77800EBD1BE /* UIImage+Rotate.m in Sources */,
