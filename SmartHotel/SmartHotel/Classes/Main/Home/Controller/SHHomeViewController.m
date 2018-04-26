@@ -57,6 +57,10 @@
 /// 开关按钮
 @property (weak, nonatomic) IBOutlet SHSwitchButton *alarmTimeButton ;
 
+/// DND按钮
+@property (weak, nonatomic) IBOutlet SHSwitchButton *dndButton;
+
+
 @end
 
 @implementation SHHomeViewController
@@ -114,6 +118,18 @@
 
 
 // MARK: - 视图加载 与显示
+
+
+/// dnd按钮点击
+- (IBAction)dndButtonClick {
+    
+    self.dndButton.on = !self.dndButton.on;
+    
+    Byte dndServiceData[] = { SHRoomServerTypeDND, self.dndButton.on};
+   
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:
+     self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+}
 
 /// 闹钟打开与关闭
 - (IBAction)alarmTimeButtonClick {

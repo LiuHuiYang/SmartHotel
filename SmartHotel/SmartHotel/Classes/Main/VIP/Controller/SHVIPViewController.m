@@ -44,10 +44,79 @@
 /// 急救
 @property (weak, nonatomic) IBOutlet SHServiceButton *panicButton;
 
+/// 打开了DND
+@property (nonatomic, assign) BOOL isDNDOpen;
+
+/// 旧代码一数值，不知道什么意思
+@property (nonatomic, assign) NSUInteger waitCount;
+
+/// 等待定时器
+@property (weak, nonatomic) NSTimer *waitTimer;
+
+/// 当前的服务
+@property (assign, nonatomic) SHRoomServerType currentService;
+
+
 @end
 
 @implementation SHVIPViewController
 
+
+/// 接收到了数据
+- (void)analyzeReceiveData:(NSNotification *)notification {
+    
+    const Byte startIndex = 9;
+    
+    NSData *data = notification.object;
+    
+    Byte *recivedData = ((Byte *) [data bytes]);
+    
+    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
+    
+    Byte subNetID = recivedData[1];
+    Byte deviceID = recivedData[2];
+    
+    
+    if (subNetID != self.roomInfo.subNetIDForCardHolder ||
+        deviceID != self.roomInfo.deviceIDForCardHolder) {
+        
+        return;
+    }
+    
+    switch (operatorCode) {
+            
+            // 服务反馈
+        case 0X043F: {
+            
+            Byte servcieStatus = recivedData[startIndex];
+            
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+            
+        }
+            break;
+            
+        case 0X040B: {
+            
+            if (recivedData[startIndex + 1]  == 0XF8) {
+                
+                Byte servcieStatus = recivedData[startIndex];
+                
+                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    if (operatorCode == 0X043F || operatorCode == 0X040B) {
+        
+        // 设置状态
+        //        [self setServiceStatusForButton]
+        [SVProgressHUD showSuccessWithStatus:@"准备进行设置状态"];
+    }
+}
 
 // MARK: - 事件交互
 
@@ -125,25 +194,152 @@
 /// 服务按钮按下
 - (void)serviceButtonPress:(SHServiceButton *)serverButton {
     
-     printLog(@"%@", serverButton.currentTitle);
-    
     // 等待
     if (serverButton.serverType == SHRoomServerTypePleaseWait) {
         
+        if (serverButton.isSelected) {
+            
+            [self turnOffPleaseWait];
+            
+        } else {
+            
+            // waitFlicke_vip:
+            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(waitVIP) userInfo:nil repeats:YES];
+            
+            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes] ;
+            
+            self.waitTimer = timer;
+        }
     
     // 其它情况
     } else {
         
+        if (!serverButton.isSelected &&
+            (serverButton.serverType == SHRoomServerTypeCheckOut    ||
+             serverButton.serverType == SHRoomServerTypeTaxi        ||
+             serverButton.serverType == SHRoomServerTypeMyCar       ||
+             serverButton.serverType == SHRoomServerTypeDoctor      ||
+             serverButton.serverType == SHRoomServerTypePanic)) {
+            
+                self.currentService = serverButton.serverType;
+                
+                TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:
+                    [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:
+                     @"HouseKeepingAndVIP" withSubTitle:@"Are you sure to select this service?"] message:nil isCustom:YES];
+                
+                [alertView addAction: [TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"NO"] style:TYAlertActionStyleCancel handler:nil]];
+                
+                [alertView addAction: [TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"YES"] style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+                    
+                    [self updateServerButtonStatus:serverButton];
+                    
+                    // 发送DND的指令
+                    if (self.isDNDOpen) {
+                        
+                        Byte dndServiceData[] = { SHRoomServerTypeDND, 0};
+                        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:
+                         self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+                        
+                        self.isDNDOpen = NO;
+                    }
+                    
+                    // 广播服务的状态
+                    Byte servicdeData[] = {serverButton.serverType, 1, self.roomInfo.buildID,
+                        self.roomInfo.floorID, self.roomInfo.roomNumber
+                    };
+                    
+                    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X044F targetSubnetID:
+                     0XFF targetDeviceID:0XFF additionalContentData:[NSMutableData dataWithBytes:servicdeData length:sizeof(servicdeData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+                    
+                    self.currentService = -1;
+                    
+                }]];
+                
+                TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+                
+                alertController.backgoundTapDismissEnable = YES;
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+                return;
+        }
         
+        if (serverButton.isSelected && (serverButton.serverType == SHRoomServerTypeMaintenance)) {
+            
+            return;
+        }
+        
+        // 更新状态
+        [self updateServerButtonStatus:serverButton];
     }
     
+    
+    // 发送DND的指令
+    if (self.isDNDOpen) {
+        
+        Byte dndServiceData[] = { SHRoomServerTypeDND, 0};
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:
+         self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        
+        self.isDNDOpen = NO;
+    }
+    
+    // 广播服务的状态
+    Byte servicdeData[] = {serverButton.serverType, serverButton.isSelected, self.roomInfo.buildID,
+        self.roomInfo.floorID, self.roomInfo.roomNumber
+    };
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X044F targetSubnetID:
+     0XFF targetDeviceID:0XFF additionalContentData:[NSMutableData dataWithBytes:servicdeData length:sizeof(servicdeData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 
+/// 更新按钮的状态
+- (void)updateServerButtonStatus:(SHServiceButton *)serviceButton {
+    
+    serviceButton.selected = !serviceButton.isSelected;
+}
+
+/// 等待
+- (void)waitVIP {
+    
+    ++self.waitCount;
+    
+    if (self.waitCount >= 39) {
+        
+        // ....
+        self.pleaseWaitButton.selected = NO;
+        self.waitCount = 0;
+        
+        [self.waitTimer invalidate];
+        self.waitTimer = nil;
+        
+        return;   
+    }
+
+    self.pleaseWaitButton.selected = YES;
+}
+
+/// 关闭等待
+- (void)turnOffPleaseWait {
+    
+    self.waitCount = 40; // 不知道为什么要设置为 40
+}
+
 // MARK: - UI初始化
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    // 读取门铃状态
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X043E targetSubnetID:self.roomInfo.subNetIDForDoorBell targetDeviceID:self.roomInfo.deviceIDForDoorBell additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isDNDOpen = NO;
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"VIP"];
     
@@ -189,5 +385,10 @@
     // Dispose of any resources that can be recreated.
 }
 
- 
+- (void)dealloc {
+    
+    [self.waitTimer invalidate];
+    self.waitTimer = nil;
+}
+
 @end

@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(Byte, SHRoomServerType) {
+typedef NS_ENUM(NSInteger, SHRoomServerType) {
     
     SHRoomServerTypeCleanOver,
     SHRoomServerTypeClean,

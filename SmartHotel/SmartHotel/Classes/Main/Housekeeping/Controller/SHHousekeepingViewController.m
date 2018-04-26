@@ -47,9 +47,6 @@
 /// 早餐
 @property (weak, nonatomic) IBOutlet SHServiceButton *breakfastButton;
 
-/// 门铃
-@property (strong, nonatomic) SHRoomDevice *doorBell;
-
 @end
 
 @implementation SHHousekeepingViewController
@@ -251,7 +248,7 @@
     [super viewWillAppear:animated];
     
     // 读取门铃状态
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X043E targetSubnetID:self.doorBell.subnetID targetDeviceID:self.doorBell.deviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X043E targetSubnetID:self.roomInfo.subNetIDForDoorBell targetDeviceID:self.roomInfo.deviceIDForDoorBell additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
 }
 
 - (void)viewDidLoad {

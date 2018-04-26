@@ -93,6 +93,7 @@
 		04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAFEC22084AA88009AA5EB /* SHChannelCollectionViewCell.xib */; };
 		04E4DCFC20859A4C00AB17E2 /* UIImage+SaveAndGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */; };
 		04E4DD042085CDD000AB17E2 /* SHHVACRotationControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DD032085CDD000AB17E2 /* SHHVACRotationControlView.m */; };
+		04EAD7402091AAC400F49E43 /* SHCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EAD73F2091AAC400F49E43 /* SHCameraButton.m */; };
 		04F892022089796F003E2CED /* SHSettingDeiviceTypeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F892002089796F003E2CED /* SHSettingDeiviceTypeViewCell.m */; };
 		04F892032089796F003E2CED /* SHSettingDeiviceTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F892012089796F003E2CED /* SHSettingDeiviceTypeViewCell.xib */; };
 		04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FE7B3D207DFD7B0003FC85 /* SHCurtain.m */; };
@@ -256,6 +257,8 @@
 		04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
 		04E4DD022085CDD000AB17E2 /* SHHVACRotationControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACRotationControlView.h; sourceTree = "<group>"; };
 		04E4DD032085CDD000AB17E2 /* SHHVACRotationControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVACRotationControlView.m; sourceTree = "<group>"; };
+		04EAD73E2091AAC400F49E43 /* SHCameraButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCameraButton.h; sourceTree = "<group>"; };
+		04EAD73F2091AAC400F49E43 /* SHCameraButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCameraButton.m; sourceTree = "<group>"; };
 		04F891FF2089796F003E2CED /* SHSettingDeiviceTypeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingDeiviceTypeViewCell.h; sourceTree = "<group>"; };
 		04F892002089796F003E2CED /* SHSettingDeiviceTypeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingDeiviceTypeViewCell.m; sourceTree = "<group>"; };
 		04F892012089796F003E2CED /* SHSettingDeiviceTypeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingDeiviceTypeViewCell.xib; sourceTree = "<group>"; };
@@ -638,6 +641,7 @@
 		04D249422079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04EAD73D2091AAB300F49E43 /* CameraButton */,
 				04D8805720883255006C207E /* CameraCell */,
 			);
 			path = View;
@@ -1185,6 +1189,15 @@
 			path = RotationControlView;
 			sourceTree = "<group>";
 		};
+		04EAD73D2091AAB300F49E43 /* CameraButton */ = {
+			isa = PBXGroup;
+			children = (
+				04EAD73E2091AAC400F49E43 /* SHCameraButton.h */,
+				04EAD73F2091AAC400F49E43 /* SHCameraButton.m */,
+			);
+			path = CameraButton;
+			sourceTree = "<group>";
+		};
 		04F891FE20897959003E2CED /* settingDeviceCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1380,6 +1393,7 @@
 				04D249242079C51B00EBD1BE /* main.m in Sources */,
 				04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */,
 				04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */,
+				04EAD7402091AAC400F49E43 /* SHCameraButton.m in Sources */,
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
 				04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */,
 				046E3307208F095000F78690 /* SHTimeZoneWrapper.m in Sources */,

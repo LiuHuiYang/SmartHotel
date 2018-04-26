@@ -43,8 +43,8 @@
                             <rect key="frame" x="133.5" y="46" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" backgroundImage="HKServer_Taxi_normal"/>
-                            <state key="selected" backgroundImage="HKServer_Taxi_normal"/>
-                            <state key="highlighted" backgroundImage="HKServer_Taxi_normal"/>
+                            <state key="selected" backgroundImage="HKServer_Taxi_highlighted"/>
+                            <state key="highlighted" backgroundImage="HKServer_Taxi_highlighted"/>
                             <connections>
                                 <action selector="taxiButtonClick" destination="-1" eventType="touchUpInside" id="CbH-mW-gKt"/>
                             </connections>
@@ -239,6 +239,7 @@
         <image name="HKServer_MyCar_normal" width="169" height="80"/>
         <image name="HKServer_Panic_highlighted" width="169" height="80"/>
         <image name="HKServer_Panic_normal" width="169" height="80"/>
+        <image name="HKServer_Taxi_highlighted" width="169" height="80"/>
         <image name="HKServer_Taxi_normal" width="169" height="80"/>
         <image name="Share_BG_iPad" width="1024" height="768"/>
     </resources>

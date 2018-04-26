@@ -19,6 +19,7 @@
                 <outlet property="currentTemperatureLabel" destination="X0K-fQ-QZg" id="BbL-Yv-GMI"/>
                 <outlet property="currentTimeLabel" destination="BYs-TC-L1x" id="6FO-rH-HO0"/>
                 <outlet property="dateLabel" destination="Eev-dF-Umy" id="qbP-ga-Eb6"/>
+                <outlet property="dndButton" destination="Xbj-fa-94G" id="F39-sK-W4a"/>
                 <outlet property="languageButton" destination="4Na-s3-5PK" id="aWx-lf-bal"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -100,6 +101,9 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
                                     <state key="selected" image="SHSwitchThumb_On"/>
+                                    <connections>
+                                        <action selector="dndButtonClick" destination="-1" eventType="touchUpInside" id="zdj-sr-gG2"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DND" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAp-Ia-2CA">
                                     <rect key="frame" x="54" y="8" width="45.5" height="49"/>
