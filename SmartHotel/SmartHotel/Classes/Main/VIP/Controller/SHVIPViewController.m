@@ -53,66 +53,79 @@
 
 /// 急救
 - (IBAction)panicButtonButtonClick {
-    printLog(@"%@", self.panicButton.currentTitle);
+    
+    [self serviceButtonPress:self.panicButton];
 }
 
 /// 行李箱
 - (IBAction)bagesButtonClick {
-    printLog(@"%@", self.bagesButton.currentTitle);
+    
+    [self serviceButtonPress:self.bagesButton];
 }
 
 /// 退房
 - (IBAction)checkoutButtonClick {
-    printLog(@"%@", self.checkoutButton.currentTitle);
+    
+    [self serviceButtonPress:self.checkoutButton];
 }
 
 /// 稍等
 - (IBAction)pleaseWaitButtonClick {
-    printLog(@"%@", self.pleaseWaitButton.currentTitle);
+    
+    [self serviceButtonPress:self.pleaseWaitButton];
 }
 
 
 /// 电梯
 - (IBAction)elevtorButtonClick {
-    printLog(@"%@", self.elevtorButton.currentTitle);
+   
+    [self serviceButtonPress:self.elevtorButton];
 }
 
 /// 按摩
 - (IBAction)massageButtonButtonClick {
-    printLog(@"%@", self.massageButton.currentTitle);
+    
+    [self serviceButtonPress:self.massageButton];
 }
 
 /// 服务生
 - (IBAction)buttlerButtonClick {
-    printLog(@"%@", self.buttlerButton.currentTitle);
+    
+    [self serviceButtonPress:self.buttlerButton];
 }
 
 
 /// 医生
 - (IBAction)doctorButtonClick {
-    printLog(@"%@", self.doctorButton.currentTitle);
+    
+    [self serviceButtonPress:self.doctorButton];
 }
 
 /// 需要修理
 - (IBAction)maintNeededButtonClick {
-    printLog(@"%@", self.maintNeededButton.currentTitle);
+   
+    [self serviceButtonPress:self.maintNeededButton];
 }
 
 /// 我的车
 - (IBAction)myCarButtonClick {
-    printLog(@"%@", self.myCarButton.currentTitle);
+   
+    [self serviceButtonPress:self.myCarButton];
 }
 
 
 /// 出租车
 - (IBAction)taxiButtonClick {
-    printLog(@"%@", self.taxiButton.currentTitle);
+    
+    [self serviceButtonPress:self.taxiButton];
 }
 
 // MARK: - 数据传递
 
 /// 服务按钮按下
 - (void)serviceButtonPress:(SHServiceButton *)serverButton {
+    
+     printLog(@"%@", serverButton.currentTitle);
     
     // 等待
     if (serverButton.serverType == SHRoomServerTypePleaseWait) {
