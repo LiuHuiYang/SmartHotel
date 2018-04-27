@@ -182,7 +182,10 @@ void pack_crc(Byte *ptr, unichar len);
  @param macAddress 远程控制使用的MacAddress (只用本地wifi控件使用 nil, 远程控制使用mac地址)
  @param needReSend 是否启动重发机制
  */
-- (void)sendDataWithOperatorCode:(UInt16)operatorCode targetSubnetID:(Byte)targetSubnetID targetDeviceID:(Byte)targetDeviceID additionalContentData:(NSMutableData *)additionalContentData  remoteMacAddress:(NSString *)macAddress needReSend:(BOOL)needReSend{
+- (void)sendDataWithOperatorCode:(UInt16)operatorCode targetSubnetID:(Byte)
+    targetSubnetID targetDeviceID:(Byte)targetDeviceID additionalContentData:
+    (NSMutableData *)additionalContentData  remoteMacAddress:(NSString *)
+    macAddress needReSend:(BOOL)needReSend{
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
@@ -191,7 +194,8 @@ void pack_crc(Byte *ptr, unichar len);
         /// 重发机制的起点
     RE_SEND_POINT:
         
-        [self sendDataWithOperatorCode:operatorCode targetSubnetID:targetSubnetID targetDeviceID:targetDeviceID additionalContentData:additionalContentData remoteMacAddress:macAddress];
+        [self sendDataWithOperatorCode:operatorCode targetSubnetID:targetSubnetID
+            targetDeviceID:targetDeviceID additionalContentData: additionalContentData remoteMacAddress:macAddress];
 
         if (!needReSend) {
             return ;
@@ -199,9 +203,11 @@ void pack_crc(Byte *ptr, unichar len);
         
         NSDate *startSendDate = [NSDate date];
         
-        while ((operatorCode + 1) != self.returnOperatorCode || targetSubnetID != self.sendSubNetID || self.sendDeviceID != targetDeviceID) {
+        while ((operatorCode + 1) != self.returnOperatorCode || targetSubnetID
+               != self.sendSubNetID || self.sendDeviceID != targetDeviceID) {
             
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.003]];
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:
+                [NSDate dateWithTimeIntervalSinceNow:0.003]];
             
             NSDate *finishedSendDate = [NSDate date];
             
@@ -238,7 +244,10 @@ void pack_crc(Byte *ptr, unichar len);
  @param additionalContentData 可变参数的二进制(查询文档)
  @param macAddress 远程控制使用的MacAddress (只用本地wifi控件使用 nil, 远程控制使用mac地址)
  */
-- (void)sendDataWithOperatorCode:(UInt16)operatorCode targetSubnetID:(Byte)targetSubnetID targetDeviceID:(Byte)targetDeviceID additionalContentData:(NSMutableData *)additionalContentData remoteMacAddress:(NSString *)macAddress {
+- (void)sendDataWithOperatorCode:(UInt16)operatorCode targetSubnetID:(Byte)
+    targetSubnetID targetDeviceID:(Byte)targetDeviceID additionalContentData:
+    (NSMutableData *)additionalContentData remoteMacAddress:(NSString *)
+    macAddress {
     
     // 依据手机环境 自动设置使用远程还是本地
 //    BOOL isRemoteControl = [self isRemoteControl:macAddress];
@@ -255,34 +264,42 @@ void pack_crc(Byte *ptr, unichar len);
     
     // 1.2 固定协议头 【固定】
     // 发送协议的数据包头  数据包的下标 4 ~ 13 是协议头，固定 udpPckageHead数组
-    const Byte udpPckageHeadArray[] = {0x53, 0x4D, 0x41, 0x52, 0x54, 0x43, 0x4C, 0x4F, 0x55, 0x44};
+    const Byte udpPckageHeadArray[] = {0x53, 0x4D, 0x41, 0x52, 0x54, 0x43, 0x4C,
+            0x4F, 0x55, 0x44};
     
     // 1.3 UDP Package Head + SoureceIP  的长度【固定】
-    const NSUInteger protocolPackageAndSourceIPLength = ipArray.count + sizeof(udpPckageHeadArray);
+    const NSUInteger protocolPackageAndSourceIPLength = ipArray.count +
+        sizeof(udpPckageHeadArray);
     
     // 1.4 可变参数的长度
     const NSUInteger additionalContentLength = [additionalContentData length];
     
     // 1.5 mac地址的长度
-    NSString *macString = [macAddress stringByReplacingOccurrencesOfString:@"." withString:@""];
+    NSString *macString = [macAddress stringByReplacingOccurrencesOfString:@"."
+                                                            withString:@""];
     Byte macAddressArray[macString.length/2];
     
     // 转换为十六进制数组
     for (NSUInteger i = 0; i < macString.length/2; i++) {
-        // 转换为十六进制数
-        unsigned long res = strtoul([[macString substringWithRange:NSMakeRange(i * 2, 2)] UTF8String], 0, 16);
+        
+        unsigned long res =
+            strtoul([[macString substringWithRange: NSMakeRange(i * 2, 2)] UTF8String], 0, 16);
+        
         macAddressArray[i] = (Byte)res;
     }
     
-    const NSUInteger remoteDataLength = isRemoteControl ? (1 + sizeof(macAddressArray)) : 0; // 1 表示设备标示符
+    const NSUInteger remoteDataLength =
+        isRemoteControl ? (1 + sizeof(macAddressArray)) : 0; // 1 表示设备标示符
     
     // 1.5 Protocol Base Structure 协议数据包的长度
     // 远程:(固定部分11 + additionalContentLength + (1个标示位 + 8个mac地地址) +  2个 0x00, 0x00)
     // 本地:(固定部分11 + additionalContentLength + 2个 CRC)
-    NSUInteger protocolBaseStructureLength = 11 + additionalContentLength + remoteDataLength + 2;
+    NSUInteger protocolBaseStructureLength = 11 + additionalContentLength +
+        remoteDataLength + 2;
     
     // 1.6 数据包的总大小
-    NSUInteger sendUDPBufLength = protocolPackageAndSourceIPLength + protocolBaseStructureLength;
+    NSUInteger sendUDPBufLength = protocolPackageAndSourceIPLength +
+        protocolBaseStructureLength;
     
     // =========== 2. 逐个赋值 ===========
     
@@ -349,7 +366,8 @@ void pack_crc(Byte *ptr, unichar len);
         // 校验码  -- 由CRC算法来生成
         // 第一个参数：整个数据包的中Protocol Base Structure部分的LEN of Data Package的地址
         // 第二个参数：从【Protocol Base Structure】数据的总大小 - CRC的两个字节(cRCLength) - Start code的大小(2个字节)
-        pack_crc(&(maraySendUDPBuf[protocolPackageAndSourceIPLength + 2]), protocolBaseStructureLength - 2 - 2);
+        pack_crc(&(maraySendUDPBuf[protocolPackageAndSourceIPLength + 2]),
+                 protocolBaseStructureLength - 2 - 2);
     }
     
     // =========== 3.初始化发送条件 ===========
@@ -365,9 +383,12 @@ void pack_crc(Byte *ptr, unichar len);
     // 准备发送的参数
     NSData *sendMessageData = [[NSData alloc] initWithBytes:maraySendUDPBuf length:sizeof(maraySendUDPBuf)];
     
-    NSString *local_send_IP = [[NSUserDefaults standardUserDefaults] objectForKey:socketRealIP];
+    NSString *local_send_IP =
+        [[NSUserDefaults standardUserDefaults] objectForKey:socketRealIP];
     
-    NSString *hostAddress = isRemoteControl ? [UIDevice getIPAddressByHostName:Remote_Server_DoMain_Name] : (local_send_IP ? local_send_IP : Local_Server_IP_Default);
+    NSString *hostAddress = isRemoteControl ?
+        [UIDevice getIPAddressByHostName:Remote_Server_DoMain_Name] :
+        (local_send_IP ? local_send_IP : Local_Server_IP_Default);
     
     UInt16 port = isRemoteControl ? Remote_Server_PORT : Local_Server_PORT;
     
@@ -379,7 +400,8 @@ void pack_crc(Byte *ptr, unichar len);
     [self.socket bindToPort:port error:nil];
     
     // UDP通信永远是不连接的所以用下面的方法来发送
-    [self.socket sendData:sendMessageData toHost:hostAddress port:port withTimeout:-1 tag:0];
+    [self.socket sendData:sendMessageData toHost:hostAddress port:port
+                withTimeout:-1 tag:0];
     
     // 接收数据
     [self.socket beginReceiving:nil];
@@ -454,7 +476,8 @@ const UInt16  CRC_TAB[] = {           /* CRC tab */
     
     pack_crc(&receiveBytes[0], lengthBytes-2);
     
-    return (hightByte == receiveBytes[lengthBytes - 2] && lowByte == receiveBytes[lengthBytes - 1]);
+    return (hightByte == receiveBytes[lengthBytes - 2] &&
+            lowByte == receiveBytes[lengthBytes - 1]);
 }
 
 /**

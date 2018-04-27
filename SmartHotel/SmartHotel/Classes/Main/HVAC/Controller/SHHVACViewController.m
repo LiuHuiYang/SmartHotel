@@ -444,6 +444,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    [super viewWillAppear:animated];
+    
     // FIXME: 统一取成0，如果有问题再说。
     Byte readHVACdata[] = { 0 };
     
