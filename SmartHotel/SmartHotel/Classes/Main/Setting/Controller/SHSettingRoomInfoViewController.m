@@ -56,26 +56,7 @@
 
 @implementation SHSettingRoomInfoViewController
 
-
-/// 保存当前房间的所有信息
-- (void)saveRoomInfo {
-    
-    // 更新房间信息
-    [[SHSQLManager shareSHSQLManager] updateRoomInfo:self.currentRoomInfo];
-    
-    // 更新设备信息
-    for (SHRoomDevice *device in self.allDevices) {
-        
-        [[SHSQLManager shareSHSQLManager] updateRoomDevice:device];
-    }
-    
-    [SVProgressHUD showSuccessWithStatus:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Saved"]];
-    
-    /// 发出回到首页的通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHControlGoBackHomeControllerNotification object:nil];
-}
-
-// MARK: - 数据源和代理
+// MARK: - 代理
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -131,7 +112,7 @@
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.textAlignment = NSTextAlignmentCenter;
         
-        textField.text = self.deviceArgValues[indexPath.row];
+        textField.text = self.roomArgValues[indexPath.row];
         
         self.valueTextField = textField;
     }];
@@ -195,7 +176,51 @@
 /// 更新房间信息
 - (void)updateAndSaveRoomInfo:(NSString *)value index:(NSUInteger)index {
     
+    switch (index) {
+        
+        case 0: {
+            
+            self.roomInfo.buildID = [value integerValue];
+        }
+            break;
+            
+        case 1: {
+            
+            self.roomInfo.floorID = [value integerValue];
+        }
+            break;
+            
+        case 2: {
+            
+            self.roomInfo.roomNumber = [value integerValue];
+        }
+            break;
+            
+        case 3: {
+            
+            self.roomInfo.roomNumberDisplay = [value integerValue];
+        }
+            break;
+            
+        case 4: {
+            
+            self.roomInfo.roomAlias = value;
+        }
+            break;
+            
+        case 5: {
+            
+            self.roomInfo.hotelName = value;
+        }
+            break;
+            
+        default:
+            break;
+    }
     
+    [[SHSQLManager shareSHSQLManager] updateRoomInfo:self.roomInfo];
+    
+    [self refreshListView];
 }
 
 /// 更新设备

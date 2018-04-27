@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SHRoomViewController.h"
+#import "SHSoundTools.h"
 
 @interface AppDelegate ()
 
@@ -15,6 +16,43 @@
 
 @implementation AppDelegate
 
+/// 接收到了本地的闹钟通知
+- (void)recivceAlarmClock:(UILocalNotification *)notification {
+    
+    if (!notification) {
+        return;
+    }
+   
+//    while (true) {
+    
+        NSString *soundName = [notification.userInfo objectForKey:
+                               @"alarmSongName"];
+        
+        [[SHSoundTools shareSHSoundTools] playSoundWithName:soundName];
+        
+        NSInteger time = [[notification.userInfo objectForKey:
+                           @"alarmIntervalTime"] integerValue];
+        
+        [NSThread sleepForTimeInterval:time * 60];
+        
+        BOOL isOpen = [[NSUserDefaults standardUserDefaults]
+                  boolForKey:alarmClockOnOffKey];
+        
+//        if (!isOpen) {
+//
+//            [[SHSoundTools shareSHSoundTools] stopSoundWithName:soundName];
+//            break;
+//        }
+    
+//    printLog(@"%d", isOpen);
+    }
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:
+    (UILocalNotification *)notification {
+    
+    [self recivceAlarmClock:notification];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -32,9 +70,24 @@
     
     [self.window makeKeyAndVisible];
     
+    // 注册通知
+    [self registerLocalNotification];
+    
+    UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+    [self recivceAlarmClock:localNotification];
+    
     return YES;
 }
 
+
+/// 注册本地通知
+- (void)registerLocalNotification {
+    
+    UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:setting
+     ];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

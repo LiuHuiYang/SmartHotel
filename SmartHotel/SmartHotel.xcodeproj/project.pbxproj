@@ -20,9 +20,10 @@
 		04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */; };
 		04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */; };
 		04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C5C2080B1E30027E889 /* SHLightButton.m */; };
+		04C7996C2093199F00F86679 /* Sounds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04C7996B2093199E00F86679 /* Sounds.bundle */; };
+		04C7996F20931A1700F86679 /* SHSoundTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7996E20931A1700F86679 /* SHSoundTools.m */; };
+		04C7997220931B8B00F86679 /* SHAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7997120931B8B00F86679 /* SHAlarm.m */; };
 		04D249162079C51900EBD1BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249152079C51900EBD1BE /* AppDelegate.m */; };
-		04D249192079C51A00EBD1BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249182079C51A00EBD1BE /* ViewController.m */; };
-		04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491A2079C51A00EBD1BE /* Main.storyboard */; };
 		04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491D2079C51B00EBD1BE /* Assets.xcassets */; };
 		04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D2491F2079C51B00EBD1BE /* LaunchScreen.storyboard */; };
 		04D249242079C51B00EBD1BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249232079C51B00EBD1BE /* main.m */; };
@@ -126,12 +127,14 @@
 		04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRelayCollectionViewCell.xib; sourceTree = "<group>"; };
 		04B05C5B2080B1E30027E889 /* SHLightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightButton.h; sourceTree = "<group>"; };
 		04B05C5C2080B1E30027E889 /* SHLightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightButton.m; sourceTree = "<group>"; };
+		04C7996B2093199E00F86679 /* Sounds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Sounds.bundle; sourceTree = "<group>"; };
+		04C7996D20931A1600F86679 /* SHSoundTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSoundTools.h; sourceTree = "<group>"; };
+		04C7996E20931A1700F86679 /* SHSoundTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSoundTools.m; sourceTree = "<group>"; };
+		04C7997020931B8B00F86679 /* SHAlarm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAlarm.h; sourceTree = "<group>"; };
+		04C7997120931B8B00F86679 /* SHAlarm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAlarm.m; sourceTree = "<group>"; };
 		04D249112079C51900EBD1BE /* SmartHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D249142079C51900EBD1BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04D249152079C51900EBD1BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04D249172079C51A00EBD1BE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		04D249182079C51A00EBD1BE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		04D2491B2079C51A00EBD1BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04D2491D2079C51B00EBD1BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D249202079C51B00EBD1BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D249222079C51B00EBD1BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -383,11 +386,9 @@
 				04D2492A2079C6CD00EBD1BE /* Classes */,
 				04D249142079C51900EBD1BE /* AppDelegate.h */,
 				04D249152079C51900EBD1BE /* AppDelegate.m */,
-				04D249172079C51A00EBD1BE /* ViewController.h */,
-				04D249182079C51A00EBD1BE /* ViewController.m */,
-				04D2491A2079C51A00EBD1BE /* Main.storyboard */,
 				04D2491D2079C51B00EBD1BE /* Assets.xcassets */,
 				04D2491F2079C51B00EBD1BE /* LaunchScreen.storyboard */,
+				04C7996B2093199E00F86679 /* Sounds.bundle */,
 				04D249912079C7C000EBD1BE /* Languages */,
 				04D249222079C51B00EBD1BE /* Info.plist */,
 				04D249232079C51B00EBD1BE /* main.m */,
@@ -423,6 +424,8 @@
 		04D2492C2079C6CD00EBD1BE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				04C7996D20931A1600F86679 /* SHSoundTools.h */,
+				04C7996E20931A1700F86679 /* SHSoundTools.m */,
 				04E4DCFA20859A4B00AB17E2 /* UIImage+SaveAndGet.h */,
 				04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */,
 				04D249A02079C90200EBD1BE /* SHConstraint.h */,
@@ -785,6 +788,8 @@
 		04D249512079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04C7997020931B8B00F86679 /* SHAlarm.h */,
+				04C7997120931B8B00F86679 /* SHAlarm.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1296,6 +1301,7 @@
 				04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */,
 				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
 				04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */,
+				04C7996C2093199F00F86679 /* Sounds.bundle in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
 				04D249DA2079E20D00EBD1BE /* SHCurtainViewController.xib in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
@@ -1307,7 +1313,6 @@
 				04DAFEBE2084A464009AA5EB /* SHChannelTypeViewCell.xib in Resources */,
 				04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */,
 				04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */,
-				04D2491C2079C51A00EBD1BE /* Main.storyboard in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 				04D8806620887441006C207E /* SHSettingDeviceArgsViewCell.xib in Resources */,
 				0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */,
@@ -1380,7 +1385,6 @@
 				04D249B82079CA9400EBD1BE /* SHNavigationController.m in Sources */,
 				04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */,
 				04D249D92079E20D00EBD1BE /* SHCurtainViewController.m in Sources */,
-				04D249192079C51A00EBD1BE /* ViewController.m in Sources */,
 				04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */,
 				04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */,
 				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
@@ -1414,12 +1418,14 @@
 				04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */,
 				04F892022089796F003E2CED /* SHSettingDeiviceTypeViewCell.m in Sources */,
 				04D8806520887441006C207E /* SHSettingDeviceArgsViewCell.m in Sources */,
+				04C7997220931B8B00F86679 /* SHAlarm.m in Sources */,
 				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
 				049725342080905400B62A9E /* SHLight.m in Sources */,
 				04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */,
 				04D249FB2079E2D100EBD1BE /* SHSettingRoomInfoViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
 				049725232080546A00B62A9E /* SHMacro.m in Sources */,
+				04C7996F20931A1700F86679 /* SHSoundTools.m in Sources */,
 				04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */,
 				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
 				04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */,
@@ -1442,14 +1448,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		04D2491A2079C51A00EBD1BE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04D2491B2079C51A00EBD1BE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		04D2491F2079C51B00EBD1BE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -55,6 +55,69 @@
 @implementation SHAlarmViewController
 
 
+- (IBAction)test:(id)sender {
+    
+    [self postLocalNoticfition];
+}
+
+
+/// 发送本地通知
+- (void)postLocalNoticfition {
+    
+    // 测试一下本地通知
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    SHAlarm *alarm = [[SHAlarm alloc] init];
+    alarm.alarmNumber = 1;
+    alarm.alarmSongName = @"schedulesound.wav";
+    alarm.alarmTime = @"17:10";
+    alarm.alarmIntervalTime = self.alarmCount;
+    
+    // 准备通知
+    UILocalNotification *localNoticfition = [[UILocalNotification alloc] init];
+    
+    localNoticfition.alertBody = @"Alarm";
+    localNoticfition.alertAction = @"Allow";
+    localNoticfition.soundName = UILocalNotificationDefaultSoundName;
+    localNoticfition.repeatInterval = NSCalendarUnitDay;
+    
+    NSDateComponents *components = [NSDate getCurrentDateComponents];
+    
+    NSInteger hour = [[[alarm.alarmTime componentsSeparatedByString:@":"]
+                       firstObject] integerValue];
+    NSInteger min = [[[alarm.alarmTime componentsSeparatedByString:@":"]
+                      lastObject] integerValue];
+    
+    [components setSecond:0];
+    [components setMinute:min];
+    [components setHour:hour];
+    
+    localNoticfition.fireDate = [[NSCalendar currentCalendar]
+                                 dateFromComponents:components];
+    
+    localNoticfition.userInfo = [NSDictionary dictionaryWithObjects:
+                                 @[@(alarm.alarmIntervalTime),
+                                   alarm.alarmSongName]
+                                                            forKeys:@[@"alarmIntervalTime",
+                                                                      @"alarmSongName"]];
+    
+    
+    // 取消已经存在的通知
+    //    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    //    for (UILocalNotification *notification in localNotifications) {
+    //
+    //        [[UIApplication sharedApplication] cancelLocalNotification:notification];
+    //    }
+    
+    
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNoticfition];
+    
+    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    printLog(@"所有的本地通知: %@", localNotifications);
+}
+
 /// 取消
 - (IBAction)cancelButtonClick {
     
