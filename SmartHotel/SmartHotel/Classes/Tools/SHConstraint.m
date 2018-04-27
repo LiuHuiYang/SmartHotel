@@ -33,6 +33,9 @@ const CGFloat defaultHeight = 44;
 /// 状态栏的高度
 const CGFloat statusBarHeight = 20;
 
+
+/// 闹钟开与关的key
+NSString *alarmClockOnOffKey = @"alarmClockOnOffKey";
  
 /// 远程登录的开关
 NSString *remoteControlKey = @"SHTurnOnRemoteControlKey";
@@ -58,7 +61,3 @@ NSNotificationName SHControlGoBackHomeControllerNotification = @"SHControlGoBack
 
 /// 控制器堆栈时进行隐藏 
 NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification = @"SHNavigationBarControllerPushHidderTabBarNotification";
-
-/// 闹钟开关的通知
-NSNotificationName SHAlarmTimeEnabelNotification = @"SHAlarmTimeEnabelNotification";
-

@@ -135,14 +135,9 @@
 - (IBAction)alarmTimeButtonClick {
     
     self.alarmTimeButton.on = !self.alarmTimeButton.on;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHAlarmTimeEnabelNotification object:@(self.alarmTimeButton.on)];
-}
-
-/// 设置闹钟是否开启
-- (void)setAlalrmTimeEnable:(NSNotification *)notification {
-    
-    self.alarmTimeButton.on = [notification.object boolValue];
+  
+    [[NSUserDefaults standardUserDefaults] setBool:self.alarmTimeButton.on forKey:alarmClockOnOffKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 /// 显示当前温度
@@ -157,6 +152,8 @@
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumberDisplay];
     
+     [self.alarmTimeButton setOn:[[NSUserDefaults standardUserDefaults] boolForKey:alarmClockOnOffKey]];
+    
     /// 读取温度
     [self readTemperature];
 }
@@ -164,11 +161,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAlalrmTimeEnable:) name:SHAlarmTimeEnabelNotification object:nil];
-    
-    
-    
+     
     // 当前选择的语言
     self.selectLanguageName = [[NSUserDefaults standardUserDefaults] objectForKey:@"LAGUAGEZ_NAME"];
     

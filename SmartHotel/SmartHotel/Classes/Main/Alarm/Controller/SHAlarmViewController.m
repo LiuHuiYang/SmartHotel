@@ -120,14 +120,14 @@
 }
 
 
-
-
 - (IBAction)alarmEnableButtonClick {
     
     self.alarmEnableButton.on = !self.alarmEnableButton.on;
     
-    // 发出通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHAlarmTimeEnabelNotification object:@(self.alarmEnableButton.on)];
+    [[NSUserDefaults standardUserDefaults] setBool:self.alarmEnableButton.on
+                                                forKey:alarmClockOnOffKey];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -141,10 +141,11 @@
     
 }
 
-/// 设置闹钟是否开启
-- (void)setAlalrmTimeEnable:(NSNotification *)notification {
+- (void)viewWillAppear:(BOOL)animated {
     
-    self.alarmEnableButton.on = [notification.object boolValue];
+    [super viewWillAppear:animated];
+    
+    [self.alarmEnableButton setOn:[[NSUserDefaults standardUserDefaults] boolForKey:alarmClockOnOffKey]];
 }
 
 - (void)viewDidLoad {
@@ -154,8 +155,6 @@
     self.datePicker.backgroundColor = [UIColor redColor];
     
     [self.datePicker setValue:[UIColor colorWithWhite:215/255.0 alpha:1.0] forKey:@"textColor"];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAlalrmTimeEnable:) name:SHAlarmTimeEnabelNotification object:nil];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showCurrentLocalTime) userInfo:nil repeats:YES];
     

@@ -100,6 +100,9 @@ UIKIT_EXTERN const CGFloat defaultHeight;
 /// 状态栏的高度
 UIKIT_EXTERN const CGFloat statusBarHeight;
 
+/// 闹钟开与关的key
+UIKIT_EXTERN NSString *alarmClockOnOffKey;
+
 /// 远程登录的开关
 UIKIT_EXTERN NSString *remoteControlKey;
 
@@ -118,18 +121,12 @@ UIKIT_EXTERN NSString *selectMacAddress;
 /// 所有设备网卡地址路径
 UIKIT_EXTERN NSString *allDeviceMacAddressListPath;
 
-
 /// 回到首页控制器的通知
 UIKIT_EXTERN NSNotificationName SHControlGoBackHomeControllerNotification;
 
 /// 控制器堆栈时进行隐藏
 UIKIT_EXTERN NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification;
 
-/// 闹钟开关的通知 
-UIKIT_EXTERN NSNotificationName SHAlarmTimeEnabelNotification;
-
-/// 设置模块完成后发出更新的通知 
-UIKIT_EXTERN NSNotificationName SHUpdateRoomAndDeviceInfomationNotification;
 
 #endif /* SHConstraint_h */
 
