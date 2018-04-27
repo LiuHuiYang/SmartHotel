@@ -22,11 +22,17 @@
 /// 设置种类名称
 @property (strong, nonatomic) NSMutableArray *typeNames;
 
-/// 房间参数
+/// 房间参数名称
 @property (strong, nonatomic) NSMutableArray *roomArgNames;
 
-/// 设备参数
+/// 房间参数值
+@property (strong, nonatomic) NSMutableArray *roomArgValues;
+
+/// 设备参数名称
 @property (strong, nonatomic) NSMutableArray *deviceArgNames;
+
+/// 设备参数值
+@property (strong, nonatomic) NSMutableArray *deviceArgValues;
 
 /// 当前的房间信息
 @property (strong, nonatomic) SHRoomBaseInfomation *currentRoomInfo;
@@ -40,6 +46,11 @@
 /// 设置类型
 @property (assign, nonatomic) BOOL isSettingRoomInfo;
 
+/// 值输入框
+@property (nonatomic, strong) UITextField *valueTextField;
+
+/// 选择的索引
+@property (nonatomic, assign) NSUInteger selectIndex;
 
 @end
 
@@ -71,19 +82,156 @@
     if (tableView == self.deviceListView) {
         
         self.isSettingRoomInfo = !indexPath.row;
+        self.selectDevice = nil;
+        self.selectIndex = indexPath.row;
         
         if (indexPath.row) {
             
             self.selectDevice = self.allDevices[indexPath.row - 1];
+            
+            self.deviceArgValues = [NSMutableArray arrayWithObjects:
+                                    
+                                    [NSString stringWithFormat:@"%@",
+                                     @(self.selectDevice.subnetID)],
+                                    
+                                    [NSString stringWithFormat:@"%@",
+                                     @(self.selectDevice.deviceID)],
+                                    
+                                    [NSString stringWithFormat:@"%@",
+                                     (self.selectDevice.deviceRemark)],
+                                    
+                                    nil];
+            
         }
         
         [self.argsListView reloadData];
-    
+        
     } else {
         
-        printLog(@"开始设置具体的参数： %zd", indexPath.row);
+        (!self.isSettingRoomInfo && self.selectDevice) ?
+            [self settingDeviceArgValues:indexPath] :
+            [self settingRoomInfoArgValues:indexPath];
     }
 }
+
+
+/// 设置房间参数
+- (void)settingRoomInfoArgValues:(NSIndexPath *)indexPath {
+    
+    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:self.roomArgNames[indexPath.row]
+                                message:nil isCustom:YES];
+    
+    [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        
+        [textField becomeFirstResponder];
+        
+        // 房间信息的前四个参数是整数
+        textField.keyboardType = ((indexPath.row > 3)) ? UIKeyboardTypeDefault : UIKeyboardTypeNumberPad;
+        
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.textAlignment = NSTextAlignmentCenter;
+        
+        textField.text = self.deviceArgValues[indexPath.row];
+        
+        self.valueTextField = textField;
+    }];
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Cancel"] style:TYAlertActionStyleCancel handler: nil]];
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Save"] style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
+        
+        if (![self.valueTextField.text isEqualToString:@""] && self.valueTextField.text.length) {
+            
+            [self updateAndSaveRoomInfo:self.valueTextField.text index:indexPath.row];
+        }
+        
+    }]];
+    
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+    
+    alertController.alertViewOriginY = navigationBarHeight + statusBarHeight;
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+/// 设置房间中的设备参数值
+- (void)settingDeviceArgValues:(NSIndexPath *)indexPath {
+    
+    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:self.deviceArgNames[indexPath.row]
+                                    message:nil isCustom:YES];
+    
+    [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        
+        [textField becomeFirstResponder];
+        
+        textField.keyboardType = (([[self.deviceArgNames[indexPath.row] lowercaseString] containsString:[@"Name" lowercaseString]]) || ([[self.deviceArgNames[indexPath.row] lowercaseString] containsString:[@"Remark" lowercaseString]])) ? UIKeyboardTypeDefault : UIKeyboardTypeNumberPad;
+        
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.textAlignment = NSTextAlignmentCenter;
+        
+        textField.text = self.deviceArgValues[indexPath.row];
+        
+        self.valueTextField = textField;
+    }];
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Cancel"] style:TYAlertActionStyleCancel handler: nil]];
+    
+    [alertView addAction:[TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Save"] style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
+        
+        if (![self.valueTextField.text isEqualToString:@""] && self.valueTextField.text.length) {
+            
+            [self updateAndSaveDevice:self.valueTextField.text index:indexPath.row];
+        }
+        
+    }]];
+    
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+    
+    alertController.alertViewOriginY = navigationBarHeight + statusBarHeight;
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+/// 更新房间信息
+- (void)updateAndSaveRoomInfo:(NSString *)value index:(NSUInteger)index {
+    
+    
+}
+
+/// 更新设备
+- (void)updateAndSaveDevice:(NSString *)value index:(NSUInteger)index {
+    
+    switch (index) {
+        
+        case 0: {
+            
+            self.selectDevice.subnetID = [value integerValue];
+        }
+            break;
+            
+        case 1: {
+            
+            self.selectDevice.deviceID = [value integerValue];
+        }
+            break;
+            
+        case 2: {
+            
+            self.selectDevice.deviceRemark = value;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    [[SHSQLManager shareSHSQLManager] updateRoomDevice:self.selectDevice];
+    
+    [self refreshListView];
+}
+    
+
+// MARK: - 数据源
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -94,24 +242,20 @@
         cell.deviceName = self.typeNames[indexPath.row];
         
         return cell;
-    
-    } else {
-    
-        SHSettingDeviceArgsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class]) forIndexPath:indexPath];
         
-        cell.indexPath = indexPath;
-        cell.selectDevice = nil;
-        cell.currentRoomInfo = nil;  // 消除重用机制的影响
+    } else {
+        
+        SHSettingDeviceArgsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class]) forIndexPath:indexPath];
         
         if (self.isSettingRoomInfo) {
             
             cell.argName = self.roomArgNames[indexPath.row];
-            cell.currentRoomInfo = self.currentRoomInfo;
-        
+            cell.argValue = self.roomArgValues[indexPath.row];
+            
         } else {
             
             cell.argName = self.deviceArgNames[indexPath.row];
-            cell.selectDevice = self.selectDevice;
+            cell.argValue = self.deviceArgValues[indexPath.row];
         }
         
         return cell;
@@ -125,9 +269,9 @@
     if (tableView == self.deviceListView) {
         
         return self.typeNames.count;
-    
+        
     } else {
-      
+        
         return self.isSettingRoomInfo ? self.roomArgNames.count : self.deviceArgNames.count;
     }
     
@@ -140,16 +284,35 @@
     
     [super viewWillAppear:animated];
     
-    self.currentRoomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    [self refreshListView];
     
-    self.allDevices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoomInfo];
-    
-    // 默认选择第一个
-    [self.deviceListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-    
-    [self tableView:self.deviceListView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
 
+/// 刷新列表
+- (void)refreshListView {
+    
+    self.currentRoomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    self.allDevices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoomInfo];
+    
+    // 获得每个cell中的值
+    self.roomArgValues = [NSMutableArray arrayWithObjects:
+                          
+                          [NSString stringWithFormat:@"%@", @(self.roomInfo.buildID)],
+                          [NSString stringWithFormat:@"%@", @(self.roomInfo.floorID)],
+                          [NSString stringWithFormat:@"%@", @(self.roomInfo.roomNumber)],
+                          [NSString stringWithFormat:@"%@", @(self.roomInfo.roomNumberDisplay)],
+                          [NSString stringWithFormat:@"%@", (self.roomInfo.roomAlias)],
+                          [NSString stringWithFormat:@"%@", (self.roomInfo.hotelName)],
+                          
+                          nil];
+    
+//    [self.argsListView reloadData];
+//    [self.deviceListView reloadData];
+     
+    [self.deviceListView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectIndex inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    
+    [self tableView:self.deviceListView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectIndex inSection:0]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -192,40 +355,42 @@
     return _typeNames;
 }
 
+
 - (NSMutableArray *)deviceArgNames {
     
     if (!_deviceArgNames) {
         
         _deviceArgNames = [NSMutableArray arrayWithObjects:
-                       [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Subnet ID"],
-                       [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Device ID"],
-                       [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"SETTINGS" withSubTitle:@"Remark"],
-                       
-                       nil];
+                           [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Subnet ID"],
+                           [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Device ID"],
+                           [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"SETTINGS" withSubTitle:@"Remark"],
+                           
+                           nil];
     }
     
     return _deviceArgNames;
 }
+
 
 - (NSMutableArray *)roomArgNames {
     
     if (!_roomArgNames) {
         
         _roomArgNames = [NSMutableArray arrayWithObjects:
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Building ID"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Floor ID"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Room NO."],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Room NO. Display"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"RoomAlias"],
-                     
-                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"HotelName"],
-                     
-                     nil];
+                         
+                         [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Building ID"],
+                         
+                         [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Floor ID"],
+                         
+                         [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Room NO."],
+                         
+                         [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Room NO. Display"],
+                         
+                         [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"RoomAlias"],
+                         
+                         [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"HotelName"],
+                         
+                         nil];
     }
     
     return _roomArgNames;
