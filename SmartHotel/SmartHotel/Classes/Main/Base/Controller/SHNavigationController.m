@@ -18,7 +18,7 @@
 
 
 + (void)load {
-    
+
     // 设置navigationBar为透明
     [[UINavigationBar appearance] setBackgroundImage:
      [[UIImage alloc] init] forBarPosition:UIBarPositionAny
@@ -29,6 +29,7 @@
 
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:28], NSForegroundColorAttributeName: SHDefualtTextColor}];
 }
+
 
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {

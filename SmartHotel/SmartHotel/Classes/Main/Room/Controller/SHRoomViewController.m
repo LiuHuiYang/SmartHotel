@@ -25,7 +25,7 @@
 @interface SHRoomViewController ()
 
 /// 当前的房间
-@property (strong, nonatomic) SHRoomBaseInfomation *currentRoom;
+@property (strong, nonatomic) SHRoomBaseInfomation *roomInfo;
 
 /// 上一次选中的按钮
 @property (weak, nonatomic) SHModuleSwitchButton *preivousButton;
@@ -49,10 +49,10 @@
 - (void)resetRoomAndDeviceInfo {
     
     // 获得当前房间的信息
-    self.currentRoom = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
     
     // 查询这个房间的所有设备
-    NSMutableArray *devices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.currentRoom];
+    NSMutableArray *devices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.roomInfo];
     
     // 主要是获取每个设备模块的子网ID && 设备ID
     for (SHRoomDevice *device in devices) {
@@ -61,50 +61,50 @@
                 
             case SHDeviceTypeDoorBell: {
                 
-                self.currentRoom.subNetIDForDoorBell = device.subnetID;
-                self.currentRoom.deviceIDForDoorBell = device.deviceID;
+                self.roomInfo.subNetIDForDoorBell = device.subnetID;
+                self.roomInfo.deviceIDForDoorBell = device.deviceID;
             }
                 break;
                 
             case SHDeviceTypeCardHolder: {
                 
-                self.currentRoom.subNetIDForCardHolder = device.subnetID;
-                self.currentRoom.deviceIDForCardHolder = device.deviceID;
+                self.roomInfo.subNetIDForCardHolder = device.subnetID;
+                self.roomInfo.deviceIDForCardHolder = device.deviceID;
             }
                 break;
                 
             case SHDeviceTypeBedside: {
                 
-                self.currentRoom.subNetIDForBedSide = device.subnetID;
-                self.currentRoom.deviceIDForBedSide = device.deviceID;
+                self.roomInfo.subNetIDForBedSide = device.subnetID;
+                self.roomInfo.deviceIDForBedSide = device.deviceID;
             }
                 break;
                 
             case SHDeviceTypeZoneBeast: {
                 
-                self.currentRoom.subNetIDForZoneBeast = device.subnetID;
-                self.currentRoom.deviceIDForZoneBeast = device.deviceID;
+                self.roomInfo.subNetIDForZoneBeast = device.subnetID;
+                self.roomInfo.deviceIDForZoneBeast = device.deviceID;
             }
                 break;
                 
             case SHDeviceTypeDDP: {
                 
-                self.currentRoom.subNetIDForDDP = device.subnetID;
-                self.currentRoom.deviceIDForDDP = device.deviceID;
+                self.roomInfo.subNetIDForDDP = device.subnetID;
+                self.roomInfo.deviceIDForDDP = device.deviceID;
             }
                 break;
                 
             case SHDeviceTypeIR: {
                 
-                self.currentRoom.subNetIDForIR = device.subnetID;
-                self.currentRoom.deviceIDForIR = device.deviceID;
+                self.roomInfo.subNetIDForIR = device.subnetID;
+                self.roomInfo.deviceIDForIR = device.deviceID;
             }
                 break;
                 
             case SHDeviceTypeZAudio: {
                 
-                self.currentRoom.subNetIDForZAudio = device.subnetID;
-                self.currentRoom.deviceIDForZAudio = device.deviceID;
+                self.roomInfo.subNetIDForZAudio = device.subnetID;
+                self.roomInfo.deviceIDForZAudio = device.deviceID;
             }
                 break;
                 
@@ -116,15 +116,15 @@
     // 首页要进行传值
     SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[0]) topViewController];
     
-    childController.roomInfo = self.currentRoom;
+    childController.roomInfo = self.roomInfo;
     
     printLog("============================================");
     
     // 房间信息
     printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
-             roomNumber - %zd", self.currentRoom.hotelName,
-             self.currentRoom.buildID, self.currentRoom.floorID,
-             self.currentRoom.roomNumber);
+             roomNumber - %zd", self.roomInfo.hotelName,
+             self.roomInfo.buildID, self.roomInfo.floorID,
+             self.roomInfo.roomNumber);
     
     for (SHRoomDevice *device in devices) {
         
@@ -182,10 +182,6 @@
     if (button.selected) {
         
         [self setSelectedIndex:button.tag];
-        
-        SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[button.tag]) topViewController];
-        
-        childController.roomInfo = self.currentRoom;
     }
 }
 
@@ -262,34 +258,34 @@
 - (void)addChildViewControllers {
     
     // home
-    [self setUpChildController:[[SHHomeViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHHomeViewController alloc] init] roomInfomation:self.roomInfo];
     
     // hvac
-    [self setUpChildController:[[SHHVACViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHHVACViewController alloc] init] roomInfomation:self.roomInfo];
     
     // light
-    [self setUpChildController:[[SHLightViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHLightViewController alloc] init] roomInfomation:self.roomInfo];
     
     // tv
-    [self setUpChildController:[[SHTVViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHTVViewController alloc] init] roomInfomation:self.roomInfo];
     
     // curtain
-    [self setUpChildController:[[SHCurtainViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHCurtainViewController alloc] init] roomInfomation:self.roomInfo];
     
     // alarm
-    [self setUpChildController:[[SHAlarmViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHAlarmViewController alloc] init] roomInfomation:self.roomInfo];
     
     // housekeeping
-    [self setUpChildController:[[SHHousekeepingViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHHousekeepingViewController alloc] init] roomInfomation:self.roomInfo];
     
     // vip
-    [self setUpChildController:[[SHVIPViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHVIPViewController alloc] init] roomInfomation:self.roomInfo];
     
     // camera
-    [self setUpChildController:[[SHCameraViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHCameraViewController alloc] init] roomInfomation:self.roomInfo];
     
     // worldtime
-    [self setUpChildController:[[SHWorldTimeViewController alloc] init] roomInfomation:self.currentRoom];
+    [self setUpChildController:[[SHWorldTimeViewController alloc] init] roomInfomation:self.roomInfo];
 }
 
 /// 设置单个子控制器

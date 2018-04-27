@@ -14,4 +14,5 @@
 /// 房间信息
 @property (strong, nonatomic) SHRoomBaseInfomation *roomInfo;
 
+ 
 @end

@@ -63,7 +63,6 @@
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoButton];
 
-
     // 创建右边的按钮
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gobackhome:)];
 
@@ -87,6 +86,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    
+    self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    
+    // 房间信息
+    printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
+             roomNumber - %zd", self.roomInfo.hotelName,
+             self.roomInfo.buildID, self.roomInfo.floorID,
+             self.roomInfo.roomNumber);
     
     [self setUpNavigationBar];
 }
