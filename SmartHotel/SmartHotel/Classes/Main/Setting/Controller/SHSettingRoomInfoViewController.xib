@@ -15,7 +15,6 @@
             <connections>
                 <outlet property="argsListView" destination="RMx-T7-ibP" id="LMw-Rq-08a"/>
                 <outlet property="deviceListView" destination="M6r-cH-KyB" id="JrJ-Zm-FhS"/>
-                <outlet property="saveButton" destination="Xlw-yH-JkC" id="pMU-rG-es8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -51,21 +50,6 @@
                                 <constraint firstItem="M6r-cH-KyB" firstAttribute="width" secondItem="Oc8-Ya-f3R" secondAttribute="width" id="dE8-az-bbv"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlw-yH-JkC">
-                            <rect key="frame" x="307" y="431.5" width="256" height="64"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="256" id="2KB-Nb-Q7n"/>
-                                <constraint firstAttribute="height" constant="64" id="Txg-27-egm"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="Save" backgroundImage="CameraListBtn">
-                                <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="saveButtonClick" destination="-1" eventType="touchUpInside" id="l3L-8p-wNd"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wi8-Oo-UCV" userLabel="rightView">
                             <rect key="frame" x="302" y="12.5" width="504" height="399"/>
                             <subviews>
@@ -90,7 +74,6 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Oc8-Ya-f3R" firstAttribute="height" secondItem="uNW-OB-ziM" secondAttribute="height" multiplier="0.8" id="4RL-YK-6Tz"/>
-                        <constraint firstItem="Xlw-yH-JkC" firstAttribute="top" secondItem="Wi8-Oo-UCV" secondAttribute="bottom" constant="20" id="SMS-Al-4j1"/>
                         <constraint firstAttribute="trailing" secondItem="Wi8-Oo-UCV" secondAttribute="trailing" constant="64" id="U6z-U3-b9h"/>
                         <constraint firstItem="Wi8-Oo-UCV" firstAttribute="leading" secondItem="Oc8-Ya-f3R" secondAttribute="trailing" constant="64" id="Wci-nD-Iys"/>
                         <constraint firstItem="Wi8-Oo-UCV" firstAttribute="height" secondItem="Oc8-Ya-f3R" secondAttribute="height" id="ZhQ-EO-pFo"/>
@@ -109,7 +92,6 @@
                 <constraint firstItem="PGu-9X-yCA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="F7N-9z-ILz"/>
                 <constraint firstItem="PGu-9X-yCA" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="FJd-Yf-kof"/>
                 <constraint firstItem="uNW-OB-ziM" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="M0M-4R-vXU"/>
-                <constraint firstItem="Xlw-yH-JkC" firstAttribute="centerX" secondItem="PGu-9X-yCA" secondAttribute="centerX" id="dd9-Cp-RE6"/>
                 <constraint firstItem="uNW-OB-ziM" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="o6b-nZ-TVJ"/>
                 <constraint firstItem="uNW-OB-ziM" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="rLx-s6-VzU"/>
             </constraints>
@@ -117,7 +99,6 @@
         </view>
     </objects>
     <resources>
-        <image name="CameraListBtn" width="123" height="61"/>
         <image name="Share_BG_iPad" width="1024" height="768"/>
     </resources>
 </document>

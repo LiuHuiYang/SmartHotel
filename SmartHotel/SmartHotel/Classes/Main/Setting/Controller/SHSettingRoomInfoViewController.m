@@ -40,16 +40,14 @@
 /// 设置类型
 @property (assign, nonatomic) BOOL isSettingRoomInfo;
 
-/// 保存按钮
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
 @implementation SHSettingRoomInfoViewController
 
 
-/// 点击保存
-- (IBAction)saveButtonClick {
+/// 保存当前房间的所有信息
+- (void)saveRoomInfo {
     
     // 更新房间信息
     [[SHSQLManager shareSHSQLManager] updateRoomInfo:self.currentRoomInfo];
@@ -66,7 +64,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:SHControlGoBackHomeControllerNotification object:nil];
 }
 
-
 // MARK: - 数据源和代理
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,6 +79,9 @@
         
         [self.argsListView reloadData];
     
+    } else {
+        
+        printLog(@"开始设置具体的参数： %zd", indexPath.row);
     }
 }
 
@@ -155,8 +155,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"SETTINGS" withSubTitle:@"Settings"];
-    
-    [self.saveButton setTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Save"] forState:UIControlStateNormal];
     
     [self.deviceListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSettingDeiviceTypeViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSettingDeiviceTypeViewCell class])];
     self.deviceListView.rowHeight = [SHSettingDeiviceTypeViewCell rowHeightForDeviceTypeViewCell];
