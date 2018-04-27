@@ -10,7 +10,7 @@
 
 #import "SHNavigationBarButton.h"
 
-#import "SHSettingViewController.h"
+#import "SHSettingRoomInfoViewController.h"
 #import "SHHomeViewController.h"
 
 @interface SHModelViewController ()
@@ -25,11 +25,11 @@
 /// 进入设置页面
 - (void)setting:(UIGestureRecognizer *)recognizer {
     
-    if ((recognizer.state != UIGestureRecognizerStateBegan) || ([self isKindOfClass:[SHSettingViewController class]])) {
+    if ((recognizer.state != UIGestureRecognizerStateBegan) || ([self isKindOfClass:[SHSettingRoomInfoViewController class]])) {
         return;
     }
     
-    SHSettingViewController *settingViewController = [[SHSettingViewController alloc] init];
+    SHSettingRoomInfoViewController *settingViewController = [[SHSettingRoomInfoViewController alloc] init];
     
     settingViewController.roomInfo = self.roomInfo;
     
@@ -40,7 +40,7 @@
 - (void)gobackhome:(UIGestureRecognizer *)recognizer  {
     
     // 设置页面
-    if ([self isKindOfClass:[SHSettingViewController class]]) {
+    if ([self isKindOfClass:[SHSettingRoomInfoViewController class]]) {
         
         [self.navigationController popViewControllerAnimated:YES];
         

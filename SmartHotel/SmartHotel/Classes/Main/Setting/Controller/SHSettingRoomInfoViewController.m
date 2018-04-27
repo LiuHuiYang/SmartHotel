@@ -1,17 +1,17 @@
 //
-//  SHSettingViewController.m
+//  SHSettingRoomInfoViewController.m
 //  SmartHotel
 //
 //  Created by Mac on 2018/4/8.
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 
-#import "SHSettingViewController.h"
+#import "SHSettingRoomInfoViewController.h"
 #import "SHSettingDeiviceTypeViewCell.h"
 #import "SHSettingDeviceArgsViewCell.h"
 
 
-@interface SHSettingViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SHSettingRoomInfoViewController () <UITableViewDelegate, UITableViewDataSource>
 
 /// 设备列表
 @property (weak, nonatomic) IBOutlet UITableView *deviceListView;
@@ -45,7 +45,7 @@
 
 @end
 
-@implementation SHSettingViewController
+@implementation SHSettingRoomInfoViewController
 
 
 /// 点击保存

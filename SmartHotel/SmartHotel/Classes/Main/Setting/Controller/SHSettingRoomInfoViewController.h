@@ -1,5 +1,5 @@
 //
-//  SHSettingViewController.h
+//  SHSettingRoomInfoViewController.h
 //  SmartHotel
 //
 //  Created by Mac on 2018/4/8.
@@ -8,6 +8,6 @@
 
 #import "SHModelViewController.h"
 
-@interface SHSettingViewController : SHModelViewController
+@interface SHSettingRoomInfoViewController : SHModelViewController
 
 @end

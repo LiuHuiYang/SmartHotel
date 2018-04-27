@@ -73,8 +73,8 @@
 		04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249F02079E2AA00EBD1BE /* SHCameraViewController.xib */; };
 		04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249F42079E2C000EBD1BE /* SHWorldTimeViewController.m */; };
 		04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249F52079E2C000EBD1BE /* SHWorldTimeViewController.xib */; };
-		04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249F92079E2D100EBD1BE /* SHSettingViewController.m */; };
-		04D249FC2079E2D100EBD1BE /* SHSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */; };
+		04D249FB2079E2D100EBD1BE /* SHSettingRoomInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249F92079E2D100EBD1BE /* SHSettingRoomInfoViewController.m */; };
+		04D249FC2079E2D100EBD1BE /* SHSettingRoomInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249FA2079E2D100EBD1BE /* SHSettingRoomInfoViewController.xib */; };
 		04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A012079EA3A00EBD1BE /* SHNavigationBarButton.m */; };
 		04D24A062079EE1900EBD1BE /* SHModuleSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A052079EE1900EBD1BE /* SHModuleSwitchButton.m */; };
 		04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A092079F58100EBD1BE /* SHServiceButton.m */; };
@@ -222,9 +222,9 @@
 		04D249F32079E2C000EBD1BE /* SHWorldTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHWorldTimeViewController.h; sourceTree = "<group>"; };
 		04D249F42079E2C000EBD1BE /* SHWorldTimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHWorldTimeViewController.m; sourceTree = "<group>"; };
 		04D249F52079E2C000EBD1BE /* SHWorldTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHWorldTimeViewController.xib; sourceTree = "<group>"; };
-		04D249F82079E2D100EBD1BE /* SHSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingViewController.h; sourceTree = "<group>"; };
-		04D249F92079E2D100EBD1BE /* SHSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingViewController.m; sourceTree = "<group>"; };
-		04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingViewController.xib; sourceTree = "<group>"; };
+		04D249F82079E2D100EBD1BE /* SHSettingRoomInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingRoomInfoViewController.h; sourceTree = "<group>"; };
+		04D249F92079E2D100EBD1BE /* SHSettingRoomInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingRoomInfoViewController.m; sourceTree = "<group>"; };
+		04D249FA2079E2D100EBD1BE /* SHSettingRoomInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingRoomInfoViewController.xib; sourceTree = "<group>"; };
 		04D24A002079EA3A00EBD1BE /* SHNavigationBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHNavigationBarButton.h; sourceTree = "<group>"; };
 		04D24A012079EA3A00EBD1BE /* SHNavigationBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHNavigationBarButton.m; sourceTree = "<group>"; };
 		04D24A042079EE1900EBD1BE /* SHModuleSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHModuleSwitchButton.h; sourceTree = "<group>"; };
@@ -809,9 +809,9 @@
 		04D249542079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04D249F82079E2D100EBD1BE /* SHSettingViewController.h */,
-				04D249F92079E2D100EBD1BE /* SHSettingViewController.m */,
-				04D249FA2079E2D100EBD1BE /* SHSettingViewController.xib */,
+				04D249F82079E2D100EBD1BE /* SHSettingRoomInfoViewController.h */,
+				04D249F92079E2D100EBD1BE /* SHSettingRoomInfoViewController.m */,
+				04D249FA2079E2D100EBD1BE /* SHSettingRoomInfoViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1302,7 +1302,7 @@
 				04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */,
 				04D249CB2079E1CC00EBD1BE /* SHLightViewController.xib in Resources */,
 				04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */,
-				04D249FC2079E2D100EBD1BE /* SHSettingViewController.xib in Resources */,
+				04D249FC2079E2D100EBD1BE /* SHSettingRoomInfoViewController.xib in Resources */,
 				04D249AC2079C9B800EBD1BE /* SQL.sql in Resources */,
 				04DAFEBE2084A464009AA5EB /* SHChannelTypeViewCell.xib in Resources */,
 				04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */,
@@ -1417,7 +1417,7 @@
 				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
 				049725342080905400B62A9E /* SHLight.m in Sources */,
 				04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */,
-				04D249FB2079E2D100EBD1BE /* SHSettingViewController.m in Sources */,
+				04D249FB2079E2D100EBD1BE /* SHSettingRoomInfoViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
 				049725232080546A00B62A9E /* SHMacro.m in Sources */,
 				04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */,
