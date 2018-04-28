@@ -71,16 +71,16 @@
     SHAlarm *alarm = [[SHAlarm alloc] init];
     alarm.alarmNumber = 1;
     alarm.alarmSongName = @"schedulesound.wav";
-    alarm.alarmTime = @"17:10";
+    alarm.alarmTime = @"09:25";
     alarm.alarmIntervalTime = self.alarmCount;
     
     // 准备通知
     UILocalNotification *localNoticfition = [[UILocalNotification alloc] init];
     
-    localNoticfition.alertBody = @"Alarm";
+    localNoticfition.alertBody = [NSString stringWithFormat:@"Alarm %@", alarm.alarmTime];
     localNoticfition.alertAction = @"Allow";
     localNoticfition.soundName = UILocalNotificationDefaultSoundName;
-    localNoticfition.repeatInterval = NSCalendarUnitDay;
+//    localNoticfition.repeatInterval = NSCalendarUnitDay;
     
     NSDateComponents *components = [NSDate getCurrentDateComponents];
     
@@ -101,15 +101,6 @@
                                    alarm.alarmSongName]
                                                             forKeys:@[@"alarmIntervalTime",
                                                                       @"alarmSongName"]];
-    
-    
-    // 取消已经存在的通知
-    //    NSArray *localNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    //    for (UILocalNotification *notification in localNotifications) {
-    //
-    //        [[UIApplication sharedApplication] cancelLocalNotification:notification];
-    //    }
-    
     
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNoticfition];
@@ -191,6 +182,8 @@
                                                 forKey:alarmClockOnOffKey];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
 }
 
 

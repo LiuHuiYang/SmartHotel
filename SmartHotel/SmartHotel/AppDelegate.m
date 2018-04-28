@@ -45,7 +45,7 @@
 //        }
     
 //    printLog(@"%d", isOpen);
-    }
+//    }
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:
@@ -83,6 +83,11 @@
 
 /// 注册本地通知
 - (void)registerLocalNotification {
+     
+    if ([[[UIApplication sharedApplication] currentUserNotificationSettings] types] != UIUserNotificationTypeNone) {
+        
+        return;
+    }
     
     UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:setting
