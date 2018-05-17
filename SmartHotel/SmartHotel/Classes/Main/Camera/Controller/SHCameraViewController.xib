@@ -62,9 +62,9 @@
                                     <rect key="frame" x="15" y="340.5" width="602" height="84"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8R-1J-Ndw" customClass="SHCameraButton">
-                                            <rect key="frame" x="0.0" y="10.5" width="139.5" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.5" width="139.5" height="84"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="64" id="XN4-n7-edF"/>
+                                                <constraint firstAttribute="height" constant="84" id="XN4-n7-edF"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="Button" backgroundImage="CameraWait">
@@ -73,7 +73,7 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmA-PE-1pL" customClass="SHCameraButton">
-                                            <rect key="frame" x="154.5" y="10.5" width="139" height="64"/>
+                                            <rect key="frame" x="154.5" y="0.5" width="139.5" height="84"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="Button" backgroundImage="CameraDND">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,7 +81,7 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvU-cH-v7F" customClass="SHCameraButton">
-                                            <rect key="frame" x="463" y="10" width="139" height="64"/>
+                                            <rect key="frame" x="463" y="0.0" width="139" height="84"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" backgroundImage="CameraSettings">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,7 +89,7 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aee-Co-6oa" customClass="SHCameraButton">
-                                            <rect key="frame" x="308.5" y="10.5" width="139.5" height="64"/>
+                                            <rect key="frame" x="309" y="0.5" width="139" height="84"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="Button" backgroundImage="CameraTalk">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

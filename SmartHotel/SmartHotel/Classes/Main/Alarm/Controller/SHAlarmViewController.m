@@ -182,19 +182,14 @@
                                                 forKey:alarmClockOnOffKey];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
 }
 
 
 - (void)showCurrentLocalTime {
-    
-    // 获得当前时间
+   
     NSDateComponents *currentTime = [NSDate getCurrentDateComponents];
     
-    // 更新当前时间
     self.showCurrentLocalTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

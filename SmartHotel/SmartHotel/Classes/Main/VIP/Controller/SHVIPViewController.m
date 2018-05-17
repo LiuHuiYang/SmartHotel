@@ -261,7 +261,7 @@
                 
                 [self presentViewController:alertController animated:YES completion:nil];
                 
-                return;
+                return;  
         }
         
         if (serverButton.isSelected && (serverButton.serverType == SHRoomServerTypeMaintenance)) {
