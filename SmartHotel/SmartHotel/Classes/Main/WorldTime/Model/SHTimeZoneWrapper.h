@@ -30,9 +30,7 @@
 
 /// GMT-偏移量
 @property (nonatomic, copy) NSString *gmtOffset;
-
-/// 图片
-@property (nonatomic, strong) UIImage *image;
+ 
 
 - (instancetype)initWithTimeZone:(NSTimeZone *)timeZone nameComponents:(NSArray *)nameComponents;
 

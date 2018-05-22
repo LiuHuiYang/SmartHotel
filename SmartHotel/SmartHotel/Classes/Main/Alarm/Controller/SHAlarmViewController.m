@@ -126,6 +126,7 @@
 - (IBAction)dateChange {
     
     printLog(@"时间修改");
+    
 }
 
 
@@ -134,6 +135,10 @@
     self.setDateView.hidden = NO;
     
     self.baseViewCenterYConstraint.constant -= self.setDateView.frame_height;
+    
+    
+    
+    
     
 //    CGFloat scale = 1.6;
 //    CGFloat moveMarign = 216 * scale;
@@ -192,12 +197,14 @@
     self.showCurrentLocalTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
     [self.alarmEnableButton setOn:[[NSUserDefaults standardUserDefaults] boolForKey:alarmClockOnOffKey]];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

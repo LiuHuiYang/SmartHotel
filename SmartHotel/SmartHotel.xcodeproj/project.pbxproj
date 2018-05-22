@@ -85,6 +85,8 @@
 		04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8805920883255006C207E /* SHCameraViewCell.xib */; };
 		04D8806520887441006C207E /* SHSettingDeviceArgsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8806320887441006C207E /* SHSettingDeviceArgsViewCell.m */; };
 		04D8806620887441006C207E /* SHSettingDeviceArgsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8806420887441006C207E /* SHSettingDeviceArgsViewCell.xib */; };
+		04DA600B20B27BDD0099EBFE /* SHWordTimeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA600820B27BDD0099EBFE /* SHWordTimeViewCell.m */; };
+		04DA600C20B27BDD0099EBFE /* SHWordTimeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA600A20B27BDD0099EBFE /* SHWordTimeViewCell.xib */; };
 		04DAFEB220849779009AA5EB /* SHTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEB020849779009AA5EB /* SHTV.m */; };
 		04DAFEB520849788009AA5EB /* SHChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEB420849788009AA5EB /* SHChannel.m */; };
 		04DAFEB820849D1A009AA5EB /* SHChannelType.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAFEB720849D1A009AA5EB /* SHChannelType.m */; };
@@ -244,6 +246,9 @@
 		04D8806220887441006C207E /* SHSettingDeviceArgsViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingDeviceArgsViewCell.h; sourceTree = "<group>"; };
 		04D8806320887441006C207E /* SHSettingDeviceArgsViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingDeviceArgsViewCell.m; sourceTree = "<group>"; };
 		04D8806420887441006C207E /* SHSettingDeviceArgsViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingDeviceArgsViewCell.xib; sourceTree = "<group>"; };
+		04DA600820B27BDD0099EBFE /* SHWordTimeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHWordTimeViewCell.m; sourceTree = "<group>"; };
+		04DA600920B27BDD0099EBFE /* SHWordTimeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHWordTimeViewCell.h; sourceTree = "<group>"; };
+		04DA600A20B27BDD0099EBFE /* SHWordTimeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHWordTimeViewCell.xib; sourceTree = "<group>"; };
 		04DAFEB020849779009AA5EB /* SHTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTV.m; sourceTree = "<group>"; };
 		04DAFEB120849779009AA5EB /* SHTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTV.h; sourceTree = "<group>"; };
 		04DAFEB320849788009AA5EB /* SHChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHChannel.h; sourceTree = "<group>"; };
@@ -869,6 +874,7 @@
 		04D2495A2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04DA600720B27BDD0099EBFE /* timeCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1138,6 +1144,16 @@
 			path = argsCell;
 			sourceTree = "<group>";
 		};
+		04DA600720B27BDD0099EBFE /* timeCell */ = {
+			isa = PBXGroup;
+			children = (
+				04DA600820B27BDD0099EBFE /* SHWordTimeViewCell.m */,
+				04DA600920B27BDD0099EBFE /* SHWordTimeViewCell.h */,
+				04DA600A20B27BDD0099EBFE /* SHWordTimeViewCell.xib */,
+			);
+			path = timeCell;
+			sourceTree = "<group>";
+		};
 		04DAFEAD20849779009AA5EB /* ChannelType */ = {
 			isa = PBXGroup;
 			children = (
@@ -1300,6 +1316,7 @@
 				0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */,
 				04FE7B43207E06030003FC85 /* SHCurtainViewCell.xib in Resources */,
 				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
+				04DA600C20B27BDD0099EBFE /* SHWordTimeViewCell.xib in Resources */,
 				04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */,
 				04C7996C2093199F00F86679 /* Sounds.bundle in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
@@ -1419,6 +1436,7 @@
 				04F892022089796F003E2CED /* SHSettingDeiviceTypeViewCell.m in Sources */,
 				04D8806520887441006C207E /* SHSettingDeviceArgsViewCell.m in Sources */,
 				04C7997220931B8B00F86679 /* SHAlarm.m in Sources */,
+				04DA600B20B27BDD0099EBFE /* SHWordTimeViewCell.m in Sources */,
 				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
 				049725342080905400B62A9E /* SHLight.m in Sources */,
 				04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */,
