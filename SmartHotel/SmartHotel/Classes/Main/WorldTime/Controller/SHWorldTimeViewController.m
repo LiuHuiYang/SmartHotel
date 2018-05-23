@@ -10,11 +10,13 @@
 #import "SHTimeZoneWrapper.h"
 #import "SHWordTimeViewCell.h"
 
+#import "UITableView+ZYXIndexTip.h"
+
 
 #define SHTextDefaultColor ([UIColor colorWithWhite:215/255.0 alpha:1.0])
 
 @interface SHWorldTimeViewController () <UITableViewDelegate,
-UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
+    UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
 
 
 /// 时间区域列表
@@ -46,31 +48,12 @@ UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
 /// 查询结果
 @property (strong, nonatomic) NSMutableArray *results;
 
+
 @end
 
 @implementation SHWorldTimeViewController
 
 // MARK: - 搜索栏的代理
-
-
-- (void)willPresentSearchController:(UISearchController *)searchController {
-     printLog(@"%s", __func__);
-    
-//    CGRect tableFrame = self.timeZoneListView.frame;
-//    self.timeZoneListView.frame_y = statusBarHeight;
-////    self.timeZoneListView = self.view.frame_height - statusBarHeight;
-////    self.timeZoneListView.frame = tableFrame;
-//    [UIView animateWithDuration:0.4 animations:^{
-//        [self.view layoutIfNeeded];
-//        [self.timeZoneListView layoutIfNeeded];
-//    }];
-    
-//    [self.view addSubview:self.searchController.searchBar];
-    
-//    searchController.searchBar.frame_width = self.timeZoneListView.frame_width;
-//    self.searchController.searchBar.frame_centerX = self.timeZoneListView.frame_centerX;
-//    [self.view layoutIfNeeded];
-}
 
 - (void)didPresentSearchController:(UISearchController *)searchController {
     
@@ -80,22 +63,8 @@ UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
 //    [self.view addSubview:self.searchController.searchBar];
     
 }
-- (void)willDismissSearchController:(UISearchController *)searchController {
-     printLog(@"%s", __func__);
-}
-- (void)didDismissSearchController:(UISearchController *)searchController {
-     printLog(@"%s", __func__);
-}
 
-
-- (void)presentSearchController:(UISearchController *)searchController {
-    
-    printLog(@"%s", __func__);
-}
-
-
-// MARK: - 搜索栏的代理
-
+/// 动态输入进行搜索的代理
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     
     NSString *inputString = searchController.searchBar.text;
@@ -131,10 +100,16 @@ UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
     }
     
     [self.timeZoneListView reloadData];
-    
 }
 
+
+
 // MARK: - 数据源 && 代理
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+ 
+    return  index;
+}
 
 - (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     
@@ -225,7 +200,6 @@ UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
     return cell;
 }
 
-
 // MARK: - UI初始化
 
 - (void)viewDidLoad {
@@ -234,13 +208,15 @@ UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"WorldClock"];
     
     self.timeZoneListView.rowHeight = [SHWordTimeViewCell rowHeightForWordTimeViewCell];
-    [self.timeZoneListView registerNib:[UINib nibWithNibName
-                                        :NSStringFromClass([SHWordTimeViewCell class])
-                                        bundle:nil]
+    [self.timeZoneListView registerNib:
+                 [UINib nibWithNibName:NSStringFromClass([SHWordTimeViewCell class])
+                                bundle:nil]
                 forCellReuseIdentifier:NSStringFromClass([SHWordTimeViewCell class])];
     
     self.timeZoneListView.sectionIndexColor = SHTextDefaultColor;
     self.timeZoneListView.sectionFooterHeight = 0;
+    
+     [self.timeZoneListView addIndexTip];
     
     [self configureSections];
     
