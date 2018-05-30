@@ -39,6 +39,7 @@
 #import "SHChannelType.h"
 #import "SHAlarm.h"
 #import "SHSwitchButton.h"
+#import "SHSoundTools.h"
 
 #import "UIImage+SaveAndGet.h"
 

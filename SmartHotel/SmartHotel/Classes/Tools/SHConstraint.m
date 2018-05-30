@@ -36,7 +36,13 @@ const CGFloat statusBarHeight = 20;
 
 /// 闹钟开与关的key
 NSString *alarmClockOnOffKey = @"alarmClockOnOffKey";
- 
+
+/// 闹钟时间字符串
+NSString *alarmTimeStringKey = @"alarmTimeStringKey";
+
+/// 闹钟时间
+NSString *alarmSoundName = @"schedulesound.wav";
+
 /// 远程登录的开关
 NSString *remoteControlKey = @"SHTurnOnRemoteControlKey";
 

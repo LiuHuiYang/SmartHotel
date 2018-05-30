@@ -103,6 +103,12 @@ UIKIT_EXTERN const CGFloat statusBarHeight;
 /// 闹钟开与关的key
 UIKIT_EXTERN NSString *alarmClockOnOffKey;
 
+/// 闹钟时间
+UIKIT_EXTERN NSString *alarmTimeStringKey;
+
+/// 闹钟时间
+UIKIT_EXTERN NSString *alarmSoundName;
+
 /// 远程登录的开关
 UIKIT_EXTERN NSString *remoteControlKey;
 

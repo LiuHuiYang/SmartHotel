@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,10 +15,15 @@
             <connections>
                 <outlet property="alarmCountLabel" destination="Tcc-li-9RN" id="nNI-dY-tf9"/>
                 <outlet property="alarmEnableButton" destination="vHZ-JQ-Xdk" id="g25-2N-JMx"/>
-                <outlet property="baseViewCenterYConstraint" destination="7IB-gf-VVk" id="HA5-hx-DJU"/>
+                <outlet property="baseViewCenterYConstraint" destination="7IB-gf-VVk" id="6tC-mn-kyM"/>
+                <outlet property="cancelButton" destination="Lx6-30-qTv" id="26t-kh-cXK"/>
+                <outlet property="datePickerView" destination="Rlz-tz-F5Q" id="b58-cU-LxL"/>
+                <outlet property="dateShowView" destination="wei-Se-cUL" id="YZu-TO-iBI"/>
                 <outlet property="localTimeLabel" destination="LBE-oF-UeS" id="fgr-HI-J7a"/>
                 <outlet property="remainingTimeLabel" destination="7Bz-U4-4Aq" id="fKV-q8-XZt"/>
                 <outlet property="showCurrentLocalTimeLabel" destination="iEw-Uu-HMv" id="HBM-yG-rnE"/>
+                <outlet property="showWakeUpTimeLabel" destination="Oe7-Jq-2Th" id="t1X-wn-Csj"/>
+                <outlet property="sureButton" destination="HQD-hf-Fc0" id="HnQ-zT-W8s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wakeUpActivateLabel" destination="xDC-L7-fV6" id="4j7-eq-zCE"/>
                 <outlet property="wakeUpTimeLabel" destination="GDK-s7-h21" id="BOg-B8-Rn1"/>
@@ -31,10 +35,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="lwV-Wc-vaP">
-                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-lQ-rWv">
-                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="134.5" width="870" height="499.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qno-bf-oBr" userLabel="localView">
                             <rect key="frame" x="225" y="29.5" width="420" height="64"/>
@@ -246,20 +250,62 @@
                                 <constraint firstItem="xDC-L7-fV6" firstAttribute="centerY" secondItem="7kg-P8-hRJ" secondAttribute="centerY" id="m01-ma-mkQ"/>
                             </constraints>
                         </view>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kGN-5p-016">
-                            <rect key="frame" x="725" y="381" width="49" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <action selector="test:" destination="-1" eventType="valueChanged" id="bpe-d3-BGk"/>
-                            </connections>
-                        </switch>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wei-Se-cUL" userLabel="dateView">
+                            <rect key="frame" x="225" y="202.5" width="420" height="320"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-hf-Fc0">
+                                    <rect key="frame" x="20" y="271" width="168" height="49"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="49" id="n5Y-sS-oFE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="确定" backgroundImage="main_showTime_iPad">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sureButtonClick" destination="-1" eventType="touchUpInside" id="8Tq-71-9RU"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-30-qTv">
+                                    <rect key="frame" x="232" y="271" width="168" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="取消" backgroundImage="main_showTime_iPad">
+                                        <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelButtonClick" destination="-1" eventType="touchUpInside" id="hgZ-1W-E6s"/>
+                                    </connections>
+                                </button>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-tz-F5Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="216"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="549363733.71255505">
+                                        <!--2018-05-30 09:02:13 +0000-->
+                                    </date>
+                                </datePicker>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.57894173029999996" blue="0.13053008229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="Rlz-tz-F5Q" firstAttribute="top" secondItem="wei-Se-cUL" secondAttribute="top" id="2n1-SQ-YuR"/>
+                                <constraint firstItem="Lx6-30-qTv" firstAttribute="height" secondItem="HQD-hf-Fc0" secondAttribute="height" id="CXr-je-4Qh"/>
+                                <constraint firstAttribute="trailing" secondItem="Lx6-30-qTv" secondAttribute="trailing" constant="20" id="HzL-Rh-Q38"/>
+                                <constraint firstItem="HQD-hf-Fc0" firstAttribute="width" secondItem="wei-Se-cUL" secondAttribute="width" multiplier="0.4" id="IKX-hh-8il"/>
+                                <constraint firstItem="Rlz-tz-F5Q" firstAttribute="centerX" secondItem="wei-Se-cUL" secondAttribute="centerX" id="U4l-fz-XGo"/>
+                                <constraint firstItem="Lx6-30-qTv" firstAttribute="width" secondItem="HQD-hf-Fc0" secondAttribute="width" id="VPn-V7-1pR"/>
+                                <constraint firstAttribute="bottom" secondItem="HQD-hf-Fc0" secondAttribute="bottom" id="a3D-Sk-gak"/>
+                                <constraint firstItem="Rlz-tz-F5Q" firstAttribute="width" secondItem="wei-Se-cUL" secondAttribute="width" id="f0n-gP-LBE"/>
+                                <constraint firstItem="HQD-hf-Fc0" firstAttribute="leading" secondItem="wei-Se-cUL" secondAttribute="leading" constant="20" id="kp5-20-8RM"/>
+                                <constraint firstItem="Lx6-30-qTv" firstAttribute="centerY" secondItem="HQD-hf-Fc0" secondAttribute="centerY" id="wUW-Q8-okc"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="xDC-L7-fV6" firstAttribute="centerX" secondItem="LBE-oF-UeS" secondAttribute="centerX" id="5Pk-HY-fIR"/>
                         <constraint firstItem="IDk-ga-8Id" firstAttribute="centerX" secondItem="6C9-CH-0p1" secondAttribute="centerX" id="6jG-QE-WDL"/>
+                        <constraint firstItem="wei-Se-cUL" firstAttribute="top" secondItem="6C9-CH-0p1" secondAttribute="top" constant="-15" id="7dL-9h-MZ8"/>
                         <constraint firstItem="qno-bf-oBr" firstAttribute="height" secondItem="6C9-CH-0p1" secondAttribute="height" id="7jn-eo-JUw"/>
                         <constraint firstItem="6yB-1m-pc8" firstAttribute="height" secondItem="vHZ-JQ-Xdk" secondAttribute="height" id="95w-bx-oDd"/>
+                        <constraint firstItem="wei-Se-cUL" firstAttribute="width" secondItem="7kg-P8-hRJ" secondAttribute="width" id="A16-TM-aBz"/>
                         <constraint firstItem="7Bz-U4-4Aq" firstAttribute="height" secondItem="LBE-oF-UeS" secondAttribute="height" id="C47-UB-kFi"/>
                         <constraint firstItem="6C9-CH-0p1" firstAttribute="centerY" secondItem="qJY-lQ-rWv" secondAttribute="centerY" id="Dvn-u6-7cg"/>
                         <constraint firstItem="7Bz-U4-4Aq" firstAttribute="width" secondItem="LBE-oF-UeS" secondAttribute="width" id="IKV-Ei-VGM"/>
@@ -285,12 +331,14 @@
                         <constraint firstItem="qno-bf-oBr" firstAttribute="width" secondItem="6C9-CH-0p1" secondAttribute="width" id="e2k-xB-mlG"/>
                         <constraint firstItem="xDC-L7-fV6" firstAttribute="width" secondItem="LBE-oF-UeS" secondAttribute="width" id="fcR-fy-Qq9"/>
                         <constraint firstItem="5o8-RM-1qe" firstAttribute="width" secondItem="jov-oc-04D" secondAttribute="width" id="gIW-Ea-G9t"/>
+                        <constraint firstItem="wei-Se-cUL" firstAttribute="height" secondItem="7kg-P8-hRJ" secondAttribute="height" multiplier="5" id="hJR-8R-EfI"/>
                         <constraint firstItem="jov-oc-04D" firstAttribute="height" secondItem="vHZ-JQ-Xdk" secondAttribute="height" id="hNc-fO-I3p"/>
                         <constraint firstItem="6yB-1m-pc8" firstAttribute="width" secondItem="vHZ-JQ-Xdk" secondAttribute="width" id="hUL-E6-96L"/>
                         <constraint firstItem="7kg-P8-hRJ" firstAttribute="centerX" secondItem="6C9-CH-0p1" secondAttribute="centerX" id="hsN-0S-lRL"/>
                         <constraint firstItem="7kg-P8-hRJ" firstAttribute="width" secondItem="6C9-CH-0p1" secondAttribute="width" id="izA-VL-EJ3"/>
                         <constraint firstItem="7Bz-U4-4Aq" firstAttribute="centerX" secondItem="LBE-oF-UeS" secondAttribute="centerX" id="j6z-PJ-bPh"/>
                         <constraint firstItem="8tV-hf-YVq" firstAttribute="height" secondItem="vHZ-JQ-Xdk" secondAttribute="height" id="vEx-so-9SM"/>
+                        <constraint firstItem="wei-Se-cUL" firstAttribute="centerX" secondItem="7kg-P8-hRJ" secondAttribute="centerX" id="wHn-rv-PTe"/>
                         <constraint firstItem="5o8-RM-1qe" firstAttribute="centerX" secondItem="jov-oc-04D" secondAttribute="centerX" id="xvf-QK-Lqa"/>
                         <constraint firstItem="8tV-hf-YVq" firstAttribute="centerX" secondItem="vHZ-JQ-Xdk" secondAttribute="centerX" id="yrW-Ck-iaD"/>
                         <constraint firstItem="6yB-1m-pc8" firstAttribute="centerX" secondItem="vHZ-JQ-Xdk" secondAttribute="centerX" id="zCM-wA-Idb"/>
@@ -300,15 +348,14 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qJY-lQ-rWv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="21j-qS-Jte"/>
-                <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="7IB-gf-VVk"/>
-                <constraint firstItem="lwV-Wc-vaP" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="Qt6-0p-b3H"/>
-                <constraint firstItem="lwV-Wc-vaP" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="VIX-sk-kz3"/>
+                <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7IB-gf-VVk"/>
+                <constraint firstItem="lwV-Wc-vaP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qt6-0p-b3H"/>
+                <constraint firstItem="lwV-Wc-vaP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VIX-sk-kz3"/>
                 <constraint firstItem="lwV-Wc-vaP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="bns-G9-GuX"/>
                 <constraint firstItem="lwV-Wc-vaP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="t33-Cu-Yd0"/>
                 <constraint firstItem="qJY-lQ-rWv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="utH-Hl-X7b"/>
-                <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="xRK-eJ-rJS"/>
+                <constraint firstItem="qJY-lQ-rWv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xRK-eJ-rJS"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
     <resources>

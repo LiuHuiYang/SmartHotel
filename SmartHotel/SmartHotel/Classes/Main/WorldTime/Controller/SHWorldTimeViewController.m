@@ -374,7 +374,8 @@
         
         _dateFormatter = [[NSDateFormatter alloc] init];
         
-        [_dateFormatter setDateFormat:@"h:mm a"];
+//        [_dateFormatter setDateFormat:@"h:mm a"];
+        [_dateFormatter setDateFormat:@"HH:mm"];
     }
     return _dateFormatter;
 }

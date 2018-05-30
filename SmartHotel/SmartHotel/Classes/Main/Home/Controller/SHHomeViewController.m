@@ -138,6 +138,11 @@
   
     [[NSUserDefaults standardUserDefaults] setBool:self.alarmTimeButton.on forKey:alarmClockOnOffKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if (!self.alarmTimeButton.on) {
+        
+        [[SHSoundTools shareSHSoundTools] stopSoundWithName:alarmSoundName];
+    }
 }
 
 /// 显示当前温度
@@ -152,7 +157,13 @@
     
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumberDisplay];
     
+    self.alarmTimeLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:alarmTimeStringKey];
+    
     [self.alarmTimeButton setOn:[[NSUserDefaults standardUserDefaults] boolForKey:alarmClockOnOffKey]];
+    
+    if (!self.alarmTimeLabel.text.length) {
+        [self.alarmTimeButton setOn:NO];
+    }
     
     [self readTemperature];
 }

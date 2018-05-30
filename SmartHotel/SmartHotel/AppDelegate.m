@@ -23,29 +23,17 @@
         return;
     }
    
-//    while (true) {
+    NSString *soundName = [notification.userInfo objectForKey:
+                           @"alarmSongName"];
     
-        NSString *soundName = [notification.userInfo objectForKey:
-                               @"alarmSongName"];
-        
-        [[SHSoundTools shareSHSoundTools] playSoundWithName:soundName];
-        
-        NSInteger time = [[notification.userInfo objectForKey:
-                           @"alarmIntervalTime"] integerValue];
-        
-        [NSThread sleepForTimeInterval:time * 60];
-        
-        BOOL isOpen = [[NSUserDefaults standardUserDefaults]
-                  boolForKey:alarmClockOnOffKey];
-        
-//        if (!isOpen) {
-//
-//            [[SHSoundTools shareSHSoundTools] stopSoundWithName:soundName];
-//            break;
-//        }
+    [[SHSoundTools shareSHSoundTools] playSoundWithName:soundName];
     
-//    printLog(@"%d", isOpen);
-//    }
+    NSInteger time = [[notification.userInfo objectForKey:
+                       @"alarmIntervalTime"] integerValue];
+    
+    [NSThread sleepForTimeInterval:time * 60];
+    
+    [[SHSoundTools shareSHSoundTools] playSoundWithName:soundName];
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:
