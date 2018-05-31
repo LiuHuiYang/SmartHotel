@@ -1613,7 +1613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TMD6A3D429;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SmartHotel/Classes/SmartHotelPCH.pch";
 				INFOPLIST_FILE = SmartHotel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1621,9 +1621,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Mark.SmartHotel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SmartHome.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c7bbd59a-bb6c-4bda-a332-ac4e0cddf8e4";
+				PROVISIONING_PROFILE_SPECIFIER = SmartHotelDebug;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -1633,8 +1634,9 @@
 			baseConfigurationReference = 2B65073CD2CB61C87CB85B5B /* Pods-SmartHotel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TMD6A3D429;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SmartHotel/Classes/SmartHotelPCH.pch";
 				INFOPLIST_FILE = SmartHotel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1642,9 +1644,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Mark.SmartHotel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SmartHome.Hotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "5105c5fd-70bc-4b31-aff8-6b4954657793";
+				PROVISIONING_PROFILE_SPECIFIER = SmartHotelAppStore;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

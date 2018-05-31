@@ -81,8 +81,6 @@
             
             Byte servcieStatus = recivedData[startIndex];
             
-            
-            
         }
             break;
             
