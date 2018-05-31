@@ -6,15 +6,6 @@
 //  Copyright © 2018年 SmartHome. All rights reserved.
 //
 
-/*
-
- 1.全局的闹钟
- 2.获得最初的时间，没有默认07:30
- 3.时间选择器中时间的保存
- 4.按钮的处理
-
- */
-
 #import "SHAlarmViewController.h"
 
 @interface SHAlarmViewController ()
@@ -30,7 +21,6 @@
 
 /// 显示设定闹钟时间
 @property (weak, nonatomic) IBOutlet UILabel *showWakeUpTimeLabel;
-
 
 /// 设置闹钟
 @property (weak, nonatomic) IBOutlet UILabel *remainingTimeLabel;
@@ -58,6 +48,12 @@
 /// 中心点的位置
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *baseViewCenterYConstraint;
 
+/// 日期选择器的中心约束
+
+@property (weak, nonatomic) IBOutlet UIView *countView;
+
+@property (weak, nonatomic) IBOutlet UIView *enabelArarmView;
+
 /// 时间选择器
 @property (weak, nonatomic) IBOutlet UIView *dateShowView;
 
@@ -73,19 +69,12 @@
 
 @implementation SHAlarmViewController
 
-
-/// 点击确定
-- (IBAction)sureButtonClick {
+/// 保存闹钟时间
+- (void)saveAlarmTime {
     
-    NSDateComponents *com = [NSDate getCurrentDateComponentsFrom:self.datePickerView.date];
-    
-    NSString *timeString =  [NSString stringWithFormat:@"%02zd:%02zd", com.hour, com.minute];
-    
-    self.showWakeUpTimeLabel.text = timeString;
-    
-//    self.alarm.alarmNumber = 1;
+    //    self.alarm.alarmNumber = 1;
     self.alarm.alarmSongName = alarmSoundName;
-    self.alarm.alarmTime = timeString;
+    self.alarm.alarmTime = self.showWakeUpTimeLabel.text;
     self.alarm.alarmIntervalTime = self.alarmCount;
     
     // 时间存储于沙盒
@@ -97,9 +86,21 @@
         
         [self postLocalNoticfition:self.alarm];
     }
+}
+
+/// 点击确定
+- (IBAction)sureButtonClick {
     
-    self.baseViewCenterYConstraint.constant = 0;
-    self.dateShowView.hidden = YES;
+    NSDateComponents *com = [NSDate getCurrentDateComponentsFrom:self.datePickerView.date];
+    
+    NSString *timeString =  [NSString stringWithFormat:@"%02zd:%02zd", com.hour, com.minute];
+    
+    self.showWakeUpTimeLabel.text = timeString;
+    
+    // 保存闹钟时间
+    [self saveAlarmTime];
+    
+    [self cancelButtonClick];
 }
 
 /// 点击取消
@@ -107,24 +108,22 @@
     
     self.baseViewCenterYConstraint.constant = 0;
     self.dateShowView.hidden = YES;
+    self.countView.hidden = NO;
+    self.enabelArarmView.hidden = NO;
+    self.baseViewCenterYConstraint.constant = 0;
 }
-
-
-
-
 
 /// 发送本地通知
 - (void)postLocalNoticfition:(SHAlarm *)alarm {
     
-    // 测试一下本地通知
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-
+    
     UILocalNotification *localNoticfition = [[UILocalNotification alloc] init];
     
     localNoticfition.alertBody = [NSString stringWithFormat:@"Alarm %@", alarm.alarmTime];
     localNoticfition.alertAction = @"Allow";
     localNoticfition.soundName = UILocalNotificationDefaultSoundName;
-//    localNoticfition.repeatInterval = NSCalendarUnitDay;
+    //    localNoticfition.repeatInterval = NSCalendarUnitDay;
     
     NSDateComponents *components = [NSDate getCurrentDateComponents];
     
@@ -142,48 +141,40 @@
     
     localNoticfition.userInfo = [NSDictionary dictionaryWithObjects:
                                  @[@(alarm.alarmIntervalTime),
-                                   alarm.alarmSongName]
-                                forKeys:@[@"alarmIntervalTime", @"alarmSongName"]];
+                                    alarm.alarmSongName]
+                                                            forKeys:
+                                 @[@"alarmIntervalTime", @"alarmSongName"]];
     
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNoticfition];
 }
 
- 
+
 
 - (IBAction)setAlarmTime {
     
-    
     [UIView animateWithDuration:0.3 animations:^{
-    
+        
         if (!self.baseViewCenterYConstraint.constant) {
             
-            
-            self.baseViewCenterYConstraint.constant = -44;
+            self.baseViewCenterYConstraint.constant = 0 - navigationBarHeight;
             self.dateShowView.hidden = NO;
+            self.countView.hidden = YES;
+            self.enabelArarmView.hidden = YES;
             
-        } else  {
-            
-             self.dateShowView.hidden = YES;
-            self.baseViewCenterYConstraint.constant = 0;
+            if (CGAffineTransformEqualToTransform(self.datePickerView.transform, CGAffineTransformIdentity)) {
+                self.datePickerView.transform =
+                CGAffineTransformMakeScale(1.2, 1.2);
+            }
         }
-        
     }];
-   
-    
- 
-//    CGFloat scale = 1.6;
-//    CGFloat moveMarign = 216 * scale;
-//    if (CGAffineTransformEqualToTransform(self.datePicker.transform, CGAffineTransformIdentity)) {
-//        self.datePicker.transform = CGAffineTransformMakeScale(scale, scale);
-//    }
 }
 
 
 
 /// 减小响铃次数
 - (IBAction)alarmCountDown {
-
+    
     NSInteger count = self.alarmCountLabel.text.integerValue;
     
     --count;
@@ -194,7 +185,10 @@
     
     self.alarmCount = count;
     
-    self.alarmCountLabel.text = [NSString stringWithFormat:@"%@", @(self.alarmCount)];
+    self.alarmCountLabel.text = [NSString stringWithFormat:
+                                 @"%@", @(self.alarmCount)];
+    
+    [self saveAlarmTime];
 }
 
 /// 增加响令次数
@@ -203,10 +197,12 @@
     NSInteger count = self.alarmCountLabel.text.integerValue;
     
     ++count;
-   
+    
     self.alarmCount = count;
     
     self.alarmCountLabel.text = [NSString stringWithFormat:@"%@", @(self.alarmCount)];
+    
+    [self saveAlarmTime];
 }
 
 
@@ -215,7 +211,7 @@
     self.alarmEnableButton.on = !self.alarmEnableButton.on;
     
     [[NSUserDefaults standardUserDefaults] setBool:self.alarmEnableButton.on
-                                                forKey:alarmClockOnOffKey];
+                                            forKey:alarmClockOnOffKey];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -223,11 +219,13 @@
         
         [[SHSoundTools shareSHSoundTools] stopSoundWithName:alarmSoundName];
     }
+    
+    [self saveAlarmTime];
 }
 
 
 - (void)showCurrentLocalTime {
-   
+    
     NSDateComponents *currentTime = [NSDate getCurrentDateComponents];
     
     self.showCurrentLocalTimeLabel.text =  [NSString stringWithFormat:@"%02zd:%02zd", currentTime.hour, currentTime.minute];
@@ -249,14 +247,14 @@
                      forState:UIControlStateNormal] ;
     
     [self.cancelButton setTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Cancel"]
-                     forState:UIControlStateNormal] ;
+                       forState:UIControlStateNormal] ;
     
     [self.datePickerView setValue:[UIColor colorWithWhite:215/255.0 alpha:1.0] forKey:@"textColor"];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showCurrentLocalTime) userInfo:nil repeats:YES];
     
     [self showCurrentLocalTime];
-   
+    
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Alarm"];
     
     self.localTimeLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"ALARM" withSubTitle:@"Current Local Time"];
@@ -267,8 +265,19 @@
     
     self.wakeUpActivateLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"ALARM" withSubTitle:@"On Wake Up Activate Wake Up Mode"];
     
+    // 闹钟相关
     SHAlarm *alarm = [[SHAlarm alloc] init];
     self.alarm = alarm;
+    
+    self.alarm.alarmTime = [[NSUserDefaults standardUserDefaults] objectForKey:alarmTimeStringKey];
+    
+    if (!self.alarm.alarmTime.length) {
+        
+        self.alarm.alarmTime = @"07:30";
+    }
+    
+    self.showWakeUpTimeLabel.text = self.alarm.alarmTime;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -294,5 +303,5 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 }
- 
+
 @end

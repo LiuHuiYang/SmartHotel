@@ -22,7 +22,7 @@
     if (!notification) {
         return;
     }
-   
+    
     NSString *soundName = [notification.userInfo objectForKey:
                            @"alarmSongName"];
     
@@ -31,9 +31,10 @@
     NSInteger time = [[notification.userInfo objectForKey:
                        @"alarmIntervalTime"] integerValue];
     
-    [NSThread sleepForTimeInterval:time * 60];
-    
-    [[SHSoundTools shareSHSoundTools] playSoundWithName:soundName];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * 60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [[SHSoundTools shareSHSoundTools] playSoundWithName:soundName];
+    });
 }
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:
