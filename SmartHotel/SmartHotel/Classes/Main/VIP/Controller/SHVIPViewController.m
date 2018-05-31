@@ -90,7 +90,7 @@
             
             Byte servcieStatus = recivedData[startIndex];
             
-            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+           
             
         }
             break;
@@ -101,7 +101,7 @@
                 
                 Byte servcieStatus = recivedData[startIndex];
                 
-                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+               
             }
         }
             break;
@@ -113,8 +113,7 @@
     if (operatorCode == 0X043F || operatorCode == 0X040B) {
         
         // 设置状态
-        //        [self setServiceStatusForButton]
-        [SVProgressHUD showSuccessWithStatus:@"准备进行设置状态"];
+        
     }
 }
 

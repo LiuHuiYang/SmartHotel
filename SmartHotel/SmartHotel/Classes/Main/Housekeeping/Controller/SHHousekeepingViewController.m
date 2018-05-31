@@ -81,7 +81,7 @@
             
             Byte servcieStatus = recivedData[startIndex];
             
-            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
+            
             
         }
             break;
