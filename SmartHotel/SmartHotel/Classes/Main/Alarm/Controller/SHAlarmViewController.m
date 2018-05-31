@@ -34,9 +34,6 @@
 /// 闹钟响铃次数的标签
 @property (weak, nonatomic) IBOutlet UILabel *alarmCountLabel;
 
-/// 闹钟响铃次数
-@property (assign, nonatomic) NSUInteger alarmCount;
-
 /// 日期格式化字符串
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
@@ -75,10 +72,13 @@
     //    self.alarm.alarmNumber = 1;
     self.alarm.alarmSongName = alarmSoundName;
     self.alarm.alarmTime = self.showWakeUpTimeLabel.text;
-    self.alarm.alarmIntervalTime = self.alarmCount;
+    self.alarm.alarmIntervalTime = [self.alarmCountLabel.text integerValue];
     
     // 时间存储于沙盒
     [[NSUserDefaults standardUserDefaults] setObject: self.alarm.alarmTime forKey:alarmTimeStringKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:self.alarm.alarmIntervalTime forKey:alarmDelayTimeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // 只有启用闹钟才可以发送通知
@@ -183,10 +183,8 @@
         count = 0;
     }
     
-    self.alarmCount = count;
-    
     self.alarmCountLabel.text = [NSString stringWithFormat:
-                                 @"%@", @(self.alarmCount)];
+                                 @"%@", @(count)];
     
     [self saveAlarmTime];
 }
@@ -198,9 +196,7 @@
     
     ++count;
     
-    self.alarmCount = count;
-    
-    self.alarmCountLabel.text = [NSString stringWithFormat:@"%@", @(self.alarmCount)];
+    self.alarmCountLabel.text = [NSString stringWithFormat:@"%@", @(count)];
     
     [self saveAlarmTime];
 }
@@ -277,6 +273,9 @@
     }
     
     self.showWakeUpTimeLabel.text = self.alarm.alarmTime;
+    
+    self.alarmCountLabel.text = [NSString stringWithFormat:
+                                 @"%@", @([[NSUserDefaults standardUserDefaults] integerForKey:alarmDelayTimeKey])];
     
 }
 

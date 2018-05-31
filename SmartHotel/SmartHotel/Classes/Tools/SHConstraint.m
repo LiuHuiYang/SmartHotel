@@ -40,6 +40,9 @@ NSString *alarmClockOnOffKey = @"alarmClockOnOffKey";
 /// 闹钟时间字符串
 NSString *alarmTimeStringKey = @"alarmTimeStringKey";
 
+/// 闹钟再次响铃的延迟时间
+NSString *alarmDelayTimeKey = @"alarmDelayTimeKey";
+
 /// 闹钟时间
 NSString *alarmSoundName = @"schedulesound.wav";
 

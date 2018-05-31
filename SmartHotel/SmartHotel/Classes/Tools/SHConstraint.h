@@ -106,6 +106,9 @@ UIKIT_EXTERN NSString *alarmClockOnOffKey;
 /// 闹钟时间
 UIKIT_EXTERN NSString *alarmTimeStringKey;
 
+/// 闹钟再次响铃的延迟时间
+UIKIT_EXTERN NSString *alarmDelayTimeKey;
+
 /// 闹钟时间
 UIKIT_EXTERN NSString *alarmSoundName;
 
