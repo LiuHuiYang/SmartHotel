@@ -1,0 +1,20 @@
+
+-- 窗帘
+CREATE TABLE IF NOT EXISTS Curtains (
+
+    curtainID INTEGER NOT NULL DEFAULT 0,
+    curtainName TEXT NOT NULL DEFAULT 'curtain',
+
+    curtainType INTEGER NOT NULL DEFAULT 0,
+
+    subnetID INTEGER NOT NULL DEFAULT 0,
+    deviceID INTEGER NOT NULL DEFAULT 0,
+
+    openChannel INTEGER DEFAULT 0,
+    closeChannel INTEGER DEFAULT 0,
+    stopChannel INTEGER NOT NULL DEFAULT 0,
+
+    switchIDforOpen INTEGER NOT NULL DEFAULT 0,
+    switchIDforClose INTEGER NOT NULL DEFAULT 0,
+    switchIDforStop INTEGER NOT NULL DEFAULT 0
+);

@@ -172,7 +172,7 @@
 /// 发送电视的控制信号
 - (void)sendControlTVData:(NSUInteger)switchNumber {
     
-    Byte controlData[2] = {switchNumber, 0XFF};
+    Byte controlData[2] = {switchNumber, 0xFF};
     
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.currentTV.subnetID targetDeviceID:self.currentTV.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }

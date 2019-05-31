@@ -20,16 +20,5 @@
     return curtain;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    
-    if ([key isEqualToString:@"SHCurtainID"]) {
-        
-        self.curtainID = [value integerValue];
-        
-        return;
-    }
-    
-    [super setValue:value forKey:key];
-}
 
 @end

@@ -25,9 +25,12 @@
     alertView.layer.cornerRadius = [UIDevice is_iPad] ? statusBarHeight : statusBarHeight * 0.5;
     alertView.clipsToBounds = YES;
     
-    alertView.backgroundColor = [UIColor cololrWithHex:0XddFbFb alpha:0.9];
+    alertView.backgroundColor = [UIColor darkGrayColor]; //[UIColor cololrWithHex:0xddFbFb alpha:0.9];
     
-    CGFloat alertWidth = MIN([UIView frame_screenWidth], [UIView frame_screenHeight]) * 0.65;
+    CGFloat alertWidth =
+        MIN([UIView frame_screenWidth],
+            [UIView frame_screenHeight]
+        ) * 0.65;
     
     // 框架本身默认是 280
     alertView.alertViewWidth = alertWidth > 280 ? alertWidth : 280;
@@ -40,7 +43,7 @@
         
         alertView.textLabelSpace = statusBarHeight;
         
-        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:title attributes: @{NSFontAttributeName:([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue-Bold" size:32] : [UIFont fontWithName:@"HelveticaNeue-Bold" size:22]), NSForegroundColorAttributeName: [UIColor whiteColor]} ];
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:title attributes: @{NSFontAttributeName:([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue-Bold" size:28] : [UIFont fontWithName:@"HelveticaNeue-Bold" size:20]), NSForegroundColorAttributeName: [UIColor whiteColor]} ];
         
         alertView.titleLable.attributedText = attributedText;
         alertView.titleLable.numberOfLines = 0;
@@ -51,7 +54,7 @@
         
         alertView.textLabelContentViewEdge = statusBarHeight;
         
-        NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:@{NSFontAttributeName: ([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue" size:28] : [UIFont fontWithName:@"HelveticaNeue" size:16]), NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
+        NSAttributedString *attributedMessage = [[NSAttributedString alloc] initWithString:message attributes:@{NSFontAttributeName: ([UIDevice is_iPad] ? [UIFont fontWithName:@"HelveticaNeue" size:22] : [UIFont fontWithName:@"HelveticaNeue" size:16]), NSForegroundColorAttributeName: [UIColor darkGrayColor]}];
         
         alertView.messageLabel.attributedText = attributedMessage;
         alertView.messageLabel.numberOfLines = 0;
@@ -65,11 +68,11 @@
     
     alertView.buttonCornerRadius = statusBarHeight * 0.5;
     
-    alertView.buttonFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:28] : [UIFont boldSystemFontOfSize:16];
+    alertView.buttonFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:22] : [UIFont boldSystemFontOfSize:16];
     
     // =============  textField ======================
     
-    alertView.textFieldFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:28] : [UIFont boldSystemFontOfSize:16];
+    alertView.textFieldFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:22] : [UIFont boldSystemFontOfSize:16];
     
     alertView.textFieldHeight = [UIDevice is_iPad] ? navigationBarHeight + statusBarHeight : tabBarHeight;
     

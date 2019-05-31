@@ -310,7 +310,7 @@ void pack_crc(Byte *ptr, unichar len);
     NSUInteger index = 0;
     while (index < ipArray.count) {
 
-        maraySendUDPBuf[index++] = [ipArray[index] integerValue] & 0XFF;
+        maraySendUDPBuf[index++] = [ipArray[index] integerValue] & 0xFF;
     }
     
     // 2.2  协议头 固定 udpPckageHead数组
@@ -325,28 +325,28 @@ void pack_crc(Byte *ptr, unichar len);
     maraySendUDPBuf[index++] = 0xAA;
     
     // 2.3.2 数据包的长度  -- 计算(SN2 ~ 10)
-    maraySendUDPBuf[index++] = (protocolBaseStructureLength - 2) & 0XFF; // -2 是不含 SN1的内容
+    maraySendUDPBuf[index++] = (protocolBaseStructureLength - 2) & 0xFF; // -2 是不含 SN1的内容
     
     // 2.3.3 手机的子网ID
-    maraySendUDPBuf[index++] = originalSubnetID & 0XFF;
+    maraySendUDPBuf[index++] = originalSubnetID & 0xFF;
     // 2.3.4 手机的设备ID
-    maraySendUDPBuf[index++] = originalDeviceID & 0XFF;
+    maraySendUDPBuf[index++] = originalDeviceID & 0xFF;
     
     // 2.3.5 设备类型
-    maraySendUDPBuf[index++] = (originalDeviceType >> 8) & 0XFF;
-    maraySendUDPBuf[index++] = (originalDeviceType & 0XFF);
+    maraySendUDPBuf[index++] = (originalDeviceType >> 8) & 0xFF;
+    maraySendUDPBuf[index++] = (originalDeviceType & 0xFF);
     
     // 2.3.6 操作码
-    maraySendUDPBuf[index++] = (operatorCode >> 8) & 0XFF; // 高8位
-    maraySendUDPBuf[index++] = (operatorCode & 0XFF); // 低8位
+    maraySendUDPBuf[index++] = (operatorCode >> 8) & 0xFF; // 高8位
+    maraySendUDPBuf[index++] = (operatorCode & 0xFF); // 低8位
     
     // 2.3.7 目标设备的子网ID与设备ID
-    maraySendUDPBuf[index++] = targetSubnetID & 0XFF;
-    maraySendUDPBuf[index++] = targetDeviceID & 0XFF;
+    maraySendUDPBuf[index++] = targetSubnetID & 0xFF;
+    maraySendUDPBuf[index++] = targetDeviceID & 0xFF;
     
     // 2.3.8 可变参数
     for (NSUInteger i = 0; i < additionalContentLength; i++) {
-        maraySendUDPBuf[index++] = (((Byte *)[additionalContentData bytes])[i]) & 0XFF;
+        maraySendUDPBuf[index++] = (((Byte *)[additionalContentData bytes])[i]) & 0xFF;
     }
     
     // 2.3.9 不同部的部分
@@ -440,7 +440,7 @@ const UInt16  CRC_TAB[] = {           /* CRC tab */
     0x6ca6, 0x7c87, 0x4ce4, 0x5cc5, 0x2c22, 0x3c03, 0x0c60, 0x1c41,
     0xedae, 0xfd8f, 0xcdec, 0xddcd, 0xad2a, 0xbd0b, 0x8d68, 0x9d49,
     0x7e97, 0x6eb6, 0x5ed5, 0x4ef4, 0x3e13, 0x2e32, 0x1e51, 0x0e70,
-    0xff9f, 0xefbe, 0xdfdd, 0xcffc, 0xbf1b, 0xaf3a, 0x9f59, 0x8f78,
+    0xFF9f, 0xefbe, 0xdfdd, 0xcffc, 0xbf1b, 0xaf3a, 0x9f59, 0x8f78,
     0x9188, 0x81a9, 0xb1ca, 0xa1eb, 0xd10c, 0xc12d, 0xf14e, 0xe16f,
     0x1080, 0x00a1, 0x30c2, 0x20e3, 0x5004, 0x4025, 0x7046, 0x6067,
     0x83b9, 0x9398, 0xa3fb, 0xb3da, 0xc33d, 0xd31c, 0xe37f, 0xf35e,
@@ -455,7 +455,7 @@ const UInt16  CRC_TAB[] = {           /* CRC tab */
     0x4a75, 0x5a54, 0x6a37, 0x7a16, 0x0af1, 0x1ad0, 0x2ab3, 0x3a92,
     0xfd2e, 0xed0f, 0xdd6c, 0xcd4d, 0xbdaa, 0xad8b, 0x9de8, 0x8dc9,
     0x7c26, 0x6c07, 0x5c64, 0x4c45, 0x3ca2, 0x2c83, 0x1ce0, 0x0cc1,
-    0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
+    0xef1f, 0xFF3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
     0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
 };
 

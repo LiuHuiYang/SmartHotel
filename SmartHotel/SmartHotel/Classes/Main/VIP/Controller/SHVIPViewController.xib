@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -140,7 +138,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeB-cm-LDv" customClass="SHServiceButton">
-                            <rect key="frame" x="351" y="212.5" width="168" height="75"/>
+                            <rect key="frame" x="351" y="212" width="168" height="75"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="75" id="B7a-WV-Wgt"/>
@@ -219,28 +217,28 @@
         </view>
     </objects>
     <resources>
-        <image name="HKPLeaseWait_highlighted" width="169" height="80"/>
-        <image name="HKPLeaseWait_normal" width="169" height="80"/>
-        <image name="HKServer_Bags_highlighted" width="169" height="80"/>
-        <image name="HKServer_Bags_normal" width="169" height="80"/>
-        <image name="HKServer_Buttler_highlighted" width="169" height="80"/>
-        <image name="HKServer_Buttler_normal" width="169" height="80"/>
-        <image name="HKServer_CheckOut_highlighted" width="169" height="80"/>
-        <image name="HKServer_CheckOut_normal" width="169" height="80"/>
-        <image name="HKServer_Doctor_highlighted" width="169" height="80"/>
-        <image name="HKServer_Doctor_normal" width="169" height="80"/>
-        <image name="HKServer_Elevrtor_highlighted" width="169" height="80"/>
-        <image name="HKServer_Elevrtor_normal" width="169" height="80"/>
-        <image name="HKServer_Maint_highlighted" width="169" height="80"/>
-        <image name="HKServer_Maint_normal" width="169" height="80"/>
-        <image name="HKServer_Massage_highlighted" width="169" height="80"/>
-        <image name="HKServer_Massage_normal" width="169" height="80"/>
-        <image name="HKServer_MyCar_highlighted" width="169" height="80"/>
-        <image name="HKServer_MyCar_normal" width="169" height="80"/>
-        <image name="HKServer_Panic_highlighted" width="169" height="80"/>
-        <image name="HKServer_Panic_normal" width="169" height="80"/>
-        <image name="HKServer_Taxi_highlighted" width="169" height="80"/>
-        <image name="HKServer_Taxi_normal" width="169" height="80"/>
+        <image name="HKPLeaseWait_highlighted" width="169" height="80.5"/>
+        <image name="HKPLeaseWait_normal" width="169" height="80.5"/>
+        <image name="HKServer_Bags_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Bags_normal" width="169" height="80.5"/>
+        <image name="HKServer_Buttler_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Buttler_normal" width="169" height="80.5"/>
+        <image name="HKServer_CheckOut_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_CheckOut_normal" width="169" height="80.5"/>
+        <image name="HKServer_Doctor_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Doctor_normal" width="169" height="80.5"/>
+        <image name="HKServer_Elevrtor_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Elevrtor_normal" width="169" height="80.5"/>
+        <image name="HKServer_Maint_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Maint_normal" width="169" height="80.5"/>
+        <image name="HKServer_Massage_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Massage_normal" width="169" height="80.5"/>
+        <image name="HKServer_MyCar_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_MyCar_normal" width="169" height="80.5"/>
+        <image name="HKServer_Panic_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Panic_normal" width="169" height="80.5"/>
+        <image name="HKServer_Taxi_highlighted" width="169" height="80.5"/>
+        <image name="HKServer_Taxi_normal" width="169" height="80.5"/>
         <image name="Share_BG_iPad" width="1024" height="768"/>
     </resources>
 </document>

@@ -29,7 +29,7 @@
         
         NSUInteger iRNumber = [[channelIRNumberString substringWithRange:NSMakeRange(i, 1)] integerValue];
         
-        Byte controlData[2] = {iRNumber, 0XFF};
+        Byte controlData[2] = {iRNumber, 0xFF};
         
         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.channel.subnetID targetDeviceID:self.channel.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
         

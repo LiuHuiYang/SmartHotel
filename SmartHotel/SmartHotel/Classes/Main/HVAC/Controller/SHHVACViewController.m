@@ -126,7 +126,7 @@
                     // 制冷温度
                 case SHAirConditioningControlTypeCoolTemperatureSet: {
                     
-                    self.coolTemperture = (operatorResult & 0X80) ? (0 - (0XFF - operatorResult + 1)) : operatorResult;
+                    self.coolTemperture = (operatorResult & 0X80) ? (0 - (0xFF - operatorResult + 1)) : operatorResult;
                 }
                     break;
                     
@@ -140,14 +140,14 @@
                     // 制热温度
                 case SHAirConditioningControlTypeHeatTemperatureSet: {
                     
-                    self.heatTemperture = (operatorResult & 0X80) ? (0 - (0XFF - operatorResult + 1)) : operatorResult;
+                    self.heatTemperture = (operatorResult & 0X80) ? (0 - (0xFF - operatorResult + 1)) : operatorResult;
                 }
                     break;
                     
                     // 自动温度
                 case SHAirConditioningControlTypeAutoTemperatureSet: {
                     
-                    self.autoTemperture = (operatorResult & 0X80) ? (0 - (0XFF - operatorResult + 1)) : operatorResult;
+                    self.autoTemperture = (operatorResult & 0X80) ? (0 - (0xFF - operatorResult + 1)) : operatorResult;
                 }
                     break;
             }
@@ -161,7 +161,7 @@
             self.isTurnOn = recivedData[9]; // 获得状态
             
             // 获得环境温度
-            self.indoorTemperature = (recivedData[13] & 0X80) ? (0 - (0XFF - recivedData[13] + 1)) : recivedData[13];
+            self.indoorTemperature = (recivedData[13] & 0X80) ? (0 - (0xFF - recivedData[13] + 1)) : recivedData[13];
             
             // 获得风速
 //            self.currentHVAC.fanRange = recivedData[11] & 0X0F;
@@ -170,13 +170,13 @@
             self.acMode = (recivedData[11] & 0XF0) >> 4;
             
             // 通风模式的温度
-            self.coolTemperture = (recivedData[10] & 0X80) ? (0 - (0XFF - recivedData[10] + 1)) : recivedData[10];
+            self.coolTemperture = (recivedData[10] & 0X80) ? (0 - (0xFF - recivedData[10] + 1)) : recivedData[10];
             
             // 制热模式的温度
-            self.heatTemperture = (recivedData[14] & 0X80) ? (0 - (0XFF - recivedData[14] + 1)) : recivedData[14];
+            self.heatTemperture = (recivedData[14] & 0X80) ? (0 - (0xFF - recivedData[14] + 1)) : recivedData[14];
             
             // 自动模式的温度
-            self.autoTemperture = (recivedData[16] & 0X80) ? (0 - (0XFF - recivedData[16] + 1)) : recivedData[16];
+            self.autoTemperture = (recivedData[16] & 0X80) ? (0 - (0xFF - recivedData[16] + 1)) : recivedData[16];
         }
             break;
             
@@ -190,9 +190,9 @@
             
             Byte endCoolTemperatureRange = recivedData[startIndex + 1];
             
-            self.startCoolTemperatureRange = (startCoolTemperatureRange & 0X80) ? (0 - (0XFF - startCoolTemperatureRange + 1)) : startCoolTemperatureRange;
+            self.startCoolTemperatureRange = (startCoolTemperatureRange & 0X80) ? (0 - (0xFF - startCoolTemperatureRange + 1)) : startCoolTemperatureRange;
             
-            self.endCoolTemperatureRange = (endCoolTemperatureRange & 0X80) ? (0 - (0XFF - endCoolTemperatureRange + 1)) : endCoolTemperatureRange;
+            self.endCoolTemperatureRange = (endCoolTemperatureRange & 0X80) ? (0 - (0xFF - endCoolTemperatureRange + 1)) : endCoolTemperatureRange;
             
             // 制热温度范围
             
@@ -200,17 +200,17 @@
             
             Byte endHeatTemperatureRange = recivedData[startIndex + 3];
             
-            self.startHeatTemperatureRange = (startHeatTemperatureRange & 0X80) ? (0 - (0XFF - startHeatTemperatureRange + 1)) : startHeatTemperatureRange;
+            self.startHeatTemperatureRange = (startHeatTemperatureRange & 0X80) ? (0 - (0xFF - startHeatTemperatureRange + 1)) : startHeatTemperatureRange;
             
-            self.endHeatTemperatureRange = (endHeatTemperatureRange & 0X80) ? (0 - (0XFF - endHeatTemperatureRange + 1)) : endHeatTemperatureRange;
+            self.endHeatTemperatureRange = (endHeatTemperatureRange & 0X80) ? (0 - (0xFF - endHeatTemperatureRange + 1)) : endHeatTemperatureRange;
             
             // 自动模式温度范围
             Byte startAutoTemperatureRange = recivedData[startIndex + 4];
             Byte endAutoTemperatureRange = recivedData[startIndex + 5];
             
-            self.startAutoTemperatureRange = (startAutoTemperatureRange & 0X80) ? (0 - (0XFF - startAutoTemperatureRange + 1)) : startAutoTemperatureRange;
+            self.startAutoTemperatureRange = (startAutoTemperatureRange & 0X80) ? (0 - (0xFF - startAutoTemperatureRange + 1)) : startAutoTemperatureRange;
             
-            self.endAutoTemperatureRange = (endAutoTemperatureRange & 0X80) ? (0 - (0XFF - endAutoTemperatureRange + 1)) : endAutoTemperatureRange;
+            self.endAutoTemperatureRange = (endAutoTemperatureRange & 0X80) ? (0 - (0xFF - endAutoTemperatureRange + 1)) : endAutoTemperatureRange;
         }
             break;
             
@@ -404,7 +404,7 @@
     }
     
     // 如果是负数使用被码
-    temperatureData[1] =  (temperature & 0X80) ? (0 - (0XFF - temperature + 1)) : temperature;
+    temperatureData[1] =  (temperature & 0X80) ? (0 - (0xFF - temperature + 1)) : temperature;
     
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3D8 targetSubnetID:self.roomInfo.subNetIDForDDP targetDeviceID:self.roomInfo.deviceIDForDDP additionalContentData:[NSMutableData dataWithBytes:temperatureData length:sizeof(temperatureData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:YES];
 }

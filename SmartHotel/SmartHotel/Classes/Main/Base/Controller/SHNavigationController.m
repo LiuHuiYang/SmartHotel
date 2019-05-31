@@ -36,11 +36,21 @@
     
     if (self.childViewControllers.count) {
         
-//        viewController.hidesBottomBarWhenPushed = YES;
+//       viewController.hidesBottomBarWhenPushed = YES;
+        viewController.navigationItem.leftBarButtonItem = 
+        [UIBarButtonItem barButtonItemWithImageName:@"navigationbarback" hightlightedImageName:@"navigationbarback" addTarget:self action:@selector(popBack) isLeft:true];
+        
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(YES)];
     }
     
     [super pushViewController:viewController animated:animated];
+}
+
+/// 返回
+- (void)popBack {
+    
+    [self popViewControllerAnimated:true];
 }
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {

@@ -10,7 +10,7 @@
 #import <FMDB/FMDB.h>
 
 /// 数据库的名称
-NSString *dataBaseName = @"SHDB.sqlite3";
+NSString *dataBaseName = @"SmartHotel.sqlite";
 
 @interface SHSQLManager ()
 
@@ -20,6 +20,145 @@ NSString *dataBaseName = @"SHDB.sqlite3";
 @end
 
 @implementation SHSQLManager
+
+
+// MARK: - Curtain
+
+
+/**
+ 更新窗帘对象
+
+ @param curtain 窗帘对象
+ @return 更新成功YES, 失败 NO.
+ */
+- (BOOL)updateCurtain:(SHCurtain *)curtain {
+    
+    NSString *sql =
+        [NSString stringWithFormat:
+         @"update Curtains set curtainName = '%@', curtainType = %zd, subnetID = %zd, deviceID = %zd, openChannel = %zd, closeChannel = %zd, stopChannel = %zd, switchIDforOpen = %zd, switchIDforClose = %zd, switchIDforStop = %zd where curtainID = %zd;",
+         
+            curtain.curtainName,
+            curtain.curtainType,
+            curtain.subnetID,
+            curtain.deviceID,
+            curtain.openChannel,
+            curtain.closeChannel,
+            curtain.stopChannel,
+            curtain.switchIDforOpen,
+            curtain.switchIDforClose,
+            curtain.switchIDforStop,
+            curtain.curtainID
+         ];
+    
+    return [self executeSql:sql];
+}
+
+
+/**
+ 删除窗帘对象
+
+ @param curtain 窗帘对象
+ @return 删除成功YES, 失败 NO.
+ */
+- (BOOL)deleteCurtain:(SHCurtain *)curtain {
+    
+    NSString *sql =
+    [NSString stringWithFormat:
+        @"delete from Curtains Where curtainID = %zd and subnetID = %zd and deviceID = %zd;",
+     
+        curtain.curtainID,
+        curtain.subnetID,
+        curtain.deviceID
+     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 增加一个新的窗帘
+
+ @param curtain 窗帘对象
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertCurtain:(SHCurtain *)curtain {
+    
+    NSString *sql =
+    [NSString stringWithFormat:
+        @"insert into Curtains (curtainID, curtainName, curtainType, subnetID, deviceID, openChannel, closeChannel, stopChannel, switchIDforOpen, switchIDforClose, switchIDforStop) values(%zd, '%@', %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd);",
+     
+        curtain.curtainID,
+        curtain.curtainName,
+        curtain.curtainType,
+        curtain.subnetID,
+        curtain.deviceID,
+        curtain.openChannel,
+        curtain.closeChannel,
+        curtain.stopChannel,
+        curtain.switchIDforOpen,
+        curtain.switchIDforClose,
+        curtain.switchIDforStop
+     ];
+    
+    
+    return [self executeSql:sql];
+}
+
+
+/**
+ 查询当前所有的窗帘
+
+ @return 窗帘数组
+ */
+- (NSMutableArray *)getCurtains {
+    
+    NSString *sql =
+        [NSString stringWithFormat:@"select curtainID, curtainName, curtainType, subnetID, deviceID, openChannel, closeChannel, stopChannel, switchIDforOpen, switchIDforClose, switchIDforStop from Curtains;"];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *curtains =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [curtains addObject:
+            [SHCurtain curtainWithDictionary:dict]
+        ];
+    }
+    
+    return curtains;
+}
+
+/**
+ 获得一个可用的窗帘编号
+
+ @return 返回可以直接使用的窗帘编号
+ */
+- (NSUInteger)getAvailableCurtainID {
+    
+    // "select max(ShadeID) from ShadeInZone " +
+    // "where ZoneID = \(zoneID);"
+    
+    NSString *sql =
+        [NSString stringWithFormat:@"select max(curtainID) from Curtains;"];
+    
+    NSDictionary *dict =
+        [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(curtainID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger curtainID =
+        [[dict objectForKey:@"max(curtainID)"]integerValue] + 1;
+    
+    return curtainID;
+}
+
+
+// MARK: - 旧代码
+
 
 /// 更新房间设备信息
 - (BOOL)updateRoomDevice:(SHRoomDevice *)device {
@@ -174,22 +313,6 @@ NSString *dataBaseName = @"SHDB.sqlite3";
     return sences;
 }
 
-/// 查询当前房间的所有窗帘
-- (NSMutableArray *)getRoomCurtains {
-    
-    NSString *selectSQL = @"select SHCurtainID, CurtainName, CurtainType, SubnetID, DeviceID, OpenChannelNO, CloseChannelNO, StopChannelNO, RelayTimeS from SHCurtain;";
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *curtains = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [curtains addObject:[SHCurtain curtainWithDictionary:dict]];
-    }
-    
-    return curtains;
-}
 
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room {
@@ -375,12 +498,12 @@ NSString *dataBaseName = @"SHDB.sqlite3";
         
         // 2.获得资源路径
         NSString *sourceDataBasePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:dataBaseName];
-        
+
         // 判断路径是否存在
         if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-            
+
             if ([[NSFileManager defaultManager] copyItemAtPath:sourceDataBasePath toPath:filePath error:nil]) {
-                
+
                 //                SHLog(@"拷贝成功");
             }
         }

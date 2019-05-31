@@ -13,6 +13,10 @@
 #import "SHSettingRoomInfoViewController.h"
 #import "SHHomeViewController.h"
 
+#import "SHCurtainViewController.h"
+#import "SHCurtainSettingViewController.h"
+
+
 @interface SHModelViewController ()
 
 @end
@@ -25,7 +29,25 @@
 /// 进入设置页面
 - (void)setting:(UIGestureRecognizer *)recognizer {
     
-    if ((recognizer.state != UIGestureRecognizerStateBegan) || ([self isKindOfClass:[SHSettingRoomInfoViewController class]])) {
+    
+    
+    // 窗帘
+    if ([self isKindOfClass:[SHCurtainViewController class]]) {
+        
+        // 这是窗帘
+        printLog(@"这是窗帘");
+        SHCurtainSettingViewController *curtainSetting =
+            [[SHCurtainSettingViewController alloc] init];
+        
+        
+        
+        [self.navigationController
+         pushViewController:curtainSetting animated:true];
+        
+        return;
+    }
+    
+    if ([self isKindOfClass:[SHSettingRoomInfoViewController class]]) {
         return;
     }
     
@@ -55,18 +77,17 @@
 - (void)setUpNavigationBar {
     
     // 创建左边的按钮
-    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
+    UITapGestureRecognizer *tapGestureRecognizerSetting = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
+ 
 
-    longPressGestureRecognizer.minimumPressDuration = 1.0;
-
-    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:[UIFont boldSystemFontOfSize:26] image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:longPressGestureRecognizer];
+    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:[UIFont boldSystemFontOfSize:26] image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoButton];
 
     // 创建右边的按钮
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gobackhome:)];
+    UITapGestureRecognizer *tapGestureRecognizerBack = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gobackhome:)];
 
-    SHNavigationBarButton *homeButton =  [SHNavigationBarButton navigationBarButton:nil font:[UIFont boldSystemFontOfSize:26] image:(([self isKindOfClass:[SHHomeViewController class]]) ? nil : [UIImage imageNamed:@"home"]) isDefault:NO addGestureRecognizer:tapGestureRecognizer];
+    SHNavigationBarButton *homeButton =  [SHNavigationBarButton navigationBarButton:nil font:[UIFont boldSystemFontOfSize:26] image:(([self isKindOfClass:[SHHomeViewController class]]) ? nil : [UIImage imageNamed:@"home"]) isDefault:NO addGestureRecognizer:tapGestureRecognizerBack];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
 }

@@ -27,4 +27,6 @@
 #import "UIDevice+DeviceType.h" // 设备类型
 #import "UIDevice+IPAddresses.h" // 设备IP
 
+#import "UIBarButtonItem+init.h"
+
 #endif // __Additional_H__

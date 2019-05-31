@@ -50,7 +50,7 @@
     
     Byte lightData[4] = {self.light.channelNo, self.light.brightness, 0, 0};
 
-  [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X0031 targetSubnetID:self.light.subnetID targetDeviceID:self.light.deviceID additionalContentData:[NSMutableData dataWithBytes:lightData length:sizeof(lightData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
+  [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x0031 targetSubnetID:self.light.subnetID targetDeviceID:self.light.deviceID additionalContentData:[NSMutableData dataWithBytes:lightData length:sizeof(lightData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
 }
 
 - (void)awakeFromNib {

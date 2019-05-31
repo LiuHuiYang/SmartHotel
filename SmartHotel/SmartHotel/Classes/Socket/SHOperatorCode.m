@@ -35,7 +35,7 @@
             
         case 4:
         case 6:
-            return 0X0031;  // 4
+            return 0x0031;  // 4
             break;
             
         case 7:

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHCurtainViewController">
+            <connections>
+                <outlet property="listView" destination="dHU-KL-1Z1" id="Sog-PF-k3b"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_BG_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="0oY-mX-bAS">
+                    <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HN5-E7-Hum">
+                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dHU-KL-1Z1">
+                            <rect key="frame" x="0.0" y="0.0" width="870" height="499.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="jb7-rg-nnE"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dHU-KL-1Z1" secondAttribute="trailing" id="4sX-fH-WCG"/>
+                        <constraint firstItem="dHU-KL-1Z1" firstAttribute="top" secondItem="HN5-E7-Hum" secondAttribute="top" id="GRn-j3-hLe"/>
+                        <constraint firstAttribute="bottom" secondItem="dHU-KL-1Z1" secondAttribute="bottom" id="WhS-X9-2c0"/>
+                        <constraint firstItem="dHU-KL-1Z1" firstAttribute="leading" secondItem="HN5-E7-Hum" secondAttribute="leading" id="p5s-Md-FfF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="15P-j0-Zfz"/>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="6Tn-8L-j4Z"/>
+                <constraint firstItem="HN5-E7-Hum" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="F1f-l2-hp8"/>
+                <constraint firstItem="HN5-E7-Hum" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="Qdr-Lv-UzB"/>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="fn7-UC-2ug"/>
+                <constraint firstItem="0oY-mX-bAS" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="gCt-61-q0S"/>
+                <constraint firstItem="HN5-E7-Hum" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.65" id="m79-lr-rRA"/>
+                <constraint firstItem="HN5-E7-Hum" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.85" id="qNF-sx-Xao"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Share_BG_iPad" width="1024" height="768"/>
+    </resources>
+</document>

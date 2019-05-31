@@ -66,6 +66,8 @@
     
     [self recivceAlarmClock:localNotification];
     
+    [self setupSVProgressHUD];
+    
     return YES;
 }
 
@@ -81,6 +83,38 @@
     UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:setting
      ];
+}
+
+
+/**
+ 初始化指示器
+ */
+- (void)setupSVProgressHUD {
+    
+    // 设置指示器x
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setBackgroundColor:[UIColor cololrWithHex:0x726B6E alpha:1.0]];
+    
+    [SVProgressHUD setMinimumDismissTimeInterval:2.0];
+    
+    [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"showSuccess"]];
+    [SVProgressHUD setErrorImage:[UIImage imageNamed:@"showError"]];
+    [SVProgressHUD setInfoImage:[UIImage imageNamed:@"showInfo"]];
+    
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    
+    [SVProgressHUD setCornerRadius:statusBarHeight];
+    
+    
+    [SVProgressHUD setFont:[UIFont boldSystemFontOfSize:22]];
+    
+    [SVProgressHUD setImageViewSize:CGSizeMake(navigationBarHeight + statusBarHeight, navigationBarHeight + statusBarHeight)];
+    
+    [SVProgressHUD setMinimumSize:
+     CGSizeMake(UIView.frame_screenWidth * 0.40,
+                UIView.frame_screenHeight * 0.40)
+    ];
+   
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

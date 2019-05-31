@@ -77,14 +77,15 @@
     switch (operatorCode) {
         
             // 服务反馈
-        case 0X043F: {
+        case  0x043F: {
             
             Byte servcieStatus = recivedData[startIndex];
+            printLog(@"收到服务响应: %#02x", servcieStatus);
             
         }
             break;
             
-        case 0X040B: {
+        case 0x040B: {
             
             if (recivedData[startIndex + 1]  == 0XF8) {
                 
@@ -99,7 +100,7 @@
             break;
     }
     
-    if (operatorCode == 0X043F || operatorCode == 0X040B) {
+    if (operatorCode ==  0x043F || operatorCode == 0x040B) {
         
         // 设置状态
 //        [self setServiceStatusForButton]
@@ -208,14 +209,14 @@
         
         Byte data[2] = {serverButton.serverType, serverButton.selected};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
     
     // 其它服务发送给计算机 (主动报告状态)
     } else {
     
         Byte data[5] = {serverButton.serverType, serverButton.selected, self.roomInfo.buildID, self.roomInfo.floorID, self.roomInfo.roomNumber};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X044F targetSubnetID:0XFF targetDeviceID:0XFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
     }
     
 }
@@ -233,7 +234,7 @@
     
         Byte data[2] = {SHRoomServerTypeDND, 0};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X040A targetSubnetID:self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
     }
 }
 
@@ -246,7 +247,7 @@
     [super viewWillAppear:animated];
     
     // 读取门铃状态
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X043E targetSubnetID:self.roomInfo.subNetIDForDoorBell targetDeviceID:self.roomInfo.deviceIDForDoorBell additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.subNetIDForDoorBell targetDeviceID:self.roomInfo.deviceIDForDoorBell additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
 }
 
 - (void)viewDidLoad {

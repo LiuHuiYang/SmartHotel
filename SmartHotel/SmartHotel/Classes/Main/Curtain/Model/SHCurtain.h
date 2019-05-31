@@ -27,16 +27,22 @@
 @property (assign, nonatomic) NSUInteger deviceID;
 
 /// 窗帘打开通道
-@property (assign, nonatomic) NSUInteger openChannelNO;
+@property (assign, nonatomic) NSUInteger openChannel;
 
 /// 窗帘关闭通道
-@property (assign, nonatomic) NSUInteger closeChannelNO;
+@property (assign, nonatomic) NSUInteger closeChannel;
 
 /// 窗帘停止通道
-@property (assign, nonatomic) NSUInteger stopChannelNO;
+@property (assign, nonatomic) NSUInteger stopChannel;
 
-/// 延时
-@property (assign, nonatomic) NSUInteger relayTimeS;
+/// 打开指令ID
+@property (assign, nonatomic) NSUInteger switchIDforOpen;
+
+/// 关闭指令ID
+@property (assign, nonatomic) NSUInteger switchIDforClose;
+
+/// 停止指令ID
+@property (assign, nonatomic) NSUInteger switchIDforStop;
 
 
 /// 字典转换为模型

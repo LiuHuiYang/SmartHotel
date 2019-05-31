@@ -114,9 +114,9 @@
             
             NSMutableData *sendData=  nil;
             
-            if (operatorCode == 0X0031 || operatorCode == 0X010C) {
+            if (operatorCode == 0x0031 || operatorCode == 0X010C) {
                 
-                Byte controlData[4] = {command.firstParameter, command.secondParameter, (command.thirdParameter >> 8) & 0XFF, command.thirdParameter & 0XFF};
+                Byte controlData[4] = {command.firstParameter, command.secondParameter, (command.thirdParameter >> 8) & 0xFF, command.thirdParameter & 0xFF};
                 
                 sendData = [NSMutableData dataWithBytes:controlData length:sizeof(controlData)];
                 

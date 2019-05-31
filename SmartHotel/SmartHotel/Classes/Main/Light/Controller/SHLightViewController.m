@@ -114,7 +114,7 @@
             break;
             
             
-        case 0X0032: {
+        case 0x0032: {
             
             Byte brightness = recivedData[11];
             
@@ -131,10 +131,12 @@
         }
             break;
         
-        case 0X0034: {
+        case 0x0034: {
             
             // 这是LED
-            if ((data.length == startIndex + 4 + 2 + 1) && recivedData[3] == 0X03 && recivedData[4] == 0X82) {
+            if ((data.length == startIndex + 4 + 2 + 1) &&
+                recivedData[3] == 0X03 &&
+                recivedData[4] == 0X82) {
                 
                 
             } else {  // 普通灯泡
@@ -160,7 +162,7 @@
             break;
     }
     
-    if (operatorCode == 0X0032 || operatorCode == 0x0034) {
+    if (operatorCode == 0x0032 || operatorCode == 0x0034) {
         
         [self.lightListView reloadData];
         [self.realayListView reloadData];
@@ -272,7 +274,7 @@
 /// 读取状态
 - (void)readStatus {
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0X0033 targetSubnetID:self.roomInfo.subNetIDForZoneBeast targetDeviceID:self.roomInfo.deviceIDForZoneBeast additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x0033 targetSubnetID:self.roomInfo.subNetIDForZoneBeast targetDeviceID:self.roomInfo.deviceIDForZoneBeast additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

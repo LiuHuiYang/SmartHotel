@@ -22,6 +22,47 @@
 
 // MARK: - 数据操作
 
+// MARK: - Curtain
+
+
+/**
+ 更新窗帘对象
+ 
+ @param curtain 窗帘对象
+ @return 更新成功YES, 失败 NO.
+ */
+- (BOOL)updateCurtain:(SHCurtain *)curtain;
+
+/**
+ 删除窗帘对象
+ 
+ @param curtain 窗帘对象
+ @return 删除成功YES, 失败 NO.
+ */
+- (BOOL)deleteCurtain:(SHCurtain *)curtain;
+
+/**
+ 增加一个新的窗帘
+ 
+ @param curtain 窗帘对象
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertCurtain:(SHCurtain *)curtain;
+
+/**
+ 查询当前所有的窗帘
+ 
+ @return 窗帘数组
+ */
+- (NSMutableArray *)getCurtains;
+
+/**
+ 获得一个可用的窗帘编号
+ 
+ @return 返回可以直接使用的窗帘编号
+ */
+- (NSUInteger)getAvailableCurtainID;
+
 /// 更新房间设备信息
 - (BOOL)updateRoomDevice:(SHRoomDevice *)device;
 
@@ -42,9 +83,7 @@
 
 /// 查询所有的场景
 - (NSMutableArray *)getAllSences;
-
-/// 查询当前房间的所有窗帘
-- (NSMutableArray *)getRoomCurtains;
+ 
 
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room;
