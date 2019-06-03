@@ -59,8 +59,7 @@
     self.iconButton.titleLabel.font = [UIFont systemFontOfSize:20];
     [self.iconButton setTitleColor:SHDefualtTextColor forState:UIControlStateNormal];
 
-//    [self controlButtonClick];
-    
+ 
     
 }
 

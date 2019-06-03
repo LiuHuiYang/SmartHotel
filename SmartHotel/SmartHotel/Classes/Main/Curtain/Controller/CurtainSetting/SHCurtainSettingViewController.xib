@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CVZ-tf-Tgw">
-                    <rect key="frame" x="20" y="44" width="374" height="798"/>
+                    <rect key="frame" x="20" y="44" width="374" height="769"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="eDS-q2-7ug"/>
@@ -35,7 +35,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="CVZ-tf-Tgw" secondAttribute="trailing" constant="20" id="Cks-05-nfF"/>
                 <constraint firstItem="CVZ-tf-Tgw" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="cQJ-gz-0Cw"/>
                 <constraint firstItem="CVZ-tf-Tgw" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="h30-hW-BNn"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="CVZ-tf-Tgw" secondAttribute="bottom" constant="20" id="ryY-VW-bQB"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="CVZ-tf-Tgw" secondAttribute="bottom" constant="49" id="ryY-VW-bQB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>

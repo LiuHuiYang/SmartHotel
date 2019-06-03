@@ -13,11 +13,15 @@
 #import "SHSettingRoomInfoViewController.h"
 #import "SHHomeViewController.h"
 
+#import "SHHVACViewController.h"
+#import "SHHVACDetailViewController.h"
+
+#import "SHLightViewController.h"
+
 #import "SHCurtainViewController.h"
 #import "SHCurtainSettingViewController.h"
 
-#import "SHHVACViewController.h"
-#import "SHHVACDetailViewController.h"
+#import "SHLightSettingViewController.h"
 
 @interface SHModelViewController ()
 
@@ -43,6 +47,50 @@
         
         [self.navigationController pushViewController:acDetailController animated:YES];
         
+    }
+    
+    // light && macro
+    else if ([self isKindOfClass:[SHLightViewController class]]) {
+        
+        NSString *lightTitle = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Lights"];
+        
+        NSString *sceneTitle = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"LIGHTS" withSubTitle:@"Scenes"];
+        
+        TYCustomAlertView *aletView =
+            [TYCustomAlertView alertViewWithTitle:nil
+                                          message:nil
+                                         isCustom:YES
+             ];
+        
+        TYAlertAction *lightAction = [TYAlertAction actionWithTitle:lightTitle style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+            
+            SHLightSettingViewController *lightSetting =
+            [[SHLightSettingViewController alloc] init];
+            
+            [self.navigationController
+             pushViewController:lightSetting animated:true];
+            
+        }];
+        
+        TYAlertAction *macroAction = [TYAlertAction actionWithTitle:sceneTitle style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+            
+        }];
+        
+        [aletView addAction:lightAction];
+        [aletView addAction:macroAction];
+        
+        TYAlertController *alertController =
+        [TYAlertController alertControllerWithAlertView:aletView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+        
+        
+        alertController.backgoundTapDismissEnable = YES;
+        
+        [self presentViewController:alertController
+                           animated:YES
+                         completion:nil
+        ];
+        
+        printLog(@"灯光设备");
     }
     
     // 窗帘

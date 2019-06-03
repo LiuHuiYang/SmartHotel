@@ -20,6 +20,47 @@
 #import "SHHVAC.h"
 
 @interface SHSQLManager : NSObject
+    
+// MARK: - 灯光
+    
+/**
+ 更新灯光设备
+ 
+ @param light 灯光设备
+ @return 更新成功 YES, 更新失败 NO.
+ */
+- (BOOL)updateLight:(SHLight *)light;
+    
+/**
+ 删除灯光设备
+ 
+ @param light 灯光设备对象
+ @return 删除成功 YES, 失败 NO.
+ */
+- (BOOL)deleteLight:(SHLight *)light;
+    
+/**
+ 增加一个新的灯光设备
+ 
+ @param light 窗帘对象
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertLight:(SHLight *)light;
+    
+/**
+ 获所有的灯光设备
+ 
+ @return 灯光设备数组
+ */
+- (NSMutableArray *)getLights;
+    
+
+/**
+ 获得一个可用的灯光编号
+ 
+ @return 返回可以直接使用的空调编号
+ */
+- (NSUInteger)getAvailableLightID;
 
 // MARK: - 空调
     
@@ -60,6 +101,7 @@
  @return 空调数组
  */
 - (NSMutableArray *)getAirConditioners;
+    
     
 // MARK: - Curtain
 
@@ -113,10 +155,7 @@
 
 /// 获得房间的电视 
 - (NSMutableArray *)getTV;
-
-/// 获得指定种类的灯泡
-- (NSMutableArray *)getLight:(BOOL)canDim;
-
+ 
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro;
 

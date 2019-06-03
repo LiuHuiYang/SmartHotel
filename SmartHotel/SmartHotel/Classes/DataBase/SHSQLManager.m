@@ -21,6 +21,114 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 
 @implementation SHSQLManager
     
+// MARK: - 灯光
+    
+
+/**
+ 更新灯光设备
+
+ @param light 灯光设备
+ @return 更新成功 YES, 更新失败 NO.
+ */
+- (BOOL)updateLight:(SHLight *)light {
+    
+    NSString *sql = [NSString stringWithFormat:@"update Light set lightName = '%@', lightType = %zd, subnetID = %zd, deviceID = %zd, channelNo = %zd where lightID = %zd;",
+                     light.lightName,
+                     light.lightType,
+                     light.subnetID,
+                     light.deviceID,
+                     light.channelNo,
+                     light.lightID
+                    ];
+    
+    return [self executeSql:sql];
+}
+    
+
+/**
+ 删除灯光设备
+
+ @param light 灯光设备对象
+ @return 删除成功 YES, 失败 NO.
+ */
+- (BOOL)deleteLight:(SHLight *)light {
+    
+    NSString *sql = [NSString stringWithFormat:@"delete from Light Where lightID = %zd and subnetID = %zd and deviceID = %zd and channelNo = %zd;",
+                     light.lightID,
+                     light.subnetID,
+                     light.deviceID,
+                     light.channelNo];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 增加一个新的灯光设备
+ 
+ @param light 窗帘对象
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertLight:(SHLight *)light {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"insert into Light (lightID, lightName, lightType, subnetID, deviceID, channelNo) values(%zd, '%@', %zd, %zd, %zd, %zd);",
+     
+        light.lightID,
+        light.lightName,
+        light.lightType,
+        light.subnetID,
+        light.deviceID,
+        light.channelNo
+     ];
+    
+    return [self executeSql:sql];
+}
+    
+/**
+ 获所有的灯光设备
+
+ @return 灯光设备数组
+ */
+- (NSMutableArray *)getLights {
+    
+    NSString *sql = [NSString stringWithFormat:@"select lightID, lightName, lightType, subnetID, deviceID, channelNo from Light order by lightID;"];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *lights =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [lights addObject:[SHLight lightWithDictionary:dict]];
+    }
+    
+    return lights;
+}
+    
+/**
+ 获得一个可用的灯光编号
+ 
+ @return 返回可以直接使用的空调编号
+ */
+- (NSUInteger)getAvailableLightID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(lightID) from Light;"];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(lightID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger lightID =
+    [[dict objectForKey:@"max(lightID)"]integerValue] + 1;
+    
+    return lightID;
+}
 
 // MARK: - 空调
 
@@ -107,10 +215,10 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
         return 1;
     }
     
-    NSUInteger curtainID =
+    NSUInteger acID =
     [[dict objectForKey:@"max(acID)"]integerValue] + 1;
     
-    return curtainID;
+    return acID;
 }
 
 /**
@@ -123,7 +231,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     NSString *sql =
         [NSString stringWithFormat:
          
-         @"select acID, acName, acType, acNumber, subnetID, deviceID, channelNo from AirConditioner;"];
+         @"select acID, acName, acType, acNumber, subnetID, deviceID, channelNo from AirConditioner order by acID;"];
     
     NSArray *array = [self selectProprty:sql];
     NSMutableArray *acs =
@@ -229,7 +337,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 - (NSMutableArray *)getCurtains {
     
     NSString *sql =
-        [NSString stringWithFormat:@"select curtainID, curtainName, curtainType, subnetID, deviceID, openChannel, closeChannel, stopChannel, switchIDforOpen, switchIDforClose, switchIDforStop from Curtains;"];
+        [NSString stringWithFormat:@"select curtainID, curtainName, curtainType, subnetID, deviceID, openChannel, closeChannel, stopChannel, switchIDforOpen, switchIDforClose, switchIDforStop from Curtains order by curtainID;"];
     
     NSArray *array = [self selectProprty:sql];
     
@@ -373,25 +481,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     
     return tvs;
 }
-
-
-/// 获得指定种类的灯泡
-- (NSMutableArray *)getLight:(BOOL)canDim {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select LightID, LightName, ChannelNo, CanDim, LightTypeID, SequenceNo from SHLights where canDim = %d order by SequenceNo;", canDim];
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *lights = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [lights addObject:[SHLight lightWithDictionary:dict]];
-    }
-    
-    return lights;
-}
-
+ 
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro {
     

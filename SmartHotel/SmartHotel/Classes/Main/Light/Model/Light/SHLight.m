@@ -16,14 +16,8 @@
 
     SHLight *light = [[self alloc] init];
     
-//    [light setValuesForKeysWithDictionary:dictionary];
-    light.lightName = dictionary[@"LightName"];
-    light.lightID = [dictionary[@"LightID"] integerValue];
-    light.channelNo = [dictionary[@"ChannelNo"] integerValue];
-    light.canDim = [dictionary[@"CanDim"] integerValue];
-    light.lightTypeID = [dictionary[@"LightTypeID"] integerValue];
-    light.sequenceNo = [dictionary[@"SequenceNo"] integerValue];
-    
+    [light setValuesForKeysWithDictionary:dictionary];
+  
     return light;
 }
 

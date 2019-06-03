@@ -67,6 +67,7 @@
     [self recivceAlarmClock:localNotification];
     
     [self setupSVProgressHUD];
+     
     
     return YES;
 }

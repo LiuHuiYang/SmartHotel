@@ -1,4 +1,17 @@
 
+-- 灯泡
+CREATE TABLE IF NOT EXISTS Light (
+
+    lightID INTEGER NOT NULL DEFAULT 0,
+    lightName TEXT NOT NULL DEFAULT 'light',
+
+    lightType INTEGER NOT NULL DEFAULT 0,
+
+    subnetID INTEGER NOT NULL DEFAULT 0,
+    deviceID INTEGER NOT NULL DEFAULT 0,
+    channelNo  INTEGER NOT NULL DEFAULT 0
+);
+
 -- 空调
 CREATE TABLE IF NOT EXISTS AirConditioner (
 
