@@ -16,6 +16,8 @@
 #import "SHCurtainViewController.h"
 #import "SHCurtainSettingViewController.h"
 
+#import "SHHVACViewController.h"
+#import "SHHVACDetailViewController.h"
 
 @interface SHModelViewController ()
 
@@ -29,33 +31,41 @@
 /// 进入设置页面
 - (void)setting:(UIGestureRecognizer *)recognizer {
     
+    // HVAC
+    if ([self isKindOfClass: [SHHVACViewController class]]) {
     
+        SHHVACDetailViewController *acDetailController =
+        [[SHHVACDetailViewController alloc] init];
+        
+        // FIXME: - 由于只支持一个空调, 临时这样实现.
+        // 若以后有变空, 参照窗帘和light实现.
+        acDetailController.ac = [SHSQLManager.shareSHSQLManager getAirConditioners].firstObject;
+        
+        [self.navigationController pushViewController:acDetailController animated:YES];
+        
+    }
     
     // 窗帘
-    if ([self isKindOfClass:[SHCurtainViewController class]]) {
+    else if ([self isKindOfClass:[SHCurtainViewController class]]) {
         
-        // 这是窗帘
-        printLog(@"这是窗帘");
+        
         SHCurtainSettingViewController *curtainSetting =
             [[SHCurtainSettingViewController alloc] init];
         
-        
-        
         [self.navigationController
          pushViewController:curtainSetting animated:true];
-        
-        return;
     }
     
-    if ([self isKindOfClass:[SHSettingRoomInfoViewController class]]) {
-        return;
-    }
+   
+    
+    else {
     
     SHSettingRoomInfoViewController *settingViewController = [[SHSettingRoomInfoViewController alloc] init];
     
     settingViewController.roomInfo = self.roomInfo;
     
     [self.navigationController pushViewController:settingViewController animated:YES];
+    }
 }
 
 /// 回到首页

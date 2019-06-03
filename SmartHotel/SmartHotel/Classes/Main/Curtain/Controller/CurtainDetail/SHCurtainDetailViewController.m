@@ -49,7 +49,7 @@
     self.navigationItem.title = @"Curtain Detail";
     
     self.listView.rowHeight =
-    [SHCurtainDetailViewCell rowHeight];
+        [SHCurtainDetailViewCell rowHeight];
     
     [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHCurtainDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHCurtainDetailViewCell class])];
 }

@@ -7,8 +7,7 @@
 //
 
 #import "SHViewController.h"
-@class SHCurtain;
-
+ 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHCurtainDetailViewController : SHViewController

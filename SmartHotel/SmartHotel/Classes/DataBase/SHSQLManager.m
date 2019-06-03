@@ -20,7 +20,124 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 @end
 
 @implementation SHSQLManager
+    
 
+// MARK: - 空调
+
+
+/**
+ 更新空调数据
+
+ @param ac 空调数据
+ @return 更新成功 YES, 更新失败 NO.
+ */
+- (BOOL)updateAirConditioner:(SHHVAC *)ac {
+    
+    NSString *sql =
+        [NSString stringWithFormat:
+         @"update AirConditioner set acName = '%@', acType = %zd, acNumber = %zd, subnetID = %zd, deviceID = %zd, channelNo = %zd where acID = %zd;",
+            ac.acName,
+            ac.acType,
+            ac.acNumber,
+            ac.subnetID,
+            ac.deviceID,
+            ac.channelNo,
+            ac.acID
+         ];
+    
+    return [self executeSql:sql];
+}
+
+
+/**
+ 删除空调对象
+ 
+ @param ac 窗帘对象
+ @return 删除成功YES, 失败 NO.
+ */
+- (BOOL)deleteAirConditioner:(SHHVAC *)ac {
+    
+    NSString *sql =
+    [NSString stringWithFormat:
+        @"delete from AirConditioner Where acID = %zd;", ac.acID
+    ];
+    
+    
+    return [self executeSql:sql];
+}
+    
+/**
+ 增加新的空调
+
+ @param ac 空调
+ @return 增加成功 YES, 失败 NO
+ */
+- (BOOL)insertAirConditioner:(SHHVAC *)ac {
+    
+    NSString *sql =
+        [NSString stringWithFormat:
+         @"insert into AirConditioner (acID, acName, acType, acNumber, subnetID, deviceID, channelNo) values(%zd, '%@', %zd, %zd, %zd, %zd, %zd);",
+                     ac.acID,
+                     ac.acName,
+                     ac.acType,
+                     ac.acNumber,
+                     ac.subnetID,
+                     ac.deviceID,
+                     ac.channelNo
+                    ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 获得一个可用的空调编号
+ 
+ @return 返回可以直接使用的空调编号
+ */
+- (NSUInteger)getAvailableAirConditionerID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(acID) from AirConditioner;"];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(acID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger curtainID =
+    [[dict objectForKey:@"max(acID)"]integerValue] + 1;
+    
+    return curtainID;
+}
+
+/**
+ 查询所有的空调数据
+
+ @return 空调数组
+ */
+- (NSMutableArray *)getAirConditioners {
+    
+    NSString *sql =
+        [NSString stringWithFormat:
+         
+         @"select acID, acName, acType, acNumber, subnetID, deviceID, channelNo from AirConditioner;"];
+    
+    NSArray *array = [self selectProprty:sql];
+    NSMutableArray *acs =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [acs addObject:
+            [SHHVAC airConditionerWithDictionary:dict]
+        ];
+    }
+    
+    return acs;
+}
 
 // MARK: - Curtain
 
@@ -135,9 +252,6 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
  @return 返回可以直接使用的窗帘编号
  */
 - (NSUInteger)getAvailableCurtainID {
-    
-    // "select max(ShadeID) from ShadeInZone " +
-    // "where ZoneID = \(zoneID);"
     
     NSString *sql =
         [NSString stringWithFormat:@"select max(curtainID) from Curtains;"];

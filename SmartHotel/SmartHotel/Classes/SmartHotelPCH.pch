@@ -34,6 +34,7 @@
 #import "SHMacro.h"
 #import "SHMacroCommand.h"
 #import "SHLight.h"
+#import "SHHVAC.h"
 #import "SHTV.h"
 #import "SHChannel.h"
 #import "SHChannelType.h"

@@ -17,11 +17,50 @@
 #import "SHTV.h"
 #import "SHChannel.h"
 #import "SHChannelType.h"
+#import "SHHVAC.h"
 
 @interface SHSQLManager : NSObject
 
-// MARK: - 数据操作
+// MARK: - 空调
+    
+/**
+ 更新空调数据
+ 
+ @param ac 空调数据
+ @return 更新成功 YES, 更新失败 NO.
+ */
+- (BOOL)updateAirConditioner:(SHHVAC *)ac;
 
+/**
+ 删除空调对象
+ 
+ @param ac 窗帘对象
+ @return 删除成功YES, 失败 NO.
+ */
+- (BOOL)deleteAirConditioner:(SHHVAC *)ac;
+    
+/**
+ 增加新的空调
+ 
+ @param ac 空调
+ @return 增加成功 YES, 失败 NO
+ */
+- (BOOL)insertAirConditioner:(SHHVAC *)ac;
+    
+/**
+ 获得一个可用的空调编号
+ 
+ @return 返回可以直接使用的空调编号
+ */
+- (NSUInteger)getAvailableAirConditionerID;
+
+/**
+ 查询所有的空调数据
+ 
+ @return 空调数组
+ */
+- (NSMutableArray *)getAirConditioners;
+    
 // MARK: - Curtain
 
 

@@ -57,8 +57,6 @@
 		04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249C42079E1B200EBD1BE /* SHHomeViewController.xib */; };
 		04D249CA2079E1CC00EBD1BE /* SHLightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249C82079E1CC00EBD1BE /* SHLightViewController.m */; };
 		04D249CB2079E1CC00EBD1BE /* SHLightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249C92079E1CC00EBD1BE /* SHLightViewController.xib */; };
-		04D249CF2079E1E100EBD1BE /* SHHVACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249CD2079E1E100EBD1BE /* SHHVACViewController.m */; };
-		04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249CE2079E1E100EBD1BE /* SHHVACViewController.xib */; };
 		04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249D22079E1F300EBD1BE /* SHTVViewController.m */; };
 		04D249D52079E1F300EBD1BE /* SHTVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D249D32079E1F300EBD1BE /* SHTVViewController.xib */; };
 		04D249DE2079E22300EBD1BE /* SHVIPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D249DC2079E22300EBD1BE /* SHVIPViewController.m */; };
@@ -104,6 +102,13 @@
 		04DC420222A0FEB000BC1BFE /* SmartHotel.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 04DC420122A0FEB000BC1BFE /* SmartHotel.sqlite */; };
 		04DC420722A109A400BC1BFE /* SHCurtainDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DC420522A109A400BC1BFE /* SHCurtainDetailViewCell.m */; };
 		04DC420822A109A400BC1BFE /* SHCurtainDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DC420622A109A400BC1BFE /* SHCurtainDetailViewCell.xib */; };
+		04DC420E22A12C5E00BC1BFE /* SHHVACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DC420B22A12C5E00BC1BFE /* SHHVACViewController.m */; };
+		04DC420F22A12C5E00BC1BFE /* SHHVACViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DC420C22A12C5E00BC1BFE /* SHHVACViewController.xib */; };
+		04DC421422A12C8600BC1BFE /* SHHVACDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DC421222A12C8600BC1BFE /* SHHVACDetailViewController.m */; };
+		04DC421522A12C8600BC1BFE /* SHHVACDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DC421322A12C8600BC1BFE /* SHHVACDetailViewController.xib */; };
+		04DC421822A12CAE00BC1BFE /* SHHVAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DC421722A12CAE00BC1BFE /* SHHVAC.m */; };
+		04DDEA8222A4BC0D00F1BA01 /* SHHVACDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DDEA8022A4BC0D00F1BA01 /* SHHVACDetailViewCell.m */; };
+		04DDEA8322A4BC0D00F1BA01 /* SHHVACDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DDEA8122A4BC0D00F1BA01 /* SHHVACDetailViewCell.xib */; };
 		04E4DCFC20859A4C00AB17E2 /* UIImage+SaveAndGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */; };
 		04E4DD042085CDD000AB17E2 /* SHHVACRotationControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4DD032085CDD000AB17E2 /* SHHVACRotationControlView.m */; };
 		04EAD7402091AAC400F49E43 /* SHCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EAD73F2091AAC400F49E43 /* SHCameraButton.m */; };
@@ -213,9 +218,6 @@
 		04D249C72079E1CC00EBD1BE /* SHLightViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightViewController.h; sourceTree = "<group>"; };
 		04D249C82079E1CC00EBD1BE /* SHLightViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightViewController.m; sourceTree = "<group>"; };
 		04D249C92079E1CC00EBD1BE /* SHLightViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLightViewController.xib; sourceTree = "<group>"; };
-		04D249CC2079E1E100EBD1BE /* SHHVACViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACViewController.h; sourceTree = "<group>"; };
-		04D249CD2079E1E100EBD1BE /* SHHVACViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVACViewController.m; sourceTree = "<group>"; };
-		04D249CE2079E1E100EBD1BE /* SHHVACViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHVACViewController.xib; sourceTree = "<group>"; };
 		04D249D12079E1F300EBD1BE /* SHTVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVViewController.h; sourceTree = "<group>"; };
 		04D249D22079E1F300EBD1BE /* SHTVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVViewController.m; sourceTree = "<group>"; };
 		04D249D32079E1F300EBD1BE /* SHTVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTVViewController.xib; sourceTree = "<group>"; };
@@ -287,6 +289,17 @@
 		04DC420422A109A400BC1BFE /* SHCurtainDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCurtainDetailViewCell.h; sourceTree = "<group>"; };
 		04DC420522A109A400BC1BFE /* SHCurtainDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHCurtainDetailViewCell.m; sourceTree = "<group>"; };
 		04DC420622A109A400BC1BFE /* SHCurtainDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHCurtainDetailViewCell.xib; sourceTree = "<group>"; };
+		04DC420A22A12C5E00BC1BFE /* SHHVACViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHHVACViewController.h; sourceTree = "<group>"; };
+		04DC420B22A12C5E00BC1BFE /* SHHVACViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHHVACViewController.m; sourceTree = "<group>"; };
+		04DC420C22A12C5E00BC1BFE /* SHHVACViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHVACViewController.xib; sourceTree = "<group>"; };
+		04DC421122A12C8600BC1BFE /* SHHVACDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACDetailViewController.h; sourceTree = "<group>"; };
+		04DC421222A12C8600BC1BFE /* SHHVACDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVACDetailViewController.m; sourceTree = "<group>"; };
+		04DC421322A12C8600BC1BFE /* SHHVACDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHVACDetailViewController.xib; sourceTree = "<group>"; };
+		04DC421622A12CAE00BC1BFE /* SHHVAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVAC.h; sourceTree = "<group>"; };
+		04DC421722A12CAE00BC1BFE /* SHHVAC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVAC.m; sourceTree = "<group>"; };
+		04DDEA7F22A4BC0D00F1BA01 /* SHHVACDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACDetailViewCell.h; sourceTree = "<group>"; };
+		04DDEA8022A4BC0D00F1BA01 /* SHHVACDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHVACDetailViewCell.m; sourceTree = "<group>"; };
+		04DDEA8122A4BC0D00F1BA01 /* SHHVACDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHHVACDetailViewCell.xib; sourceTree = "<group>"; };
 		04E4DCFA20859A4B00AB17E2 /* UIImage+SaveAndGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SaveAndGet.h"; sourceTree = "<group>"; };
 		04E4DCFB20859A4B00AB17E2 /* UIImage+SaveAndGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SaveAndGet.m"; sourceTree = "<group>"; };
 		04E4DD022085CDD000AB17E2 /* SHHVACRotationControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHVACRotationControlView.h; sourceTree = "<group>"; };
@@ -620,8 +633,8 @@
 		04D2493C2079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04DC41DE22A0D68100BC1BFE /* CurtainSetting */,
 				04DC41DF22A0D68100BC1BFE /* Curtain */,
+				04DC41DE22A0D68100BC1BFE /* CurtainSetting */,
 				04DC41DD22A0D68100BC1BFE /* CurtainDetail */,
 			);
 			path = Controller;
@@ -639,9 +652,9 @@
 		04D2493E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				04DC420322A1098A00BC1BFE /* CurtainDetail */,
 				04DC41F022A0DE3B00BC1BFE /* Curtain */,
 				04DC41F422A0DE3B00BC1BFE /* CurtainSetting */,
+				04DC420322A1098A00BC1BFE /* CurtainDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -695,9 +708,9 @@
 		04D249442079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04D249CC2079E1E100EBD1BE /* SHHVACViewController.h */,
-				04D249CD2079E1E100EBD1BE /* SHHVACViewController.m */,
-				04D249CE2079E1E100EBD1BE /* SHHVACViewController.xib */,
+				04DC421022A12C7400BC1BFE /* AcDetail */,
+				04DC420922A12C5E00BC1BFE /* Ac */,
+				04DC420D22A12C5E00BC1BFE /* AcSetting */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -705,6 +718,8 @@
 		04D249452079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04DC421622A12CAE00BC1BFE /* SHHVAC.h */,
+				04DC421722A12CAE00BC1BFE /* SHHVAC.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -712,6 +727,7 @@
 		04D249462079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04DDEA7E22A4BBF500F1BA01 /* AcDetail */,
 				04E4DD012085CDB300AB17E2 /* RotationControlView */,
 			);
 			path = View;
@@ -1203,8 +1219,8 @@
 		04DAFEAF20849779009AA5EB /* TV */ = {
 			isa = PBXGroup;
 			children = (
-				04DAFEB020849779009AA5EB /* SHTV.m */,
 				04DAFEB120849779009AA5EB /* SHTV.h */,
+				04DAFEB020849779009AA5EB /* SHTV.m */,
 			);
 			path = TV;
 			sourceTree = "<group>";
@@ -1287,6 +1303,43 @@
 				04DC420622A109A400BC1BFE /* SHCurtainDetailViewCell.xib */,
 			);
 			path = CurtainDetail;
+			sourceTree = "<group>";
+		};
+		04DC420922A12C5E00BC1BFE /* Ac */ = {
+			isa = PBXGroup;
+			children = (
+				04DC420A22A12C5E00BC1BFE /* SHHVACViewController.h */,
+				04DC420B22A12C5E00BC1BFE /* SHHVACViewController.m */,
+				04DC420C22A12C5E00BC1BFE /* SHHVACViewController.xib */,
+			);
+			path = Ac;
+			sourceTree = "<group>";
+		};
+		04DC420D22A12C5E00BC1BFE /* AcSetting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AcSetting;
+			sourceTree = "<group>";
+		};
+		04DC421022A12C7400BC1BFE /* AcDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04DC421122A12C8600BC1BFE /* SHHVACDetailViewController.h */,
+				04DC421222A12C8600BC1BFE /* SHHVACDetailViewController.m */,
+				04DC421322A12C8600BC1BFE /* SHHVACDetailViewController.xib */,
+			);
+			path = AcDetail;
+			sourceTree = "<group>";
+		};
+		04DDEA7E22A4BBF500F1BA01 /* AcDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04DDEA7F22A4BC0D00F1BA01 /* SHHVACDetailViewCell.h */,
+				04DDEA8022A4BC0D00F1BA01 /* SHHVACDetailViewCell.m */,
+				04DDEA8122A4BC0D00F1BA01 /* SHHVACDetailViewCell.xib */,
+			);
+			path = AcDetail;
 			sourceTree = "<group>";
 		};
 		04E4DD012085CDB300AB17E2 /* RotationControlView */ = {
@@ -1416,7 +1469,6 @@
 				04F892032089796F003E2CED /* SHSettingDeiviceTypeViewCell.xib in Resources */,
 				0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */,
 				04DC420822A109A400BC1BFE /* SHCurtainDetailViewCell.xib in Resources */,
-				04D249D02079E1E100EBD1BE /* SHHVACViewController.xib in Resources */,
 				04DA600C20B27BDD0099EBFE /* SHWordTimeViewCell.xib in Resources */,
 				04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */,
 				04C7996C2093199F00F86679 /* Sounds.bundle in Resources */,
@@ -1424,10 +1476,12 @@
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
 				04DC420022A0F82F00BC1BFE /* SHCurtainDetailViewController.xib in Resources */,
 				04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */,
+				04DDEA8322A4BC0D00F1BA01 /* SHHVACDetailViewCell.xib in Resources */,
 				04D249CB2079E1CC00EBD1BE /* SHLightViewController.xib in Resources */,
 				04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */,
 				04DC420222A0FEB000BC1BFE /* SmartHotel.sqlite in Resources */,
 				04D249FC2079E2D100EBD1BE /* SHSettingRoomInfoViewController.xib in Resources */,
+				04DC420F22A12C5E00BC1BFE /* SHHVACViewController.xib in Resources */,
 				04D249AC2079C9B800EBD1BE /* SQL.sql in Resources */,
 				04DAFEBE2084A464009AA5EB /* SHChannelTypeViewCell.xib in Resources */,
 				04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */,
@@ -1435,6 +1489,7 @@
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 				04D8806620887441006C207E /* SHSettingDeviceArgsViewCell.xib in Resources */,
 				04DC41F522A0DE3B00BC1BFE /* SHCurtainViewCell.xib in Resources */,
+				04DC421522A12C8600BC1BFE /* SHHVACDetailViewController.xib in Resources */,
 				0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1503,11 +1558,13 @@
 				04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */,
 				04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */,
 				04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */,
+				04DC421822A12CAE00BC1BFE /* SHHVAC.m in Sources */,
 				04D249B82079CA9400EBD1BE /* SHNavigationController.m in Sources */,
 				04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */,
 				04FE7B3E207DFD7B0003FC85 /* SHCurtain.m in Sources */,
 				04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */,
 				04D2498F2079C77800EBD1BE /* FileTools.m in Sources */,
+				04DC421422A12C8600BC1BFE /* SHHVACDetailViewController.m in Sources */,
 				0497252D208081B200B62A9E /* SHMacroCommand.m in Sources */,
 				04FD6CBA20B538AA0013B50B /* Aspects.m in Sources */,
 				04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */,
@@ -1522,6 +1579,7 @@
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
 				04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */,
 				046E3307208F095000F78690 /* SHTimeZoneWrapper.m in Sources */,
+				04DC420E22A12C5E00BC1BFE /* SHHVACViewController.m in Sources */,
 				04DC420722A109A400BC1BFE /* SHCurtainDetailViewCell.m in Sources */,
 				04D2498D2079C77800EBD1BE /* UIImageView+ReSizeImage.m in Sources */,
 				04DC41F622A0DE3B00BC1BFE /* SHCurtainViewCell.m in Sources */,
@@ -1550,6 +1608,7 @@
 				049725232080546A00B62A9E /* SHMacro.m in Sources */,
 				04C7996F20931A1700F86679 /* SHSoundTools.m in Sources */,
 				04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */,
+				04DDEA8222A4BC0D00F1BA01 /* SHHVACDetailViewCell.m in Sources */,
 				04DC41E822A0D69700BC1BFE /* SHCurtainSettingViewController.m in Sources */,
 				04DC41FF22A0F82F00BC1BFE /* SHCurtainDetailViewController.m in Sources */,
 				04D2498C2079C77800EBD1BE /* UIDevice+IPAddresses.m in Sources */,
@@ -1564,7 +1623,6 @@
 				04DC41E322A0D68100BC1BFE /* SHCurtainViewController.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
 				0497252820805C2F00B62A9E /* SHMacroCollectionViewCell.m in Sources */,
-				04D249CF2079E1E100EBD1BE /* SHHVACViewController.m in Sources */,
 				04D249E32079E24A00EBD1BE /* SHAlarmViewController.m in Sources */,
 				04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */,
 				04D249F12079E2AA00EBD1BE /* SHCameraViewController.m in Sources */,
