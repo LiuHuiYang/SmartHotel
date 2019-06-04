@@ -7,6 +7,7 @@
 //
 
 #import "SHModelViewController.h"
+#import "SHHomeViewController.h"
 
 #import "SHNavigationBarButton.h"
 
@@ -89,8 +90,6 @@
                            animated:YES
                          completion:nil
         ];
-        
-        printLog(@"灯光设备");
     }
     
     // 窗帘
@@ -105,8 +104,8 @@
     }
     
    
-    
-    else {
+    // 首页
+    else if ([self isKindOfClass:[SHHomeViewController class]]) {
     
     SHSettingRoomInfoViewController *settingViewController = [[SHSettingRoomInfoViewController alloc] init];
     
@@ -136,7 +135,6 @@
     
     // 创建左边的按钮
     UITapGestureRecognizer *tapGestureRecognizerSetting = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
- 
 
     SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:[UIFont boldSystemFontOfSize:26] image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
 

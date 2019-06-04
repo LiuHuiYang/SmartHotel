@@ -20,6 +20,46 @@
 #import "SHHVAC.h"
 
 @interface SHSQLManager : NSObject
+
+// MARK: - TV
+
+/**
+ 更新TV设备参数
+ 
+ @param tv tv设备对象
+ @return 更新成功YES, 失败NO.
+ */
+- (BOOL)updateTV:(SHTV *)tv;
+
+/**
+ 删除tv设备
+ 
+ @param tv tv设备对象
+ @return 删除成功 YES, 失败 NO.
+ */
+- (BOOL)deleteTV:(SHTV *)tv;
+
+/**
+ 增加新的TV
+ 
+ @param tv tv 对象
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertTV:(SHTV *)tv;
+
+/**
+ 查询所有的电视
+ 
+ @return 电视对象数组
+ */
+- (NSMutableArray *)getTV;
+
+/**
+ 获取电视编号
+ 
+ @return 可以直接使用的ID编号
+ */
+- (NSUInteger)getAvailableTVID;
     
 // MARK: - 灯光
     
@@ -153,8 +193,6 @@
 /// 获得指定电视的频道类型
 - (NSMutableArray *)getAllChannelTypes:(SHTV *)tv;
 
-/// 获得房间的电视 
-- (NSMutableArray *)getTV;
  
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro;
@@ -168,7 +206,6 @@
 
 /// 获得所有的房间信息
 - (NSMutableArray *)getRoomBaseInformation;
-
 
 
 

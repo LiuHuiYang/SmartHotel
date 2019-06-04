@@ -67,7 +67,8 @@
     [self recivceAlarmClock:localNotification];
     
     [self setupSVProgressHUD];
-     
+    
+    [SHSQLManager.shareSHSQLManager deleteTable:@"SHTV"];
     
     return YES;
 }

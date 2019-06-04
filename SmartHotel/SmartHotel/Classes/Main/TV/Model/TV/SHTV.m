@@ -21,24 +21,5 @@
     return tv;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    
-    if ([key isEqualToString:@"SHCTVID"]) {
-        
-        self.tvID = [value integerValue];
-    
-    } else if ([key isEqualToString:@"TVName"]) {
-    
-        self.tvName = value;
-    
-    } else if ([key isEqualToString:@"TVType"]) {
-        
-        self.tvType = [key integerValue];
-    
-    } else {
-    
-        [super setValue:value forKey:key];
-    }
-}
 
 @end

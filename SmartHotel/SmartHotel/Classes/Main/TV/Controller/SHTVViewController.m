@@ -62,92 +62,92 @@
 /// 数字1
 - (IBAction)numberPadFor1Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor1];
+    [self sendControlTVData:self.currentTV.number1];
 }
 
 /// 数字2
 - (IBAction)numberPadFor2Click {
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor2];
+    [self sendControlTVData:self.currentTV.number2];
 }
 
 /// 数字3
 - (IBAction)numberPadFor3Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor3];
+    [self sendControlTVData:self.currentTV.number3];
 }
 
 /// 数字4
 - (IBAction)numberPadFor4Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor4];
+    [self sendControlTVData:self.currentTV.number4];
 }
 
 /// 数字5
 - (IBAction)numberPadFor5Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor5];
+    [self sendControlTVData:self.currentTV.number5];
 }
 
 /// 数字6
 - (IBAction)numberPadFor6Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor6];
+    [self sendControlTVData:self.currentTV.number6];
 }
 
 /// 数字7
 - (IBAction)numberPadFor7Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor7];
+    [self sendControlTVData:self.currentTV.number7];
 }
 
 /// 数字8
 - (IBAction)numberPadFor8Click {
  
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor8];
+    [self sendControlTVData:self.currentTV.number8];
 }
 
 /// 数字9
 - (IBAction)numberPadFor9Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor9];
+    [self sendControlTVData:self.currentTV.number9];
 }
 
 /// 数字0
 - (IBAction)numberPadFor0Click {
     
-    [self sendControlTVData:self.currentTV.UniversalSwitchIDFor0];
+    [self sendControlTVData:self.currentTV.number0];
 }
 
 
 /// 频道 +
 - (IBAction)channelUpButtonClick {
     
-    [self sendControlTVData:self.currentTV.ChannelUpUniversalSwitchID];
+    [self sendControlTVData:self.currentTV.channelUp];
 }
 
 /// 频道 -
 - (IBAction)channelDownButtonClick {
     
-    [self sendControlTVData:self.currentTV.ChannelDownUniversalSwitchID];
+    [self sendControlTVData:self.currentTV.channelDown];
 }
 
 /// 声音 -
 - (IBAction)volDownButtonClick {
     
-    [self sendControlTVData:self.currentTV.volDownUniversalSwitchID];
+    [self sendControlTVData:self.currentTV.volumeDown];
 }
 
 /// 声音 +
 - (IBAction)volUpButtonClick {
     
-    [self sendControlTVData:self.currentTV.volUpUniversalSwitchID];
+    [self sendControlTVData:self.currentTV.volumeUp];
 }
 
 /// 确定键
 - (IBAction)sureButtonClick {
     
     
-    [self sendControlTVData:self.currentTV.OKUniversalSwitchID];
+    [self sendControlTVData:self.currentTV.sure];
 }
 
 
@@ -156,7 +156,7 @@
     
     self.muteButton.on = !self.muteButton.on;
     
-    [self sendControlTVData:(self.muteButton.isOn? self.currentTV.muteOnUniversalSwitchID : self.currentTV.muteOffUniversalSwitchID)];
+    [self sendControlTVData:(self.muteButton.isOn? self.currentTV.muteOn : self.currentTV.muteOff)];
 }
 
 
@@ -166,7 +166,7 @@
     self.powerSwitchButton.on = !self.powerSwitchButton.on;
     self.powerIconButton.selected = !self.powerIconButton.selected;
     
-    [self sendControlTVData:(self.powerSwitchButton.isOn ? self.currentTV.openUniversalSwitchID : self.currentTV.closeUniversalSwitchID)];
+    [self sendControlTVData:(self.powerSwitchButton.isOn ? self.currentTV.turnOn : self.currentTV.turnOn)];
 }
 
 /// 发送电视的控制信号
@@ -174,7 +174,7 @@
     
     Byte controlData[2] = {switchNumber, 0xFF};
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.currentTV.subnetID targetDeviceID:self.currentTV.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE01C targetSubnetID:self.currentTV.subnetID targetDeviceID:self.currentTV.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 // MARK: - collectionView的数据源与代理

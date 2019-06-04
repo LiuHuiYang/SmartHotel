@@ -31,7 +31,7 @@
         
         Byte controlData[2] = {iRNumber, 0xFF};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.channel.subnetID targetDeviceID:self.channel.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE01C targetSubnetID:self.channel.subnetID targetDeviceID:self.channel.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
         
         [NSThread sleepForTimeInterval:self.channel.delayTimeBetweenTowIRMillisecend/1000.0];
     }

@@ -20,6 +20,153 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 @end
 
 @implementation SHSQLManager
+
+// MARK: - TV
+
+
+/**
+ 更新TV设备参数
+
+ @param tv tv设备对象
+ @return 更新成功YES, 失败NO.
+ */
+- (BOOL)updateTV:(SHTV *)tv {
+    
+    NSString *sql =
+        [NSString stringWithFormat:
+         @"update TV set tvName = '%@', subnetID = %zd, deviceID = %zd, turnOn = %zd, turnOff = %zd, muteOn = %zd, muteOff = %zd, volumeUp = %zd, volumeDown = %zd, channelUp = %zd, channelDown = %zd, sure = %zd, number0 = %zd, number1 = %zd, number2 = %zd, number3 = %zd, number4 = %zd, number5 = %zd, number6 = %zd, number7 = %zd, number8 = %zd, number9 = %zd where tvID = %zd;",
+            tv.tvName,
+            tv.subnetID,
+            tv.deviceID,
+            tv.turnOn,
+            tv.turnOff,
+            tv.muteOn,
+            tv.muteOff,
+            tv.volumeUp,
+            tv.volumeDown,
+            tv.channelUp,
+            tv.channelDown,
+            tv.sure,
+            tv.number0,
+            tv.number1,
+            tv.number2,
+            tv.number3,
+            tv.number4,
+            tv.number5,
+            tv.number6,
+            tv.number7,
+            tv.number8,
+            tv.number9,
+            tv.tvID
+         ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 删除tv设备
+ 
+ @param tv tv设备对象
+ @return 删除成功 YES, 失败 NO.
+ */
+- (BOOL)deleteTV:(SHTV *)tv {
+    
+    NSString *sql = [NSString stringWithFormat:@"delete from TV Where tvID = %zd and subnetID = %zd and deviceID = %zd;",
+                     tv.tvID,
+                     tv.subnetID,
+                     tv.deviceID
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 增加新的TV
+
+ @param tv tv 对象
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertTV:(SHTV *)tv {
+    
+    NSString *sql = [NSString stringWithFormat:@"insert into TV(tvID, tvName, subnetID, deviceID, turnOn, turnOff, muteOn, muteOff, volumeUp, volumeDown, channelUp, channelDown, sure, number0, number1, number2, number3, number4, number5, number6, number7, number8, number9) values(%zd, '%@', %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd %zd);",
+                     
+                     tv.tvID,
+                     tv.tvName,
+                     tv.subnetID,
+                     tv.deviceID,
+                     tv.turnOn,
+                     tv.turnOff,
+                     tv.muteOn,
+                     tv.muteOff,
+                     tv.volumeUp,
+                     tv.volumeDown,
+                     tv.channelUp,
+                     tv.channelDown,
+                     tv.sure,
+                     tv.number0,
+                     tv.number1,
+                     tv.number2,
+                     tv.number3,
+                     tv.number4,
+                     tv.number5,
+                     tv.number6,
+                     tv.number7,
+                     tv.number8,
+                     tv.number9
+                     
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 查询所有的电视
+
+ @return 电视对象数组
+ */
+- (NSMutableArray *)getTV {
+    
+    NSString *sql = [NSString stringWithFormat:@"%@",
+                     @"select tvID, tvName, subnetID, deviceID, turnOn, turnOff, muteOn, muteOff, volumeUp, volumeDown, channelUp, channelDown, sure, number0, number1, number2, number3, number4, number5, number6, number7, number8, number9   from TV;"
+                     ];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *tvs =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [tvs addObject: [SHTV tvWithDictionary:dict]];
+    }
+    
+    return tvs;
+}
+
+/**
+ 获取电视编号
+
+ @return 可以直接使用的ID编号
+ */
+- (NSUInteger)getAvailableTVID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(tvID) from TV;"];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(tvID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger tvID =
+    [[dict objectForKey:@"max(tvID)"]integerValue] + 1;
+    
+    return tvID;
+}
+
     
 // MARK: - 灯光
     
@@ -458,29 +605,6 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return types;
 }
 
-/// 获得房间的电视
-- (NSMutableArray *)getTV {
-    
-    NSString *selectSQL = @"select SHCTVID, TVName, TVType, SubnetID, DeviceID, \
-        OpenUniversalSwitchID, CloseUniversalSwitchID, MuteOnUniversalSwitchID, \
-        MuteOffUniversalSwitchID, VolUpUniversalSwitchID, VolDownUniversalSwitchID, \
-        ChannelUpUniversalSwitchID, ChannelDownUniversalSwitchID, OKUniversalSwitchID, \
-        UniversalSwitchIDFor1, UniversalSwitchIDFor2, UniversalSwitchIDFor3, \
-        UniversalSwitchIDFor4, UniversalSwitchIDFor5, UniversalSwitchIDFor6, \
-        UniversalSwitchIDFor7, UniversalSwitchIDFor8, UniversalSwitchIDFor9, \
-    UniversalSwitchIDFor0, OpenIrMacroNo, CloseMactroNo from SHTV;";
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *tvs = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [tvs addObject:[SHTV tvWithDictionary:dict]];
-    }
-    
-    return tvs;
-}
  
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro {

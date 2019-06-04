@@ -127,7 +127,7 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         
         Byte controlData[2] = {self.curtain.closeChannel, 0xFF};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE01C targetSubnetID:self.curtain.subnetID targetDeviceID:self.curtain.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE01C targetSubnetID:self.curtain.subnetID targetDeviceID:self.curtain.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
         
     } else {
         
