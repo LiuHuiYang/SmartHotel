@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic) SHLight *light;
 
+/// 行高
++ (CGFloat)rowHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

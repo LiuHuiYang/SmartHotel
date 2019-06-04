@@ -17,10 +17,6 @@
 		0497252D208081B200B62A9E /* SHMacroCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252C208081B200B62A9E /* SHMacroCommand.m */; };
 		04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252F208084FE00B62A9E /* SHOperatorCode.m */; };
 		049725342080905400B62A9E /* SHLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725332080905400B62A9E /* SHLight.m */; };
-		04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */; };
-		0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */; };
-		04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */; };
-		04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */; };
 		04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C5C2080B1E30027E889 /* SHLightButton.m */; };
 		04C7996C2093199F00F86679 /* Sounds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04C7996B2093199E00F86679 /* Sounds.bundle */; };
 		04C7996F20931A1700F86679 /* SHSoundTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7996E20931A1700F86679 /* SHSoundTools.m */; };
@@ -150,12 +146,6 @@
 		0497252F208084FE00B62A9E /* SHOperatorCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHOperatorCode.m; sourceTree = "<group>"; };
 		049725322080905400B62A9E /* SHLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLight.h; sourceTree = "<group>"; };
 		049725332080905400B62A9E /* SHLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLight.m; sourceTree = "<group>"; };
-		04972536208091DD00B62A9E /* SHDimmerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDimmerCollectionViewCell.h; sourceTree = "<group>"; };
-		04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDimmerCollectionViewCell.m; sourceTree = "<group>"; };
-		04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHDimmerCollectionViewCell.xib; sourceTree = "<group>"; };
-		04B05C552080A9A60027E889 /* SHRelayCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRelayCollectionViewCell.h; sourceTree = "<group>"; };
-		04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRelayCollectionViewCell.m; sourceTree = "<group>"; };
-		04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHRelayCollectionViewCell.xib; sourceTree = "<group>"; };
 		04B05C5B2080B1E30027E889 /* SHLightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightButton.h; sourceTree = "<group>"; };
 		04B05C5C2080B1E30027E889 /* SHLightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightButton.m; sourceTree = "<group>"; };
 		04C7996B2093199E00F86679 /* Sounds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Sounds.bundle; sourceTree = "<group>"; };
@@ -404,16 +394,6 @@
 			path = Light;
 			sourceTree = "<group>";
 		};
-		04972535208091B800B62A9E /* DimmerCell */ = {
-			isa = PBXGroup;
-			children = (
-				04972536208091DD00B62A9E /* SHDimmerCollectionViewCell.h */,
-				04972537208091DD00B62A9E /* SHDimmerCollectionViewCell.m */,
-				04972538208091DD00B62A9E /* SHDimmerCollectionViewCell.xib */,
-			);
-			path = DimmerCell;
-			sourceTree = "<group>";
-		};
 		04AE6BD4207C5A9E001EDF73 /* SHControlSwitch */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,16 +401,6 @@
 				04484D75207F079C00F6FEB9 /* SHSwitchButton.m */,
 			);
 			path = SHControlSwitch;
-			sourceTree = "<group>";
-		};
-		04B05C4F2080A9750027E889 /* RelayCell */ = {
-			isa = PBXGroup;
-			children = (
-				04B05C552080A9A60027E889 /* SHRelayCollectionViewCell.h */,
-				04B05C562080A9A60027E889 /* SHRelayCollectionViewCell.m */,
-				04B05C572080A9A60027E889 /* SHRelayCollectionViewCell.xib */,
-			);
-			path = RelayCell;
 			sourceTree = "<group>";
 		};
 		04B05C5A2080B1D50027E889 /* lightButton */ = {
@@ -844,8 +814,6 @@
 				04DDEA9722A516A700F1BA01 /* LightSettingCell */,
 				04DDEA8422A50F0700F1BA01 /* LightCell */,
 				04B05C5A2080B1D50027E889 /* lightButton */,
-				04B05C4F2080A9750027E889 /* RelayCell */,
-				04972535208091B800B62A9E /* DimmerCell */,
 				0497252420805C1900B62A9E /* MacroCell */,
 			);
 			path = View;
@@ -1567,7 +1535,6 @@
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
 				04DDEA9622A5150100F1BA01 /* SHLightSettingViewController.xib in Resources */,
 				04DC420022A0F82F00BC1BFE /* SHCurtainDetailViewController.xib in Resources */,
-				04B05C592080A9A60027E889 /* SHRelayCollectionViewCell.xib in Resources */,
 				04DDEA8322A4BC0D00F1BA01 /* SHHVACDetailViewCell.xib in Resources */,
 				04D249F22079E2AA00EBD1BE /* SHCameraViewController.xib in Resources */,
 				04DC420222A0FEB000BC1BFE /* SmartHotel.sqlite in Resources */,
@@ -1583,7 +1550,6 @@
 				04DC41F522A0DE3B00BC1BFE /* SHCurtainViewCell.xib in Resources */,
 				04DC421522A12C8600BC1BFE /* SHHVACDetailViewController.xib in Resources */,
 				04DDEA9022A5147400F1BA01 /* SHLightViewController.xib in Resources */,
-				0497253A208091DD00B62A9E /* SHDimmerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1648,7 +1614,6 @@
 				04FD6CB720B538230013B50B /* UITableView+ZYXIndexTip.m in Sources */,
 				04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */,
 				04D24A062079EE1900EBD1BE /* SHModuleSwitchButton.m in Sources */,
-				04B05C582080A9A60027E889 /* SHRelayCollectionViewCell.m in Sources */,
 				04D249BE2079CAC000EBD1BE /* SHModelViewController.m in Sources */,
 				04D249852079C77800EBD1BE /* UIImage+Antialias.m in Sources */,
 				04DC421822A12CAE00BC1BFE /* SHHVAC.m in Sources */,
@@ -1674,7 +1639,6 @@
 				04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */,
 				04EAD7402091AAC400F49E43 /* SHCameraButton.m in Sources */,
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,
-				04972539208091DD00B62A9E /* SHDimmerCollectionViewCell.m in Sources */,
 				046E3307208F095000F78690 /* SHTimeZoneWrapper.m in Sources */,
 				04DC420E22A12C5E00BC1BFE /* SHHVACViewController.m in Sources */,
 				04DC420722A109A400BC1BFE /* SHCurtainDetailViewCell.m in Sources */,

@@ -13,28 +13,108 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SHLightViewCell" id="gTV-IL-0wX" customClass="SHLightViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="190" height="57"/>
+            <rect key="frame" x="0.0" y="0.0" width="463" height="174"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="190" height="57"/>
+                <rect key="frame" x="0.0" y="0.0" width="463" height="174"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="yCl-Zn-zFl">
+                        <rect key="frame" x="0.0" y="0.0" width="463" height="174"/>
+                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMJ-w8-nBm">
-                        <rect key="frame" x="0.0" y="0.0" width="190" height="57"/>
-                        <color key="backgroundColor" red="0.031372549020000001" green="0.74117647060000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="0.0" y="0.0" width="463" height="174"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD7-K7-Nio" customClass="SHLightButton">
+                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="174"/>
+                                <state key="normal" title="BedRoomLight" image="Light_Dim0"/>
+                                <state key="selected" image="Light_Dim1"/>
+                                <state key="highlighted" image="Light_Dim1"/>
+                                <connections>
+                                    <action selector="iconButtonClick" destination="gTV-IL-0wX" eventType="touchUpInside" id="L5M-YB-meq"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8l-ol-VGw">
+                                <rect key="frame" x="137.5" y="62.5" width="256.5" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-mV-I59">
+                                <rect key="frame" x="409" y="62.5" width="49" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Ww1-0j-ptK"/>
+                                    <constraint firstAttribute="width" constant="49" id="wsJ-SV-oxw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="W2s-MK-jb1">
+                                <rect key="frame" x="135.5" y="62.5" width="260.5" height="50"/>
+                                <connections>
+                                    <action selector="brightnessSliderChange" destination="gTV-IL-0wX" eventType="valueChanged" id="g0Z-Bg-92I"/>
+                                    <action selector="finishedMove" destination="gTV-IL-0wX" eventType="touchUpInside" id="miJ-LD-CB0"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fl-0e-so1" customClass="SHSwitchButton">
+                                <rect key="frame" x="208" y="68.5" width="115.5" height="37"/>
+                                <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
+                                <state key="selected" image="SHSwitchThumb_On"/>
+                                <connections>
+                                    <action selector="switchButtonClick" destination="gTV-IL-0wX" eventType="touchUpInside" id="aEy-lL-DjQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Fl-0e-so1" firstAttribute="centerY" secondItem="P8l-ol-VGw" secondAttribute="centerY" id="0JY-dI-bg7"/>
+                            <constraint firstItem="P8l-ol-VGw" firstAttribute="centerY" secondItem="Ife-mV-I59" secondAttribute="centerY" id="7gm-bv-e2k"/>
+                            <constraint firstItem="SD7-K7-Nio" firstAttribute="centerY" secondItem="yMJ-w8-nBm" secondAttribute="centerY" id="80h-52-9Ee"/>
+                            <constraint firstItem="W2s-MK-jb1" firstAttribute="width" secondItem="P8l-ol-VGw" secondAttribute="width" id="9rM-jm-LIL"/>
+                            <constraint firstItem="W2s-MK-jb1" firstAttribute="height" secondItem="P8l-ol-VGw" secondAttribute="height" id="DDM-gG-pKz"/>
+                            <constraint firstItem="W2s-MK-jb1" firstAttribute="centerX" secondItem="P8l-ol-VGw" secondAttribute="centerX" id="MUm-Vd-vLr"/>
+                            <constraint firstItem="P8l-ol-VGw" firstAttribute="leading" secondItem="SD7-K7-Nio" secondAttribute="trailing" constant="15" id="P35-j5-2Y8"/>
+                            <constraint firstItem="Ife-mV-I59" firstAttribute="leading" secondItem="P8l-ol-VGw" secondAttribute="trailing" constant="15" id="RMv-JQ-fRP"/>
+                            <constraint firstAttribute="trailing" secondItem="Ife-mV-I59" secondAttribute="trailing" constant="5" id="Rhc-NM-cjH"/>
+                            <constraint firstItem="SD7-K7-Nio" firstAttribute="width" secondItem="Ife-mV-I59" secondAttribute="width" multiplier="2.5" id="SSj-Zh-Lgm"/>
+                            <constraint firstItem="4Fl-0e-so1" firstAttribute="centerX" secondItem="P8l-ol-VGw" secondAttribute="centerX" id="UAw-Pv-gIk"/>
+                            <constraint firstItem="4Fl-0e-so1" firstAttribute="height" secondItem="P8l-ol-VGw" secondAttribute="height" multiplier="0.75" id="cC3-E0-fKZ"/>
+                            <constraint firstItem="SD7-K7-Nio" firstAttribute="height" secondItem="yMJ-w8-nBm" secondAttribute="height" id="gYW-nv-hNC"/>
+                            <constraint firstItem="SD7-K7-Nio" firstAttribute="leading" secondItem="yMJ-w8-nBm" secondAttribute="leading" id="inb-eo-Amq"/>
+                            <constraint firstItem="Ife-mV-I59" firstAttribute="centerY" secondItem="yMJ-w8-nBm" secondAttribute="centerY" id="lVT-kC-pUj"/>
+                            <constraint firstItem="P8l-ol-VGw" firstAttribute="height" secondItem="Ife-mV-I59" secondAttribute="height" id="pKf-LL-qfV"/>
+                            <constraint firstItem="4Fl-0e-so1" firstAttribute="width" secondItem="P8l-ol-VGw" secondAttribute="width" multiplier="0.45" id="rpP-wV-CBD"/>
+                            <constraint firstItem="W2s-MK-jb1" firstAttribute="centerY" secondItem="P8l-ol-VGw" secondAttribute="centerY" id="vfX-q5-kIe"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="yCl-Zn-zFl" secondAttribute="bottom" id="4zf-BN-gTJ"/>
+                <constraint firstItem="yCl-Zn-zFl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7do-4I-mYI"/>
                 <constraint firstAttribute="trailing" secondItem="yMJ-w8-nBm" secondAttribute="trailing" id="LrH-vz-RLx"/>
+                <constraint firstItem="yCl-Zn-zFl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MoL-Kn-eLg"/>
                 <constraint firstItem="yMJ-w8-nBm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QfX-Xm-PSV"/>
+                <constraint firstAttribute="trailing" secondItem="yCl-Zn-zFl" secondAttribute="trailing" id="U00-BH-cGF"/>
                 <constraint firstItem="yMJ-w8-nBm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="b8C-DG-DhE"/>
                 <constraint firstAttribute="bottom" secondItem="yMJ-w8-nBm" secondAttribute="bottom" id="rUs-gE-i2V"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
-            <size key="customSize" width="190" height="57"/>
-            <point key="canvasLocation" x="120" y="124"/>
+            <size key="customSize" width="463" height="174"/>
+            <connections>
+                <outlet property="brightnessLabel" destination="Ife-mV-I59" id="CHq-A4-FsM"/>
+                <outlet property="brightnessSlider" destination="W2s-MK-jb1" id="xkT-ML-Uqs"/>
+                <outlet property="iconButton" destination="SD7-K7-Nio" id="tVH-1W-IPR"/>
+                <outlet property="switchButton" destination="4Fl-0e-so1" id="Ogs-LW-B6V"/>
+            </connections>
+            <point key="canvasLocation" x="319.56521739130437" y="234.375"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Light_Dim0" width="31.5" height="39"/>
+        <image name="Light_Dim1" width="31.5" height="39"/>
+        <image name="SHSwitchThumb_Off" width="40.5" height="33.5"/>
+        <image name="SHSwitchThumb_On" width="40.5" height="33.5"/>
+        <image name="Share_SmallBG" width="783" height="402"/>
+    </resources>
 </document>

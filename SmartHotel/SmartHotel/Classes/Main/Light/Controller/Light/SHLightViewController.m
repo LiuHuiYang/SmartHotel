@@ -172,13 +172,20 @@
     
     // 调光器的布局
     
-    NSUInteger dimmerTotalCols = 3;
+    NSUInteger dimmerTotalCols = 2;
     
-    CGFloat dimmerItemWidth = (self.lightListView.frame_width - (dimmerTotalCols * itemMarign)) / dimmerTotalCols;
+    CGFloat dimmerItemWidth = (self.lightListView.frame_width -
+        ((dimmerTotalCols - 1) * itemMarign)
+                               ) / dimmerTotalCols;
     
-    UICollectionViewFlowLayout *dimmerFlowLayout = (UICollectionViewFlowLayout *)self.self.lightListView.collectionViewLayout;
+    UICollectionViewFlowLayout *dimmerFlowLayout =
+    (UICollectionViewFlowLayout*)
+        self.self.lightListView.collectionViewLayout;
     
-    dimmerFlowLayout.itemSize = CGSizeMake(dimmerItemWidth, self.lightListView.frame_height);
+    dimmerFlowLayout.itemSize =
+        CGSizeMake(dimmerItemWidth,
+                   [SHLightViewCell rowHeight]
+                );
     dimmerFlowLayout.minimumLineSpacing = itemMarign;
     dimmerFlowLayout.minimumInteritemSpacing = 0;
     
@@ -240,12 +247,17 @@
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Lights"];
     
     self.senceLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"LIGHTS" withSubTitle:@"Scenes"];
- 
     
+    UIColor *backgroundColor =
+        [UIColor colorWithPatternImage:
+            [UIImage imageNamed:@"Share_SmallBG"]
+        ];
+ 
+//    self.lightListView.backgroundColor = backgroundColor;
+    self.senceListView.backgroundColor = backgroundColor;
+     
     [self.lightListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHLightViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHLightViewCell class])];
     
-    
-    self.senceListView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Share_SmallBG"]];
     
     [self.senceListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHMacroCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHMacroCollectionViewCell class])];
 }

@@ -45,7 +45,7 @@
     self.imageView.frame_x = 0;
     self.imageView.frame_y = 0;
     self.imageView.frame_width = self.frame_width;
-    self.imageView.frame_height = self.frame_height * 0.65;
+    self.imageView.frame_height = self.frame_height * 0.45;
     
     self.titleLabel.frame_x = 0;
     self.titleLabel.frame_width = self.frame_width;
