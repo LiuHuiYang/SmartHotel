@@ -22,13 +22,16 @@
     
     _deviceName = deviceName.copy;
     
-    [self.nameButton setTitle:deviceName forState:UIControlStateNormal];
+    [self.nameButton setTitle:deviceName
+                     forState:UIControlStateNormal
+    ];
 }
 
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+   
+    self.backgroundColor = UIColor.clearColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

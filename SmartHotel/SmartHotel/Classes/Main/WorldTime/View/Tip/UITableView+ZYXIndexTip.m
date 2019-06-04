@@ -22,7 +22,11 @@
         _indexTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 84, 84)];
         _indexTipLabel.layer.masksToBounds = YES;
         _indexTipLabel.layer.cornerRadius = 20;
-        _indexTipLabel.backgroundColor = [UIColor colorWithRed:1/225.0 green:205/255.0 blue:206/255.0 alpha:1];
+          
+        _indexTipLabel.backgroundColor =
+            [UIColor cololrWithHex:0x1E1E1E
+                             alpha:0.8];
+        
         _indexTipLabel.textAlignment = NSTextAlignmentCenter;
         _indexTipLabel.textColor = [UIColor whiteColor];
         _indexTipLabel.font = [UIFont systemFontOfSize:28];
@@ -79,6 +83,7 @@ static char ZYXIndexTipManagerKey;
         return index;
     } error:NULL];
 }
+
 -(void)handleWithIndexTitle:(NSString *)title atIndex:(NSInteger)index{
     //找出TableView的索引视图UITableViewIndex
     UIView * view = (UIView*)self.subviews.lastObject;

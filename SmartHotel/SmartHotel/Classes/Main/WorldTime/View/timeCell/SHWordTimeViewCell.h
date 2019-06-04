@@ -18,6 +18,6 @@
 
 
 /// 行高
-+ (CGFloat)rowHeightForWordTimeViewCell;
++ (CGFloat)rowHeight;
 
 @end

@@ -80,33 +80,6 @@
             }
                 break;
                 
-            case SHDeviceTypeZoneBeast: {
-                
-                self.roomInfo.subNetIDForZoneBeast = device.subnetID;
-                self.roomInfo.deviceIDForZoneBeast = device.deviceID;
-            }
-                break;
-                
-            case SHDeviceTypeDDP: {
-                
-                self.roomInfo.subNetIDForDDP = device.subnetID;
-                self.roomInfo.deviceIDForDDP = device.deviceID;
-            }
-                break;
-                
-            case SHDeviceTypeIR: {
-                
-                self.roomInfo.subNetIDForIR = device.subnetID;
-                self.roomInfo.deviceIDForIR = device.deviceID;
-            }
-                break;
-                
-            case SHDeviceTypeZAudio: {
-                
-                self.roomInfo.subNetIDForZAudio = device.subnetID;
-                self.roomInfo.deviceIDForZAudio = device.deviceID;
-            }
-                break;
                 
             default:
                 break;

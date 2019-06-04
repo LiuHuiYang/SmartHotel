@@ -82,14 +82,14 @@
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];
     
-    if (subNetID != self.roomInfo.subNetIDForDDP ||
-        deviceID != self.roomInfo.deviceIDForDDP) {
-        return ;
-    }
+//    if (subNetID != self.roomInfo.subNetIDForDDP ||
+//        deviceID != self.roomInfo.deviceIDForDDP) {
+//        return ;
+//    }
     
     switch (operatorCode) {
             
-        case 0XE3E8: {
+        case 0xE3E8: {
             
             if (!recivedData[startIndex]) { // 返回摄氏温度有效
                 return;
@@ -113,7 +113,7 @@
     
     Byte readTemperatureFlag[] = { 1 }; // 暂时先读摄氏度
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3E7 targetSubnetID:self.roomInfo.subNetIDForDDP targetDeviceID:self.roomInfo.deviceIDForDDP additionalContentData:[NSMutableData dataWithBytes:readTemperatureFlag length:sizeof(readTemperatureFlag)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE3E7 targetSubnetID:0 targetDeviceID:0 additionalContentData:[NSMutableData dataWithBytes:readTemperatureFlag length:sizeof(readTemperatureFlag)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 

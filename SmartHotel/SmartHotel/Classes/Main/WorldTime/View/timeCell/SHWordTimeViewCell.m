@@ -38,6 +38,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.backgroundColor = UIColor.clearColor;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -48,7 +49,7 @@
 }
 
 /// 行高
-+ (CGFloat)rowHeightForWordTimeViewCell {
++ (CGFloat)rowHeight {
     
     return navigationBarHeight + statusBarHeight;
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,16 +32,16 @@
                     <rect key="frame" x="0.0" y="10" width="1024" height="768"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-rj-JUu">
-                    <rect key="frame" x="77" y="144.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="144.5" width="870" height="499"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBj-X4-yuA">
-                            <rect key="frame" x="370.5" y="25" width="130.5" height="449.5"/>
+                            <rect key="frame" x="369.5" y="25" width="131" height="449"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="w1T-qr-fqj">
-                                    <rect key="frame" x="-0.5" y="0.0" width="130.5" height="449.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131" height="449"/>
                                 </imageView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aul-eS-e3b">
-                                    <rect key="frame" x="0.0" y="0.5" width="130.5" height="449.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131" height="449"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="Fkm-n5-L0a"/>
@@ -63,13 +62,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1v-b4-qwI">
-                            <rect key="frame" x="550" y="25" width="326" height="449.5"/>
+                            <rect key="frame" x="549.5" y="25" width="326" height="449"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="L5f-vb-5og">
-                                    <rect key="frame" x="0.0" y="0.0" width="326" height="449.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="326" height="449"/>
                                 </imageView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v3g-B1-SrP">
-                                    <rect key="frame" x="0.0" y="0.0" width="326" height="449.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="326" height="449"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="n1W-Ez-QCQ">
                                         <size key="itemSize" width="0.0" height="0.0"/>
@@ -95,10 +94,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jID-WW-Cml">
-                            <rect key="frame" x="-5" y="25" width="326.5" height="449.5"/>
+                            <rect key="frame" x="-5.5" y="25" width="326" height="449"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weu-Jd-FeN" userLabel="muteView">
-                                    <rect key="frame" x="179.5" y="0.0" width="147.5" height="49"/>
+                                    <rect key="frame" x="179.5" y="0.0" width="146.5" height="49"/>
                                     <subviews>
                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFE-IG-gWH">
                                             <rect key="frame" x="0.0" y="2.5" width="44" height="44"/>
@@ -111,7 +110,7 @@
                                             <state key="highlighted" image="PowerOn"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2q-dQ-7Rn" customClass="SHSwitchButton">
-                                            <rect key="frame" x="49" y="2.5" width="98.5" height="44"/>
+                                            <rect key="frame" x="49" y="2.5" width="97.5" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
                                             <state key="selected" image="SHSwitchThumb_On"/>
@@ -132,10 +131,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oy-0C-vvc" userLabel="onoffView">
-                                    <rect key="frame" x="0.5" y="0.0" width="147" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="146.5" height="49"/>
                                     <subviews>
                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YW-MW-L5e">
-                                            <rect key="frame" x="0.5" y="2.5" width="44" height="44"/>
+                                            <rect key="frame" x="0.0" y="2.5" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="P2c-Np-7cd"/>
                                                 <constraint firstAttribute="height" constant="44" id="gw5-Ky-1P2"/>
@@ -145,7 +144,7 @@
                                             <state key="highlighted" image="PowerOn"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQS-NK-ZRd" customClass="SHSwitchButton">
-                                            <rect key="frame" x="49.5" y="2.5" width="98" height="44"/>
+                                            <rect key="frame" x="49" y="2.5" width="97.5" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
                                             <state key="selected" image="SHSwitchThumb_On"/>
@@ -166,7 +165,7 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TV_ControlPad" translatesAutoresizingMaskIntoConstraints="NO" id="5lp-9P-SVz">
-                                    <rect key="frame" x="62" y="69" width="203" height="202"/>
+                                    <rect key="frame" x="61.5" y="69" width="203" height="202"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="202" id="3f1-Ir-gPx"/>
                                         <constraint firstAttribute="width" constant="203" id="FXf-2O-VeP"/>
@@ -184,7 +183,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUR-Uq-26E">
-                                    <rect key="frame" x="196" y="145" width="49" height="49"/>
+                                    <rect key="frame" x="195.5" y="145.5" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="49" id="fh3-bX-GRM"/>
@@ -195,7 +194,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3P-ne-qmf">
-                                    <rect key="frame" x="139" y="89" width="49" height="49"/>
+                                    <rect key="frame" x="138.5" y="89" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="49" id="Cgc-Jw-oYI"/>
@@ -209,7 +208,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-zK-XDF">
-                                    <rect key="frame" x="82" y="145.5" width="49" height="49"/>
+                                    <rect key="frame" x="81.5" y="145.5" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="49" id="1MU-Ii-ZhN"/>
@@ -220,7 +219,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwT-gu-r33">
-                                    <rect key="frame" x="139" y="202" width="49" height="49"/>
+                                    <rect key="frame" x="138.5" y="202" width="49" height="49"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="49" id="eNc-yO-L58"/>
@@ -231,10 +230,10 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3S-HZ-mkA" userLabel="numsView">
-                                    <rect key="frame" x="0.5" y="291" width="326.5" height="158.5"/>
+                                    <rect key="frame" x="0.0" y="291" width="326" height="158"/>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l17-W5-yuH">
-                                            <rect key="frame" x="0.5" y="0.0" width="53" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="53" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="1" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -244,7 +243,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWg-e6-ipf">
-                                            <rect key="frame" x="68.5" y="0.0" width="53.5" height="63.5"/>
+                                            <rect key="frame" x="68" y="0.0" width="53.5" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="2" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -254,7 +253,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45J-57-lNX">
-                                            <rect key="frame" x="137" y="0.0" width="53.5" height="63.5"/>
+                                            <rect key="frame" x="136.5" y="0.0" width="53" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="3" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -264,7 +263,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-Li-piK">
-                                            <rect key="frame" x="205.5" y="0.0" width="53" height="63.5"/>
+                                            <rect key="frame" x="204.5" y="0.0" width="53.5" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="4" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -274,7 +273,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHo-VP-kkM">
-                                            <rect key="frame" x="273.5" y="0.0" width="53.5" height="63.5"/>
+                                            <rect key="frame" x="273" y="0.0" width="53" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="5" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -284,7 +283,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TN-v8-yC2">
-                                            <rect key="frame" x="0.5" y="95" width="53" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="95" width="53" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="6" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -294,7 +293,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxe-Hf-UH1">
-                                            <rect key="frame" x="68.5" y="94.5" width="53" height="63.5"/>
+                                            <rect key="frame" x="68" y="95" width="53.5" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="7" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -304,7 +303,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5C-A7-FQt">
-                                            <rect key="frame" x="137.5" y="95" width="53" height="63.5"/>
+                                            <rect key="frame" x="136.5" y="95" width="53" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="8" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -314,7 +313,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCk-7H-bwk">
-                                            <rect key="frame" x="205.5" y="95" width="53" height="63.5"/>
+                                            <rect key="frame" x="204.5" y="95" width="53.5" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="9" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -324,7 +323,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuS-g3-Mro">
-                                            <rect key="frame" x="274" y="95" width="53" height="63.5"/>
+                                            <rect key="frame" x="273" y="95" width="53" height="63"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <state key="normal" title="0" backgroundImage="SHMediaSendBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
@@ -447,12 +446,12 @@
         </view>
     </objects>
     <resources>
-        <image name="Mute" width="24" height="27"/>
+        <image name="Mute" width="24.5" height="27"/>
         <image name="PowerOff" width="28" height="37"/>
         <image name="PowerOn" width="28" height="37"/>
-        <image name="SHMediaSendBtn" width="119" height="44"/>
-        <image name="SHSwitchThumb_Off" width="40" height="33"/>
-        <image name="SHSwitchThumb_On" width="40" height="33"/>
+        <image name="SHMediaSendBtn" width="119.5" height="44.5"/>
+        <image name="SHSwitchThumb_Off" width="40.5" height="33.5"/>
+        <image name="SHSwitchThumb_On" width="40.5" height="33.5"/>
         <image name="Share_BG_iPad" width="1024" height="768"/>
         <image name="Share_SmallBG" width="783" height="402"/>
         <image name="TV_ControlPad" width="203" height="202"/>

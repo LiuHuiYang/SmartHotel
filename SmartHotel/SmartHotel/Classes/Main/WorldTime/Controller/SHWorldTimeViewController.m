@@ -13,8 +13,6 @@
 #import "UITableView+ZYXIndexTip.h"
 
 
-#define SHTextDefaultColor ([UIColor colorWithWhite:215/255.0 alpha:1.0])
-
 @interface SHWorldTimeViewController () <UITableViewDelegate,
     UITableViewDataSource, UISearchResultsUpdating, UISearchControllerDelegate>
 
@@ -44,11 +42,9 @@
 /// 搜索框
 @property (strong, nonatomic) UISearchController *searchController;
 
-
 /// 查询结果
 @property (strong, nonatomic) NSMutableArray *results;
-
-
+ 
 @end
 
 @implementation SHWorldTimeViewController
@@ -137,7 +133,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont boldSystemFontOfSize:22];
-    label.textColor = SHTextDefaultColor;
+    label.textColor = SHDefualtTextColor;
     
     return label;
 }
@@ -207,14 +203,19 @@
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"WorldClock"];
     
-    self.timeZoneListView.rowHeight = [SHWordTimeViewCell rowHeightForWordTimeViewCell];
+    self.timeZoneListView.rowHeight =
+        [SHWordTimeViewCell rowHeight];
+    
     [self.timeZoneListView registerNib:
                  [UINib nibWithNibName:NSStringFromClass([SHWordTimeViewCell class])
                                 bundle:nil]
                 forCellReuseIdentifier:NSStringFromClass([SHWordTimeViewCell class])];
     
-    self.timeZoneListView.sectionIndexColor = SHTextDefaultColor;
+    self.timeZoneListView.sectionIndexColor =
+        SHDefualtTextColor;
     self.timeZoneListView.sectionFooterHeight = 0;
+    
+    self.timeZoneListView.sectionIndexBackgroundColor = UIColor.clearColor;
     
      [self.timeZoneListView addIndexTip];
     

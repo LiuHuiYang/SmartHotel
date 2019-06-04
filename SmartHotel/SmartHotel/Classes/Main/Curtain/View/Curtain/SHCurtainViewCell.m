@@ -163,6 +163,8 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.backgroundColor = UIColor.clearColor;
+    
     self.openLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Open"];
     
     self.closeLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"Close"];
