@@ -29,7 +29,9 @@ typedef NS_ENUM(NSUInteger, SHLightType) {
 /// 亮度值： - 这是为了保存方便【没有存储在数据库当中】
 @property (nonatomic, assign) Byte brightness;
 
- 
+/// 是否需要解析EFFF(YES - 不需要 NO 需要)
+@property (nonatomic, assign) BOOL isNotNeedEFFF;
+
 // MARK: - 数据库 中的信息
 
 /// 灯泡设备的ID

@@ -51,34 +51,91 @@
     
     const Byte startIndex = 9;
     
-    // 获得通道
-    Byte channelNumber = recivedData[startIndex];
-    
     switch (operatorCode) {
             
-        case 0XEFFF: {  // 继电器模块 // 调光器 
+        case 0XEFFF: {  // 继电器模块
             
-            if (subNetID == self.roomInfo.subNetIDForZoneBeast && deviceID == self.roomInfo.deviceIDForZoneBeast) {
+            // 1.获得区域总数
+            Byte zoneCount = recivedData[startIndex + 0];
+            
+            // 2.获得模块的总通道数量
+            Byte channelCount = recivedData[startIndex + zoneCount + 1];
+            
+            // 字节数
+            Byte bytes =
+                (channelCount / 8) +
+                ((channelCount / 8) ? 1 : 0);
+            
+            // 状态数组
+            Byte statusChannel[channelCount];
+            
+            //  所有通道的状态索引
+            Byte channelIndex = 0;
+            
+            
+            // 3.获得每个通道的具体状态
+            // 所有通道的状态，通道状态的字节数(每个通道的状态用一个bit来表示)
+            
+            for (Byte section = 0; section < bytes; section++) {
                 
-                // 再读一下状态
-                [self readStatus];
+                // 获得具体的值 -- 代表一个字节
+                Byte channelStatus =
+                    recivedData[startIndex + zoneCount
+                                + 2 + section];
+                
+                for (Byte bit = 0; bit < 8; bit++) {
+                    
+                    Byte lightBress =
+                    (channelStatus & 0x01) ? lightMaxBrightness : 0;
+                    
+                    channelIndex = bit + 8 * section;
+                    
+                    if (channelIndex >= channelCount) {
+                        break;
+                    }
+                    
+                    statusChannel[channelIndex] =
+                        lightBress;
+                    
+                    channelStatus >>= 1;
+                }
             }
-           
+            
+            // 4.设置具体的亮度
+            for (SHLight *light in self.allLights) {
+                
+                if (!light.isNotNeedEFFF &&
+                    light.subnetID == subNetID &&
+                    light.deviceID == deviceID &&
+                    light.channelNo <= channelCount) {
+                    
+                    Byte brightness =
+                        statusChannel[light.channelNo - 1];
+                    
+                    
+                    if (light.brightness != brightness &&
+                        light.brightness == 0) {
+                        
+                        light.brightness = brightness;
+                    }
+                }
+            }
+            
         }
             break;
             
-            
         case 0x0032: {
             
-            Byte brightness = recivedData[11];
-            
-            if (recivedData[10] == 0XF8) {
+            if (recivedData[startIndex + 1] == 0xF8) {
                 
                 for (SHLight *light in self.allLights) {
                     
-                    if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == channelNumber) {
+                    if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == recivedData[startIndex]) {
                         
-                        light.brightness = brightness;
+                        light.brightness =
+                            recivedData[startIndex + 2];
+                        
+                        light.isNotNeedEFFF = YES;
                     }
                 }
             }
@@ -89,9 +146,22 @@
             
             // 这是LED
             if ((data.length == startIndex + 4 + 2 + 1) &&
-                recivedData[3] == 0X03 &&
-                recivedData[4] == 0X82) {
+                recivedData[3] == 0x03 &&
+                recivedData[4] == 0x82) {
                 
+//                Byte red = recivedData[startIndex + 1];
+//                Byte green = recivedData[startIndex + 2];
+//                Byte blue = recivedData[startIndex + 3];
+//                Byte white = recivedData[startIndex + 4];
+//
+//                for (SHLight *light in self.allLights) {
+//
+//                    if (light.subnetID == subNetID &&
+//                        light.deviceID == deviceID) {
+//
+//
+//                    }
+//                }
                 
             } else {  // 普通灯泡
                 
@@ -104,6 +174,11 @@
                         if (light.subnetID == subNetID && light.deviceID == deviceID && light.channelNo == (i + 1)) {
                             
                             light.brightness = recivedData[startIndex + i + 1];
+                            
+                            if (light.lightType == SHLightTypeNotDimmable) {
+                                
+                                light.brightness = (light.brightness == lightMaxBrightness) ? lightMaxBrightness : 0;
+                            }
                         }
                     }
                 }
@@ -254,8 +329,8 @@
         ];
  
 //    self.lightListView.backgroundColor = backgroundColor;
-    self.senceListView.backgroundColor = backgroundColor;
-     
+//    self.senceListView.backgroundColor = backgroundColor;
+    
     [self.lightListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHLightViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHLightViewCell class])];
     
     

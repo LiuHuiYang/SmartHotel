@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="463" height="174"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD7-K7-Nio" customClass="SHLightButton">
-                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="174"/>
+                                <rect key="frame" x="0.0" y="4.5" width="122.5" height="165"/>
                                 <state key="normal" title="BedRoomLight" image="Light_Dim0"/>
                                 <state key="selected" image="Light_Dim1"/>
                                 <state key="highlighted" image="Light_Dim1"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="SD7-K7-Nio" firstAttribute="width" secondItem="Ife-mV-I59" secondAttribute="width" multiplier="2.5" id="SSj-Zh-Lgm"/>
                             <constraint firstItem="4Fl-0e-so1" firstAttribute="centerX" secondItem="P8l-ol-VGw" secondAttribute="centerX" id="UAw-Pv-gIk"/>
                             <constraint firstItem="4Fl-0e-so1" firstAttribute="height" secondItem="P8l-ol-VGw" secondAttribute="height" multiplier="0.75" id="cC3-E0-fKZ"/>
-                            <constraint firstItem="SD7-K7-Nio" firstAttribute="height" secondItem="yMJ-w8-nBm" secondAttribute="height" id="gYW-nv-hNC"/>
+                            <constraint firstItem="SD7-K7-Nio" firstAttribute="height" secondItem="yMJ-w8-nBm" secondAttribute="height" multiplier="0.95" id="gYW-nv-hNC"/>
                             <constraint firstItem="SD7-K7-Nio" firstAttribute="leading" secondItem="yMJ-w8-nBm" secondAttribute="leading" id="inb-eo-Amq"/>
                             <constraint firstItem="Ife-mV-I59" firstAttribute="centerY" secondItem="yMJ-w8-nBm" secondAttribute="centerY" id="lVT-kC-pUj"/>
                             <constraint firstItem="P8l-ol-VGw" firstAttribute="height" secondItem="Ife-mV-I59" secondAttribute="height" id="pKf-LL-qfV"/>
