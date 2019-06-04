@@ -8,7 +8,7 @@
 
 #import "SHCurtainDetailViewController.h"
 #import "SHCurtainDetailViewCell.h"
-#import "SHCurtain.h"
+
 
 @interface SHCurtainDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -225,7 +225,6 @@
 
 // MARK: - 数据源
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return self.argsNames.count;
@@ -242,6 +241,5 @@
     
     return cell;
 }
-
 
 @end

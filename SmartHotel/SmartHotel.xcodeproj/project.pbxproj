@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04466EC022A6082700C7063B /* SHLightDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */; };
+		04466EC122A6082700C7063B /* SHLightDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */; };
 		04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04484D75207F079C00F6FEB9 /* SHSwitchButton.m */; };
 		046E3307208F095000F78690 /* SHTimeZoneWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E3306208F095000F78690 /* SHTimeZoneWrapper.m */; };
 		049725232080546A00B62A9E /* SHMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725222080546A00B62A9E /* SHMacro.m */; };
@@ -129,6 +131,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04466EBD22A6082700C7063B /* SHLightDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightDetailViewCell.h; sourceTree = "<group>"; };
+		04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightDetailViewCell.m; sourceTree = "<group>"; };
+		04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLightDetailViewCell.xib; sourceTree = "<group>"; };
 		04484D74207F079C00F6FEB9 /* SHSwitchButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSwitchButton.h; sourceTree = "<group>"; };
 		04484D75207F079C00F6FEB9 /* SHSwitchButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSwitchButton.m; sourceTree = "<group>"; };
 		046E3305208F095000F78690 /* SHTimeZoneWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTimeZoneWrapper.h; sourceTree = "<group>"; };
@@ -352,6 +357,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04466EB722A6079500C7063B /* LightDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				04466EBD22A6082700C7063B /* SHLightDetailViewCell.h */,
+				04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */,
+				04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */,
+			);
+			path = LightDetailCell;
+			sourceTree = "<group>";
+		};
 		049725202080545C00B62A9E /* Macro */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +840,7 @@
 		04D2494E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04466EB722A6079500C7063B /* LightDetailCell */,
 				04DDEA9722A516A700F1BA01 /* LightSettingCell */,
 				04DDEA8422A50F0700F1BA01 /* LightCell */,
 				04B05C5A2080B1D50027E889 /* lightButton */,
@@ -1561,6 +1577,7 @@
 				04DAFEBE2084A464009AA5EB /* SHChannelTypeViewCell.xib in Resources */,
 				04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */,
 				04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */,
+				04466EC122A6082700C7063B /* SHLightDetailViewCell.xib in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 				04D8806620887441006C207E /* SHSettingDeviceArgsViewCell.xib in Resources */,
 				04DC41F522A0DE3B00BC1BFE /* SHCurtainViewCell.xib in Resources */,
@@ -1653,6 +1670,7 @@
 				04D249B52079CA6500EBD1BE /* SHViewController.m in Sources */,
 				04D249242079C51B00EBD1BE /* main.m in Sources */,
 				04D249902079C77800EBD1BE /* NSDate+Date.m in Sources */,
+				04466EC022A6082700C7063B /* SHLightDetailViewCell.m in Sources */,
 				04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */,
 				04EAD7402091AAC400F49E43 /* SHCameraButton.m in Sources */,
 				04D249AD2079C9B800EBD1BE /* SHSQLManager.m in Sources */,

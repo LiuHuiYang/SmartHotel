@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHLightDetailViewController">
             <connections>
+                <outlet property="listView" destination="fXg-eu-hQo" id="pDb-dj-L6S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +20,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fXg-eu-hQo">
+                    <rect key="frame" x="20" y="44" width="374" height="769"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="7ij-57-DEF"/>
+                        <outlet property="delegate" destination="-1" id="EU7-4g-BdO"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.80148121390000004" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fXg-eu-hQo" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="DOX-6K-3OX"/>
+                <constraint firstItem="fXg-eu-hQo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="JYt-BR-Wjt"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="fXg-eu-hQo" secondAttribute="bottom" constant="49" id="Rdl-oe-5x7"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="fXg-eu-hQo" secondAttribute="trailing" constant="20" id="Yjc-1e-zdG"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
