@@ -37,39 +37,39 @@
     
     for (SHMacroCommand *command in self.commands) {
         
-        UInt16 operatorCode = [SHOperatorCode getOperatorCode:command.commandTypeID];
+        UInt16 operatorCode = [SHOperatorCode getOperatorCode:command.commandType];
         
         if (operatorCode == 0X0218) {
             
             NSMutableData *sendData = nil;
             
-            switch (command.firstParameter) {
+            switch (command.parameter1) {
                     
                     // 注意：旧版本协议的可变参数为2 ~ 4 个，新版本统一为4个，可以给不同的值，为了兼容，采用旧代码的协议方式
                 case 1: { // 音源控制
                     
-                    Byte audioData[2] = { command.firstParameter, command.secondParameter};
+                    Byte audioData[2] = { command.parameter1, command.parameter2};
                     sendData = [NSMutableData dataWithBytes:audioData length:sizeof(audioData)];
                 }
                     break;
                     
                 case 2: { // 播放模式
                     
-                    Byte audioData[2] = { command.firstParameter, command.secondParameter};
+                    Byte audioData[2] = { command.parameter1, command.parameter2};
                     sendData = [NSMutableData dataWithBytes:audioData length:sizeof(audioData)];
                 }
                     break;
                     
                 case 3: {  // 列表/频道
                     
-                    Byte audioData[3] = { command.firstParameter, command.secondParameter, command.thirdParameter};
+                    Byte audioData[3] = { command.parameter1, command.parameter2, command.parameter3};
                     sendData = [NSMutableData dataWithBytes:audioData length:sizeof(audioData)];
                 }
                     break;
                     
                 case 4: {  //  播放控制
                     
-                    Byte audioData[2] = { command.firstParameter, command.secondParameter};
+                    Byte audioData[2] = { command.parameter1, command.parameter2};
                     sendData = [NSMutableData dataWithBytes:audioData length:sizeof(audioData)];
                 }
                     
@@ -77,8 +77,8 @@
                     
                 case 5: {  // 音量调节
                     
-                    Byte volValus = (1 - command.secondParameter * 0.01) * 80;
-                    Byte audioData[4] = { command.firstParameter, 1, 3, volValus};
+                    Byte volValus = (1 - command.parameter2 * 0.01) * 80;
+                    Byte audioData[4] = { command.parameter1, 1, 3, volValus};
                     sendData = [NSMutableData dataWithBytes:audioData length:sizeof(audioData)];
                 }
                     
@@ -86,7 +86,7 @@
                     
                 case 6: {  // 歌曲播放
                     
-                    Byte audioData[4] = { command.firstParameter, command.secondParameter, command.thirdParameter / 256, command.thirdParameter % 256 };
+                    Byte audioData[4] = { command.parameter1, command.parameter2, command.parameter3 / 256, command.parameter3 % 256 };
                     sendData = [NSMutableData dataWithBytes:audioData length:sizeof(audioData)];
                 }
                     
@@ -98,17 +98,17 @@
             
             [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:operatorCode targetSubnetID:command.subnetID targetDeviceID:command.deviceID additionalContentData:sendData remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:YES];
             
-            [NSThread sleepForTimeInterval:command.delayMillisecondAfterSend / 1000.0];
+            [NSThread sleepForTimeInterval:command.delayTime / 1000.0];
             
         }  else if (operatorCode == 0XF080){  // LED
             
-            Byte ledData[6] = {command.firstParameter, command.secondParameter, command.thirdParameter/256, command.thirdParameter%256, 0, 0};
+            Byte ledData[6] = {command.parameter1, command.parameter2, command.parameter3/256, command.parameter3%256, 0, 0};
             
             NSMutableData *sendData = [NSMutableData dataWithBytes:ledData length:sizeof(ledData)];
             
             [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:operatorCode targetSubnetID:command.subnetID targetDeviceID:command.deviceID additionalContentData:sendData remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:YES];
             
-            [NSThread sleepForTimeInterval:command.delayMillisecondAfterSend / 1000.0];
+            [NSThread sleepForTimeInterval:command.delayTime / 1000.0];
             
         } else {  // 其它情况
             
@@ -116,20 +116,20 @@
             
             if (operatorCode == 0x0031 || operatorCode == 0X010C) {
                 
-                Byte controlData[4] = {command.firstParameter, command.secondParameter, (command.thirdParameter >> 8) & 0xFF, command.thirdParameter & 0xFF};
+                Byte controlData[4] = {command.parameter1, command.parameter2, (command.parameter3 >> 8) & 0xFF, command.parameter3 & 0xFF};
                 
                 sendData = [NSMutableData dataWithBytes:controlData length:sizeof(controlData)];
                 
             } else {
                 
-                Byte controlData[2] = { command.firstParameter,  command.secondParameter};
+                Byte controlData[2] = { command.parameter1,  command.parameter2};
                 
                 sendData = [NSMutableData dataWithBytes:controlData length:sizeof(controlData)];
             }
             
             [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:operatorCode targetSubnetID:command.subnetID targetDeviceID:command.deviceID additionalContentData:sendData remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:YES];
             
-            [NSThread sleepForTimeInterval:command.delayMillisecondAfterSend / 1000.0];
+            [NSThread sleepForTimeInterval:command.delayTime / 1000.0];
         }
     }
 }

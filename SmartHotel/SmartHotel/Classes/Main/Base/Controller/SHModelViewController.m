@@ -23,6 +23,7 @@
 #import "SHCurtainSettingViewController.h"
 
 #import "SHLightSettingViewController.h"
+#import "SHMacroSettingViewController.h"
 
 @interface SHModelViewController ()
 
@@ -74,6 +75,14 @@
         }];
         
         TYAlertAction *macroAction = [TYAlertAction actionWithTitle:sceneTitle style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+            
+            SHMacroSettingViewController *macroSetting =
+            [[SHMacroSettingViewController alloc] init];
+            
+            [self.navigationController
+                pushViewController:macroSetting
+                          animated:YES
+            ];
             
         }];
         

@@ -10,25 +10,45 @@
 
 @interface SHMacroCommand : NSObject
 
-@property (assign, nonatomic) NSUInteger scenesID;
+/// 宏命令序号
+@property (assign, nonatomic) NSUInteger macroID;
 
-@property (assign, nonatomic) NSUInteger sequenceNo;
+/// 操作类型
+@property (assign, nonatomic) NSUInteger commandType;
 
-@property (copy, nonatomic) NSString* remark;
-
+/// 设备ID
 @property (assign, nonatomic) NSUInteger subnetID;
 
+/// 子网ID
 @property (assign, nonatomic) NSUInteger deviceID;
 
-@property (assign, nonatomic) NSUInteger commandTypeID;
+/// 可变参数1
+@property (assign, nonatomic) NSUInteger parameter1;
 
-@property (assign, nonatomic) NSUInteger firstParameter;
+/// 可变参数2
+@property (assign, nonatomic) NSUInteger parameter2;
 
-@property (assign, nonatomic) NSUInteger secondParameter;
+/// 可变参数3
+@property (assign, nonatomic) NSUInteger parameter3;
 
-@property (assign, nonatomic) NSUInteger thirdParameter;
+/// 可变参数4
+@property (assign, nonatomic) NSUInteger parameter4;
 
-@property (assign, nonatomic) NSUInteger delayMillisecondAfterSend;
+/// 可变参数5
+@property (assign, nonatomic) NSUInteger parameter5;
+
+/// 可变参数6
+@property (assign, nonatomic) NSUInteger parameter6;
+
+/// 可变参数7
+@property (assign, nonatomic) NSUInteger parameter7;
+
+/// 可变参数8
+@property (assign, nonatomic) NSUInteger parameter8;
+
+
+/// 延时参数
+@property (assign, nonatomic) NSUInteger delayTime;
 
 
 /// 宏命令转换成模型

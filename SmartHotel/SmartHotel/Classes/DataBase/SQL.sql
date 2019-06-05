@@ -36,6 +36,40 @@ CREATE TABLE IF NOT EXISTS TV (
     
 );
 
+-- 宏定义
+CREATE TABLE IF NOT EXISTS Macro (
+
+    macroID INTEGER NOT NULL DEFAULT 0,
+    macroName TEXT NOT NULL DEFAULT 'Scene',
+    iconData DATA
+);
+
+-- 宏定义的操作命令
+CREATE TABLE IF NOT EXISTS MacroCommand (
+
+    macroID INTEGER NOT NULL DEFAULT 0,
+
+    remark TEXT NOT NULL DEFAULT 'macro command',
+    commandType INTEGER NOT NULL DEFAULT 0,
+    subnetID INTEGER NOT NULL DEFAULT 0,
+    deviceID INTEGER NOT NULL DEFAULT 0,
+
+    parameter1 INTEGER NOT NULL DEFAULT 0,
+    parameter2 INTEGER NOT NULL DEFAULT 0,
+    parameter3 INTEGER NOT NULL DEFAULT 0,
+    parameter4 INTEGER NOT NULL DEFAULT 0,
+    parameter5 INTEGER NOT NULL DEFAULT 0,
+    parameter6 INTEGER NOT NULL DEFAULT 0,
+    parameter7 INTEGER NOT NULL DEFAULT 0,
+    parameter8 INTEGER NOT NULL DEFAULT 0,
+    delayTime INTEGER NOT NULL DEFAULT 0
+);
+
+-- 图片数据
+CREATE TABLE IF NOT EXISTS iconData (
+
+);
+
 -- 灯泡
 CREATE TABLE IF NOT EXISTS Light (
 

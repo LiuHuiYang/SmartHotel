@@ -77,7 +77,8 @@
     
     Byte *recivedData = ((Byte *) [data bytes]);
     
-    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
+    UInt16 operatorCode =
+        ((recivedData[5] << 8) | recivedData[6]);
    
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];

@@ -10,6 +10,7 @@
 
 @interface SHChannelCollectionViewCell : UICollectionViewCell
 
+
 @property (strong, nonatomic) SHChannel *channel;
 
 @end
