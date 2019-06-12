@@ -21,6 +21,134 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 
 @implementation SHSQLManager
 
+// MARK: - macro
+
+
+/**
+ 获得指定Macro的命令集合
+
+ @param macro 宏
+ @return 宏对对应的命令集合
+ */
+- (NSMutableArray *)getMacroCommands:(SHMacro *)macro {
+    
+    NSString *sql = [NSString stringWithFormat:@""];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *commands =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        
+    }
+    
+    return commands;
+}
+
+
+/**
+ 更新 Macro
+
+ @param macro macro对象
+ @return 更新成功 YES, 失败 NO.
+ */
+- (BOOL)updateMacro:(SHMacro *)macro {
+    
+    NSString *sql = [NSString stringWithFormat:@"update Macro set macroName = '%@', macroIconName = '%@' where macroID = %zd;",
+                     macro.macroName,
+                     macro.macroIconName,
+                     macro.macroID
+                    ];
+    
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 删除宏命令
+
+ @param macro 删除宏
+ @return 成功删除 YES, 失败 NO.
+ */
+- (BOOL)deleteMacro:(SHMacro *)macro {
+    
+    // 删除 宏命令
+    
+    
+    // 删除 宏
+    
+    
+    // 返回结果
+    return false;
+}
+
+
+/**
+ 增加新的宏
+
+ @param macro macro 模型对象
+ @return 成功 YES, 失败 NO.
+ */
+- (BOOL)insertMacro:(SHMacro *)macro {
+ 
+    NSString *sql = [NSString stringWithFormat:@"insert into Macro(macroID, macroName, macroIconName) values(%zd, '%@', '%@');",
+                     macro.macroID,
+                     macro.macroName,
+                     macro.macroIconName
+                    ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 获取当前房间中的所有宏场景
+
+ @return 宏数组
+ */
+- (NSMutableArray *)getMacros {
+    
+    NSString *sql = [NSString stringWithFormat:@"select macroID, macroName, macroIconName from Macro;"];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *macros =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [macros addObject:[SHMacro macroinitWithDictionary:dict]];
+    }
+    
+    return macros;
+}
+
+
+/**
+ 获取可用的MacroID
+
+ @return MacroID 
+ */
+- (NSUInteger)getAvailableMacroID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(macroID) from Macro;"];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(macroID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger macroID =
+    [[dict objectForKey:@"max(macroID)"]integerValue] + 1;
+    
+    return macroID;
+}
+
 // MARK: - TV
 
 
@@ -621,24 +749,6 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     }
     
     return commands;
-}
-
-/// 查询所有的场景
-- (NSMutableArray *)getAllSences {
-    
-    NSString *selectSQL = @"select MacroID, MacroName, MacroIconID, SequenceNO  \
-        from Scenes order by SequenceNO;";
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *sences = [NSMutableArray arrayWithCapacity:array.count];
-    
-    for (NSDictionary *dict in array) {
-        
-        [sences addObject:[SHMacro macroinitWithDictionary:dict]];
-    }
-    
-    return sences;
 }
 
 

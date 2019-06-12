@@ -10,10 +10,21 @@
 
 @implementation SHMacroCommand
 
+- (void)setDelayTime:(NSUInteger)delayTime {
+    
+    if (delayTime <= 100) {
+        delayTime = 100;
+    }
+    
+    _delayTime = delayTime;
+}
+
 /// 宏命令转换成模型
 + (instancetype)macroCommandWithDictionary:(NSDictionary *)dictionary; {
     
     SHMacroCommand *command = [[self alloc] init];
+
+
 
     [command setValuesForKeysWithDictionary:dictionary];
     

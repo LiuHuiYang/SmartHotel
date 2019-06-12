@@ -309,7 +309,7 @@
     [self.lightListView reloadData];
     
     self.allSences =
-        [[SHSQLManager shareSHSQLManager] getAllSences];
+        [[SHSQLManager shareSHSQLManager] getMacros];
     
     [self.senceListView reloadData];
     

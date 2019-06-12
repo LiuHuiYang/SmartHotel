@@ -10,8 +10,6 @@
 
 @interface SHMacro : NSObject
 
-/// 序号
-@property (assign, nonatomic) NSUInteger sequenceNO;
 
 /// Macro ID
 @property (assign, nonatomic) NSUInteger macroID;
@@ -19,8 +17,8 @@
 /// 宏名称
 @property (copy, nonatomic) NSString* macroName;
 
-/// 图标ID
-@property (assign, nonatomic) NSUInteger macroIconID;
+/// 图标名称
+@property (assign, nonatomic) NSString* macroIconName;
 
 
 /// macro字典转换为模型

@@ -10,8 +10,11 @@
 
 @interface SHMacroCommand : NSObject
 
-/// 宏命令序号
+/// 宏序号
 @property (assign, nonatomic) NSUInteger macroID;
+
+/// 宏指令的序号
+@property (assign, nonatomic) NSUInteger macroCommandID;
 
 /// 操作类型
 @property (assign, nonatomic) NSUInteger commandType;
@@ -21,6 +24,9 @@
 
 /// 子网ID
 @property (assign, nonatomic) NSUInteger deviceID;
+
+/// 命令标记
+@property (copy, nonatomic) NSString *remark;
 
 /// 可变参数1
 @property (assign, nonatomic) NSUInteger parameter1;

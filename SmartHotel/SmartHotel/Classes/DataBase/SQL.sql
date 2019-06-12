@@ -41,12 +41,13 @@ CREATE TABLE IF NOT EXISTS Macro (
 
     macroID INTEGER NOT NULL DEFAULT 0,
     macroName TEXT NOT NULL DEFAULT 'Scene',
-    iconData DATA
+    macroIconName TEXT NOT NULL DEFAULT 'Scene_1'
 );
 
 -- 宏定义的操作命令
 CREATE TABLE IF NOT EXISTS MacroCommand (
 
+    macroCommandID INTEGER NOT NULL DEFAULT 0,
     macroID INTEGER NOT NULL DEFAULT 0,
 
     remark TEXT NOT NULL DEFAULT 'macro command',
@@ -66,9 +67,11 @@ CREATE TABLE IF NOT EXISTS MacroCommand (
 );
 
 -- 图片数据
+/*
 CREATE TABLE IF NOT EXISTS iconData (
 
 );
+*/
 
 -- 灯泡
 CREATE TABLE IF NOT EXISTS Light (

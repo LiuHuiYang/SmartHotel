@@ -138,7 +138,7 @@
     
     _macro = macro;
     
-    self.iconView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Light_Sencen_Icon_%zd", macro.macroIconID]];
+    self.iconView.image = [UIImage imageNamed: macro.macroIconName];
     
     self.nameLabel.text = macro.macroName;
 }
