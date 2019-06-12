@@ -74,7 +74,7 @@
     
     alertView.textFieldFont = [UIDevice is_iPad] ? [UIFont boldSystemFontOfSize:22] : [UIFont boldSystemFontOfSize:16];
     
-    alertView.textFieldHeight = [UIDevice is_iPad] ? navigationBarHeight + statusBarHeight : tabBarHeight;
+    alertView.textFieldHeight = [UIDevice is_iPad] ? navigationBarHeight : defaultHeight;
     
     return alertView;
 }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,23 +38,23 @@
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-lQ-rWv">
-                    <rect key="frame" x="77" y="134.5" width="870" height="499.5"/>
+                    <rect key="frame" x="77" y="134.5" width="870" height="499"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qno-bf-oBr" userLabel="localView">
-                            <rect key="frame" x="225" y="29.5" width="420" height="64"/>
+                            <rect key="frame" x="175" y="29.5" width="520" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟已开启" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBE-oF-UeS">
-                                    <rect key="frame" x="0.0" y="-0.5" width="210" height="64"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_showTime_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="idq-gn-aDy">
-                                    <rect key="frame" x="261" y="8" width="108" height="49"/>
+                                    <rect key="frame" x="336" y="7.5" width="108" height="49"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:30" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEw-Uu-HMv">
-                                    <rect key="frame" x="261" y="8.5" width="108" height="49"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <rect key="frame" x="336" y="7.5" width="108" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -75,32 +73,32 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDk-ga-8Id" userLabel="alarmTimeView">
-                            <rect key="frame" x="225" y="123.5" width="420" height="64"/>
+                            <rect key="frame" x="175" y="123.5" width="520" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟已开启" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDK-s7-h21">
-                                    <rect key="frame" x="0.0" y="-0.5" width="210" height="64"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5o8-RM-1qe">
-                                    <rect key="frame" x="207" y="7.5" width="216" height="49"/>
+                                    <rect key="frame" x="282" y="7.5" width="216" height="49"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="bAA-f3-tCe">
-                                            <rect key="frame" x="0.0" y="4.5" width="216" height="39"/>
+                                            <rect key="frame" x="0.0" y="5" width="216" height="39"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_showTime_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="6yB-1m-pc8">
                                             <rect key="frame" x="54" y="0.0" width="108" height="49"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:30 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oe7-Jq-2Th">
                                             <rect key="frame" x="54" y="0.0" width="108" height="49"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtv-J3-ZjU">
-                                            <rect key="frame" x="5" y="8.5" width="43" height="31"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <rect key="frame" x="5" y="9" width="43" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <state key="normal" title="-" backgroundImage="CameraListBtn">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -109,8 +107,8 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uof-FO-ccH">
-                                            <rect key="frame" x="168" y="8.5" width="43" height="31"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <rect key="frame" x="168" y="9" width="43" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <state key="normal" title="+" backgroundImage="CameraListBtn">
                                                 <color key="titleColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -148,32 +146,32 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6C9-CH-0p1" userLabel="countView">
-                            <rect key="frame" x="225" y="217.5" width="420" height="64"/>
+                            <rect key="frame" x="175" y="217.5" width="520" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟已开启" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bz-U4-4Aq">
-                                    <rect key="frame" x="0.0" y="-0.5" width="210" height="64"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jov-oc-04D">
-                                    <rect key="frame" x="207" y="7.5" width="216" height="49"/>
+                                    <rect key="frame" x="282" y="7.5" width="216" height="49"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="RtY-vK-BnG">
-                                            <rect key="frame" x="0.0" y="4.5" width="216" height="39"/>
+                                            <rect key="frame" x="0.0" y="5" width="216" height="39"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_showTime_iPad" translatesAutoresizingMaskIntoConstraints="NO" id="8tV-hf-YVq">
                                             <rect key="frame" x="54" y="0.0" width="108" height="49"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcc-li-9RN">
                                             <rect key="frame" x="54" y="0.0" width="108" height="49"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaE-aA-jjM">
-                                            <rect key="frame" x="5" y="8.5" width="43" height="31"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <rect key="frame" x="5" y="9" width="43" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <state key="normal" title="-" backgroundImage="CameraListBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -182,8 +180,8 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOz-CV-pti">
-                                            <rect key="frame" x="168" y="8.5" width="43" height="31"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <rect key="frame" x="168" y="9" width="43" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <state key="normal" title="+" backgroundImage="CameraListBtn">
                                                 <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -216,22 +214,22 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="420" id="LFR-s6-efw"/>
+                                <constraint firstAttribute="width" constant="520" id="LFR-s6-efw"/>
                                 <constraint firstItem="jov-oc-04D" firstAttribute="centerY" secondItem="6C9-CH-0p1" secondAttribute="centerY" id="Nq9-0N-1Wc"/>
                                 <constraint firstAttribute="height" constant="64" id="lRD-Ch-apd"/>
                                 <constraint firstItem="7Bz-U4-4Aq" firstAttribute="centerY" secondItem="6C9-CH-0p1" secondAttribute="centerY" id="xTn-NR-ve6"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kg-P8-hRJ" userLabel="enabelAlarmView">
-                            <rect key="frame" x="225" y="311.5" width="420" height="64"/>
+                            <rect key="frame" x="175" y="311.5" width="520" height="64"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-JQ-Xdk" customClass="SHSwitchButton">
-                                    <rect key="frame" x="261" y="7.5" width="108" height="49"/>
+                                    <rect key="frame" x="336" y="7.5" width="108" height="49"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="49" id="e2N-Hk-E0C"/>
                                         <constraint firstAttribute="width" constant="108" id="lzB-on-2HR"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <state key="normal" image="SHSwitchThumb_Off" backgroundImage="Share_SmallBG"/>
                                     <state key="selected" image="SHSwitchThumb_On"/>
                                     <connections>
@@ -239,8 +237,8 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闹钟已开启" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDC-L7-fV6">
-                                    <rect key="frame" x="0.0" y="-0.5" width="210" height="64"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="64"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <color key="textColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -253,17 +251,17 @@
                             </constraints>
                         </view>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wei-Se-cUL" userLabel="dateView">
-                            <rect key="frame" x="225" y="202.5" width="420" height="320"/>
+                            <rect key="frame" x="175" y="202.5" width="520" height="320"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="Ea2-Uc-qYE">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="320"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="520" height="320"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-hf-Fc0">
-                                    <rect key="frame" x="20" y="246" width="168" height="49"/>
+                                    <rect key="frame" x="20" y="246" width="208" height="49"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="49" id="n5Y-sS-oFE"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <state key="normal" title="确定" backgroundImage="main_showTime_iPad">
                                         <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -272,8 +270,8 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-30-qTv">
-                                    <rect key="frame" x="232" y="246" width="168" height="49"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <rect key="frame" x="292" y="246" width="208" height="49"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                     <state key="normal" title="取消" backgroundImage="main_showTime_iPad">
                                         <color key="titleColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -282,7 +280,7 @@
                                     </connections>
                                 </button>
                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-tz-F5Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="420" height="216"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="520" height="216"/>
                                     <date key="date" timeIntervalSinceReferenceDate="549363733.71255505">
                                         <!--2018-05-30 09:02:13 +0000-->
                                     </date>
@@ -368,11 +366,11 @@
         </view>
     </objects>
     <resources>
-        <image name="CameraListBtn" width="123" height="61"/>
-        <image name="SHSwitchThumb_Off" width="40" height="33"/>
-        <image name="SHSwitchThumb_On" width="40" height="33"/>
+        <image name="CameraListBtn" width="123" height="61.5"/>
+        <image name="SHSwitchThumb_Off" width="40.5" height="33.5"/>
+        <image name="SHSwitchThumb_On" width="40.5" height="33.5"/>
         <image name="Share_BG_iPad" width="1024" height="768"/>
         <image name="Share_SmallBG" width="783" height="402"/>
-        <image name="main_showTime_iPad" width="258" height="59"/>
+        <image name="main_showTime_iPad" width="258.5" height="59.5"/>
     </resources>
 </document>
