@@ -17,8 +17,8 @@
 /// 名称
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
-/// 指令集
-@property (nonatomic, strong) NSMutableArray *commands;
+
+
 
 @end
 
@@ -26,16 +26,32 @@
 
 - (void)touchMacro:(UITapGestureRecognizer *)sender {
     
-    self.commands = [[SHSQLManager shareSHSQLManager] getSenceCommands: self.macro];
+    NSMutableArray *commands = [SHSQLManager.shareSHSQLManager getMacroCommands: self.macro];
     
-    if (!self.commands.count) {
+    if (!commands.count) {
         
         [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@ %@", self.macro.macroName, [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"No Data!"]]];
         
         return;
     }
     
-    for (SHMacroCommand *command in self.commands) {
+    [SVProgressHUD showSuccessWithStatus:
+        [NSString stringWithFormat:@"Execute %@",
+            self.macro.macroName
+        ]
+    ];
+    
+    [self
+     performSelectorInBackground:@selector(executeMacroCommands:)
+     withObject:commands
+     ];
+    
+}
+
+/// 执行Macro command
+- (void)executeMacroCommands:(NSMutableArray *)commands {
+    
+    for (SHMacroCommand *command in commands) {
         
         UInt16 operatorCode = [SHOperatorCode getOperatorCode:command.commandType];
         

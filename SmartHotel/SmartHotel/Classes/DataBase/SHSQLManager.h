@@ -233,10 +233,6 @@
 
 /// 获得指定电视的频道类型
 - (NSMutableArray *)getAllChannelTypes:(SHTV *)tv;
-
- 
-/// 获取Sences对应的命令集
-- (NSMutableArray *)getSenceCommands:(SHMacro *)macro;
  
 
 /// 获得该房间的所有设备

@@ -32,7 +32,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
  */
 - (NSMutableArray *)getMacroCommands:(SHMacro *)macro {
     
-    NSString *sql = [NSString stringWithFormat:@""];
+    NSString *sql = [NSString stringWithFormat:@"select macroCommandID, macroID, remark, commandType, subnetID, deviceID, parameter1, parameter2, parameter3, parameter4, parameter5, parameter6, parameter7, parameter8, delayTime from MacroCommand where macroID = %zd order by macroCommandID;", macro.macroID];
     
     NSArray *array = [self selectProprty:sql];
     
@@ -41,7 +41,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     
     for (NSDictionary *dict in array) {
         
-        
+        [commands addObject: [SHMacroCommand macroCommandWithDictionary:dict]];
     }
     
     return commands;
@@ -732,26 +732,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     
     return types;
 }
-
- 
-/// 获取Sences对应的命令集
-- (NSMutableArray *)getSenceCommands:(SHMacro *)macro {
-    
-    NSString *selectSQL = [NSString stringWithFormat:@"select ScenesID, SequenceNo, Remark, SubnetID, DeviceID, CommandTypeID, FirstParameter, SecondParameter, ThirdParameter, DelayMillisecondAfterSend from ScenesCommands where ScenesID = %zd order by SequenceNo;", macro.macroID];
-    
-    NSArray *array = [self selectProprty:selectSQL];
-    
-    NSMutableArray *commands = [NSMutableArray arrayWithCapacity:array.count];
-
-    for (NSDictionary *dict in array) {
-        
-        [commands addObject:[SHMacroCommand macroCommandWithDictionary:dict]];
-    }
-    
-    return commands;
-}
-
-
+  
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room {
     

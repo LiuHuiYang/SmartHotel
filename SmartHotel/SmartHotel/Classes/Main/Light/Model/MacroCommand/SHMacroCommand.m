@@ -23,9 +23,7 @@
 + (instancetype)macroCommandWithDictionary:(NSDictionary *)dictionary; {
     
     SHMacroCommand *command = [[self alloc] init];
-
-
-
+ 
     [command setValuesForKeysWithDictionary:dictionary];
     
     return command;
