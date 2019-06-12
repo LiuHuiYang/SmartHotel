@@ -73,6 +73,8 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE3E0 targetSubnetID:self.curtain.subnetID targetDeviceID:self.curtain.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData_G3 length:sizeof(controlData_G3)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
         
     }
+    
+    [SVProgressHUD showSuccessWithStatus:@"Open curtain"];
 }
 
 /// 停止窗帘
@@ -116,6 +118,8 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         }
         
     }
+    
+     [SVProgressHUD showSuccessWithStatus:@"Stop curtain"];
 }
 
 /// 关闭窗帘
@@ -144,6 +148,8 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         
         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3E0 targetSubnetID:self.curtain.subnetID targetDeviceID:self.curtain.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData_G3 length:sizeof(controlData_G3)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
     }
+    
+    [SVProgressHUD showSuccessWithStatus:@"Close curtain"];
 }
 
 

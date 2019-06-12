@@ -68,8 +68,6 @@
     
     [self setupSVProgressHUD];
     
-    [SHSQLManager.shareSHSQLManager deleteTable:@"SHTV"];
-    
     return YES;
 }
 

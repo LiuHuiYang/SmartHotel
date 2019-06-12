@@ -11,11 +11,23 @@
 @interface SHMacroSettingViewCell ()
 
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
 @end
 
 
 @implementation SHMacroSettingViewCell
+
+- (void)setMacro:(SHMacro *)macro {
+    
+    _macro = macro;
+    
+    self.iconView.image = [UIImage imageNamed:macro.macroIconName];
+    
+    self.nameLabel.text = macro.macroName;
+}
  
 
 /// 行高

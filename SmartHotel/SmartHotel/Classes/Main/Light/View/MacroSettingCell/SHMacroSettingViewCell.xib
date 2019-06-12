@@ -21,7 +21,30 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PN1-Td-Pyo">
                         <rect key="frame" x="0.0" y="0.0" width="351" height="101.5"/>
-                        <color key="backgroundColor" red="0.031372549020000001" green="0.74117647060000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwO-2f-sY5">
+                                <rect key="frame" x="15" y="19" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="ZAs-SA-MRh"/>
+                                    <constraint firstAttribute="height" constant="64" id="b9F-0D-qJL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjD-Fs-5Ck">
+                                <rect key="frame" x="94" y="19" width="242" height="64"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DjD-Fs-5Ck" firstAttribute="centerY" secondItem="hwO-2f-sY5" secondAttribute="centerY" id="4kR-ej-XR0"/>
+                            <constraint firstItem="DjD-Fs-5Ck" firstAttribute="height" secondItem="hwO-2f-sY5" secondAttribute="height" id="S9c-Lb-kbK"/>
+                            <constraint firstItem="DjD-Fs-5Ck" firstAttribute="leading" secondItem="hwO-2f-sY5" secondAttribute="trailing" constant="15" id="ecD-WO-XFQ"/>
+                            <constraint firstAttribute="trailing" secondItem="DjD-Fs-5Ck" secondAttribute="trailing" constant="15" id="p5m-4h-v6Z"/>
+                            <constraint firstItem="hwO-2f-sY5" firstAttribute="leading" secondItem="PN1-Td-Pyo" secondAttribute="leading" constant="15" id="s3o-5k-nIU"/>
+                            <constraint firstItem="hwO-2f-sY5" firstAttribute="centerY" secondItem="PN1-Td-Pyo" secondAttribute="centerY" id="tul-0h-y2d"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,7 +57,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
-            <point key="canvasLocation" x="124" y="113"/>
+            <connections>
+                <outlet property="iconView" destination="hwO-2f-sY5" id="RkO-eL-fUP"/>
+                <outlet property="nameLabel" destination="DjD-Fs-5Ck" id="Mn9-dv-bvc"/>
+            </connections>
+            <point key="canvasLocation" x="123.91304347826087" y="112.5"/>
         </tableViewCell>
     </objects>
 </document>

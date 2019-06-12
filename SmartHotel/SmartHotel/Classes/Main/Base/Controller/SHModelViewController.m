@@ -145,35 +145,33 @@
     // 创建左边的按钮
     UITapGestureRecognizer *tapGestureRecognizerSetting = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
 
-    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:[UIFont boldSystemFontOfSize:26] image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
+    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:[UIFont boldSystemFontOfSize:22] image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoButton];
 
     // 创建右边的按钮
     UITapGestureRecognizer *tapGestureRecognizerBack = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gobackhome:)];
 
-    SHNavigationBarButton *homeButton =  [SHNavigationBarButton navigationBarButton:nil font:[UIFont boldSystemFontOfSize:26] image:(([self isKindOfClass:[SHHomeViewController class]]) ? nil : [UIImage imageNamed:@"home"]) isDefault:NO addGestureRecognizer:tapGestureRecognizerBack];
+    SHNavigationBarButton *homeButton =  [SHNavigationBarButton navigationBarButton:nil font:[UIFont boldSystemFontOfSize:22] image:(([self isKindOfClass:[SHHomeViewController class]]) ? nil : [UIImage imageNamed:@"home"]) isDefault:NO addGestureRecognizer:tapGestureRecognizerBack];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
-}
-
-
-// MARK: - 视图的加载
-
-- (void)viewWillLayoutSubviews {
     
-    [super viewWillLayoutSubviews];
-    
+    // 固定大小
     self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(statusBarHeight, 0, navigationBarHeight * 4, navigationBarHeight);
-
+    
     self.navigationItem.rightBarButtonItem.customView.frame = CGRectMake(self.view.frame_width - navigationBarHeight * 4, 0, navigationBarHeight * 4, navigationBarHeight);
 }
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
     self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    
+    
     
     // 房间信息
     printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \

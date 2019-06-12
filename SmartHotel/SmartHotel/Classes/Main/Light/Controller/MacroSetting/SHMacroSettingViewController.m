@@ -27,8 +27,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    self.allMacros =
-//        [SHSQLManager.shareSHSQLManager nil];
+    self.allMacros =
+        [SHSQLManager.shareSHSQLManager getMacros];
     
     [self.listView reloadData];
 }
