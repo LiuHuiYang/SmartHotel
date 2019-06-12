@@ -21,6 +21,47 @@
 
 @interface SHSQLManager : NSObject
 
+// MARK: - Macro
+
+/**
+ 获得指定Macro的命令集合
+ 
+ @param macro 宏
+ @return 宏对对应的命令集合
+ */
+- (NSMutableArray *)getMacroCommands:(SHMacro *)macro;
+
+/**
+ 更新 Macro
+ 
+ @param macro macro对象
+ @return 更新成功 YES, 失败 NO.
+ */
+- (BOOL)updateMacro:(SHMacro *)macro;
+
+/**
+ 增加新的宏
+ 
+ @param macro macro 模型对象
+ @return 成功 YES, 失败 NO.
+ */
+- (BOOL)insertMacro:(SHMacro *)macro;
+
+/**
+ 获取当前房间中的所有宏场景
+ 
+ @return 宏数组
+ */
+- (NSMutableArray *)getMacros;
+
+/**
+ 获取可用的MacroID
+ 
+ @return MacroID
+ */
+- (NSUInteger)getAvailableMacroID;
+
+
 // MARK: - TV
 
 /**
@@ -196,9 +237,6 @@
  
 /// 获取Sences对应的命令集
 - (NSMutableArray *)getSenceCommands:(SHMacro *)macro;
-
-/// 查询所有的场景
-- (NSMutableArray *)getAllSences;
  
 
 /// 获得该房间的所有设备

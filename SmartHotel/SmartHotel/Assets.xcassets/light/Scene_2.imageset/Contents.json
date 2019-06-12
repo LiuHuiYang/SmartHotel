@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Light_Sencen_Icon_3.png",
+      "filename" : "Scene_2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Light_Sencen_Icon_3@2x.png",
+      "filename" : "Scene_2@2x.png",
       "scale" : "2x"
     },
     {
