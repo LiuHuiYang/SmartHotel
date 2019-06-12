@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,10 +23,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="643" height="103.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJ4-SV-DIz" userLabel="areaView">
-                                <rect key="frame" x="26.5" y="9" width="80.5" height="84"/>
+                                <rect key="frame" x="15" y="10" width="161" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Iu-4G-bDY">
-                                        <rect key="frame" x="0.0" y="0.5" width="80.5" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="84"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -43,27 +42,27 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCo-aJ-t5P" userLabel="buttonsView">
-                                <rect key="frame" x="137" y="9.5" width="241.5" height="84"/>
+                                <rect key="frame" x="206" y="10" width="321.5" height="84"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="D0Q-mY-dX6">
-                                        <rect key="frame" x="0.0" y="-0.5" width="241.5" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="321.5" height="84"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZA-cq-7Su">
-                                        <rect key="frame" x="90.5" y="-0.5" width="60" height="84"/>
+                                        <rect key="frame" x="120.5" y="0.0" width="80" height="84"/>
                                         <state key="normal" image="Curtain_Stop"/>
                                         <connections>
                                             <action selector="stopCurtain" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wpw-9u-cdF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-NI-Nsn">
-                                        <rect key="frame" x="0.0" y="-1" width="59.5" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="84"/>
                                         <state key="normal" image="Curtain_Open"/>
                                         <connections>
                                             <action selector="openCurtain" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5sO-Rm-dnb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAF-xr-0m0">
-                                        <rect key="frame" x="181" y="0.0" width="60.5" height="84"/>
+                                        <rect key="frame" x="241" y="0.0" width="80.5" height="84"/>
                                         <state key="normal" image="Curtain_Close"/>
                                         <connections>
                                             <action selector="closeCurtain" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MaW-kK-vYt"/>
@@ -90,32 +89,32 @@
                                     <constraint firstItem="5ZA-cq-7Su" firstAttribute="centerY" secondItem="TCo-aJ-t5P" secondAttribute="centerY" id="yjz-eO-0Wd"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b01-lg-u83" userLabel="sliderView">
-                                <rect key="frame" x="408.5" y="9.5" width="241.5" height="84"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b01-lg-u83" userLabel="sliderView">
+                                <rect key="frame" x="557.5" y="10" width="321.5" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNd-Sk-uwi">
-                                        <rect key="frame" x="72" y="0.0" width="97" height="33.5"/>
+                                        <rect key="frame" x="96" y="0.0" width="129" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ku-Cz-WPy">
-                                        <rect key="frame" x="169" y="-1" width="72.5" height="34"/>
+                                        <rect key="frame" x="225" y="0.0" width="96.5" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdS-YC-fwc">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="U1R-7a-hi5">
-                                        <rect key="frame" x="0.0" y="46" width="241.5" height="38"/>
+                                        <rect key="frame" x="0.0" y="46" width="321.5" height="38"/>
                                     </imageView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Vyk-ih-auu">
-                                        <rect key="frame" x="22" y="52" width="197.5" height="27.5"/>
+                                        <rect key="frame" x="30" y="51.5" width="261" height="27.5"/>
                                         <connections>
                                             <action selector="sliderValueChange" destination="KGk-i7-Jjw" eventType="valueChanged" id="oew-th-EDX"/>
                                         </connections>
@@ -152,11 +151,11 @@
                             <constraint firstItem="TCo-aJ-t5P" firstAttribute="leading" secondItem="FJ4-SV-DIz" secondAttribute="trailing" constant="30" id="6tA-NC-baE"/>
                             <constraint firstItem="b01-lg-u83" firstAttribute="centerY" secondItem="TCo-aJ-t5P" secondAttribute="centerY" id="PTT-H0-Qjm"/>
                             <constraint firstItem="TCo-aJ-t5P" firstAttribute="centerY" secondItem="FJ4-SV-DIz" secondAttribute="centerY" id="Vq9-eY-VWP"/>
+                            <constraint firstItem="FJ4-SV-DIz" firstAttribute="leading" secondItem="Izx-bJ-TOm" secondAttribute="leading" constant="15" id="WMh-HP-RP8"/>
                             <constraint firstItem="b01-lg-u83" firstAttribute="width" secondItem="TCo-aJ-t5P" secondAttribute="width" id="cnQ-J9-o3u"/>
-                            <constraint firstItem="TCo-aJ-t5P" firstAttribute="width" secondItem="FJ4-SV-DIz" secondAttribute="width" multiplier="3" id="gfm-LH-f5C"/>
+                            <constraint firstItem="TCo-aJ-t5P" firstAttribute="width" secondItem="FJ4-SV-DIz" secondAttribute="width" multiplier="2" id="gfm-LH-f5C"/>
                             <constraint firstItem="TCo-aJ-t5P" firstAttribute="height" secondItem="FJ4-SV-DIz" secondAttribute="height" id="iOs-E6-C6g"/>
-                            <constraint firstItem="FJ4-SV-DIz" firstAttribute="width" secondItem="Izx-bJ-TOm" secondAttribute="width" multiplier="1/8" id="myF-8b-RVd"/>
-                            <constraint firstItem="TCo-aJ-t5P" firstAttribute="centerX" secondItem="Izx-bJ-TOm" secondAttribute="centerX" multiplier="0.8" id="oi3-30-ySf"/>
+                            <constraint firstItem="FJ4-SV-DIz" firstAttribute="width" secondItem="Izx-bJ-TOm" secondAttribute="width" multiplier="0.25" id="myF-8b-RVd"/>
                             <constraint firstItem="b01-lg-u83" firstAttribute="leading" secondItem="TCo-aJ-t5P" secondAttribute="trailing" constant="30" id="q43-CM-XYT"/>
                             <constraint firstItem="FJ4-SV-DIz" firstAttribute="centerY" secondItem="Izx-bJ-TOm" secondAttribute="centerY" id="rRD-t1-EKu"/>
                             <constraint firstItem="b01-lg-u83" firstAttribute="height" secondItem="TCo-aJ-t5P" secondAttribute="height" id="rfE-54-3ng"/>
@@ -184,9 +183,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Curtain_Close" width="89" height="70"/>
-        <image name="Curtain_Open" width="89" height="70"/>
-        <image name="Curtain_Stop" width="89" height="70"/>
+        <image name="Curtain_Close" width="89.5" height="70"/>
+        <image name="Curtain_Open" width="89.5" height="70"/>
+        <image name="Curtain_Stop" width="89.5" height="70"/>
         <image name="Share_SmallBG" width="783" height="402"/>
     </resources>
 </document>

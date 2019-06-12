@@ -74,7 +74,10 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         
     }
     
-    [SVProgressHUD showSuccessWithStatus:@"Open curtain"];
+    
+    [SVProgressHUD showSuccessWithStatus:
+     [NSString stringWithFormat:@"%@ open", self.curtain.curtainName]
+    ];
 }
 
 /// 停止窗帘
@@ -119,7 +122,9 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         
     }
     
-     [SVProgressHUD showSuccessWithStatus:@"Stop curtain"];
+     [SVProgressHUD showSuccessWithStatus:
+        [NSString stringWithFormat:@"%@ stop", self.curtain.curtainName]
+     ];
 }
 
 /// 关闭窗帘
@@ -149,7 +154,10 @@ typedef NS_ENUM(NSUInteger, SHShadeStatus) {
         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3E0 targetSubnetID:self.curtain.subnetID targetDeviceID:self.curtain.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData_G3 length:sizeof(controlData_G3)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:NO];
     }
     
-    [SVProgressHUD showSuccessWithStatus:@"Close curtain"];
+    
+    [SVProgressHUD showSuccessWithStatus:
+     [NSString stringWithFormat:@"%@ close", self.curtain.curtainName]
+    ];
 }
 
 
