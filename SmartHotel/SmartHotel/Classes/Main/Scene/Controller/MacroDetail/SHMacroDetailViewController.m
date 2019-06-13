@@ -140,26 +140,21 @@
     textField.borderStyle = UITextBorderStyleNone;
     textField.backgroundColor = UIColor.clearColor;
     textField.textColor = UIColor.whiteColor;
-    
-    NSString *newName = textField.text;
-    
-    if (newName.length == 0 ||
-        [newName isEqualToString:self.macro.macroName]) {
+     
+    if (textField.text.length == 0) {
         
         [SVProgressHUD showErrorWithStatus:@"invalid name"];
         
         return;
     }
     
-    self.macro.macroName = newName;
+    self.macro.macroName = textField.text;
     
     [SHSQLManager.shareSHSQLManager updateMacro:self.macro];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    [self textFieldDidEndEditing:textField];
-    
+     
     [textField resignFirstResponder];
     
     return YES;

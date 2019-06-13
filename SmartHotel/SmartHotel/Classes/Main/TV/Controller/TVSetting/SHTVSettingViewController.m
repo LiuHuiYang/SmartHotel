@@ -8,8 +8,9 @@
 
 #import "SHTVSettingViewController.h"
 #import "SHTVSettingViewCell.h"
+#import "SHTVChannelSettingViewController.h"
 
-@interface SHTVSettingViewController ()
+@interface SHTVSettingViewController () <UITableViewDelegate, UITableViewDataSource>
 
 
 /**
@@ -67,67 +68,32 @@
 /// 添加新的分组
 - (void)addChannleGroup {
     
-    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Add Channel Group" message:nil isCustom:YES];
+    SHChannelGroup *channelGroup = [[SHChannelGroup alloc] init];
     
-    [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-       
-        [textField becomeFirstResponder];
-        textField.clearButtonMode =
-        UITextFieldViewModeWhileEditing;
-        textField.textAlignment = NSTextAlignmentCenter;
-        textField.placeholder = @"channel group name";
-        
-        self.valueTextField = textField;
-    }];
+    channelGroup.groupName = @"new group";
+    channelGroup.tvID = self.tv.tvID;
+    channelGroup.groupID = [SHSQLManager.shareSHSQLManager getAvailableTVChannelGroupID:channelGroup];
     
-    TYAlertAction *cancelAction =
-        [TYAlertAction actionWithTitle:@"cancel" style:TYAlertActionStyleCancel handler:nil];
+    [SHSQLManager.shareSHSQLManager insertTVChannelGroup:channelGroup];
     
-    [alertView addAction:cancelAction];
+    SHTVChannelSettingViewController *channelSettingController = [[SHTVChannelSettingViewController alloc] init];
     
-    TYAlertAction *saveAction = [TYAlertAction actionWithTitle:@"save" style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
-        
-        NSString *groupName = self.valueTextField.text;
-        
-        if (groupName.length == 0) {
-            
-            [SVProgressHUD showInfoWithStatus:
-             @"The value should not be empty!"
-             ];
-            
-            return ;
-        }
-        
-        // 创建新的分组
-        SHChannelGroup *group =
-            [[SHChannelGroup alloc] init];
-        
-        group.tvID = self.tv.tvID;
-        group.groupName = groupName;
-        
-        group.groupID = [SHSQLManager.shareSHSQLManager getAvailableTVChannelGroupID:group];
-        
-        // 保存到新的分组
-        [SHSQLManager.shareSHSQLManager insertTVChannelGroup:group];
-        
-        [self.tv.channelGroups addObject:group];
-        
-        [self.groupListView reloadData];
-    }];
+    channelSettingController.channelGroup = channelGroup;
     
-    [alertView addAction:saveAction];
-    
-    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationDropDown];
-
-    alertController.backgoundTapDismissEnable = YES;
-    
-    [self presentViewController:alertController
-                       animated:YES
-                     completion:nil
-    ];
+    [self.navigationController pushViewController:channelSettingController animated:YES];
 }
 
 // MARK: - 代理
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SHTVChannelSettingViewController *channelSettingController = [[SHTVChannelSettingViewController alloc] init];
+    
+    channelSettingController.channelGroup = self.tv.channelGroups[indexPath.row];
+    
+    [self.navigationController pushViewController:channelSettingController animated:YES];
+}
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -143,8 +109,7 @@
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         
         [tableView setEditing:NO animated:YES];
-        
-        
+         
         [self.tv.channelGroups removeObject:channelGroup];
         
         [SHSQLManager.shareSHSQLManager deleteTVChannelGroup:channelGroup];
@@ -157,56 +122,11 @@
         
         [tableView setEditing:NO animated:YES];
         
-        TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Update" message:nil isCustom:YES];
+        SHTVChannelSettingViewController *channelSettingController = [[SHTVChannelSettingViewController alloc] init];
         
-        [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-            
-            [textField becomeFirstResponder];
-            textField.clearButtonMode =
-            UITextFieldViewModeWhileEditing;
-            textField.textAlignment = NSTextAlignmentCenter;
-            textField.placeholder = channelGroup.groupName;
-            
-            self.valueTextField = textField;
-        }];
+        channelSettingController.channelGroup = self.tv.channelGroups[indexPath.row];
         
-        TYAlertAction *cancelAction =
-        [TYAlertAction actionWithTitle:@"cancel" style:TYAlertActionStyleCancel handler:nil];
-        
-        [alertView addAction:cancelAction];
-        
-        TYAlertAction *saveAction = [TYAlertAction actionWithTitle:@"save" style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
-            
-            NSString *groupName = self.valueTextField.text;
-            
-            if (groupName.length == 0) {
-                
-                [SVProgressHUD showInfoWithStatus:
-                 @"The value should not be empty!"
-                 ];
-                
-                return ;
-            }
-            
-            
-            channelGroup.groupName = groupName;
-            
-            [SHSQLManager.shareSHSQLManager updateTVChannelGroup:channelGroup];
-            
-            [self.groupListView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
-            
-        }];
-        
-        [alertView addAction:saveAction];
-        
-        TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationDropDown];
-        
-        alertController.backgoundTapDismissEnable = YES;
-        
-        [self presentViewController:alertController
-                           animated:YES
-                         completion:nil
-         ];
+        [self.navigationController pushViewController:channelSettingController animated:YES];
  
     }];
     

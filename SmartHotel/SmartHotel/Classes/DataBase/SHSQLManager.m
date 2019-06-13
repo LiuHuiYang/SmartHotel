@@ -256,6 +256,22 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 
 
 /**
+ 删除电视频道
+
+ @param channel 电视频道
+ @return 删除成功YES, 失败NO
+ */
+- (BOOL)deleteTVChannel:(SHChannel *)channel {
+    
+    NSString *sql = [NSString stringWithFormat:@"delete from TVChannel where tvID = %zd and groupID = %zd and channelID = %zd;",
+                     channel.tvID,
+                     channel.groupID,
+                     channel.channelID];
+    
+    return [self executeSql:sql];
+}
+
+/**
  获当前电视分组下的所有频道
 
  @param group 电视分组
@@ -277,6 +293,34 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return channels;
 }
 
+
+/**
+ 获前当前电视频道可用的最大ID
+ 
+ @param channel 频道
+ @return 可用ID
+ */
+- (NSUInteger)getAvailableTVChannelID:(SHChannel *)channel {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(channelID) from TVChannel where tvID = %zd and groupID = %zd;",
+        channel.tvID,
+        channel.groupID
+    ];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(channelID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger channelID =
+    [[dict objectForKey:@"max(channelID)"]integerValue] + 1;
+    
+    return channelID;
+}
 
 /**
  更新电视频道(只有名称)

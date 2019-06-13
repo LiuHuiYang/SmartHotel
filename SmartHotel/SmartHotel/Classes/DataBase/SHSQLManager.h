@@ -105,12 +105,28 @@
 // MARK: - Channel Group
 
 /**
+ 删除电视频道
+ 
+ @param channel 电视频道
+ @return 删除成功YES, 失败NO
+ */
+- (BOOL)deleteTVChannel:(SHChannel *)channel;
+
+/**
  获当前电视分组下的所有频道
  
  @param group 电视分组
  @return 电视频道数组
  */
 - (NSMutableArray *)getTVChannels:(SHChannelGroup *)group;
+
+/**
+ 获前当前电视频道可用的最大ID
+ 
+ @param channel 频道
+ @return 可用ID
+ */
+- (NSUInteger)getAvailableTVChannelID:(SHChannel *)channel;
 
 /**
  更新电视频道(只有名称)

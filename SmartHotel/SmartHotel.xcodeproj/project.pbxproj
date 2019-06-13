@@ -36,6 +36,12 @@
 		04345C7822B22F9500805801 /* SHChannelGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C7722B22F9400805801 /* SHChannelGroup.m */; };
 		04345C7D22B2342E00805801 /* SHTVSettingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C7B22B2342E00805801 /* SHTVSettingViewCell.m */; };
 		04345C7E22B2342E00805801 /* SHTVSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C7C22B2342E00805801 /* SHTVSettingViewCell.xib */; };
+		04345C8322B2442A00805801 /* SHTVChannelSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C8122B2442A00805801 /* SHTVChannelSettingViewController.m */; };
+		04345C8422B2442A00805801 /* SHTVChannelSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C8222B2442A00805801 /* SHTVChannelSettingViewController.xib */; };
+		04345C8922B2462400805801 /* SHTVChannelSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C8722B2462400805801 /* SHTVChannelSettingCell.m */; };
+		04345C8A22B2462400805801 /* SHTVChannelSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C8822B2462400805801 /* SHTVChannelSettingCell.xib */; };
+		04345C8F22B247E500805801 /* SHTVChannelDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C8D22B247E500805801 /* SHTVChannelDetailViewController.m */; };
+		04345C9022B247E500805801 /* SHTVChannelDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C8E22B247E500805801 /* SHTVChannelDetailViewController.xib */; };
 		04466EC022A6082700C7063B /* SHLightDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */; };
 		04466EC122A6082700C7063B /* SHLightDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */; };
 		04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04484D75207F079C00F6FEB9 /* SHSwitchButton.m */; };
@@ -192,6 +198,15 @@
 		04345C7A22B2342E00805801 /* SHTVSettingViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVSettingViewCell.h; sourceTree = "<group>"; };
 		04345C7B22B2342E00805801 /* SHTVSettingViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVSettingViewCell.m; sourceTree = "<group>"; };
 		04345C7C22B2342E00805801 /* SHTVSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTVSettingViewCell.xib; sourceTree = "<group>"; };
+		04345C8022B2442A00805801 /* SHTVChannelSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVChannelSettingViewController.h; sourceTree = "<group>"; };
+		04345C8122B2442A00805801 /* SHTVChannelSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVChannelSettingViewController.m; sourceTree = "<group>"; };
+		04345C8222B2442A00805801 /* SHTVChannelSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTVChannelSettingViewController.xib; sourceTree = "<group>"; };
+		04345C8622B2462400805801 /* SHTVChannelSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVChannelSettingCell.h; sourceTree = "<group>"; };
+		04345C8722B2462400805801 /* SHTVChannelSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVChannelSettingCell.m; sourceTree = "<group>"; };
+		04345C8822B2462400805801 /* SHTVChannelSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTVChannelSettingCell.xib; sourceTree = "<group>"; };
+		04345C8C22B247E500805801 /* SHTVChannelDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVChannelDetailViewController.h; sourceTree = "<group>"; };
+		04345C8D22B247E500805801 /* SHTVChannelDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVChannelDetailViewController.m; sourceTree = "<group>"; };
+		04345C8E22B247E500805801 /* SHTVChannelDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTVChannelDetailViewController.xib; sourceTree = "<group>"; };
 		04466EBD22A6082700C7063B /* SHLightDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightDetailViewCell.h; sourceTree = "<group>"; };
 		04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightDetailViewCell.m; sourceTree = "<group>"; };
 		04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLightDetailViewCell.xib; sourceTree = "<group>"; };
@@ -596,6 +611,36 @@
 			path = TVSettingCell;
 			sourceTree = "<group>";
 		};
+		04345C7F22B2441800805801 /* ChannelSetting */ = {
+			isa = PBXGroup;
+			children = (
+				04345C8022B2442A00805801 /* SHTVChannelSettingViewController.h */,
+				04345C8122B2442A00805801 /* SHTVChannelSettingViewController.m */,
+				04345C8222B2442A00805801 /* SHTVChannelSettingViewController.xib */,
+			);
+			path = ChannelSetting;
+			sourceTree = "<group>";
+		};
+		04345C8522B2460D00805801 /* ChannelSettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				04345C8622B2462400805801 /* SHTVChannelSettingCell.h */,
+				04345C8722B2462400805801 /* SHTVChannelSettingCell.m */,
+				04345C8822B2462400805801 /* SHTVChannelSettingCell.xib */,
+			);
+			path = ChannelSettingCell;
+			sourceTree = "<group>";
+		};
+		04345C8B22B247C700805801 /* ChannelDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04345C8C22B247E500805801 /* SHTVChannelDetailViewController.h */,
+				04345C8D22B247E500805801 /* SHTVChannelDetailViewController.m */,
+				04345C8E22B247E500805801 /* SHTVChannelDetailViewController.xib */,
+			);
+			path = ChannelDetail;
+			sourceTree = "<group>";
+		};
 		04466EB722A6079500C7063B /* LightDetailCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +1018,8 @@
 		04D249482079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04345C8B22B247C700805801 /* ChannelDetail */,
+				04345C7F22B2441800805801 /* ChannelSetting */,
 				04345C6022B21C3E00805801 /* TV */,
 				04345C5F22B21C3E00805801 /* TVSetting */,
 			);
@@ -992,6 +1039,7 @@
 		04D2494A2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04345C8522B2460D00805801 /* ChannelSettingCell */,
 				04345C7922B2341A00805801 /* TVSettingCell */,
 				04345C6F22B22EF200805801 /* ChannelGroupCell */,
 				04DAFEBF2084AA72009AA5EB /* ChannelCell */,
@@ -1721,6 +1769,7 @@
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
 				04DDEAA122A5186600F1BA01 /* SHLightDetailViewController.xib in Resources */,
 				04345C5A22B1FC4200805801 /* SHMacroSettingViewCell.xib in Resources */,
+				04345C8A22B2462400805801 /* SHTVChannelSettingCell.xib in Resources */,
 				04DC41FB22A0DE5500BC1BFE /* SHCurtainSettingViewCell.xib in Resources */,
 				04DC41E422A0D68100BC1BFE /* SHCurtainViewController.xib in Resources */,
 				04F892032089796F003E2CED /* SHSettingDeiviceTypeViewCell.xib in Resources */,
@@ -1730,6 +1779,7 @@
 				04DDEA8922A50F6400F1BA01 /* SHLightViewCell.xib in Resources */,
 				04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */,
 				04C7996C2093199F00F86679 /* Sounds.bundle in Resources */,
+				04345C9022B247E500805801 /* SHTVChannelDetailViewController.xib in Resources */,
 				04345C5722B1FC4200805801 /* SHIconViewCell.xib in Resources */,
 				04DDEA9C22A516BE00F1BA01 /* SHLightSettingViewCell.xib in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
@@ -1754,6 +1804,7 @@
 				04466EC122A6082700C7063B /* SHLightDetailViewCell.xib in Resources */,
 				04345C4B22B1FC4200805801 /* SHMacroCommandDetailViewController.xib in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
+				04345C8422B2442A00805801 /* SHTVChannelSettingViewController.xib in Resources */,
 				04345C5222B1FC4200805801 /* SHChangeMacroImageViewController.xib in Resources */,
 				04D8806620887441006C207E /* SHSettingDeviceArgsViewCell.xib in Resources */,
 				04DC41F522A0DE3B00BC1BFE /* SHCurtainViewCell.xib in Resources */,
@@ -1821,6 +1872,7 @@
 			files = (
 				04D249892079C77800EBD1BE /* UIView+frame.m in Sources */,
 				04E4DCFC20859A4C00AB17E2 /* UIImage+SaveAndGet.m in Sources */,
+				04345C8F22B247E500805801 /* SHTVChannelDetailViewController.m in Sources */,
 				04FD6CB720B538230013B50B /* UITableView+ZYXIndexTip.m in Sources */,
 				04D249F62079E2C000EBD1BE /* SHWorldTimeViewController.m in Sources */,
 				04D24A062079EE1900EBD1BE /* SHModuleSwitchButton.m in Sources */,
@@ -1838,7 +1890,9 @@
 				04DDEA8822A50F6400F1BA01 /* SHLightViewCell.m in Sources */,
 				04345C5322B1FC4200805801 /* SHMacroCommand.m in Sources */,
 				04DDEAA022A5186600F1BA01 /* SHLightDetailViewController.m in Sources */,
+				04345C8922B2462400805801 /* SHTVChannelSettingCell.m in Sources */,
 				04D8805B20883255006C207E /* SHChannelTypeViewCell.m in Sources */,
+				04345C8322B2442A00805801 /* SHTVChannelSettingViewController.m in Sources */,
 				04D249A72079C95500EBD1BE /* SHUdpSocket.m in Sources */,
 				04DDEA9522A5150100F1BA01 /* SHLightSettingViewController.m in Sources */,
 				04D249B52079CA6500EBD1BE /* SHViewController.m in Sources */,

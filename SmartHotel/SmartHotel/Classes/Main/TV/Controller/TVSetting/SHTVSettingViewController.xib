@@ -23,8 +23,21 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjS-eO-FCa">
                     <rect key="frame" x="20" y="44" width="374" height="64"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niR-NA-im6">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="niR-NA-im6" firstAttribute="height" secondItem="FjS-eO-FCa" secondAttribute="height" id="Go9-Pj-Kmb"/>
+                        <constraint firstItem="niR-NA-im6" firstAttribute="centerY" secondItem="FjS-eO-FCa" secondAttribute="centerY" id="MSN-Fy-Osg"/>
+                        <constraint firstItem="niR-NA-im6" firstAttribute="width" secondItem="FjS-eO-FCa" secondAttribute="width" id="Qms-9s-FOH"/>
+                        <constraint firstItem="niR-NA-im6" firstAttribute="centerX" secondItem="FjS-eO-FCa" secondAttribute="centerX" id="eaR-2d-lNi"/>
                         <constraint firstAttribute="height" constant="64" id="qUC-cz-Hod"/>
                     </constraints>
                 </view>

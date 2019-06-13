@@ -49,8 +49,6 @@
 /// 具体的频道列表
 @property (weak, nonatomic) IBOutlet UICollectionView *channelListView;
 
-/// 长按手势
-@property (weak, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @end
 
@@ -271,72 +269,6 @@
     
     [self.channelListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHChannelCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SHChannelCollectionViewCell class])];
     
-    // 增加长按手势
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(settingChannelPicture:)];
-    
-    longPress.minimumPressDuration = 1.0;
-    
-    [self.channelListView addGestureRecognizer:longPress];
-    
-    self.longPressGestureRecognizer = longPress;
-}
-
-/// 设置频道的图片
-- (void)settingChannelPicture:(UILongPressGestureRecognizer *) longPressGestureRecognizer {
-    
-    if (longPressGestureRecognizer.state != UIGestureRecognizerStateBegan) {
-        
-        return;
-    }
-    
-    NSIndexPath *selectIndexPath = [self.channelListView indexPathForItemAtPoint:[self.longPressGestureRecognizer locationInView:self.channelListView]];
-    
-    self.currentChannel = self.selectChannelGroup.channels[selectIndexPath.item];
-    
-    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Change Picture?" message:nil isCustom:YES];
-    
-    // 相册中获取
-    [alertView addAction:[TYAlertAction actionWithTitle:@"Photos" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
-        
-        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-            
-            return;
-        }
-        
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.delegate = self;
-        
-        [self presentViewController:picker animated:YES completion:nil];
-        
-    }]];
-    
-    // 相机中获取
-    [alertView addAction:[TYAlertAction actionWithTitle:@"Camera" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
-        
-        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            
-            return;
-        }
-        
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        picker.delegate = self;
-        
-        [self presentViewController:picker animated:YES completion:nil];
-        
-    }]];
-    
-    // 取消
-    [alertView addAction:[TYAlertAction actionWithTitle:@"Cancel" style:TYAlertActionStyleCancel handler:nil]];
-    
-    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationDropDown];
-    
-    alertController.backgoundTapDismissEnable = YES;
-    
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -344,31 +276,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-// MARK: - 照片的代理
 
-/// 取消操作
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil  ];
-}
-
-/// 获得照片
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    UIImage *sourceImage = [UIImage darwNewImage:[UIImage fixOrientation:info[UIImagePickerControllerOriginalImage]] width:navigationBarHeight * 2];
-    
-    // 如果是相机，保存到相册中去
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        
-        UIImageWriteToSavedPhotosAlbum(sourceImage, self, nil, nil);
-    }
-    
-   // 保存
-//    [UIImage writeImageToDocument:self.currentChannel.channelType imageName:[NSString stringWithFormat:@"%@", @(self.currentChannel.channelIconID)] image:sourceImage];
-   
-//    [self.channelListView reloadData];
-}
  
 @end
