@@ -207,9 +207,9 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQY-0C-BcW" customClass="SHSwitchButton">
-                            <rect key="frame" x="0.0" y="100" width="84" height="49"/>
+                            <rect key="frame" x="0.0" y="102.5" width="84" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="49" id="LhQ-0g-7go"/>
+                                <constraint firstAttribute="height" constant="44" id="LhQ-0g-7go"/>
                                 <constraint firstAttribute="width" constant="84" id="evR-qg-Lp3"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>

@@ -265,13 +265,16 @@
     dimmerFlowLayout.minimumInteritemSpacing = 0;
     
     // 场景的布局
-    NSUInteger sencesTotalCols = 5;
+    NSUInteger sencesTotalCols = 4;
     
     CGFloat sencesItemWidth = (self.senceListView.frame_width - (sencesTotalCols * itemMarign)) / sencesTotalCols;
     
     UICollectionViewFlowLayout *sencesFlowLayout = (UICollectionViewFlowLayout *)self.self.senceListView.collectionViewLayout;
     
-    sencesFlowLayout.itemSize = CGSizeMake(sencesItemWidth, self.senceListView.frame_height * 0.98);
+    sencesFlowLayout.itemSize =
+        CGSizeMake(sencesItemWidth,
+                   self.senceListView.frame_height * 0.98
+                );
     sencesFlowLayout.minimumLineSpacing = itemMarign;
     sencesFlowLayout.minimumInteritemSpacing = 0;
 }

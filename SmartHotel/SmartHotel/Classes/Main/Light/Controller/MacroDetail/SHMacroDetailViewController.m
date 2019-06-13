@@ -1,78 +1,87 @@
 //
-//  SHMacroSettingViewController.m
+//  SHMacroDetailViewController.m
 //  SmartHotel
 //
-//  Created by Apple on 2019/6/5.
+//  Created by Apple on 2019/6/13.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
-#import "SHMacroSettingViewController.h"
-#import "SHMacroSettingViewCell.h"
 #import "SHMacroDetailViewController.h"
+#import "SHMacroDetailViewCell.h"
+#import "SHMacroCommandDetailViewController.h"
 
-@interface SHMacroSettingViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SHMacroDetailViewController () <
+    UITableViewDataSource, UITableViewDelegate>
 
-/// 所有的宏命令
-@property (nonatomic, strong) NSMutableArray *allMacros;
 
 /**
- 宏显示列表
+ 宏命令集合
+ */
+@property (strong, nonatomic) NSMutableArray *macroCommands;
+
+
+/**
+ 命令集合
  */
 @property (weak, nonatomic) IBOutlet UITableView *listView;
 
 
 @end
 
-@implementation SHMacroSettingViewController
+@implementation SHMacroDetailViewController
 
 - (void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     
-    self.allMacros =
-        [SHSQLManager.shareSHSQLManager getMacros];
+    self.macroCommands = [SHSQLManager.shareSHSQLManager getMacroCommands:self.macro];
     
     [self.listView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"Scenes Setting";
+ 
+    self.navigationItem.title = @"Scene Detail";
     
     self.navigationItem.rightBarButtonItem =
     [UIBarButtonItem barButtonItemWithImageName:@"addDevice_navigationbar"
                           hightlightedImageName:@"addDevice_navigationbar"
                                       addTarget:self
-                                         action:@selector(addMacro)
+                                         action:@selector(addMacroCommand)
                                          isLeft:false
      ];
     
-    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHMacroSettingViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHMacroSettingViewCell class])];
+    
+    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHMacroDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHMacroDetailViewCell class])];
     
     self.listView.rowHeight =
-        [SHMacroSettingViewCell rowHeight];
-    
+        SHMacroDetailViewCell.rowHeight;
     
 }
 
 // MARK: - 设备的添加与删除
 
-- (void)addMacro {
-    
-    SHMacro *macro = [[SHMacro alloc] init];
-    
-    macro.macroID =
-        SHSQLManager.shareSHSQLManager.getAvailableMacroID;
-    macro.macroName = @"macro";
-    macro.macroIconName = @"Scene_1";
-    
-    [SHSQLManager.shareSHSQLManager insertMacro:macro];
-  
-    SHMacroDetailViewController *detailController =
-    [[SHMacroDetailViewController alloc] init];
 
-    detailController.macro = macro;
-
+/**
+ 添加宏命令
+ */
+- (void)addMacroCommand {
+    
+    SHMacroCommand *macroCommand =
+        [[SHMacroCommand alloc] init];
+    
+    macroCommand.remark = @"scene command";
+    macroCommand.macroID = self.macro.macroID;
+    macroCommand.macroCommandID = [SHSQLManager.shareSHSQLManager getAvailableMacroCommandID:self.macro.macroID];
+    
+    [SHSQLManager.shareSHSQLManager insertMacroCommand:macroCommand];
+    
+    SHMacroCommandDetailViewController *detailController =
+        [[SHMacroCommandDetailViewController alloc] init];
+    
+    detailController.macroCommand = macroCommand;
+    
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
@@ -80,19 +89,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHMacroDetailViewController *detailController =
-    [[SHMacroDetailViewController alloc] init];
+    SHMacroCommandDetailViewController *detailController =
+    [[SHMacroCommandDetailViewController alloc] init];
     
-    detailController.macro = self.allMacros[indexPath.row];
+    detailController.macroCommand =
+        self.macroCommands[indexPath.row];
     
     [self.navigationController pushViewController:detailController animated:YES];
-    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return YES;
 }
+
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -101,11 +111,12 @@
         
         [tableView setEditing:NO animated:YES];
         
-        SHMacro *macro = self.allMacros[indexPath.row];
+        SHMacroCommand *macroCommand =
+            self.macroCommands[indexPath.row];
         
-        [self.allMacros removeObject:macro];
+        [self.macroCommands removeObject:macroCommand];
         
-        [SHSQLManager.shareSHSQLManager deleteMacro:macro];
+        [SHSQLManager.shareSHSQLManager deleteMacroCommand:macroCommand];
         
         [tableView reloadData];
     }];
@@ -116,11 +127,11 @@
         
         [tableView setEditing:NO animated:YES];
         
-        SHMacroDetailViewController *detailController =
-            [[SHMacroDetailViewController alloc] init];
+        SHMacroCommandDetailViewController *detailController =
+        [[SHMacroCommandDetailViewController alloc] init];
         
-        detailController.macro =
-            self.allMacros[indexPath.row];
+        detailController.macroCommand =
+        self.macroCommands[indexPath.row];
         
         [self.navigationController pushViewController:detailController animated:YES];
     }];
@@ -133,15 +144,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.allMacros.count;
+    return self.macroCommands.count;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHMacroSettingViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHMacroSettingViewCell class]) forIndexPath:indexPath];
+    SHMacroDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHMacroDetailViewCell class]) forIndexPath:indexPath];
     
-    cell.macro = self.allMacros[indexPath.row];
+    cell.macroCommand = self.macroCommands[indexPath.row];
     
     return cell;
 }

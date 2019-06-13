@@ -26,7 +26,9 @@
     
     self.iconView.image = [UIImage imageNamed:macro.macroIconName];
     
-    self.nameLabel.text = macro.macroName;
+    self.nameLabel.text =
+        [NSString stringWithFormat:@"%zd - %@",
+         macro.macroID, macro.macroName];
 }
  
 

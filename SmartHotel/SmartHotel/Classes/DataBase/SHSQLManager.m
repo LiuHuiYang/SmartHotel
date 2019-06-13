@@ -175,16 +175,15 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 - (BOOL)deleteMacro:(SHMacro *)macro {
     
     // 删除 宏命令
-    NSString *sql = [NSString stringWithFormat:@"delete from MacroCommand Where and macroID = %zd;", macro.macroID];
+    NSString *sql = [NSString stringWithFormat:@"delete from MacroCommand Where macroID = %zd;", macro.macroID];
     
     if ([self executeSql:sql] == false) {
         return false;
     }
     
     // 删除 宏
-    sql = [NSString stringWithFormat:@"delete from Macro Where and macroID = %zd;", macro.macroID];
+    sql = [NSString stringWithFormat:@"delete from Macro Where macroID = %zd;", macro.macroID];
     
-  
     return [self executeSql:sql];
 }
 

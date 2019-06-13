@@ -12,7 +12,7 @@
 @interface SHLightDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 
 /**
- 灯光设备参数名称
+ 设备参数名称
  */
 @property (strong, nonatomic) NSArray *argsNames;
 
@@ -23,7 +23,7 @@
 @property (weak, nonatomic) UITextField *valueTextField;
 
 /**
- 灯光设备参数值
+ 设备参数值
  */
 @property (strong, nonatomic) NSArray *argsValues;
 
@@ -60,12 +60,12 @@
 // MARK: - 参数值的获取与更新
 
 /**
- 获得窗帘的参数与名称
+ 获得参数与名称
  */
 - (void)getLightNameAndValues {
     
     self.argsNames = @[
-                       @"light Name",
+                       @"light name",
                        @"light type",
                        
                        @"subnetID",

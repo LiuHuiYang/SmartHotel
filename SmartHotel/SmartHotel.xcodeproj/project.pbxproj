@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04345BFD22B1E22A00805801 /* SHMacroDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345BFB22B1E22A00805801 /* SHMacroDetailViewController.m */; };
+		04345BFE22B1E22A00805801 /* SHMacroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345BFC22B1E22A00805801 /* SHMacroDetailViewController.xib */; };
+		04345C0322B1E52E00805801 /* SHMacroDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C0122B1E52E00805801 /* SHMacroDetailViewCell.m */; };
+		04345C0422B1E52E00805801 /* SHMacroDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C0222B1E52E00805801 /* SHMacroDetailViewCell.xib */; };
+		04345C0922B1E93B00805801 /* SHMacroCommandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C0722B1E93B00805801 /* SHMacroCommandDetailViewController.m */; };
+		04345C0A22B1E93B00805801 /* SHMacroCommandDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C0822B1E93B00805801 /* SHMacroCommandDetailViewController.xib */; };
+		04345C0F22B1EAF200805801 /* SHMacroCommandDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C0D22B1EAF200805801 /* SHMacroCommandDetailViewCell.m */; };
+		04345C1022B1EAF200805801 /* SHMacroCommandDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C0E22B1EAF200805801 /* SHMacroCommandDetailViewCell.xib */; };
 		04466EC022A6082700C7063B /* SHLightDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */; };
 		04466EC122A6082700C7063B /* SHLightDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */; };
 		04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04484D75207F079C00F6FEB9 /* SHSwitchButton.m */; };
@@ -131,6 +139,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04345BFA22B1E22A00805801 /* SHMacroDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroDetailViewController.h; sourceTree = "<group>"; };
+		04345BFB22B1E22A00805801 /* SHMacroDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroDetailViewController.m; sourceTree = "<group>"; };
+		04345BFC22B1E22A00805801 /* SHMacroDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMacroDetailViewController.xib; sourceTree = "<group>"; };
+		04345C0022B1E52E00805801 /* SHMacroDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroDetailViewCell.h; sourceTree = "<group>"; };
+		04345C0122B1E52E00805801 /* SHMacroDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroDetailViewCell.m; sourceTree = "<group>"; };
+		04345C0222B1E52E00805801 /* SHMacroDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMacroDetailViewCell.xib; sourceTree = "<group>"; };
+		04345C0622B1E93B00805801 /* SHMacroCommandDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroCommandDetailViewController.h; sourceTree = "<group>"; };
+		04345C0722B1E93B00805801 /* SHMacroCommandDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroCommandDetailViewController.m; sourceTree = "<group>"; };
+		04345C0822B1E93B00805801 /* SHMacroCommandDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMacroCommandDetailViewController.xib; sourceTree = "<group>"; };
+		04345C0C22B1EAF200805801 /* SHMacroCommandDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHMacroCommandDetailViewCell.h; sourceTree = "<group>"; };
+		04345C0D22B1EAF200805801 /* SHMacroCommandDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMacroCommandDetailViewCell.m; sourceTree = "<group>"; };
+		04345C0E22B1EAF200805801 /* SHMacroCommandDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHMacroCommandDetailViewCell.xib; sourceTree = "<group>"; };
 		04466EBD22A6082700C7063B /* SHLightDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightDetailViewCell.h; sourceTree = "<group>"; };
 		04466EBE22A6082700C7063B /* SHLightDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightDetailViewCell.m; sourceTree = "<group>"; };
 		04466EBF22A6082700C7063B /* SHLightDetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHLightDetailViewCell.xib; sourceTree = "<group>"; };
@@ -357,6 +377,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04345BF922B1E21900805801 /* MacroDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04345BFA22B1E22A00805801 /* SHMacroDetailViewController.h */,
+				04345BFB22B1E22A00805801 /* SHMacroDetailViewController.m */,
+				04345BFC22B1E22A00805801 /* SHMacroDetailViewController.xib */,
+			);
+			path = MacroDetail;
+			sourceTree = "<group>";
+		};
+		04345BFF22B1E51600805801 /* MacroDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				04345C0022B1E52E00805801 /* SHMacroDetailViewCell.h */,
+				04345C0122B1E52E00805801 /* SHMacroDetailViewCell.m */,
+				04345C0222B1E52E00805801 /* SHMacroDetailViewCell.xib */,
+			);
+			path = MacroDetailCell;
+			sourceTree = "<group>";
+		};
+		04345C0522B1E92800805801 /* MacroCommandDetail */ = {
+			isa = PBXGroup;
+			children = (
+				04345C0622B1E93B00805801 /* SHMacroCommandDetailViewController.h */,
+				04345C0722B1E93B00805801 /* SHMacroCommandDetailViewController.m */,
+				04345C0822B1E93B00805801 /* SHMacroCommandDetailViewController.xib */,
+			);
+			path = MacroCommandDetail;
+			sourceTree = "<group>";
+		};
+		04345C0B22B1EADC00805801 /* MacroCommandDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				04345C0C22B1EAF200805801 /* SHMacroCommandDetailViewCell.h */,
+				04345C0D22B1EAF200805801 /* SHMacroCommandDetailViewCell.m */,
+				04345C0E22B1EAF200805801 /* SHMacroCommandDetailViewCell.xib */,
+			);
+			path = MacroCommandDetailCell;
+			sourceTree = "<group>";
+		};
 		04466EB722A6079500C7063B /* LightDetailCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +880,8 @@
 		04D2494C2079C6CD00EBD1BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04345C0522B1E92800805801 /* MacroCommandDetail */,
+				04345BF922B1E21900805801 /* MacroDetail */,
 				048CE8E622A762610089FB3D /* MacroSetting */,
 				04DDEA8A22A5147400F1BA01 /* Light */,
 				04DDEA8F22A5147400F1BA01 /* LightDetail */,
@@ -841,6 +903,8 @@
 		04D2494E2079C6CD00EBD1BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04345C0B22B1EADC00805801 /* MacroCommandDetailCell */,
+				04345BFF22B1E51600805801 /* MacroDetailCell */,
 				048CE8EF22A76DAF0089FB3D /* MacroSettingCell */,
 				04466EB722A6079500C7063B /* LightDetailCell */,
 				04DDEA9722A516A700F1BA01 /* LightSettingCell */,
@@ -1548,6 +1612,7 @@
 			files = (
 				04D249922079C7C100EBD1BE /* Languages in Resources */,
 				04DC41E922A0D69700BC1BFE /* SHCurtainSettingViewController.xib in Resources */,
+				04345C1022B1EAF200805801 /* SHMacroCommandDetailViewCell.xib in Resources */,
 				04D249DF2079E22300EBD1BE /* SHVIPViewController.xib in Resources */,
 				04D249ED2079E29600EBD1BE /* SHHousekeepingViewController.xib in Resources */,
 				04D249212079C51B00EBD1BE /* LaunchScreen.storyboard in Resources */,
@@ -1559,6 +1624,7 @@
 				0497252920805C2F00B62A9E /* SHMacroCollectionViewCell.xib in Resources */,
 				04DC420822A109A400BC1BFE /* SHCurtainDetailViewCell.xib in Resources */,
 				04DA600C20B27BDD0099EBFE /* SHWordTimeViewCell.xib in Resources */,
+				04345C0422B1E52E00805801 /* SHMacroDetailViewCell.xib in Resources */,
 				048CE8F722A76DE30089FB3D /* SHMacroSettingViewCell.xib in Resources */,
 				04DDEA8922A50F6400F1BA01 /* SHLightViewCell.xib in Resources */,
 				04DAFEC42084AA88009AA5EB /* SHChannelCollectionViewCell.xib in Resources */,
@@ -1566,6 +1632,7 @@
 				04DDEA9C22A516BE00F1BA01 /* SHLightSettingViewCell.xib in Resources */,
 				04D249E42079E24A00EBD1BE /* SHAlarmViewController.xib in Resources */,
 				04D2491E2079C51B00EBD1BE /* Assets.xcassets in Resources */,
+				04345C0A22B1E93B00805801 /* SHMacroCommandDetailViewController.xib in Resources */,
 				048CE8EB22A762720089FB3D /* SHMacroSettingViewController.xib in Resources */,
 				04DDEA9622A5150100F1BA01 /* SHLightSettingViewController.xib in Resources */,
 				04DC420022A0F82F00BC1BFE /* SHCurtainDetailViewController.xib in Resources */,
@@ -1581,6 +1648,7 @@
 				04466EC122A6082700C7063B /* SHLightDetailViewCell.xib in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 				04D8806620887441006C207E /* SHSettingDeviceArgsViewCell.xib in Resources */,
+				04345BFE22B1E22A00805801 /* SHMacroDetailViewController.xib in Resources */,
 				04DC41F522A0DE3B00BC1BFE /* SHCurtainViewCell.xib in Resources */,
 				04DC421522A12C8600BC1BFE /* SHHVACDetailViewController.xib in Resources */,
 				04DDEA9022A5147400F1BA01 /* SHLightViewController.xib in Resources */,
@@ -1688,6 +1756,7 @@
 				04D249A12079C90200EBD1BE /* SHConstraint.m in Sources */,
 				04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */,
 				048CE8EA22A762720089FB3D /* SHMacroSettingViewController.m in Sources */,
+				04345BFD22B1E22A00805801 /* SHMacroDetailViewController.m in Sources */,
 				04D249EC2079E29600EBD1BE /* SHHousekeepingViewController.m in Sources */,
 				04D249A22079C90200EBD1BE /* TYCustomAlertView.m in Sources */,
 				04DAFEB520849788009AA5EB /* SHChannel.m in Sources */,
@@ -1699,6 +1768,7 @@
 				04D249D42079E1F300EBD1BE /* SHTVViewController.m in Sources */,
 				049725342080905400B62A9E /* SHLight.m in Sources */,
 				04484D76207F079C00F6FEB9 /* SHSwitchButton.m in Sources */,
+				04345C0322B1E52E00805801 /* SHMacroDetailViewCell.m in Sources */,
 				04D249FB2079E2D100EBD1BE /* SHSettingRoomInfoViewController.m in Sources */,
 				04DDEA9122A5147400F1BA01 /* SHLightViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
@@ -1716,9 +1786,11 @@
 				04DAFEBD2084A464009AA5EB /* SHChannelTypeViewCell.m in Sources */,
 				04DAFEB220849779009AA5EB /* SHTV.m in Sources */,
 				04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */,
+				04345C0922B1E93B00805801 /* SHMacroCommandDetailViewController.m in Sources */,
 				04D2498B2079C77800EBD1BE /* UIDevice+DeviceType.m in Sources */,
 				04DC41FA22A0DE5500BC1BFE /* SHCurtainSettingViewCell.m in Sources */,
 				04DC41E322A0D68100BC1BFE /* SHCurtainViewController.m in Sources */,
+				04345C0F22B1EAF200805801 /* SHMacroCommandDetailViewCell.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
 				0497252820805C2F00B62A9E /* SHMacroCollectionViewCell.m in Sources */,
 				04D249E32079E24A00EBD1BE /* SHAlarmViewController.m in Sources */,
