@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHChangeMacroImageViewController : SHViewController
 
+
+/**
+ 选择图片的回调
+ */
+@property (copy, nonatomic) void(^selectImageName)(NSString *iconName);
+
 @end
 
 NS_ASSUME_NONNULL_END

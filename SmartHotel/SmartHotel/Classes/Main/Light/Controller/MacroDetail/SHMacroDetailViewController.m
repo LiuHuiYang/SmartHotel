@@ -84,6 +84,17 @@
     SHChangeMacroImageViewController *changeImage =
         [[SHChangeMacroImageViewController alloc] init];
     
+    changeImage.selectImageName = ^(NSString *iconName) {
+        
+        self.macro.macroIconName = iconName;
+        
+        [self.iconButton setImage:[UIImage imageNamed:self.macro.macroIconName]
+                         forState:UIControlStateNormal
+         ];
+        
+        [SHSQLManager.shareSHSQLManager updateMacro:self.macro];
+        
+    };
     
     [self.navigationController pushViewController:changeImage animated:YES];
 }

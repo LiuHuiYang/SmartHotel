@@ -53,6 +53,44 @@
     flowLayout.minimumInteritemSpacing = itemMarign;
 }
 
+// MARK: - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:@"Are you sure you want to change it?" message:nil isCustom:YES];
+    
+    TYAlertAction *cancelAction =
+        [TYAlertAction actionWithTitle:@"cancel"
+                                 style:TYAlertActionStyleCancel
+                               handler:nil
+                                ];
+    
+    [alertView addAction:cancelAction];
+    
+    TYAlertAction *sureAction = [TYAlertAction actionWithTitle:@"sure" style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
+        
+        // 切换图片
+        if (self.selectImageName) {
+            
+            self.selectImageName(self.iconNames[indexPath.item]);
+        }
+        
+        // 退出
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [alertView addAction:sureAction];
+    
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationFade];
+    
+    alertController.backgoundTapDismissEnable = YES;
+    
+    [self presentViewController:alertController
+                       animated:YES
+                     completion:nil
+    ];
+}
+
 // MARK: - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
