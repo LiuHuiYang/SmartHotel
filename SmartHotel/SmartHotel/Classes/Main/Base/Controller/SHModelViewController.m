@@ -144,15 +144,17 @@
     
     // 创建左边的按钮
     UITapGestureRecognizer *tapGestureRecognizerSetting = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
+    
+    UIFont *font = [UIFont boldSystemFontOfSize:25];
 
-    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:[UIFont boldSystemFontOfSize:22] image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
+    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:font image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoButton];
 
     // 创建右边的按钮
     UITapGestureRecognizer *tapGestureRecognizerBack = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gobackhome:)];
 
-    SHNavigationBarButton *homeButton =  [SHNavigationBarButton navigationBarButton:nil font:[UIFont boldSystemFontOfSize:22] image:(([self isKindOfClass:[SHHomeViewController class]]) ? nil : [UIImage imageNamed:@"home"]) isDefault:NO addGestureRecognizer:tapGestureRecognizerBack];
+    SHNavigationBarButton *homeButton =  [SHNavigationBarButton navigationBarButton:nil font:font image:(([self isKindOfClass:[SHHomeViewController class]]) ? nil : [UIImage imageNamed:@"home"]) isDefault:NO addGestureRecognizer:tapGestureRecognizerBack];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
     
