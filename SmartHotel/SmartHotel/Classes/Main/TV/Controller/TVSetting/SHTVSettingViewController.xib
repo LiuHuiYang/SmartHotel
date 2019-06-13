@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHTVSettingViewController">
             <connections>
+                <outlet property="groupListView" destination="IWI-K1-rez" id="VSe-j7-8UB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +20,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjS-eO-FCa">
+                    <rect key="frame" x="20" y="44" width="374" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="qUC-cz-Hod"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IWI-K1-rez">
+                    <rect key="frame" x="20" y="108" width="374" height="705"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="FOJ-4V-Gvi"/>
+                        <outlet property="delegate" destination="-1" id="mr7-tY-XaV"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.80148121390000004" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IWI-K1-rez" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="3I4-Hm-ut6"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="IWI-K1-rez" secondAttribute="trailing" constant="20" id="FdK-Mr-rkA"/>
+                <constraint firstItem="IWI-K1-rez" firstAttribute="top" secondItem="FjS-eO-FCa" secondAttribute="bottom" id="MVj-T0-X4t"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="FjS-eO-FCa" secondAttribute="trailing" constant="20" id="VUH-NJ-E14"/>
+                <constraint firstItem="FjS-eO-FCa" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="eEz-vV-rRT"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="IWI-K1-rez" secondAttribute="bottom" constant="49" id="iUO-8c-I6M"/>
+                <constraint firstItem="FjS-eO-FCa" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="rEn-Dm-4f8"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>

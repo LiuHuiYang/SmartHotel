@@ -277,6 +277,62 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return channels;
 }
 
+
+/**
+ 更新电视频道(只有名称)
+
+ @param channelGroup 电视频道分组
+ @return 更新成功 YES, 失败 NO.
+ */
+- (BOOL)updateTVChannelGroup:(SHChannelGroup *)channelGroup {
+    
+    NSString *sql = [NSString stringWithFormat:@"update TVChannelGroup set groupName = '%@' where tvID = %zd and groupID = %zd;",
+                     channelGroup.groupName,
+                     channelGroup.tvID,
+                     channelGroup.groupID
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 删除电视频道分组
+
+ @param channelGroup 频道分组
+ @return 删除成功 YES, 失败 NO.
+ */
+- (BOOL)deleteTVChannelGroup:(SHChannelGroup *)channelGroup {
+    
+    // 删除对应的频道
+    NSString *sql = [NSString stringWithFormat:@"delete from TVChannel where tvID = %zd and groupID = %zd;",
+                     channelGroup.tvID,
+                     channelGroup.groupID];
+    
+    if ([self executeSql:sql] == false) {
+        
+        return false;
+    }
+    
+    sql = [NSString stringWithFormat:@"delete from TVChannelGroup where tvID = %zd and groupID = %zd;",
+           channelGroup.tvID,
+           channelGroup.groupID];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 增加新的电视频道分组
+
+ @param channelGroup 频道分组
+ @return 增加成功 YES, 失败 NO.
+ */
+- (BOOL)insertTVChannelGroup:(SHChannelGroup *)channelGroup {
+    
+    NSString *sql = [NSString stringWithFormat:@"insert into TVChannelGroup (tvID, groupID, groupName) values(%zd, %zd, '%@');", channelGroup.tvID, channelGroup.groupID, channelGroup.groupName];
+    
+    return [self executeSql:sql];
+}
+
 /**
  获得当前tv的所有频道分组
 
@@ -298,6 +354,32 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     }
     
     return groups;
+}
+
+
+/**
+ 获前当前电视频道分组可用的最大ID
+
+ @param group 频道分组
+ @return 可用ID
+ */
+- (NSUInteger)getAvailableTVChannelGroupID:(SHChannelGroup *)group {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(groupID) from TVChannelGroup where tvID = %zd;", group.tvID];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(groupID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger groupID =
+    [[dict objectForKey:@"max(groupID)"]integerValue] + 1;
+    
+    return groupID;
 }
 
 // MARK: - TV

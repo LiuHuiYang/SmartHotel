@@ -102,7 +102,7 @@
 - (NSUInteger)getAvailableMacroID;
 
 
-// MARK: - TV
+// MARK: - Channel Group
 
 /**
  获当前电视分组下的所有频道
@@ -113,12 +113,46 @@
 - (NSMutableArray *)getTVChannels:(SHChannelGroup *)group;
 
 /**
+ 更新电视频道(只有名称)
+ 
+ @param channelGroup 电视频道分组
+ @return 更新成功 YES, 失败 NO.
+ */
+- (BOOL)updateTVChannelGroup:(SHChannelGroup *)channelGroup;
+
+/**
+ 删除电视频道分组
+ 
+ @param channelGroup 频道分组
+ @return 删除成功 YES, 失败 NO.
+ */
+- (BOOL)deleteTVChannelGroup:(SHChannelGroup *)channelGroup;
+
+/**
+ 增加新的电视频道分组
+ 
+ @param channelGroup 频道分组
+ @return 增加成功 YES, 失败 NO.
+ */
+- (BOOL)insertTVChannelGroup:(SHChannelGroup *)channelGroup;
+
+/**
  获得当前tv的所有频道分组
  
  @param tv tv对象
  @return 频道分组
  */
 - (NSMutableArray *)getTVChannelGroups:(SHTV *)tv;
+
+/**
+ 获前当前电视频道分组可用的最大ID
+ 
+ @param group 频道分组
+ @return 可用ID
+ */
+- (NSUInteger)getAvailableTVChannelGroupID:(SHChannelGroup *)group;
+
+// MARK: - TV
 
 /**
  更新TV设备参数
