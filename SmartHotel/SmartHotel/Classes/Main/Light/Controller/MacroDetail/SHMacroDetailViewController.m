@@ -9,9 +9,10 @@
 #import "SHMacroDetailViewController.h"
 #import "SHMacroDetailViewCell.h"
 #import "SHMacroCommandDetailViewController.h"
+#import "SHChangeMacroImageViewController.h"
 
 @interface SHMacroDetailViewController () <
-    UITableViewDataSource, UITableViewDelegate>
+    UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 
 /**
@@ -25,6 +26,15 @@
  */
 @property (weak, nonatomic) IBOutlet UITableView *listView;
 
+/// 名称
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+
+
+/**
+ 图标按钮
+ */
+@property (weak, nonatomic) IBOutlet UIButton *iconButton;
+
 
 @end
 
@@ -33,6 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    
     
     self.macroCommands = [SHSQLManager.shareSHSQLManager getMacroCommands:self.macro];
     
@@ -52,6 +63,10 @@
                                          isLeft:false
      ];
     
+    self.nameTextField.text = self.macro.macroName;
+    [self.iconButton setImage:[UIImage imageNamed:self.macro.macroIconName]
+                     forState:UIControlStateNormal
+    ];
     
     [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHMacroDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHMacroDetailViewCell class])];
     
@@ -59,6 +74,20 @@
         SHMacroDetailViewCell.rowHeight;
     
 }
+
+
+/**
+ 图标按钮点击
+ */
+- (IBAction)iconButtonClick {
+    
+    SHChangeMacroImageViewController *changeImage =
+        [[SHChangeMacroImageViewController alloc] init];
+    
+    
+    [self.navigationController pushViewController:changeImage animated:YES];
+}
+
 
 // MARK: - 设备的添加与删除
 
@@ -85,7 +114,47 @@
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
-// MARK: - 代理
+// MARK: - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.backgroundColor = UIColor.whiteColor;
+    textField.textColor =
+        [UIColor colorWithWhite:0.3 alpha:1.0];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    textField.borderStyle = UITextBorderStyleNone;
+    textField.backgroundColor = UIColor.clearColor;
+    textField.textColor = UIColor.whiteColor;
+    
+    NSString *newName = textField.text;
+    
+    if (newName.length == 0 ||
+        [newName isEqualToString:self.macro.macroName]) {
+        
+        [SVProgressHUD showErrorWithStatus:@"invalid name"];
+        
+        return;
+    }
+    
+    self.macro.macroName = newName;
+    
+    [SHSQLManager.shareSHSQLManager updateMacro:self.macro];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self textFieldDidEndEditing:textField];
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+// MARK: - UITableView 代理
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
