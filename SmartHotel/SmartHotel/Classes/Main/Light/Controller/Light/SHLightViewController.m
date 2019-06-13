@@ -326,10 +326,10 @@
     
     self.senceLabel.text = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"LIGHTS" withSubTitle:@"Scenes"];
     
-    UIColor *backgroundColor =
-        [UIColor colorWithPatternImage:
-            [UIImage imageNamed:@"Share_SmallBG"]
-        ];
+//    UIColor *backgroundColor =
+//        [UIColor colorWithPatternImage:
+//            [UIImage imageNamed:@"Share_SmallBG"]
+//        ];
  
 //    self.lightListView.backgroundColor = backgroundColor;
 //    self.senceListView.backgroundColor = backgroundColor;

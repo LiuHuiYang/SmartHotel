@@ -42,6 +42,9 @@
                                 <outlet property="dataSource" destination="-1" id="3i8-GY-3kb"/>
                             </connections>
                         </collectionView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Share_SmallBG" translatesAutoresizingMaskIntoConstraints="NO" id="r6U-fM-nTf">
+                            <rect key="frame" x="65" y="400" width="740" height="84"/>
+                        </imageView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jwG-Qr-dxa">
                             <rect key="frame" x="65" y="400" width="740" height="84"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,12 +78,16 @@
                         <constraint firstItem="19i-RJ-jjm" firstAttribute="centerX" secondItem="nmG-Ba-L3L" secondAttribute="centerX" id="Cxc-wx-Fdg"/>
                         <constraint firstItem="lUZ-hc-hbO" firstAttribute="centerX" secondItem="jwG-Qr-dxa" secondAttribute="centerX" id="G8h-vg-XW0"/>
                         <constraint firstItem="jwG-Qr-dxa" firstAttribute="width" secondItem="19i-RJ-jjm" secondAttribute="width" id="KAU-19-Mc1"/>
+                        <constraint firstItem="r6U-fM-nTf" firstAttribute="width" secondItem="jwG-Qr-dxa" secondAttribute="width" id="Ke3-VQ-1GX"/>
                         <constraint firstAttribute="bottom" secondItem="jwG-Qr-dxa" secondAttribute="bottom" constant="15" id="T0m-48-gC3"/>
                         <constraint firstItem="jwG-Qr-dxa" firstAttribute="top" secondItem="19i-RJ-jjm" secondAttribute="bottom" constant="64" id="TWk-yY-O6K"/>
+                        <constraint firstItem="r6U-fM-nTf" firstAttribute="centerX" secondItem="jwG-Qr-dxa" secondAttribute="centerX" id="Vgp-Ab-m1a"/>
                         <constraint firstItem="19i-RJ-jjm" firstAttribute="top" secondItem="nmG-Ba-L3L" secondAttribute="top" id="XIO-Ky-3n6"/>
                         <constraint firstItem="19i-RJ-jjm" firstAttribute="width" secondItem="nmG-Ba-L3L" secondAttribute="width" multiplier="0.85" id="Zdy-9U-hUX"/>
+                        <constraint firstItem="r6U-fM-nTf" firstAttribute="height" secondItem="jwG-Qr-dxa" secondAttribute="height" id="jRh-n6-jYx"/>
                         <constraint firstItem="jwG-Qr-dxa" firstAttribute="centerX" secondItem="19i-RJ-jjm" secondAttribute="centerX" id="p0L-qV-rnp"/>
                         <constraint firstItem="lUZ-hc-hbO" firstAttribute="width" secondItem="jwG-Qr-dxa" secondAttribute="width" id="pfL-WW-3re"/>
+                        <constraint firstItem="r6U-fM-nTf" firstAttribute="centerY" secondItem="jwG-Qr-dxa" secondAttribute="centerY" id="rUR-oC-bNW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -101,5 +108,6 @@
     </objects>
     <resources>
         <image name="Share_BG_iPad" width="1024" height="768"/>
+        <image name="Share_SmallBG" width="783" height="402"/>
     </resources>
 </document>
