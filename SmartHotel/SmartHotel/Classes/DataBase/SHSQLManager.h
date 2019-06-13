@@ -24,6 +24,30 @@
 // MARK: - Macro
 
 /**
+ 更新MacroCommand
+ 
+ @param command 宏命令
+ @return 更新成功YES, 失败 NO.
+ */
+- (BOOL)updateMacroCommand:(SHMacroCommand *)command;
+
+/**
+ 删除MacroCommand
+ 
+ @param command 宏命令
+ @return 删除成功YES, 失败NO.
+ */
+- (BOOL)deleteMacroCommand:(SHMacroCommand *)command;
+
+/**
+ 增加新的MacroCommand
+ 
+ @param command 宏命令
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertMacroCommand:(SHMacroCommand *)command ;
+
+/**
  获得指定Macro的命令集合
  
  @param macro 宏
@@ -32,12 +56,28 @@
 - (NSMutableArray *)getMacroCommands:(SHMacro *)macro;
 
 /**
+ 获取可用的macroCommandID
+ 
+ @return macroCommandID
+ */
+- (NSUInteger)getAvailableMacroCommandID:(NSUInteger)macroID;
+
+
+/**
  更新 Macro
  
  @param macro macro对象
  @return 更新成功 YES, 失败 NO.
  */
 - (BOOL)updateMacro:(SHMacro *)macro;
+
+/**
+ 删除宏命令
+ 
+ @param macro 删除宏
+ @return 成功删除 YES, 失败 NO.
+ */
+- (BOOL)deleteMacro:(SHMacro *)macro;
 
 /**
  增加新的宏

@@ -25,6 +25,81 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 
 
 /**
+ 更新MacroCommand
+
+ @param command 宏命令
+ @return 更新成功YES, 失败 NO.
+ */
+- (BOOL)updateMacroCommand:(SHMacroCommand *)command {
+    
+    NSString *sql = [NSString stringWithFormat:@"update MacroCommand set remark = '%@', commandType = %zd, subnetID = %zd, deviceID = %zd, parameter1 = %zd, parameter2 = %zd, parameter3 = %zd, parameter4 = %zd, parameter5 = %zd, parameter6 = %zd, parameter7 = %zd, parameter8 = %zd, delayTime = %zd where macroID = %zd and macroCommandID = %zd;",
+                     command.remark,
+                     command.commandType,
+                     command.subnetID,
+                     command.deviceID,
+                     command.parameter1,
+                     command.parameter2,
+                     command.parameter3,
+                     command.parameter4,
+                     command.parameter5,
+                     command.parameter6,
+                     command.parameter7,
+                     command.parameter8,
+                     command.delayTime,
+                     command.macroID,
+                     command.macroCommandID
+                    ];
+    
+    return [self executeSql:sql];
+}
+
+
+/**
+ 删除MacroCommand
+
+ @param command 宏命令
+ @return 删除成功YES, 失败NO.
+ */
+- (BOOL)deleteMacroCommand:(SHMacroCommand *)command {
+    
+    NSString *sql = [NSString stringWithFormat:@"delete from MacroCommand Where macroCommandID = %zd and macroID = %zd;",
+                     command.macroCommandID,
+                     command.macroID
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 增加新的MacroCommand
+
+ @param command 宏命令
+ @return 增加成功YES, 失败 NO.
+ */
+- (BOOL)insertMacroCommand:(SHMacroCommand *)command {
+    
+    NSString *sql = [NSString stringWithFormat:@"insert into MacroCommand(macroCommandID, macroID, remark, commandType, subnetID, deviceID, parameter1, parameter2, parameter3, parameter4, parameter5, parameter6, parameter7, parameter8, delayTime) values(%zd, %zd, '%@', %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd);",
+                     command.macroCommandID,
+                     command.macroID,
+                     command.remark,
+                     command.commandType,
+                     command.subnetID,
+                     command.deviceID,
+                     command.parameter1,
+                     command.parameter2,
+                     command.parameter3,
+                     command.parameter4,
+                     command.parameter5,
+                     command.parameter6,
+                     command.parameter7,
+                     command.parameter8,
+                     command.delayTime
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
  获得指定Macro的命令集合
 
  @param macro 宏
@@ -45,6 +120,31 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     }
     
     return commands;
+}
+
+ 
+/**
+ 获取可用的macroCommandID
+ 
+ @return macroCommandID
+ */
+- (NSUInteger)getAvailableMacroCommandID:(NSUInteger)macroID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(macroCommandID) from MacroCommand where macroID = %zd;", macroID];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(macroCommandID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger macroCommandID =
+    [[dict objectForKey:@"max(macroCommandID)"]integerValue] + 1;
+    
+    return macroCommandID;
 }
 
 
@@ -75,13 +175,17 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 - (BOOL)deleteMacro:(SHMacro *)macro {
     
     // 删除 宏命令
+    NSString *sql = [NSString stringWithFormat:@"delete from MacroCommand Where and macroID = %zd;", macro.macroID];
     
+    if ([self executeSql:sql] == false) {
+        return false;
+    }
     
     // 删除 宏
+    sql = [NSString stringWithFormat:@"delete from Macro Where and macroID = %zd;", macro.macroID];
     
-    
-    // 返回结果
-    return false;
+  
+    return [self executeSql:sql];
 }
 
 
