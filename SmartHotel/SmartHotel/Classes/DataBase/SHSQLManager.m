@@ -252,6 +252,54 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return macroID;
 }
 
+// MARK: - TV Channel Group
+
+
+/**
+ 获当前电视分组下的所有频道
+
+ @param group 电视分组
+ @return 电视频道数组
+ */
+- (NSMutableArray *)getTVChannels:(SHChannelGroup *)group {
+    
+    NSString *sql = [NSString stringWithFormat:@"select tvID, channelID, groupID, channelName, iconName, subnetID, deviceID, channelIRCode, delayTime from TVChannel where tvID = %zd and groupID = %zd order by channelID;", group.tvID, group.groupID];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *channels = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [channels addObject:[SHChannel channelWithDictionary:dict]];
+    }
+    
+    return channels;
+}
+
+/**
+ 获得当前tv的所有频道分组
+
+ @param tv tv对象
+ @return 频道分组
+ */
+- (NSMutableArray *)getTVChannelGroups:(SHTV *)tv {
+    
+    NSString *sql = [NSString stringWithFormat:@"select tvID, groupID, groupName from TVChannelGroup where tvID = %zd order by groupID;", tv.tvID];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *groups =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [groups addObject: [SHChannelGroup channelGroupWithDictionary:dict]];
+    }
+    
+    return groups;
+}
+
 // MARK: - TV
 
 
@@ -799,42 +847,6 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return [self executeSql:updateSQL];
 }
 
-/// 获得指定电视的频道类型
-- (NSMutableArray *)getAllChannelTypes:(SHTV *)tv {
-    
-    // 1.先找出所有的种类
-    NSString *typeSQL = [NSString stringWithFormat:@"select distinct SHChannelType from SHTVChannels where SHTVID = %zd;", tv.tvID];
-    
-    NSArray *typeArray = [self selectProprty:typeSQL];
-    
-    NSMutableArray *types = [NSMutableArray arrayWithCapacity:typeArray.count];
-    
-    for (NSDictionary *typeDict in typeArray) {
-        
-        SHChannelType *channelType = [[SHChannelType alloc] init];
-        channelType.typeName = [typeDict objectForKey:@"SHChannelType"];
-        
-        // 查询对应的所有频道
-//        printLog(@"当前字典: %@", dict);
-        NSString *channelSQL = [NSString stringWithFormat:@"select SHTVID, SHChannelType, SHChannelID, ChannelName, ChannelIRNumber, ChannelIconID, SubnetID, DeviceID, DelayTimeBetweenTowIRMillisecend from SHTVChannels where SHChannelType = '%@' and SHTVID = %zd order by SHChannelID;", channelType.typeName, tv.tvID];
-        
-        NSArray *channelArray = [self selectProprty:channelSQL];
-        
-        NSMutableArray *channels = [NSMutableArray arrayWithCapacity:channelArray.count];
-        
-        for (NSDictionary *channelDict in channelArray) {
-            
-//            printLog(@"==== %@", channelDict);
-            [channels addObject: [SHChannel channelWithDictionary:channelDict]];
-        }
-        
-        channelType.channels = channels;
-        
-        [types addObject:channelType];
-    }
-    
-    return types;
-}
   
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room {

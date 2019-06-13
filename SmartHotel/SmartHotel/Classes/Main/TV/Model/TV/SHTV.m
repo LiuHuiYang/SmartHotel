@@ -18,6 +18,9 @@
     
     [tv setValuesForKeysWithDictionary:dictionary];
     
+    tv.channelGroups =
+        [SHSQLManager.shareSHSQLManager getTVChannelGroups:tv];
+    
     return tv;
 }
 

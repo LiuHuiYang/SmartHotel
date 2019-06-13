@@ -20,24 +20,5 @@
     return channel;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    
-    if ([key isEqualToString:@"SHTVID"]) {
-        
-        self.tvID = [value integerValue];
-        
-    } else if ([key isEqualToString:@"SHChannelType"]) {
-        
-        self.channelType = value;
-        
-    } else if ([key isEqualToString:@"SHChannelID"]) {
-        
-        self.schannelID = [value integerValue];
-        
-    } else {
-        
-        [super setValue:value forKey:key];
-    }
-}
-
+  
 @end

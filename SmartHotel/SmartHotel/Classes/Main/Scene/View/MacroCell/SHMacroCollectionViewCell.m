@@ -156,7 +156,7 @@
     
     self.iconView.image = [UIImage imageNamed: macro.macroIconName];
     
-//    self.iconView.image = [UIImage imageNamed: @"TV_ChannelDefault"];
+//    self.iconView.image = [UIImage imageNamed: @"channel_icon"];
     
     self.nameLabel.text = macro.macroName;
 }

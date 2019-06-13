@@ -16,7 +16,7 @@
 #import "SHLight.h"
 #import "SHTV.h"
 #import "SHChannel.h"
-#import "SHChannelType.h"
+#import "SHChannelGroup.h"
 #import "SHHVAC.h"
 
 @interface SHSQLManager : NSObject
@@ -103,6 +103,22 @@
 
 
 // MARK: - TV
+
+/**
+ 获当前电视分组下的所有频道
+ 
+ @param group 电视分组
+ @return 电视频道数组
+ */
+- (NSMutableArray *)getTVChannels:(SHChannelGroup *)group;
+
+/**
+ 获得当前tv的所有频道分组
+ 
+ @param tv tv对象
+ @return 频道分组
+ */
+- (NSMutableArray *)getTVChannelGroups:(SHTV *)tv;
 
 /**
  更新TV设备参数
@@ -271,17 +287,13 @@
 /// 更新房间信息
 - (BOOL)updateRoomInfo:(SHRoomBaseInfomation *)roomInfo;
 
-/// 获得指定电视的频道类型
-- (NSMutableArray *)getAllChannelTypes:(SHTV *)tv;
- 
 
 /// 获得该房间的所有设备
 - (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room;
 
 /// 获得所有的房间信息
 - (NSMutableArray *)getRoomBaseInformation;
-
-
+ 
 
 // MARK: - 数据库本身操作相关的API
 

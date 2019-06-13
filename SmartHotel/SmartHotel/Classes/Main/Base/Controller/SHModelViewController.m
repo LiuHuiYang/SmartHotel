@@ -25,6 +25,9 @@
 #import "SHLightSettingViewController.h"
 #import "SHMacroSettingViewController.h"
 
+#import "SHTVViewController.h"
+#import "SHTVSettingViewController.h"
+
 @interface SHModelViewController ()
 
 @end
@@ -112,7 +115,17 @@
          pushViewController:curtainSetting animated:true];
     }
     
-   
+    // 电视
+    else if ([self isKindOfClass:[SHTVViewController class]]) {
+        
+        
+        SHTVSettingViewController *tvSetting =
+        [[SHTVSettingViewController alloc] init];
+        
+        [self.navigationController
+         pushViewController:tvSetting animated:true];
+    }
+    
     // 首页
     else if ([self isKindOfClass:[SHHomeViewController class]]) {
     

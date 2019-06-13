@@ -80,6 +80,9 @@
 /// 数这键0
 @property (assign, nonatomic) NSUInteger number0;
 
+/// 频道分组
+@property (nonatomic, strong) NSMutableArray *channelGroups;
+
 /// 字典转换为模型
 + (instancetype)tvWithDictionary:(NSDictionary *)dictionary;
 

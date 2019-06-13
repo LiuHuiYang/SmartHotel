@@ -36,8 +36,9 @@
 #import "SHLight.h"
 #import "SHHVAC.h"
 #import "SHTV.h"
+#import "SHChannelGroup.h"
 #import "SHChannel.h"
-#import "SHChannelType.h"
+ 
 #import "SHAlarm.h"
 #import "SHSwitchButton.h"
 #import "SHSoundTools.h"

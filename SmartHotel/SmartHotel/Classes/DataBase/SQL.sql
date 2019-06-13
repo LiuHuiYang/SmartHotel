@@ -1,3 +1,27 @@
+-- 电视频道
+CREATE TABLE IF NOT EXISTS TVChannel (
+
+    tvID INTEGER NOT NULL DEFAULT 0,
+    channelID INTEGER NOT NULL DEFAULT 0,
+    groupID INTEGER NOT NULL DEFAULT 0,
+
+    channelName TEXT NOT NULL DEFAULT 'channel',
+    iconName TEXT NOT NULL DEFAULT 'channel_icon',
+
+    subnetID INTEGER NOT NULL DEFAULT 0,
+    deviceID INTEGER NOT NULL DEFAULT 0,
+    channelIRCode INTEGER NOT NULL DEFAULT 0,
+
+    delayTime INTEGER NOT NULL DEFAULT 100
+);
+
+-- 电视频道分组
+CREATE TABLE IF NOT EXISTS TVChannelGroup (
+
+    tvID INTEGER NOT NULL DEFAULT 0,
+    groupID INTEGER NOT NULL DEFAULT 0,
+    groupName TEXT NOT NULL DEFAULT 'channel group'
+);
 
 -- 电视
 

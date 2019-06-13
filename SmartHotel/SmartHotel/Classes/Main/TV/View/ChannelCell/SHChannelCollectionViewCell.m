@@ -23,7 +23,7 @@
 - (IBAction)channelButtonClick {
     
     // 拆开逐位发送
-    NSString *channelIRNumberString = [NSString stringWithFormat:@"%@", @(self.channel.channelIRNumber)];
+    NSString *channelIRNumberString = [NSString stringWithFormat:@"%@", @(self.channel.channelIRCode)];
     
     for (NSUInteger i = 0; i < channelIRNumberString.length; i++) {
         
@@ -33,7 +33,7 @@
         
         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE01C targetSubnetID:self.channel.subnetID targetDeviceID:self.channel.deviceID additionalContentData:[NSMutableData dataWithBytes:controlData length:sizeof(controlData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
         
-        [NSThread sleepForTimeInterval:self.channel.delayTimeBetweenTowIRMillisecend/1000.0];
+        [NSThread sleepForTimeInterval:self.channel.delayTime/1000.0];
     }
 }
 
@@ -44,14 +44,14 @@
      
     [self.channelButton setTitle:channel.channelName forState:UIControlStateNormal];
     
-    [self.channelButton setImage:[UIImage imageNamed:@"TV_ChannelDefault"] forState:UIControlStateNormal];
+    [self.channelButton setImage:[UIImage imageNamed:@"channel_icon"] forState:UIControlStateNormal];
     
-    UIImage *image = [UIImage getImaageFromDoucment:channel.channelType imageName:[NSString stringWithFormat:@"%@", @(channel.channelIconID)]];
-    
-    if (image) {
-        
-        [self.channelButton setImage:image forState:UIControlStateNormal];
-    }
+//    UIImage *image = [UIImage getImaageFromDoucment:channel.channelType imageName:[NSString stringWithFormat:@"%@", @(channel.channelIconID)]];
+//
+//    if (image) {
+//
+//        [self.channelButton setImage:image forState:UIControlStateNormal];
+//    }
 }
 
 - (void)awakeFromNib {
