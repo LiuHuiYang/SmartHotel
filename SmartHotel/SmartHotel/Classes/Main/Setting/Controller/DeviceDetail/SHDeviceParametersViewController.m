@@ -41,7 +41,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self getDeiceParameters];
+    [self getDeviceParameters];
     [self.listView reloadData];
 }
 
@@ -59,7 +59,7 @@
 
 // MARK: - 获取具体的设备参数
 
-- (void)getDeiceParameters {
+- (void)getDeviceParameters {
     
     if (self.light != nil) {
         

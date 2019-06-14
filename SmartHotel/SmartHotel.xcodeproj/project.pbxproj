@@ -390,9 +390,9 @@
 		041ACC7722B32A9C005C3731 /* ChannelDetail */ = {
 			isa = PBXGroup;
 			children = (
+				041ACC7A22B32A9C005C3731 /* SHTVChannelDetailViewController.h */,
 				041ACC7822B32A9C005C3731 /* SHTVChannelDetailViewController.m */,
 				041ACC7922B32A9C005C3731 /* SHTVChannelDetailViewController.xib */,
-				041ACC7A22B32A9C005C3731 /* SHTVChannelDetailViewController.h */,
 			);
 			path = ChannelDetail;
 			sourceTree = "<group>";

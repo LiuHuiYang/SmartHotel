@@ -7,8 +7,25 @@
 //
 
 #import "SHTVChannelDetailViewController.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
 @interface SHTVChannelDetailViewController () <UITextFieldDelegate>
+
+/**
+ 设备参数名称
+ */
+@property (strong, nonatomic) NSArray *argsNames;
+
+
+/**
+ 值输入框
+ */
+@property (weak, nonatomic) UITextField *valueTextField;
+
+/**
+ 设备参数值
+ */
+@property (strong, nonatomic) NSArray *argsValues;
 
 /// 名称
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -27,17 +44,95 @@
 
 @implementation SHTVChannelDetailViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self getChannelNameAndValues];
+    
+    [self.listView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"TV Channel Detail";
+    self.navigationItem.title =
+        @"TV Channel Detail";
     
     [self.iconButton setImage:[UIImage imageNamed:self.channel.iconName]
                      forState:UIControlStateNormal
     ];
     
     self.nameTextField.text = self.channel.channelName;
+    
+    self.listView.rowHeight =
+    [SHDeviceParametersDetailViewCell rowHeight];
+    
+    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])];
 }
+
+// MARK: - 设置值的获取与更新
+
+- (void)getChannelNameAndValues {
+    
+    self.argsNames = @[
+                       @"subnetID",
+                       @"deviceID",
+                       @"channel IRCode",
+                       @"delayTime"
+                       ];
+    
+    
+    self.argsValues = @[
+                        
+                        [NSString stringWithFormat:@"%@", @(self.channel.subnetID)],
+    
+        [NSString stringWithFormat:@"%@", @(self.channel.deviceID)],
+    
+        [NSString stringWithFormat:@"%@", @(self.channel.channelIRCode)],
+    
+        [NSString stringWithFormat:@"%@", @(self.channel.delayTime)],
+                        ];
+}
+
+/**
+ 更新频道的值
+ 
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateChannel:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+        case 0:
+            self.channel.subnetID = value.integerValue;
+            break;
+            
+        case 1:
+            self.channel.deviceID = value.integerValue;
+            break;
+            
+        case 2:
+            self.channel.channelIRCode = value.integerValue;
+            break;
+            
+        case 3:
+            self.channel.delayTime = value.integerValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self getChannelNameAndValues];
+    
+    [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [SHSQLManager.shareSHSQLManager updateTVChannel:self.channel];
+}
+
+
+
+// MARK: - 图片处理
 
 
 /**
@@ -118,6 +213,7 @@
     
     self.channel.channelName = textField.text;
     
+    [SHSQLManager.shareSHSQLManager updateTVChannel:self.channel];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -152,6 +248,76 @@
     //    [UIImage writeImageToDocument:self.currentChannel.channelType imageName:[NSString stringWithFormat:@"%@", @(self.currentChannel.channelIconID)] image:sourceImage];
     
     //    [self.channelListView reloadData];
+}
+
+// MARK: - 代理
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *argName = self.argsNames[indexPath.row];
+    
+    TYCustomAlertView *alertView =
+    [TYCustomAlertView alertViewWithTitle:argName message:nil isCustom:YES];
+    
+    [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        
+        [textField becomeFirstResponder];
+        textField.clearButtonMode =
+        UITextFieldViewModeWhileEditing;
+        textField.textAlignment = NSTextAlignmentCenter;
+        textField.text = self.argsValues[indexPath.row];
+        
+        self.valueTextField = textField;
+    }];
+    
+    TYAlertAction *cancelAction =
+    [TYAlertAction actionWithTitle:@"cancel"
+                             style:TYAlertActionStyleCancel
+                           handler:nil
+     ];
+    
+    TYAlertAction *saveAction = [TYAlertAction actionWithTitle:@"save" style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
+        
+        if (self.valueTextField.text.length == 0) {
+            
+            [SVProgressHUD showInfoWithStatus:
+             @"The value should not be empty!"
+             ];
+            
+            return ;
+        }
+        
+        
+        [self updateChannel:self.valueTextField.text
+                 indexPath:indexPath
+         ];
+    }];
+    
+    [alertView addAction:cancelAction];
+    [alertView addAction:saveAction];
+    
+    TYAlertController *alertController =
+    [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+// MARK: - 数据源
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.argsNames.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SHDeviceParametersDetailViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
+     ];
+    
+    cell.argsName = self.argsNames[indexPath.row];
+    cell.argValueText = self.argsValues[indexPath.row];
+    
+    return cell;
 }
 
 @end
