@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHTVChannelDetailViewController">
             <connections>
                 <outlet property="iconButton" destination="bBe-8U-rpL" id="osV-xS-0r7"/>
+                <outlet property="listView" destination="8fA-dB-Afz" id="qG4-oR-pFT"/>
                 <outlet property="nameTextField" destination="98Q-s7-m9K" id="han-50-uqG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -56,14 +57,23 @@
                         <constraint firstItem="98Q-s7-m9K" firstAttribute="centerY" secondItem="P15-Zx-7Zz" secondAttribute="centerY" id="r4q-hl-JS8"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8fA-dB-Afz">
+                    <rect key="frame" x="20" y="130" width="374" height="683"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.80148121390000004" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="P15-Zx-7Zz" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="AyT-Cq-F7V"/>
+                <constraint firstItem="8fA-dB-Afz" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="MrE-jP-PQu"/>
                 <constraint firstItem="P15-Zx-7Zz" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="ND3-Vi-4Qo"/>
+                <constraint firstItem="8fA-dB-Afz" firstAttribute="top" secondItem="P15-Zx-7Zz" secondAttribute="bottom" id="O3O-zo-afB"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="8fA-dB-Afz" secondAttribute="bottom" constant="49" id="VUx-rO-gsf"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="P15-Zx-7Zz" secondAttribute="trailing" constant="20" id="eri-N5-oym"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="8fA-dB-Afz" secondAttribute="trailing" constant="20" id="tOe-E1-a6Q"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="49" y="-16"/>
         </view>
     </objects>
 </document>

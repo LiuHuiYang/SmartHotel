@@ -105,12 +105,29 @@
 // MARK: - Channel Group
 
 /**
+ 更新电视频道
+ 
+ @param channel 电视频道
+ @return 更新成功 YES, 失败 NO.
+ */
+- (BOOL)updateTVChannel:(SHChannel *)channel;
+
+
+/**
  删除电视频道
  
  @param channel 电视频道
  @return 删除成功YES, 失败NO
  */
 - (BOOL)deleteTVChannel:(SHChannel *)channel;
+
+/**
+ 增加新的电视频道
+ 
+ @param channel 频道
+ @return 增加成功 YES. 失败 NO.
+ */
+- (BOOL)insertTVChannel:(SHChannel *)channel;
 
 /**
  获当前电视分组下的所有频道

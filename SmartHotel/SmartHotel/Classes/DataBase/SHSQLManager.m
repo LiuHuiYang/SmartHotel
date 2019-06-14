@@ -271,6 +271,55 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return [self executeSql:sql];
 }
 
+
+/**
+ 更新电视频道
+
+ @param channel 电视频道
+ @return 更新成功 YES, 失败 NO.
+ */
+- (BOOL)updateTVChannel:(SHChannel *)channel {
+    
+    NSString *sql = [NSString stringWithFormat:@"update TVChannel set channelName = '%@', iconName = '%@', subnetID = %zd, deviceID = %zd, channelIRCode = %zd, delayTime = %zd where tvID = %zd and groupID = %zd and channelID = %zd;",
+                     channel.channelName,
+                     channel.iconName,
+                     channel.subnetID,
+                     channel.deviceID,
+                     channel.channelIRCode,
+                     channel.delayTime,
+                     channel.tvID,
+                     channel.groupID,
+                     channel.channelID
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+
+/**
+ 增加新的电视频道
+
+ @param channel 频道
+ @return 增加成功 YES. 失败 NO.
+ */
+- (BOOL)insertTVChannel:(SHChannel *)channel {
+    
+    NSString *sql = [NSString stringWithFormat:@"insert into TVChannel (tvID, channelID, groupID, channelName, iconName, subnetID, deviceID, channelIRCode, delayTime) values(%zd, %zd, %zd, '%@', '%@', %zd, %zd, %zd, %zd);",
+                     channel.tvID,
+                     channel.channelID,
+                     channel.groupID,
+                     channel.channelName,
+                     channel.iconName,
+                     channel.subnetID,
+                     channel.deviceID,
+                     channel.channelIRCode,
+                     channel.delayTime
+                    ];
+    
+    
+    return [self executeSql:sql];
+}
+
 /**
  获当前电视分组下的所有频道
 

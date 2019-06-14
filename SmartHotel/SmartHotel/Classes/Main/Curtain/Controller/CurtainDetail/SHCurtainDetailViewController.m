@@ -7,7 +7,7 @@
 //
 
 #import "SHCurtainDetailViewController.h"
-#import "SHCurtainDetailViewCell.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
 
 @interface SHCurtainDetailViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -49,9 +49,9 @@
     self.navigationItem.title = @"Curtain Detail";
     
     self.listView.rowHeight =
-        [SHCurtainDetailViewCell rowHeight];
+        [SHDeviceParametersDetailViewCell rowHeight];
     
-    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHCurtainDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHCurtainDetailViewCell class])];
+    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])];
 }
 
 // MARK: - 参数值的获取与更新
@@ -232,8 +232,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHCurtainDetailViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHCurtainDetailViewCell class]) forIndexPath:indexPath
+    SHDeviceParametersDetailViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
         ];
     
     cell.argsName = self.argsNames[indexPath.row];

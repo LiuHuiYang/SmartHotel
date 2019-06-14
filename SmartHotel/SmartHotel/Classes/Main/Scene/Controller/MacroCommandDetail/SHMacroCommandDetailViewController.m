@@ -7,7 +7,7 @@
 //
 
 #import "SHMacroCommandDetailViewController.h"
-#import "SHMacroCommandDetailViewCell.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
 @interface SHMacroCommandDetailViewController ()
 
@@ -49,9 +49,9 @@
     self.navigationItem.title = @"Scene Command Detail";
     
     self.listView.rowHeight =
-    [SHMacroCommandDetailViewCell rowHeight];
+    [SHDeviceParametersDetailViewCell rowHeight];
     
-    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHMacroCommandDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHMacroCommandDetailViewCell class])];
+    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])];
 }
 
 // MARK: - 参数值的获取与更新
@@ -249,8 +249,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHMacroCommandDetailViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHMacroCommandDetailViewCell class]) forIndexPath:indexPath
+    SHDeviceParametersDetailViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
      ];
     
     cell.argsName = self.argsNames[indexPath.row];

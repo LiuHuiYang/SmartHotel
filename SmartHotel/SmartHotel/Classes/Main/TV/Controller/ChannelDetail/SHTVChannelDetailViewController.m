@@ -19,6 +19,8 @@
  */
 @property (weak, nonatomic) IBOutlet UIButton *iconButton;
 
+/// 列表 
+@property (weak, nonatomic) IBOutlet UITableView *listView;
 
 
 @end

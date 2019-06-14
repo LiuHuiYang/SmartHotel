@@ -1,14 +1,14 @@
 //
-//  SHLightDetailViewCell.m
+//  SHDeviceParametersDetailViewCell.m
 //  SmartHotel
 //
 //  Created by Apple on 2019/6/4.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
-#import "SHLightDetailViewCell.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
-@interface SHLightDetailViewCell ()
+@interface SHDeviceParametersDetailViewCell ()
 
 
 /**
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation SHLightDetailViewCell
+@implementation SHDeviceParametersDetailViewCell
 
 - (void)setArgsName:(NSString *)argsName {
     

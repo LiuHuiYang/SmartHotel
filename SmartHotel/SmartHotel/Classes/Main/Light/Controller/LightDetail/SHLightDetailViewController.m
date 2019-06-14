@@ -7,7 +7,7 @@
 //
 
 #import "SHLightDetailViewController.h"
-#import "SHLightDetailViewCell.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
 @interface SHLightDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -51,9 +51,9 @@
     self.navigationItem.title = @"Light Detail";
     
     self.listView.rowHeight =
-    [SHLightDetailViewCell rowHeight];
+    [SHDeviceParametersDetailViewCell rowHeight];
     
-    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHLightDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHLightDetailViewCell class])];
+    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])];
     
 }
 
@@ -186,8 +186,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHLightDetailViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHLightDetailViewCell class]) forIndexPath:indexPath
+    SHDeviceParametersDetailViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
      ];
     
     cell.argsName = self.argsNames[indexPath.row];

@@ -7,7 +7,7 @@
 //
 
 #import "SHHVACDetailViewController.h"
-#import "SHHVACDetailViewCell.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
 @interface SHHVACDetailViewController () <UITableViewDataSource, UITableViewDelegate>
     
@@ -50,9 +50,9 @@
     self.navigationItem.title = @"AirConditioner Detail";
     
     self.listView.rowHeight =
-    [SHHVACDetailViewCell rowHeight];
+    [SHDeviceParametersDetailViewCell rowHeight];
     
-    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHHVACDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHHVACDetailViewCell class])
+    [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])
      ];
 }
     
@@ -194,8 +194,8 @@
     
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHHVACDetailViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHHVACDetailViewCell class]) forIndexPath:indexPath
+    SHDeviceParametersDetailViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
      ];
     
     cell.argsName = self.argsNames[indexPath.row];

@@ -27,6 +27,15 @@ UITextFieldDelegate>
 
 @implementation SHTVChannelSettingViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    self.channelGroup.channels = [SHSQLManager.shareSHSQLManager getTVChannels:self.channelGroup];
+    
+    [self.listView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -60,7 +69,7 @@ UITextFieldDelegate>
     channel.iconName = @"channel_icon";
     channel.channelID = [SHSQLManager.shareSHSQLManager getAvailableTVChannelID:channel];
     
-//    [SHSQLManager.shareSHSQLManager insertTVChannel:channel];
+    [SHSQLManager.shareSHSQLManager insertTVChannel:channel];
     
     SHTVChannelDetailViewController *detailController =
         [[SHTVChannelDetailViewController alloc] init];

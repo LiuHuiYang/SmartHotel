@@ -1,5 +1,5 @@
 //
-//  SHLightDetailViewCell.h
+//  SHDeviceParametersDetailViewCell.h
 //  SmartHotel
 //
 //  Created by Apple on 2019/6/4.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHLightDetailViewCell : UITableViewCell
+@interface SHDeviceParametersDetailViewCell : UITableViewCell
 
 /**
  参数名称
