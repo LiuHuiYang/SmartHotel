@@ -42,12 +42,13 @@
     
     // HVAC
     if ([self isKindOfClass: [SHHVACViewController class]]) {
+        
+        // FIXME: - 由于只支持一个空调, 临时这样实现.
+        // 若以后有变空, 参照窗帘和light实现.
     
         SHDeviceParametersViewController *acDetailController =
         [[SHDeviceParametersViewController alloc] init];
         
-        // FIXME: - 由于只支持一个空调, 临时这样实现.
-        // 若以后有变空, 参照窗帘和light实现.
         acDetailController.ac = [SHSQLManager.shareSHSQLManager getAirConditioners].firstObject;
         
         [self.navigationController pushViewController:acDetailController animated:YES];
@@ -57,9 +58,9 @@
     // light && macro
     else if ([self isKindOfClass:[SHLightViewController class]]) {
         
-        NSString *lightTitle = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Lights"];
-        
-        NSString *sceneTitle = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"LIGHTS" withSubTitle:@"Scenes"];
+//        NSString *lightTitle = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Lights"];
+//
+//        NSString *sceneTitle = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"LIGHTS" withSubTitle:@"Scenes"];
         
         TYCustomAlertView *aletView =
             [TYCustomAlertView alertViewWithTitle:nil
@@ -67,7 +68,7 @@
                                          isCustom:YES
              ];
         
-        TYAlertAction *lightAction = [TYAlertAction actionWithTitle:lightTitle style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+        TYAlertAction *lightAction = [TYAlertAction actionWithTitle:@"Lights" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
             
             SHLightSettingViewController *lightSetting =
             [[SHLightSettingViewController alloc] init];
@@ -77,7 +78,7 @@
             
         }];
         
-        TYAlertAction *macroAction = [TYAlertAction actionWithTitle:sceneTitle style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+        TYAlertAction *macroAction = [TYAlertAction actionWithTitle:@"Scenes" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
             
             SHMacroSettingViewController *macroSetting =
             [[SHMacroSettingViewController alloc] init];
@@ -115,15 +116,56 @@
          pushViewController:curtainSetting animated:true];
     }
     
-    // 电视
+    // TV && channel
     else if ([self isKindOfClass:[SHTVViewController class]]) {
         
         
-        SHTVSettingViewController *tvSetting =
-        [[SHTVSettingViewController alloc] init];
+        TYCustomAlertView *aletView =
+        [TYCustomAlertView alertViewWithTitle:nil
+                                      message:nil
+                                     isCustom:YES
+         ];
         
-        [self.navigationController
-         pushViewController:tvSetting animated:true];
+        TYAlertAction *lightAction = [TYAlertAction actionWithTitle:@"TV" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+            
+            
+            // FIXME: - 由于只支持一个电视, 临时这样实现.
+            // 若以后有变空, 参照窗帘和light实现.
+            
+            SHDeviceParametersViewController *acDetailController =
+            [[SHDeviceParametersViewController alloc] init];
+            
+            acDetailController.tv = [SHSQLManager.shareSHSQLManager getTV].firstObject;
+            
+            [self.navigationController pushViewController:acDetailController animated:YES];
+            
+        }];
+        
+        TYAlertAction *macroAction = [TYAlertAction actionWithTitle:@"Channels" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+            
+                SHTVSettingViewController *tvSetting =
+                [[SHTVSettingViewController alloc] init];
+            
+            tvSetting.tv = [[SHSQLManager.shareSHSQLManager getTV] lastObject];
+        
+                [self.navigationController
+                 pushViewController:tvSetting animated:true];
+            
+        }];
+        
+        [aletView addAction:lightAction];
+        [aletView addAction:macroAction];
+        
+        TYAlertController *alertController =
+        [TYAlertController alertControllerWithAlertView:aletView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+        
+        
+        alertController.backgoundTapDismissEnable = YES;
+        
+        [self presentViewController:alertController
+                           animated:YES
+                         completion:nil
+         ];
     }
     
     // 首页

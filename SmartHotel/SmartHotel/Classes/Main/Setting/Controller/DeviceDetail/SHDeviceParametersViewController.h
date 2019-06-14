@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 窗帘
 @property (strong, nonatomic) SHCurtain *curtain;
 
+/// 电视
+@property (strong, nonatomic) SHTV *tv;
+
 @end
 
 NS_ASSUME_NONNULL_END

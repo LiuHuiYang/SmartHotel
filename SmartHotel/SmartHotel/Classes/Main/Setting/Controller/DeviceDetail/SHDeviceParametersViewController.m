@@ -72,7 +72,122 @@
     } else if (self.curtain != nil) {
     
         [self getCurtainNameAndValues];
+    
+    } else if (self.tv != nil) {
+        
+        [self getTVNameAndValues];
     }
+}
+
+
+/**
+ 获得电视的参数与名称
+ */
+- (void)getTVNameAndValues {
+    
+    self.argsNames = @[
+                       @"tv name",
+                       @"subnetID",
+                       @"deviceID",
+                       
+                       @"turn on",
+                       @"turn off",
+                       
+                       @"mute on",
+                       @"mute off",
+                       
+                       @"volume up",
+                       @"volume down",
+                       
+                       @"channel up",
+                       @"channel down",
+                       
+                       @"sure",
+                       
+                       @"number0",
+                       @"number1",
+                       @"number2",
+                       @"number3",
+                       @"number4",
+                       @"number5",
+                       @"number6",
+                       @"number7",
+                       @"number8",
+                       @"number9"
+                       
+                       ];
+    
+    self.argsValues = @[
+        self.tv.tvName,
+                       
+                       [NSString stringWithFormat:@"%@",
+                       @(self.tv.subnetID)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.deviceID)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.turnOn)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.turnOff)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.muteOn)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.muteOff)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.volumeUp)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.volumeDown)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.channelUp)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.channelDown)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.sure)],
+                       
+         
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number0)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number1)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number2)],
+                       
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number3)],
+                       
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number4)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number5)],
+                       
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number6)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number7)],
+                       
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number8)],
+
+                       [NSString stringWithFormat:@"%@",
+                        @(self.tv.number9)]
+                       
+    ];
 }
 
 /**
@@ -210,7 +325,122 @@
         [self updateCurtain:value
                   indexPath:indexPath
         ];
+    
+    } else if (self.tv != nil) {
+    
+        [self updateTV:value
+             indexPath:indexPath];
     }
+}
+
+/**
+ 更新tv的值
+ 
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateTV:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+        case 0:
+            self.tv.tvName = value;
+            break;
+            
+        case 1:
+            self.tv.subnetID = value.integerValue;
+            break;
+            
+        case 2:
+            self.tv.deviceID = value.integerValue;
+            break;
+            
+        case 3:
+            self.tv.turnOn = value.integerValue;
+            break;
+            
+        case 4:
+            self.tv.turnOff = value.integerValue;
+            break;
+            
+        case 5:
+            self.tv.muteOn = value.integerValue;
+            break;
+            
+        case 6:
+            self.tv.muteOff = value.integerValue;
+            break;
+            
+        case 7:
+            self.tv.volumeUp = value.integerValue;
+            break;
+            
+        case 8:
+            self.tv.volumeDown = value.integerValue;
+            break;
+            
+        case 9:
+            self.tv.channelUp = value.integerValue;
+            break;
+            
+        case 10:
+            self.tv.channelDown = value.integerValue;
+            break;
+            
+        case 11:
+            self.tv.sure = value.integerValue;
+            break;
+            
+        case 12:
+            self.tv.number0 = value.integerValue;
+            break;
+            
+        case 13:
+            self.tv.number1 = value.integerValue;
+            break;
+            
+        case 14:
+            self.tv.number2 = value.integerValue;
+            break;
+            
+        case 15:
+            self.tv.number3 = value.integerValue;
+            break;
+            
+        case 16:
+            self.tv.number4 = value.integerValue;
+            break;
+            
+        case 17:
+            self.tv.number5 = value.integerValue;
+            break;
+            
+        case 18:
+            self.tv.number6 = value.integerValue;
+            break;
+            
+        case 19:
+            self.tv.number7 = value.integerValue;
+            break;
+            
+        case 20:
+            self.tv.number8 = value.integerValue;
+            break;
+            
+        case 21:
+            self.tv.number9 = value.integerValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    // 重新获得值
+    [self getTVNameAndValues];
+    
+    // 刷新列表
+    [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [SHSQLManager.shareSHSQLManager updateTV:self.tv];
 }
 
 /**

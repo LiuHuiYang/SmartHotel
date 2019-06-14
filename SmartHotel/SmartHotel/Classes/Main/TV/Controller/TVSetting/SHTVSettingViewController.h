@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHTVSettingViewController : SHViewController
 
+/**
+ 当前设置的tv
+ */
+@property (nonatomic, strong) SHTV *tv;
+
 @end
 
 NS_ASSUME_NONNULL_END

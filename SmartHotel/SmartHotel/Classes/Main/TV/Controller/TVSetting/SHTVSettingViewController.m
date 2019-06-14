@@ -11,13 +11,7 @@
 #import "SHTVChannelSettingViewController.h"
 
 @interface SHTVSettingViewController () <UITableViewDelegate, UITableViewDataSource>
-
-
-/**
- 当前设置的tv
- */
-@property (nonatomic, strong) SHTV *tv;
-
+ 
 
 /**
  值输入框
@@ -38,7 +32,7 @@
     
     [super viewWillAppear:animated];
     
-    self.tv = [[SHSQLManager.shareSHSQLManager getTV] lastObject];
+    self.tv.channelGroups = [SHSQLManager.shareSHSQLManager getTVChannelGroups:self.tv];
     
     [self.groupListView reloadData];
 }
