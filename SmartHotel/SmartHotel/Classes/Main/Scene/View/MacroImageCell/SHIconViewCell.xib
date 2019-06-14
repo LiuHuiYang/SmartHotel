@@ -21,7 +21,18 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4l-e2-yaC">
                         <rect key="frame" x="0.0" y="0.0" width="186" height="116"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSF-zV-igJ">
+                                <rect key="frame" x="0.0" y="0.0" width="186" height="116"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xSF-zV-igJ" firstAttribute="width" secondItem="n4l-e2-yaC" secondAttribute="width" id="XOx-y3-Eq7"/>
+                            <constraint firstItem="xSF-zV-igJ" firstAttribute="centerY" secondItem="n4l-e2-yaC" secondAttribute="centerY" id="kTN-jJ-i7K"/>
+                            <constraint firstItem="xSF-zV-igJ" firstAttribute="centerX" secondItem="n4l-e2-yaC" secondAttribute="centerX" id="lha-3R-jqZ"/>
+                            <constraint firstItem="xSF-zV-igJ" firstAttribute="height" secondItem="n4l-e2-yaC" secondAttribute="height" id="pH7-8j-gyY"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -34,6 +45,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="186" height="116"/>
+            <connections>
+                <outlet property="iconView" destination="xSF-zV-igJ" id="oCg-mg-qfC"/>
+            </connections>
             <point key="canvasLocation" x="210.1449275362319" y="143.97321428571428"/>
         </collectionViewCell>
     </objects>

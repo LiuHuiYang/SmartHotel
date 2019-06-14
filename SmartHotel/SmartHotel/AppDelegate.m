@@ -68,8 +68,6 @@
     
     [self setupSVProgressHUD];
     
-  
-    
     return YES;
 }
 

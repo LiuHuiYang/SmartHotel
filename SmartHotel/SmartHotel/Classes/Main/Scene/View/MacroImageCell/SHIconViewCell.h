@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHIconViewCell : UICollectionViewCell
 
+/// 图片名称
+@property (nonatomic, copy) NSString *iconName;
+
  
 @end
 

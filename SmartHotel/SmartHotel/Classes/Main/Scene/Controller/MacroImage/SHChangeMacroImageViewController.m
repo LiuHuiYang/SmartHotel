@@ -102,6 +102,7 @@
     
     SHIconViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SHIconViewCell class]) forIndexPath:indexPath];
     
+    cell.iconName = self.iconNames[indexPath.item];
     
     return cell;
 }
