@@ -8,7 +8,7 @@
 
 #import "SHCurtainSettingViewController.h"
 #import "SHCurtainSettingViewCell.h"
-#import "SHCurtainDetailViewController.h"
+#import "SHDeviceParametersViewController.h"
 
 @interface SHCurtainSettingViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -64,8 +64,8 @@
  
     [SHSQLManager.shareSHSQLManager insertCurtain:curtain];
     
-    SHCurtainDetailViewController *detailController =
-        [[SHCurtainDetailViewController alloc] init];
+    SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
     
     detailController.curtain = curtain;
     
@@ -76,8 +76,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHCurtainDetailViewController *detailController =
-    [[SHCurtainDetailViewController alloc] init];
+    SHDeviceParametersViewController *detailController =
+    [[SHDeviceParametersViewController alloc] init];
     
     detailController.curtain =
         self.allCurtains[indexPath.row];
@@ -113,8 +113,8 @@
         
         [tableView setEditing:NO animated:YES];
         
-        SHCurtainDetailViewController *detailController =
-        [[SHCurtainDetailViewController alloc] init];
+        SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
         
         detailController.curtain =
         self.allCurtains[indexPath.row];

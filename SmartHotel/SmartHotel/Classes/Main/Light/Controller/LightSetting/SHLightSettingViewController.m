@@ -9,7 +9,7 @@
 #import "SHLightSettingViewController.h"
 #import "SHLightSettingViewCell.h"
 
-#import "SHLightDetailViewController.h"
+#import "SHDeviceParametersViewController.h"
 
 @interface SHLightSettingViewController ()
     
@@ -70,8 +70,8 @@
     
     [SHSQLManager.shareSHSQLManager insertLight:light];
     
-    SHLightDetailViewController *detailController =
-    [[SHLightDetailViewController alloc] init];
+    SHDeviceParametersViewController *detailController =
+    [[SHDeviceParametersViewController alloc] init];
     
     detailController.light = light;
     
@@ -82,8 +82,8 @@
     
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHLightDetailViewController *detailController =
-        [[SHLightDetailViewController alloc] init];
+    SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
     
     detailController.light =
         self.allLights[indexPath.row];
@@ -119,8 +119,8 @@
         
         [tableView setEditing:NO animated:YES];
         
-        SHLightDetailViewController *detailController =
-        [[SHLightDetailViewController alloc] init];
+        SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
         
         detailController.light =
             self.allLights[indexPath.row];

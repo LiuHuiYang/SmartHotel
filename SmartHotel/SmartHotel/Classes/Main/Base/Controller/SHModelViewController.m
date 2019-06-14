@@ -15,7 +15,7 @@
 #import "SHHomeViewController.h"
 
 #import "SHHVACViewController.h"
-#import "SHHVACDetailViewController.h"
+#import "SHDeviceParametersViewController.h"
 
 #import "SHLightViewController.h"
 
@@ -43,8 +43,8 @@
     // HVAC
     if ([self isKindOfClass: [SHHVACViewController class]]) {
     
-        SHHVACDetailViewController *acDetailController =
-        [[SHHVACDetailViewController alloc] init];
+        SHDeviceParametersViewController *acDetailController =
+        [[SHDeviceParametersViewController alloc] init];
         
         // FIXME: - 由于只支持一个空调, 临时这样实现.
         // 若以后有变空, 参照窗帘和light实现.

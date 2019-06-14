@@ -1,20 +1,18 @@
 //
-//  SHCurtainDetailViewController.m
+//  SHDeviceParametersViewController.m
 //  SmartHotel
 //
-//  Created by Apple on 2019/5/31.
+//  Created by Apple on 2019/6/3.
 //  Copyright © 2019 SmartHome. All rights reserved.
 //
 
-#import "SHCurtainDetailViewController.h"
+#import "SHDeviceParametersViewController.h"
 #import "SHDeviceParametersDetailViewCell.h"
 
-
-@interface SHCurtainDetailViewController () <UITableViewDataSource, UITableViewDelegate>
-
+@interface SHDeviceParametersViewController () <UITableViewDelegate, UITableViewDataSource>
 
 /**
- 窗帘参数名称
+ 设备参数名称
  */
 @property (strong, nonatomic) NSArray *argsNames;
 
@@ -25,36 +23,57 @@
 @property (weak, nonatomic) UITextField *valueTextField;
 
 /**
- 窗帘参数值
+ 设备参数值
  */
 @property (strong, nonatomic) NSArray *argsValues;
 
+
+/**
+ 参数列表
+ */
 @property (weak, nonatomic) IBOutlet UITableView *listView;
 
 
 @end
 
-@implementation SHCurtainDetailViewController
+@implementation SHDeviceParametersViewController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self getCurtainNameAndValues];
+    [self getDeiceParameters];
     [self.listView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Curtain Detail";
+    self.navigationItem.title = @"Device Parameters";
     
     self.listView.rowHeight =
-        [SHDeviceParametersDetailViewCell rowHeight];
+    [SHDeviceParametersDetailViewCell rowHeight];
     
     [self.listView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])];
+    
 }
 
-// MARK: - 参数值的获取与更新
+// MARK: - 获取具体的设备参数
+
+- (void)getDeiceParameters {
+    
+    if (self.light != nil) {
+        
+        [self getLightNameAndValues];
+        
+    } else if (self.ac != nil) {
+        
+        [self getAirConditionerNameAndValues];
+    
+    } else if (self.curtain != nil) {
+    
+        [self getCurtainNameAndValues];
+    }
+}
 
 /**
  获得窗帘的参数与名称
@@ -110,8 +129,93 @@
 }
 
 /**
- 更新窗帘的值
+ 获得空调的参数信息
+ */
+- (void)getAirConditionerNameAndValues {
+    
+    self.argsNames = @[
+                       @"ac Name",
+                       
+                       @"ac Type",
+                       @"acNumber",
+                       
+                       @"subnetID",
+                       @"deviceID",
+                       @"channelNo"
+                       
+                       ];
+    
+    self.argsValues = @[
+                        self.ac.acName,
+                        
+                        [NSString stringWithFormat:@"%@", @(self.ac.acType)],
+                        [NSString stringWithFormat:@"%@", @(self.ac.acNumber)],
+                        
+                        [NSString stringWithFormat:@"%@", @(self.ac.subnetID)],
+                        [NSString stringWithFormat:@"%@", @(self.ac.deviceID)],
+                        [NSString stringWithFormat:@"%@", @(self.ac.channelNo)]
+                        ];
+}
 
+/**
+ 获得参数与名称
+ */
+- (void)getLightNameAndValues {
+    
+    self.argsNames = @[
+                       @"light name",
+                       @"light type",
+                       
+                       @"subnetID",
+                       @"deviceID",
+                       @"channelNo"
+                    ];
+    
+    self.argsValues = @[
+                        self.light.lightName,
+                        [NSString stringWithFormat:@"%zd", self.light.lightType],
+                        
+                         [NSString stringWithFormat:@"%zd", self.light.subnetID],
+                         [NSString stringWithFormat:@"%zd", self.light.deviceID],
+                         [NSString stringWithFormat:@"%zd", self.light.channelNo],
+                        
+                        ];
+}
+
+// MARK: - 更新参数值
+
+
+/**
+ 更新设备参数值
+
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateDevice:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    if (self.light != nil) {
+        
+        [self updateLight:value
+                indexPath:indexPath
+        ];
+    
+    } else if (self.ac != nil) {
+        
+        [self updateAirConditioner:value
+                         indexPath:indexPath
+        ];
+    
+    } else if (self.curtain != nil) {
+        
+        [self updateCurtain:value
+                  indexPath:indexPath
+        ];
+    }
+}
+
+/**
+ 更新窗帘的值
+ 
  @param value 值
  @param indexPath 位置
  */
@@ -172,8 +276,97 @@
     [SHSQLManager.shareSHSQLManager updateCurtain:self.curtain];
 }
 
-// MARK: - 代理
+/**
+ 更新空调的值
+ 
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateAirConditioner:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+            
+        case 0:
+            self.ac.acName = value;
+            break;
+            
+        case 1:
+            self.ac.acType = value.integerValue;
+            break;
+            
+        case 2:
+            self.ac.acNumber = value.integerValue;
+            break;
+            
+        case 3:
+            self.ac.subnetID = value.integerValue;
+            break;
+            
+        case 4:
+            self.ac.deviceID = value.integerValue;
+            break;
+            
+        case 5:
+            self.ac.channelNo = value.integerValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    // 重新获得值
+    [self getAirConditionerNameAndValues];
+    
+    // 刷新列表
+    [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [SHSQLManager.shareSHSQLManager updateAirConditioner:self.ac];
+}
 
+/**
+ 更新Light的值
+ 
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateLight:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+        case 0:
+            self.light.lightName = value;
+            break;
+            
+        case 1:
+            self.light.lightType = value.integerValue;
+            break;
+            
+        case 2:
+            self.light.subnetID = value.integerValue;
+            break;
+            
+        case 3:
+            self.light.deviceID = value.integerValue;
+            break;
+            
+        case 4:
+            self.light.channelNo = value.integerValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    // 重新获得值
+    [self getLightNameAndValues];
+    
+    // 刷新列表
+    [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [SHSQLManager.shareSHSQLManager updateLight:self.light];
+}
+
+
+// MARK: - 代理
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *argName = self.argsNames[indexPath.row];
@@ -185,7 +378,7 @@
         
         [textField becomeFirstResponder];
         textField.clearButtonMode =
-            UITextFieldViewModeWhileEditing;
+        UITextFieldViewModeWhileEditing;
         textField.textAlignment = NSTextAlignmentCenter;
         textField.text = self.argsValues[indexPath.row];
         
@@ -193,23 +386,25 @@
     }];
     
     TYAlertAction *cancelAction =
-        [TYAlertAction actionWithTitle:@"cancel"
-                                 style:TYAlertActionStyleCancel
-                               handler:nil
-        ];
+    [TYAlertAction actionWithTitle:@"cancel"
+                             style:TYAlertActionStyleCancel
+                           handler:nil
+     ];
     
     TYAlertAction *saveAction = [TYAlertAction actionWithTitle:@"save" style:TYAlertActionStyleDestructive handler:^(TYAlertAction *action) {
         
         if (self.valueTextField.text.length == 0) {
             
             [SVProgressHUD showInfoWithStatus:
-                @"The value should not be empty!"
-            ];
+             @"The value should not be empty!"
+             ];
             
             return ;
         }
         
-        [self updateCurtain:self.valueTextField.text indexPath:indexPath
+       
+        [self updateDevice:self.valueTextField.text
+                 indexPath:indexPath
         ];
     }];
     
@@ -217,11 +412,10 @@
     [alertView addAction:saveAction];
     
     TYAlertController *alertController =
-        [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
+    [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
-
 
 // MARK: - 数据源
 
@@ -233,13 +427,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SHDeviceParametersDetailViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
-        ];
+    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
+     ];
     
     cell.argsName = self.argsNames[indexPath.row];
     cell.argValueText = self.argsValues[indexPath.row];
     
     return cell;
 }
+ 
 
 @end

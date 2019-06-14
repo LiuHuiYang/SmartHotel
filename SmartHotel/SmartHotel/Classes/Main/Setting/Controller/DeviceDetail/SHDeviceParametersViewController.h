@@ -1,5 +1,5 @@
 //
-//  SHLightDetailViewController.h
+//  SHDeviceParametersViewController.h
 //  SmartHotel
 //
 //  Created by Apple on 2019/6/3.
@@ -10,10 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHLightDetailViewController : SHViewController
+@interface SHDeviceParametersViewController : SHViewController
 
 /// light
 @property (strong, nonatomic) SHLight *light;
+ 
+/// 空调
+@property (strong, nonatomic) SHHVAC *ac;
+
+/// 窗帘
+@property (strong, nonatomic) SHCurtain *curtain;
 
 @end
 
