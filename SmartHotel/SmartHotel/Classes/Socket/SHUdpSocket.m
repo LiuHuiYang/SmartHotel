@@ -4,7 +4,7 @@
 #import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
 
 /// 重发次数
-const NSUInteger udpSocketReSendCount = 2;
+const NSUInteger udpSocketReSendCount = 1;
 
 /// UDP 广播通知
 NSString * SHUdpSocketBroadcastNotification = @"SHUdpSocketBroadcastNotification";

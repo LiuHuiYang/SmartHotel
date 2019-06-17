@@ -83,22 +83,80 @@
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];
     
-//    if (subNetID != self.roomInfo.subNetIDForDDP ||
-//        deviceID != self.roomInfo.deviceIDForDDP) {
-//        return ;
-//    }
-    
+ 
     switch (operatorCode) {
             
+            
+            // 接收到广播服务
+        case 0x044F: {
+            
+            // 房间信息
+            if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+                self.roomInfo.floorNumber ==
+                recivedData[startIndex + 2] &&
+                self.roomInfo.roomNumber ==
+                recivedData[startIndex + 3]) {
+                
+                printLog(@"控制成功");
+                // 判断是否为NDN状态
+                BOOL isDND =
+                recivedData[startIndex + 0] ==
+                SHRoomServerTypeDND;
+                
+                [self.dndButton setOn:isDND];
+            }
+        }
+            break;
+            
+            // 读取状态
+        case 0x043F: {
+            
+            if ((subNetID == self.roomInfo.doorBellSubNetID &&
+                deviceID == self.roomInfo.doorBellDeviceID)  ||
+                (subNetID == self.roomInfo.cardHolderSubNetID &&
+                 deviceID == self.roomInfo.cardHolderDeviceID)
+            ) {
+                
+                // 房间信息
+                if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+                    self.roomInfo.floorNumber ==
+                    recivedData[startIndex + 2] &&
+                    self.roomInfo.roomNumber ==
+                    recivedData[startIndex + 3]) {
+                    
+                    // 判断是否为NDN状态
+                    BOOL isDND =
+                    recivedData[startIndex + 0] ==
+                    SHRoomServerTypeDND;
+                   
+                    [self.dndButton setOn:isDND];
+                }
+            }
+            
+        }
+            break;
+            
+            // 温度
         case 0xE3E8: {
+            
+            if (subNetID != self.roomInfo.temperatureSubNetID ||
+                deviceID != self.roomInfo.temperatureDeviceID) {
+                return;
+            }
             
             if (!recivedData[startIndex]) { // 返回摄氏温度有效
                 return;
             }
             
             // 温度绝对值
-            NSInteger temperature = recivedData[startIndex + 1]; // 只要第一个通道
-            temperature = (recivedData[startIndex + 8 + 1]) ? (0 - temperature) : temperature;
+            NSUInteger valueIndex =
+                startIndex +
+                self.roomInfo.temperatureChannelNo;
+            
+            NSInteger temperature = recivedData[valueIndex]; // 只要第一个通道
+            temperature =
+                (recivedData[valueIndex + 8]) ?
+                (0 - temperature) : temperature;
             
             [self showCurrentTemperature:temperature];
         }
@@ -114,22 +172,46 @@
     
     Byte readTemperatureFlag[] = { 1 }; // 暂时先读摄氏度
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE3E7 targetSubnetID:0 targetDeviceID:0 additionalContentData:[NSMutableData dataWithBytes:readTemperatureFlag length:sizeof(readTemperatureFlag)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    if (self.roomInfo.temperatureChannelNo == 0) {
+        self.roomInfo.temperatureChannelNo = 1;
+    }
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE3E7 targetSubnetID:self.roomInfo.temperatureSubNetID targetDeviceID:self.roomInfo.temperatureDeviceID additionalContentData:[NSMutableData dataWithBytes:readTemperatureFlag length:sizeof(readTemperatureFlag)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 
 // MARK: - 视图加载 与显示
 
+/// 读取状态
+- (void)readDNDStatus {
+    
+    // 通过CardHolder读取
+    [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+    
+    // 通过DoorBell读取
+    [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+}
 
 /// dnd按钮点击
 - (IBAction)dndButtonClick {
     
     self.dndButton.on = !self.dndButton.on;
     
-    Byte dndServiceData[] = { SHRoomServerTypeDND, self.dndButton.on};
-   
+    Byte dndServiceData[] = {
+        SHRoomServerTypeDND,
+        self.dndButton.on,
+        self.roomInfo.buildingNumber,
+        self.roomInfo.floorNumber,
+        self.roomInfo.roomNumber
+    };
+    
+    // CardHolder
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
      self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    // doorBell
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
+     self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 /// 闹钟打开与关闭
@@ -156,6 +238,10 @@
     
     [super viewWillAppear:animated];
     
+    printLog(@"当前房间信息: %zd - %zd;",
+             self.roomInfo.doorBellSubNetID,
+             self.roomInfo.doorBellDeviceID);
+    
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumber];
     
     self.alarmTimeLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:alarmTimeStringKey];
@@ -166,7 +252,11 @@
         [self.alarmTimeButton setOn:NO];
     }
     
+    // 读取温度
     [self readTemperature];
+    
+    // 读取DND状态
+    [self readDNDStatus];
 }
 
 
@@ -185,6 +275,8 @@
     
     [self timeChange];
 }
+
+// MARK: - 中间表盘的处理
 
 - (void)timeChange {
     
@@ -233,7 +325,6 @@
     [self.clockView.layer addSublayer:secLayer];
     self.secLayer = secLayer;
 }
-
 
 /// 更新时间显示
 - (void)updateTimeShow {
