@@ -86,18 +86,29 @@
  
     switch (operatorCode) {
             
+            // 接收到读取状态返回
+        case 0x043F:
             
-            // 接收到广播服务
+            // 接收到服务广播
         case 0x044F: {
-            
+         
             // 房间信息
             if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
                 self.roomInfo.floorNumber ==
                 recivedData[startIndex + 2] &&
                 self.roomInfo.roomNumber ==
                 recivedData[startIndex + 3]) {
+
+                // 不需要判断是谁发出来的
+//                if ((subNetID == self.roomInfo.doorBellSubNetID &&
+//                     deviceID == self.roomInfo.doorBellDeviceID)  ||
+//                    (subNetID == self.roomInfo.cardHolderSubNetID &&
+//                     deviceID == self.roomInfo.cardHolderDeviceID)
+//                    ) {
+//
+//
+//                }
                 
-                printLog(@"控制成功");
                 // 判断是否为NDN状态
                 BOOL isDND =
                 recivedData[startIndex + 0] ==
@@ -106,35 +117,6 @@
                 [self.dndButton setOn:isDND];
             }
         }
-            break;
-            
-            // 读取状态
-        case 0x043F: {
-            
-            if ((subNetID == self.roomInfo.doorBellSubNetID &&
-                deviceID == self.roomInfo.doorBellDeviceID)  ||
-                (subNetID == self.roomInfo.cardHolderSubNetID &&
-                 deviceID == self.roomInfo.cardHolderDeviceID)
-            ) {
-                
-                // 房间信息
-                if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
-                    self.roomInfo.floorNumber ==
-                    recivedData[startIndex + 2] &&
-                    self.roomInfo.roomNumber ==
-                    recivedData[startIndex + 3]) {
-                    
-                    // 判断是否为NDN状态
-                    BOOL isDND =
-                    recivedData[startIndex + 0] ==
-                    SHRoomServerTypeDND;
-                   
-                    [self.dndButton setOn:isDND];
-                }
-            }
-            
-        }
-            break;
             
             // 温度
         case 0xE3E8: {

@@ -66,24 +66,27 @@
 
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];
- 
-    
-    if (subNetID != self.roomInfo.cardHolderSubNetID ||
-        deviceID != self.roomInfo.cardHolderDeviceID) {
-
-        return;
-    }
-
+  
     switch (operatorCode) {
         
-            // 查询服务反馈
-        case  0x043F: {
+            // 接收到读取状态返回
+        case 0x043F:
             
-            Byte servcieStatus = recivedData[startIndex];
-            printLog(@"收到服务响应: %#02x", servcieStatus);
+            // 接收到服务广播
+        case 0x044F: {
             
+            // 房间信息
+            if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+                self.roomInfo.floorNumber ==
+                recivedData[startIndex + 2] &&
+                self.roomInfo.roomNumber ==
+                recivedData[startIndex + 3]) {
+                
+                SHRoomServerType service = recivedData[startIndex + 0];
+                
+                [self setServiceStatusForButton:service];
+            }
         }
-            break;
             
         case 0x040B: {
             
@@ -100,15 +103,8 @@
             break;
     }
     
-    if (operatorCode ==  0x043F || operatorCode == 0x040B) {
-        
-        // 设置状态
-//        [self setServiceStatusForButton]
-        [SVProgressHUD showSuccessWithStatus:@"准备进行设置状态"];
-    }
     
     // 0x040B // 发控制相同的
-    // 0x044F 和 读取状态是相同的
 }
 
 
@@ -205,21 +201,33 @@
     // 更新当前按钮的状态
     serverButton.selected = !serverButton.selected;
     
-    // 分服务发送指令
+    // 普通服务指令
     if (serverButton.serverType == SHRoomServerTypeLaudry ||
+        
         serverButton.serverType == SHRoomServerTypeClean  ||
+        
         serverButton.serverType == SHRoomServerTypeDND) {
         
-        Byte data[2] = {serverButton.serverType, serverButton.selected};
+        Byte data[] = {
+            serverButton.serverType,
+            serverButton.selected,
+            self.roomInfo.buildingNumber,
+            self.roomInfo.floorNumber,
+            self.roomInfo.roomNumber
+        };
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+        // 通过CardHolder发送
+        [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        
+        // 通过DoorBell发送
+        [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
     
     // 其它服务发送给计算机 (主动报告状态)
     } else {
     
         Byte data[5] = {serverButton.serverType, serverButton.selected, self.roomInfo.buildingNumber, self.roomInfo.floorNumber, self.roomInfo.roomNumber};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
+        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
     }
     
 }
@@ -243,14 +251,60 @@
 
 
 
+/// 设置服务按钮
+- (void)setServiceStatusForButton:(SHRoomServerType)service {
+    
+    for (SHServiceButton *button in self.serviceButtonView.subviews) {
+        
+        button.selected = NO;
+    }
+    
+    switch (service) {
+            
+        case SHRoomServerTypeClean: {
+            self.cleanButton.selected = YES;
+        }
+            break;
+            
+        case SHRoomServerTypeDND: {  // DND
+            self.dndButton.selected = YES;
+        }
+            break;
+            
+        case SHRoomServerTypeLaudry: {
+            self.laudryButton.selected = YES;
+        }
+            break;
+            
+        case SHRoomServerTypeCleanLaundry: {
+        
+            self.cleanButton.selected = YES;
+            self.laudryButton.selected = YES;
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+/// 读取服务状态
+- (void)readServiceStatus {
+    
+    // 通过CardHolder读取
+    [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    // 通过DoorBell读取
+    [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+}
+
 // MARK: - 视图初始化
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     
-    // 读取门铃状态
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
+    [self readServiceStatus];
 }
 
 - (void)viewDidLoad {
@@ -295,11 +349,5 @@
     [self.breakfastButton setTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"HouseKeepingAndVIP" withSubTitle:@"Breakfast"] forState:UIControlStateNormal];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
- 
 
 @end
