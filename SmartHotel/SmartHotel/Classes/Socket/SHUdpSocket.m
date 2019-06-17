@@ -4,7 +4,7 @@
 #import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
 
 /// 重发次数
-const NSUInteger udpSocketReSendCount = 3;
+const NSUInteger udpSocketReSendCount = 2;
 
 /// UDP 广播通知
 NSString * SHUdpSocketBroadcastNotification = @"SHUdpSocketBroadcastNotification";
@@ -18,7 +18,7 @@ NSString *SHUdpSocketSendDataTypeValue = @"SHUdpSocketSendDataTypeValue";
 NSString *SHUdpSocketSendDataLocalWifi = @"SHUdpSocketSendDataLocalWifi";
 
 /// 远程设备类型标示
-const Byte iOS_Flag = 0X02;
+const Byte iOS_Flag = 0x02;
 
 /// 本地wifi
 NSString *Local_Server_IP_Default = @"255.255.255.255";

@@ -22,14 +22,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 @implementation SHSQLManager
 
 // MARK: - 自定义图片
-
-- (BOOL)updateIcon:(SHIcon *)icon {
-    
-    printLog(@"尚未实现");
-    return NO;
-}
-
-
+ 
 /**
  增加图片
 
