@@ -38,7 +38,7 @@
 #import "SHTV.h"
 #import "SHChannelGroup.h"
 #import "SHChannel.h"
- 
+#import "SHIcon.h"
 #import "SHAlarm.h"
 #import "SHSwitchButton.h"
 #import "SHSoundTools.h"

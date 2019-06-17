@@ -18,8 +18,50 @@
 #import "SHChannel.h"
 #import "SHChannelGroup.h"
 #import "SHHVAC.h"
+#import "SHIcon.h"
 
 @interface SHSQLManager : NSObject
+
+// MARK: - 自定义图片
+
+/**
+ 增加图片
+ 
+ @param icon 图片对象
+ @return 增加成功YES. 失败 NO.
+ */
+- (BOOL)insertIcon:(SHIcon *)icon;
+
+/**
+ 删除指定的图片
+ 
+ @param icon 图片对象
+ @return 删除图片 YES, 失败 NO.
+ */
+- (BOOL)deleteIcon:(SHIcon *)icon;
+
+/**
+ 查询图片数据
+ 
+ @param iconName 图片名称
+ @return 图片对象
+ */
+- (SHIcon *)getIcon:(NSString *)iconName;
+
+/**
+ 查询所有的图片
+ 
+ @return 所有的图片数组
+ */
+- (NSMutableArray *)getIcons;
+
+/**
+ 获得可用的图片ID
+ 
+ @return 图片ID
+ */
+- (NSUInteger)getAvailableIconID;
+
 
 // MARK: - Macro
 

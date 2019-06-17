@@ -44,14 +44,21 @@
      
     [self.channelButton setTitle:channel.channelName forState:UIControlStateNormal];
     
-    [self.channelButton setImage:[UIImage imageNamed:@"channel_icon"] forState:UIControlStateNormal];
+    // 默认图片 @"channel_icon"
+ 
+    UIImage *image =
+        [UIImage imageNamed:channel.iconName];
     
-//    UIImage *image = [UIImage getImaageFromDoucment:channel.channelType imageName:[NSString stringWithFormat:@"%@", @(channel.channelIconID)]];
-//
-//    if (image) {
-//
-//        [self.channelButton setImage:image forState:UIControlStateNormal];
-//    }
+    if (image == nil) {
+        
+        SHIcon *icon =
+        [SHSQLManager.shareSHSQLManager getIcon:channel.iconName];
+        
+        image =
+            [UIImage imageWithData:icon.iconData];
+    }
+    
+    [self.channelButton setImage:image forState:UIControlStateNormal];
 }
 
 - (void)awakeFromNib {

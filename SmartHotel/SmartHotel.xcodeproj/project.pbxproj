@@ -15,6 +15,7 @@
 		041ACC8922B32D57005C3731 /* SHSettingRoomInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC8722B32D57005C3731 /* SHSettingRoomInfoViewController.m */; };
 		041ACC8D22B330BF005C3731 /* SHDeviceParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041ACC8B22B330BF005C3731 /* SHDeviceParametersViewController.xib */; };
 		041ACC8E22B330BF005C3731 /* SHDeviceParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC8C22B330BF005C3731 /* SHDeviceParametersViewController.m */; };
+		041ACC9222B39EB6005C3731 /* SHIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC9122B39EB6005C3731 /* SHIcon.m */; };
 		04345C4B22B1FC4200805801 /* SHMacroCommandDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C2022B1FC4200805801 /* SHMacroCommandDetailViewController.xib */; };
 		04345C4C22B1FC4200805801 /* SHMacroCommandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C2122B1FC4200805801 /* SHMacroCommandDetailViewController.m */; };
 		04345C4D22B1FC4200805801 /* SHMacroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C2522B1FC4200805801 /* SHMacroDetailViewController.xib */; };
@@ -155,6 +156,8 @@
 		041ACC8A22B330BF005C3731 /* SHDeviceParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDeviceParametersViewController.h; sourceTree = "<group>"; };
 		041ACC8B22B330BF005C3731 /* SHDeviceParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDeviceParametersViewController.xib; sourceTree = "<group>"; };
 		041ACC8C22B330BF005C3731 /* SHDeviceParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDeviceParametersViewController.m; sourceTree = "<group>"; };
+		041ACC9022B39EB6005C3731 /* SHIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIcon.h; sourceTree = "<group>"; };
+		041ACC9122B39EB6005C3731 /* SHIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIcon.m; sourceTree = "<group>"; };
 		04345C2022B1FC4200805801 /* SHMacroCommandDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMacroCommandDetailViewController.xib; sourceTree = "<group>"; };
 		04345C2122B1FC4200805801 /* SHMacroCommandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMacroCommandDetailViewController.m; sourceTree = "<group>"; };
 		04345C2222B1FC4200805801 /* SHMacroCommandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMacroCommandDetailViewController.h; sourceTree = "<group>"; };
@@ -425,6 +428,15 @@
 				041ACC8722B32D57005C3731 /* SHSettingRoomInfoViewController.m */,
 			);
 			path = SettingRoom;
+			sourceTree = "<group>";
+		};
+		041ACC8F22B39EA1005C3731 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				041ACC9022B39EB6005C3731 /* SHIcon.h */,
+				041ACC9122B39EB6005C3731 /* SHIcon.m */,
+			);
+			path = Icon;
 			sourceTree = "<group>";
 		};
 		04345C1D22B1FC4200805801 /* Scene */ = {
@@ -1009,6 +1021,7 @@
 		04D249492079C6CD00EBD1BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				041ACC8F22B39EA1005C3731 /* Icon */,
 				04345C7522B22F9400805801 /* ChannelGroup */,
 				04DAFEAE20849779009AA5EB /* Channel */,
 				04DAFEAF20849779009AA5EB /* TV */,
@@ -1877,6 +1890,7 @@
 				04345C5622B1FC4200805801 /* SHMacroCollectionViewCell.m in Sources */,
 				04DC41E322A0D68100BC1BFE /* SHCurtainViewController.m in Sources */,
 				04D249162079C51900EBD1BE /* AppDelegate.m in Sources */,
+				041ACC9222B39EB6005C3731 /* SHIcon.m in Sources */,
 				04D249E32079E24A00EBD1BE /* SHAlarmViewController.m in Sources */,
 				04D249A42079C90200EBD1BE /* UIBarButtonItem+init.m in Sources */,
 				04D249F12079E2AA00EBD1BE /* SHCameraViewController.m in Sources */,

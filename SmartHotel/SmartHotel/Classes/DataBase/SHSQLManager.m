@@ -21,6 +21,112 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
 
 @implementation SHSQLManager
 
+// MARK: - 自定义图片
+
+- (BOOL)updateIcon:(SHIcon *)icon {
+    
+    printLog(@"尚未实现");
+    return NO;
+}
+
+
+/**
+ 增加图片
+
+ @param icon 图片对象
+ @return 增加成功YES. 失败 NO.
+ */
+- (BOOL)insertIcon:(SHIcon *)icon {
+    
+    __block BOOL result = NO;
+    
+    [self.queue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+       
+         result = [db executeUpdate:@"INSERT INTO iconList (iconID, iconName, iconData) VALUES (?, ?, ?);", @(icon.iconID), icon.iconName, icon.iconData];
+        
+    }];
+    
+    return result;
+}
+
+
+/**
+ 删除指定的图片
+
+ @param icon 图片对象
+ @return 删除图片 YES, 失败 NO.
+ */
+- (BOOL)deleteIcon:(SHIcon *)icon {
+    
+    NSString *sql = [NSString stringWithFormat:@"delete from iconList where iconID = %zd;", icon.iconID];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 查询图片数据
+
+ @param iconName 图片名称
+ @return 图片对象
+ */
+- (SHIcon *)getIcon:(NSString *)iconName {
+    
+    NSString *sql = [NSString stringWithFormat:@"select iconID, iconName, iconData from iconList where iconName = '%@'; ", iconName];
+    
+    NSDictionary *dict =
+        [[self selectProprty:sql] lastObject];
+    
+    return [SHIcon iconWithDictionary:dict];
+}
+
+/**
+ 查询所有的图片
+
+ @return 所有的图片数组
+ */
+- (NSMutableArray *)getIcons {
+    
+    NSString *sql = @"select iconID, iconName, iconData from iconList order by iconID;";
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *icons =
+        [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [icons addObject:
+            [SHIcon iconWithDictionary:dict]
+        ];
+    }
+
+    return icons;
+}
+
+/**
+ 获得可用的图片ID
+
+ @return 图片ID
+ */
+- (NSUInteger)getAvailableIconID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(iconID) from iconList;"];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(iconID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger iconID =
+    [[dict objectForKey:@"max(iconID)"]integerValue] + 1;
+    
+    return iconID;
+}
+
 // MARK: - macro
 
 

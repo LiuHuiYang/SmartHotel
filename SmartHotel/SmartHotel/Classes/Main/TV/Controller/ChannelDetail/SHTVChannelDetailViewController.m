@@ -9,7 +9,7 @@
 #import "SHTVChannelDetailViewController.h"
 #import "SHDeviceParametersDetailViewCell.h"
 
-@interface SHTVChannelDetailViewController () <UITextFieldDelegate>
+@interface SHTVChannelDetailViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 /**
  设备参数名称
@@ -58,7 +58,26 @@
     self.navigationItem.title =
         @"TV Channel Detail";
     
-    [self.iconButton setImage:[UIImage imageNamed:self.channel.iconName]
+    UIImage *image =
+    [UIImage imageNamed:self.channel.iconName];
+    
+    if (image == nil) {
+        
+        SHIcon *icon =
+        [SHSQLManager.shareSHSQLManager getIcon:self.channel.iconName];
+        
+        image =
+        [UIImage imageWithData:icon.iconData];
+        
+        // 使用默认图片
+        if (image == nil) {
+            
+            image =
+                [UIImage imageNamed:@"channel_icon"];
+        }
+    }
+    
+    [self.iconButton setImage:image
                      forState:UIControlStateNormal
     ];
     
@@ -244,13 +263,36 @@
         UIImageWriteToSavedPhotosAlbum(sourceImage, self, nil, nil);
     }
     
-    // 保存
-    //    [UIImage writeImageToDocument:self.currentChannel.channelType imageName:[NSString stringWithFormat:@"%@", @(self.currentChannel.channelIconID)] image:sourceImage];
+    // 删除旧图片
+    SHIcon *icon = [SHSQLManager.shareSHSQLManager getIcon:self.channel.channelName];
     
-    //    [self.channelListView reloadData];
+    if (icon != nil) {
+        
+        [SHSQLManager.shareSHSQLManager deleteIcon:icon];
+    }
+    
+    // 增加新图片
+    
+    icon = [[SHIcon alloc] init];
+    icon.iconID = [SHSQLManager.shareSHSQLManager getAvailableIconID];
+    
+    icon.iconName = [NSString stringWithFormat:@"icon_%zd", icon.iconID];
+    
+    icon.iconData =
+        UIImagePNGRepresentation(sourceImage);
+    
+    self.channel.iconName = icon.iconName;
+    
+    [SHSQLManager.shareSHSQLManager insertIcon:icon];
+    
+    [SHSQLManager.shareSHSQLManager
+        updateTVChannel:self.channel];
+    
+    [self.iconButton setImage:sourceImage
+                     forState:UIControlStateNormal];
 }
 
-// MARK: - 代理
+// MARK: - UITableViewDeletate 代理
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *argName = self.argsNames[indexPath.row];

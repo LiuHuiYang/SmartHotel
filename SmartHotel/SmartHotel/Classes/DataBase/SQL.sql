@@ -1,4 +1,10 @@
- 
+-- 图片ID
+CREATE TABLE IF NOT EXISTS iconList (
+    iconID    INTEGER NOT NULL DEFAULT 0,
+    iconName  TEXT,
+    iconData  DATA
+);
+
 -- 电视频道
 CREATE TABLE IF NOT EXISTS TVChannel (
 
