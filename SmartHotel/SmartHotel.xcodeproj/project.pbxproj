@@ -11,8 +11,6 @@
 		041ACC7C22B32A9C005C3731 /* SHTVChannelDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041ACC7922B32A9C005C3731 /* SHTVChannelDetailViewController.xib */; };
 		041ACC8122B32D1E005C3731 /* SHDeviceParametersDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041ACC7E22B32D1E005C3731 /* SHDeviceParametersDetailViewCell.xib */; };
 		041ACC8222B32D1E005C3731 /* SHDeviceParametersDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC8022B32D1E005C3731 /* SHDeviceParametersDetailViewCell.m */; };
-		041ACC8822B32D57005C3731 /* SHSettingRoomInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041ACC8622B32D57005C3731 /* SHSettingRoomInfoViewController.xib */; };
-		041ACC8922B32D57005C3731 /* SHSettingRoomInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC8722B32D57005C3731 /* SHSettingRoomInfoViewController.m */; };
 		041ACC8D22B330BF005C3731 /* SHDeviceParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041ACC8B22B330BF005C3731 /* SHDeviceParametersViewController.xib */; };
 		041ACC8E22B330BF005C3731 /* SHDeviceParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC8C22B330BF005C3731 /* SHDeviceParametersViewController.m */; };
 		041ACC9222B39EB6005C3731 /* SHIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC9122B39EB6005C3731 /* SHIcon.m */; };
@@ -101,7 +99,6 @@
 		04D24A022079EA3A00EBD1BE /* SHNavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A012079EA3A00EBD1BE /* SHNavigationBarButton.m */; };
 		04D24A062079EE1900EBD1BE /* SHModuleSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A052079EE1900EBD1BE /* SHModuleSwitchButton.m */; };
 		04D24A0A2079F58200EBD1BE /* SHServiceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A092079F58100EBD1BE /* SHServiceButton.m */; };
-		04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */; };
 		04D24A1A207A175A00EBD1BE /* SHRoomDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D24A19207A175A00EBD1BE /* SHRoomDevice.m */; };
 		04D8805B20883255006C207E /* SHChannelTypeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D8805820883255006C207E /* SHChannelTypeViewCell.m */; };
 		04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D8805920883255006C207E /* SHCameraViewCell.xib */; };
@@ -149,9 +146,6 @@
 		041ACC7E22B32D1E005C3731 /* SHDeviceParametersDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDeviceParametersDetailViewCell.xib; sourceTree = "<group>"; };
 		041ACC7F22B32D1E005C3731 /* SHDeviceParametersDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDeviceParametersDetailViewCell.h; sourceTree = "<group>"; };
 		041ACC8022B32D1E005C3731 /* SHDeviceParametersDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDeviceParametersDetailViewCell.m; sourceTree = "<group>"; };
-		041ACC8522B32D57005C3731 /* SHSettingRoomInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSettingRoomInfoViewController.h; sourceTree = "<group>"; };
-		041ACC8622B32D57005C3731 /* SHSettingRoomInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHSettingRoomInfoViewController.xib; sourceTree = "<group>"; };
-		041ACC8722B32D57005C3731 /* SHSettingRoomInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSettingRoomInfoViewController.m; sourceTree = "<group>"; };
 		041ACC8A22B330BF005C3731 /* SHDeviceParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHDeviceParametersViewController.h; sourceTree = "<group>"; };
 		041ACC8B22B330BF005C3731 /* SHDeviceParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHDeviceParametersViewController.xib; sourceTree = "<group>"; };
 		041ACC8C22B330BF005C3731 /* SHDeviceParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDeviceParametersViewController.m; sourceTree = "<group>"; };
@@ -309,8 +303,6 @@
 		04D24A052079EE1900EBD1BE /* SHModuleSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHModuleSwitchButton.m; sourceTree = "<group>"; };
 		04D24A082079F58100EBD1BE /* SHServiceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHServiceButton.h; sourceTree = "<group>"; };
 		04D24A092079F58100EBD1BE /* SHServiceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHServiceButton.m; sourceTree = "<group>"; };
-		04D24A14207A174800EBD1BE /* SHRoomBaseInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRoomBaseInfomation.h; sourceTree = "<group>"; };
-		04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRoomBaseInfomation.m; sourceTree = "<group>"; };
 		04D24A18207A175A00EBD1BE /* SHRoomDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRoomDevice.h; sourceTree = "<group>"; };
 		04D24A19207A175A00EBD1BE /* SHRoomDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRoomDevice.m; sourceTree = "<group>"; };
 		04D8805820883255006C207E /* SHChannelTypeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHChannelTypeViewCell.m; sourceTree = "<group>"; };
@@ -416,16 +408,6 @@
 				041ACC8B22B330BF005C3731 /* SHDeviceParametersViewController.xib */,
 			);
 			path = DeviceDetail;
-			sourceTree = "<group>";
-		};
-		041ACC8422B32D57005C3731 /* SettingRoom */ = {
-			isa = PBXGroup;
-			children = (
-				041ACC8522B32D57005C3731 /* SHSettingRoomInfoViewController.h */,
-				041ACC8622B32D57005C3731 /* SHSettingRoomInfoViewController.xib */,
-				041ACC8722B32D57005C3731 /* SHSettingRoomInfoViewController.m */,
-			);
-			path = SettingRoom;
 			sourceTree = "<group>";
 		};
 		041ACC8F22B39EA1005C3731 /* Icon */ = {
@@ -1125,7 +1107,6 @@
 			isa = PBXGroup;
 			children = (
 				041ACC8322B32D57005C3731 /* DeviceDetail */,
-				041ACC8422B32D57005C3731 /* SettingRoom */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1414,8 +1395,6 @@
 		04D24A13207A174800EBD1BE /* Room */ = {
 			isa = PBXGroup;
 			children = (
-				04D24A14207A174800EBD1BE /* SHRoomBaseInfomation.h */,
-				04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */,
 				04BB44DA22B765F700EC8B67 /* SHRoomInfo.h */,
 				04BB44DB22B765F800EC8B67 /* SHRoomInfo.m */,
 			);
@@ -1728,7 +1707,6 @@
 				04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */,
 				04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */,
 				04345C4B22B1FC4200805801 /* SHMacroCommandDetailViewController.xib in Resources */,
-				041ACC8822B32D57005C3731 /* SHSettingRoomInfoViewController.xib in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 				04345C8422B2442A00805801 /* SHTVChannelSettingViewController.xib in Resources */,
 				04345C5222B1FC4200805801 /* SHChangeMacroImageViewController.xib in Resources */,
@@ -1811,7 +1789,6 @@
 				04D249BB2079CAA700EBD1BE /* SHTabBarController.m in Sources */,
 				04DDEA8822A50F6400F1BA01 /* SHLightViewCell.m in Sources */,
 				04345C5322B1FC4200805801 /* SHMacroCommand.m in Sources */,
-				041ACC8922B32D57005C3731 /* SHSettingRoomInfoViewController.m in Sources */,
 				04345C8922B2462400805801 /* SHTVChannelSettingCell.m in Sources */,
 				04D8805B20883255006C207E /* SHChannelTypeViewCell.m in Sources */,
 				04345C8322B2442A00805801 /* SHTVChannelSettingViewController.m in Sources */,
@@ -1842,7 +1819,6 @@
 				04345C6422B21C3E00805801 /* SHTVViewController.m in Sources */,
 				04D249C12079CBEC00EBD1BE /* SHRoomViewController.m in Sources */,
 				04D249A12079C90200EBD1BE /* SHConstraint.m in Sources */,
-				04D24A17207A174800EBD1BE /* SHRoomBaseInfomation.m in Sources */,
 				04D249EC2079E29600EBD1BE /* SHHousekeepingViewController.m in Sources */,
 				04345C7D22B2342E00805801 /* SHTVSettingViewCell.m in Sources */,
 				04345C5D22B1FC4200805801 /* SHMacroDetailViewCell.m in Sources */,

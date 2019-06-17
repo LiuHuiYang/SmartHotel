@@ -61,7 +61,12 @@
 
 - (void)getDeviceParameters {
     
-    if (self.light != nil) {
+    if (self.roomInfo != nil) {
+        
+        [self getRoomInfoNameAndValues];
+    }
+    
+    else if (self.light != nil) {
         
         [self getLightNameAndValues];
         
@@ -79,6 +84,72 @@
     }
 }
 
+
+/**
+ 获得房间中的基本设备信息
+ */
+- (void)getRoomInfoNameAndValues {
+    
+    self.argsNames = @[
+                       @"hotel name",
+                       @"remark",
+                       
+                       @"building number",
+                       @"floor number",
+                       @"room number",
+                       
+                       @"cardHolder subNetID",
+                       @"cardHolder deviceID",
+                       
+                       @"doorBell subNetID",
+                       @"doorBell deviceID",
+                       
+                       @"bedSide subNetID",
+                       @"bedSide deviceID",
+                       
+                       @"temperature subNetID",
+                       @"temperature deviceID",
+                       @"temperature channelNo"
+                       ];
+    
+    self.argsValues = @[
+                        self.roomInfo.hotelName,
+                        self.roomInfo.remark,
+                        
+                        [NSString stringWithFormat:@"%@",
+                          @(self.roomInfo.buildingNumber)],
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.floorNumber)],
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.roomNumber)],
+                        
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.cardHolderSubNetID)],
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.cardHolderDeviceID)],
+                        
+                        
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.doorBellSubNetID)],
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.doorBellDeviceID)],
+                        
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.bedSideSubNetID)],
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.bedSideDeviceID)],
+                        
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.temperatureSubNetID)],
+                        
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.temperatureDeviceID)],
+                        
+                        [NSString stringWithFormat:@"%@",
+                         @(self.roomInfo.temperatureChannelNo)]
+                        
+                        ];
+}
 
 /**
  获得电视的参数与名称
@@ -300,6 +371,7 @@
 // MARK: - 更新参数值
 
 
+
 /**
  更新设备参数值
 
@@ -308,7 +380,12 @@
  */
 - (void)updateDevice:(NSString *)value indexPath:(NSIndexPath *)indexPath {
     
-    if (self.light != nil) {
+    if (self.roomInfo != nil) {
+      
+        [self updateRoomInfo:value
+                   indexPath:indexPath];
+        
+    } else if (self.light != nil) {
         
         [self updateLight:value
                 indexPath:indexPath
@@ -331,6 +408,84 @@
         [self updateTV:value
              indexPath:indexPath];
     }
+}
+
+
+/**
+ 更新房间信息
+
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateRoomInfo:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+        case 0:
+            self.roomInfo.hotelName = value;
+            break;
+            
+        case 1:
+            self.roomInfo.remark = value;
+            break;
+            
+        case 2:
+            self.roomInfo.buildingNumber = value.integerValue;
+            break;
+            
+        case 3:
+            self.roomInfo.floorNumber = value.integerValue;
+            break;
+            
+        case 4:
+            self.roomInfo.roomNumber = value.integerValue;
+            break;
+            
+        case 5:
+            self.roomInfo.cardHolderSubNetID = value.integerValue;
+            
+        case 6:
+            self.roomInfo.cardHolderDeviceID = value.integerValue;
+            
+        case 7:
+            self.roomInfo.doorBellSubNetID = value.integerValue;
+            break;
+            
+        case 8:
+            self.roomInfo.doorBellDeviceID = value.integerValue;
+            break;
+            
+        case 9:
+            self.roomInfo.bedSideDeviceID =
+            value.integerValue;
+            break;
+            
+        case 10:
+            self.roomInfo.doorBellDeviceID = value.integerValue;
+            break;
+            
+        case 11:
+            self.roomInfo.temperatureSubNetID = value.integerValue;
+            break;
+            
+        case 12:
+            self.roomInfo.temperatureDeviceID = value.integerValue;
+            break;
+            
+        case 13:
+            self.roomInfo.temperatureChannelNo = value.integerValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    // 重新获得值
+    [self getRoomInfoNameAndValues];
+    
+    // 刷新列表
+    [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [SHSQLManager.shareSHSQLManager updateRoom:self.roomInfo];
 }
 
 /**

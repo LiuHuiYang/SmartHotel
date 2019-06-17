@@ -12,7 +12,6 @@
 @interface SHModelViewController : SHViewController
 
 /// 房间信息
-@property (strong, nonatomic) SHRoomBaseInfomation *roomInfo;
+@property (strong, nonatomic) SHRoomInfo *roomInfo;
 
- 
 @end

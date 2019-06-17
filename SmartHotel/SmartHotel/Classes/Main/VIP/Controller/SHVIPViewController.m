@@ -77,8 +77,8 @@
     Byte deviceID = recivedData[2];
     
     
-    if (subNetID != self.roomInfo.subNetIDForCardHolder ||
-        deviceID != self.roomInfo.deviceIDForCardHolder) {
+    if (subNetID != self.roomInfo.cardHolderSubNetID ||
+        deviceID != self.roomInfo.cardHolderDeviceID) {
         
         return;
     }
@@ -90,7 +90,6 @@
             
             Byte servcieStatus = recivedData[startIndex];
             
-           
             
         }
             break;
@@ -237,14 +236,14 @@
                         
                         Byte dndServiceData[] = { SHRoomServerTypeDND, 0};
                         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
-                         self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+                         self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
                         
                         self.isDNDOpen = NO;
                     }
                     
                     // 广播服务的状态
-                    Byte servicdeData[] = {serverButton.serverType, 1, self.roomInfo.buildID,
-                        self.roomInfo.floorID, self.roomInfo.roomNumber
+                    Byte servicdeData[] = {serverButton.serverType, 1, self.roomInfo.buildingNumber,
+                        self.roomInfo.floorNumber, self.roomInfo.roomNumber
                     };
                     
                     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:
@@ -278,14 +277,14 @@
         
         Byte dndServiceData[] = { SHRoomServerTypeDND, 0};
         [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
-         self.roomInfo.subNetIDForCardHolder targetDeviceID:self.roomInfo.deviceIDForCardHolder additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+         self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
         
         self.isDNDOpen = NO;
     }
     
     // 广播服务的状态
-    Byte servicdeData[] = {serverButton.serverType, serverButton.isSelected, self.roomInfo.buildID,
-        self.roomInfo.floorID, self.roomInfo.roomNumber
+    Byte servicdeData[] = {serverButton.serverType, serverButton.isSelected, self.roomInfo.buildingNumber,
+        self.roomInfo.floorNumber, self.roomInfo.roomNumber
     };
     
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:
@@ -335,7 +334,7 @@
     
     // 读取门铃状态 DoorBell
     // []
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.subNetIDForDoorBell targetDeviceID:self.roomInfo.deviceIDForDoorBell additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
 }
 
 - (void)viewDidLoad {

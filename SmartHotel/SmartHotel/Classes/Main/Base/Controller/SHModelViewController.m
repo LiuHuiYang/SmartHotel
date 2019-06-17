@@ -11,7 +11,6 @@
 
 #import "SHNavigationBarButton.h"
 
-#import "SHSettingRoomInfoViewController.h"
 #import "SHHomeViewController.h"
 
 #import "SHHVACViewController.h"
@@ -170,12 +169,17 @@
     
     // 首页
     else if ([self isKindOfClass:[SHHomeViewController class]]) {
+        
+        // FIXME: - 由于只支持一个房间, 临时这样实现.
+        // 若以后有变空, 参照窗帘和light实现.
+        
+        SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
+        
+       
+        detailController.roomInfo = self.roomInfo;
     
-    SHSettingRoomInfoViewController *settingViewController = [[SHSettingRoomInfoViewController alloc] init];
-    
-    settingViewController.roomInfo = self.roomInfo;
-    
-    [self.navigationController pushViewController:settingViewController animated:YES];
+    [self.navigationController pushViewController:detailController animated:YES];
     }
 }
 
@@ -183,12 +187,7 @@
 - (void)gobackhome:(UIGestureRecognizer *)recognizer  {
     
     // 设置页面
-    if ([self isKindOfClass:[SHSettingRoomInfoViewController class]]) {
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
-        // 其它页面
-    } else if (![self isKindOfClass:[SHHomeViewController class]]) {
+    if (![self isKindOfClass:[SHHomeViewController class]]) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:SHControlGoBackHomeControllerNotification object:nil];
     }
@@ -226,16 +225,8 @@
     
     [super viewWillAppear:animated];
     
-    self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
-    
-    
-    
-    // 房间信息
-    printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
-             roomNumber - %zd", self.roomInfo.hotelName,
-             self.roomInfo.buildID, self.roomInfo.floorID,
-             self.roomInfo.roomNumber);
-    
+    self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomInfos] lastObject];
+     
     [self setUpNavigationBar];
 }
 

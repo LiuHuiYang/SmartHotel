@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "SHRoomInfo.h"
-#import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
 #import "SHCurtain.h"
 #import "SHMacro.h"
@@ -431,20 +430,6 @@
  */
 - (NSUInteger)getAvailableRoomID;
 
-
-/// 更新房间设备信息
-- (BOOL)updateRoomDevice:(SHRoomDevice *)device;
-
-/// 更新房间信息
-- (BOOL)updateRoomInfo:(SHRoomBaseInfomation *)roomInfo;
-
-
-/// 获得该房间的所有设备
-- (NSMutableArray *)getRoomDevice:(SHRoomBaseInfomation *)room;
-
-/// 获得所有的房间信息
-- (NSMutableArray *)getRoomBaseInformation;
- 
 
 // MARK: - 数据库本身操作相关的API
 

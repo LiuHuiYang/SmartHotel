@@ -25,7 +25,7 @@
 @interface SHRoomViewController ()
 
 /// 当前的房间
-@property (strong, nonatomic) SHRoomBaseInfomation *roomInfo;
+@property (strong, nonatomic) SHRoomInfo *roomInfo;
 
 /// 上一次选中的按钮
 @property (weak, nonatomic) SHModuleSwitchButton *preivousButton;
@@ -49,60 +49,14 @@
 - (void)resetRoomAndDeviceInfo {
     
     // 获得当前房间的信息
-    self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomBaseInformation] lastObject];
+    self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomInfos] lastObject];
     
-    // 查询这个房间的所有设备
-    NSMutableArray *devices = [[SHSQLManager shareSHSQLManager] getRoomDevice:self.roomInfo];
-    
-    // 主要是获取每个设备模块的子网ID && 设备ID
-    for (SHRoomDevice *device in devices) {
-        
-        switch (device.deviceType) {
-                
-            case SHDeviceTypeDoorBell: {
-                
-                self.roomInfo.subNetIDForDoorBell = device.subnetID;
-                self.roomInfo.deviceIDForDoorBell = device.deviceID;
-            }
-                break;
-                
-            case SHDeviceTypeCardHolder: {
-                
-                self.roomInfo.subNetIDForCardHolder = device.subnetID;
-                self.roomInfo.deviceIDForCardHolder = device.deviceID;
-            }
-                break;
-                
-            case SHDeviceTypeBedside: {
-                
-                self.roomInfo.subNetIDForBedSide = device.subnetID;
-                self.roomInfo.deviceIDForBedSide = device.deviceID;
-            }
-                break;
-                
-                
-            default:
-                break;
-        }
-    }
     
     // 首页要进行传值
     SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[0]) topViewController];
     
     childController.roomInfo = self.roomInfo;
     
-    printLog("============================================");
-    
-    // 房间信息
-    printLog(@"房间信息: hotelName - %@, SHBuildID - %zd, floorID - %zd, \
-             roomNumber - %zd", self.roomInfo.hotelName,
-             self.roomInfo.buildID, self.roomInfo.floorID,
-             self.roomInfo.roomNumber);
-    
-    for (SHRoomDevice *device in devices) {
-        
-        printLog(@"设备信息: subNetID-%zd, deviceID - %zd, remark - %@ ", device.subnetID, device.deviceID, device.deviceRemark);
-    }
 }
 
 - (void)viewDidLoad {
@@ -262,7 +216,7 @@
 }
 
 /// 设置单个子控制器
-- (void)setUpChildController:(SHModelViewController *)viewController roomInfomation:(SHRoomBaseInfomation *)roomInfomation {
+- (void)setUpChildController:(SHModelViewController *)viewController roomInfomation:(SHRoomInfo *)roomInfomation {
     
 //    viewController.roomInfo = roomInfomation;
     
