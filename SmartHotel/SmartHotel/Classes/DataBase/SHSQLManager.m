@@ -1078,6 +1078,126 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
     return curtainID;
 }
 
+// MARK: - 房间信息
+
+
+/**
+ 更新房间信息
+
+ @return 更新成功YES, 失败 NO.
+ */
+- (BOOL)updateRoom:(SHRoomInfo *)roomInfo {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"update RoomInfo set hotelName = '%@', remark = '%@', buildingNumber = %zd, floorNumber = %zd, roomNumber = %zd, cardHolderSubNetID = %zd, cardHolderDeviceID = %zd, doorBellSubNetID = %zd, doorBellDeviceID = %zd, bedSideSubNetID = %zd, bedSideDeviceID = %zd, temperatureSubNetID = %zd, temperatureDeviceID = %zd, temperatureChannelNo = %zd where roomID = %zd;",
+         roomInfo.hotelName,
+         roomInfo.remark,
+         roomInfo.buildingNumber,
+         roomInfo.floorNumber,
+         roomInfo.roomNumber,
+         roomInfo.cardHolderSubNetID,
+         roomInfo.cardHolderDeviceID,
+         roomInfo.doorBellSubNetID,
+         roomInfo.doorBellDeviceID,
+         roomInfo.bedSideSubNetID,
+         roomInfo.bedSideDeviceID,
+         roomInfo.temperatureSubNetID,
+         roomInfo.temperatureDeviceID,
+         roomInfo.temperatureChannelNo,
+         roomInfo.roomID
+         ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 删除房间
+
+ @param roomInfo 房间信息
+ @return 删除成功YES. 失败 NO.
+ */
+- (BOOL)deleteRoom:(SHRoomInfo *)roomInfo {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"delete from RoomInfo  where roomID = %zd;", roomInfo.roomID];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 增加新的房间
+
+ @param roomInfo 房间信息
+ @return 增加成功 YES. 失败 NO.
+ */
+- (BOOL)insertRoom:(SHRoomInfo *)roomInfo {
+    
+    NSString *sql = [NSString stringWithFormat:@"insert into RoomInfo (roomID, hotelName, remark, buildingNumber, floorNumber, roomNumber, cardHolderSubNetID, cardHolderDeviceID, doorBellSubNetID, doorBellDeviceID, bedSideSubNetID, bedSideDeviceID, temperatureSubNetID, temperatureDeviceID, temperatureChannelNo) values(%zd, '%@', '%@', %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd, %zd);",
+                     roomInfo.roomID,
+                     roomInfo.hotelName,
+                     roomInfo.remark,
+                     roomInfo.buildingNumber,
+                     roomInfo.floorNumber,
+                     roomInfo.roomNumber,
+                     roomInfo.cardHolderSubNetID,
+                     roomInfo.cardHolderDeviceID,
+                     roomInfo.doorBellSubNetID,
+                     roomInfo.doorBellDeviceID,
+                     roomInfo.bedSideSubNetID,
+                     roomInfo.bedSideDeviceID,
+                     roomInfo.temperatureSubNetID,
+                     roomInfo.temperatureDeviceID,
+                     roomInfo.temperatureChannelNo
+                     ];
+    
+    return [self executeSql:sql];
+}
+
+/**
+ 查询所有的房间信息
+
+ @return 房间信息数组
+ */
+- (NSMutableArray *)getRoomInfos {
+    
+    NSString *sql = [NSString stringWithFormat:@"select roomID, hotelName, remark, buildingNumber, floorNumber, roomNumber, cardHolderSubNetID, cardHolderDeviceID, doorBellSubNetID, doorBellDeviceID, bedSideSubNetID, bedSideDeviceID, temperatureSubNetID, temperatureDeviceID, temperatureChannelNo from RoomInfo order by roomID;"];
+    
+    NSArray *array = [self selectProprty:sql];
+    
+    NSMutableArray *rooms = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        [rooms addObject: [SHRoomInfo roomInfoWithDictionary:dict]];
+    }
+    
+    return rooms;
+}
+
+/**
+ 获得可有的房间ID
+
+ @return 房间ID (数据库中的唯一标示)
+ */
+- (NSUInteger)getAvailableRoomID {
+    
+    NSString *sql =
+    [NSString stringWithFormat:@"select max(roomID) from RoomInfo;"];
+    
+    NSDictionary *dict =
+    [[self selectProprty:sql] lastObject];
+    
+    if ([dict objectForKey:@"max(roomID)"] == [NSNull null]) {
+        
+        return 1;
+    }
+    
+    NSUInteger roomID =
+    [[dict objectForKey:@"max(roomID)"]integerValue] + 1;
+    
+    return roomID;
+}
+
 
 // MARK: - 旧代码
 

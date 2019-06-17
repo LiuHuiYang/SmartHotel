@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SHRoomInfo.h"
 #import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
 #import "SHCurtain.h"
@@ -19,6 +20,7 @@
 #import "SHChannelGroup.h"
 #import "SHHVAC.h"
 #import "SHIcon.h"
+
 
 @interface SHSQLManager : NSObject
 
@@ -389,6 +391,46 @@
  @return 返回可以直接使用的窗帘编号
  */
 - (NSUInteger)getAvailableCurtainID;
+
+// MARK: - 房间信息
+
+/**
+ 更新房间信息
+ 
+ @return 更新成功YES, 失败 NO.
+ */
+- (BOOL)updateRoom:(SHRoomInfo *)roomInfo;
+
+/**
+ 删除房间
+ 
+ @param roomInfo 房间信息
+ @return 删除成功YES. 失败 NO.
+ */
+- (BOOL)deleteRoom:(SHRoomInfo *)roomInfo;
+
+/**
+ 增加新的房间
+ 
+ @param roomInfo 房间信息
+ @return 增加成功 YES. 失败 NO.
+ */
+- (BOOL)insertRoom:(SHRoomInfo *)roomInfo;
+
+/**
+ 查询所有的房间信息
+ 
+ @return 房间信息数组
+ */
+- (NSMutableArray *)getRoomInfos;
+
+/**
+ 获得可有的房间ID
+ 
+ @return 房间ID (数据库中的唯一标示)
+ */
+- (NSUInteger)getAvailableRoomID;
+
 
 /// 更新房间设备信息
 - (BOOL)updateRoomDevice:(SHRoomDevice *)device;

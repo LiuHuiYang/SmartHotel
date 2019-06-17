@@ -345,7 +345,7 @@
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"SETTINGS" withSubTitle:@"Settings"];
     
     [self.deviceListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSettingDeiviceTypeViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSettingDeiviceTypeViewCell class])];
-    self.deviceListView.rowHeight = [SHSettingDeiviceTypeViewCell rowHeightForDeviceTypeViewCell];
+    self.deviceListView.rowHeight = [SHSettingDeiviceTypeViewCell rowHeight];
     
     [self.deviceListView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
     

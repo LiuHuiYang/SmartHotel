@@ -331,7 +331,10 @@
     
     [super viewWillAppear:animated];
     
-    // 读取门铃状态
+    // [DND CLEAR ] bid fid rid 共4个bytes
+    
+    // 读取门铃状态 DoorBell
+    // []
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.subNetIDForDoorBell targetDeviceID:self.roomInfo.deviceIDForDoorBell additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
 }
 

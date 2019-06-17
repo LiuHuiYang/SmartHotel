@@ -52,6 +52,7 @@
 		04972530208084FE00B62A9E /* SHOperatorCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0497252F208084FE00B62A9E /* SHOperatorCode.m */; };
 		049725342080905400B62A9E /* SHLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 049725332080905400B62A9E /* SHLight.m */; };
 		04B05C5D2080B1E30027E889 /* SHLightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B05C5C2080B1E30027E889 /* SHLightButton.m */; };
+		04BB44DC22B765F800EC8B67 /* SHRoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB44DB22B765F800EC8B67 /* SHRoomInfo.m */; };
 		04C7996C2093199F00F86679 /* Sounds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 04C7996B2093199E00F86679 /* Sounds.bundle */; };
 		04C7996F20931A1700F86679 /* SHSoundTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7996E20931A1700F86679 /* SHSoundTools.m */; };
 		04C7997220931B8B00F86679 /* SHAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7997120931B8B00F86679 /* SHAlarm.m */; };
@@ -215,6 +216,8 @@
 		049725332080905400B62A9E /* SHLight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLight.m; sourceTree = "<group>"; };
 		04B05C5B2080B1E30027E889 /* SHLightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLightButton.h; sourceTree = "<group>"; };
 		04B05C5C2080B1E30027E889 /* SHLightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLightButton.m; sourceTree = "<group>"; };
+		04BB44DA22B765F700EC8B67 /* SHRoomInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHRoomInfo.h; sourceTree = "<group>"; };
+		04BB44DB22B765F800EC8B67 /* SHRoomInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHRoomInfo.m; sourceTree = "<group>"; };
 		04C7996B2093199E00F86679 /* Sounds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Sounds.bundle; sourceTree = "<group>"; };
 		04C7996D20931A1600F86679 /* SHSoundTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHSoundTools.h; sourceTree = "<group>"; };
 		04C7996E20931A1700F86679 /* SHSoundTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHSoundTools.m; sourceTree = "<group>"; };
@@ -1413,6 +1416,8 @@
 			children = (
 				04D24A14207A174800EBD1BE /* SHRoomBaseInfomation.h */,
 				04D24A15207A174800EBD1BE /* SHRoomBaseInfomation.m */,
+				04BB44DA22B765F700EC8B67 /* SHRoomInfo.h */,
+				04BB44DB22B765F800EC8B67 /* SHRoomInfo.m */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -1846,6 +1851,7 @@
 				04DAFEB520849788009AA5EB /* SHChannel.m in Sources */,
 				04D249A32079C90200EBD1BE /* UIButton+init.m in Sources */,
 				04F892022089796F003E2CED /* SHSettingDeiviceTypeViewCell.m in Sources */,
+				04BB44DC22B765F800EC8B67 /* SHRoomInfo.m in Sources */,
 				04C7997220931B8B00F86679 /* SHAlarm.m in Sources */,
 				04DA600B20B27BDD0099EBFE /* SHWordTimeViewCell.m in Sources */,
 				049725342080905400B62A9E /* SHLight.m in Sources */,

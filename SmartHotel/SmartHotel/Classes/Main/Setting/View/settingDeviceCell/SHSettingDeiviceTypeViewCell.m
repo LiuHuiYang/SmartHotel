@@ -41,7 +41,7 @@
 }
 
 /// 行高
-+ (CGFloat)rowHeightForDeviceTypeViewCell {
++ (CGFloat)rowHeight {
     
     return navigationBarHeight;
 }

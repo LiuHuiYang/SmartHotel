@@ -2,15 +2,31 @@
 -- 房间信息
 CREATE TABLE IF NOT EXISTS RoomInfo (
 
+    -- 房间的标示
+    roomID        INTEGER NOT NULL DEFAULT 0,
     hotelName     TEXT NOT NULL DEFAULT 'Hotel',
     remark        TEXT NOT NULL DEFAULT 'room',
 
-    buildingID    INTEGER NOT NULL DEFAULT 0,
-    floorID       INTEGER NOT NULL DEFAULT 0,
-    roomID        INTEGER NOT NULL DEFAULT 0,
+    -- 三个确定房间参数
+    buildingNumber       INTEGER NOT NULL DEFAULT 0,
+    floorNumber          INTEGER NOT NULL DEFAULT 0,
+    roomNumber           INTEGER NOT NULL DEFAULT 0,
 
-    temperatureSubNetID INTEGER NOT NULL DEFAULT 0,
-    temperatureDeviceID INTEGER NOT NULL DEFAULT 0,
+    -- CardHolder
+    cardHolderSubNetID   INTEGER NOT NULL DEFAULT 0,
+    cardHolderDeviceID   INTEGER NOT NULL DEFAULT 0,
+
+    -- DoorBell
+    doorBellSubNetID     INTEGER NOT NULL DEFAULT 0,
+    doorBellDeviceID     INTEGER NOT NULL DEFAULT 0,
+
+    -- bedSide
+    bedSideSubNetID      INTEGER NOT NULL DEFAULT 0,
+    bedSideDeviceID      INTEGER NOT NULL DEFAULT 0,
+
+    -- 室内温度相关
+    temperatureSubNetID  INTEGER NOT NULL DEFAULT 0,
+    temperatureDeviceID  INTEGER NOT NULL DEFAULT 0,
     temperatureChannelNo INTEGER NOT NULL DEFAULT 0
 );
 

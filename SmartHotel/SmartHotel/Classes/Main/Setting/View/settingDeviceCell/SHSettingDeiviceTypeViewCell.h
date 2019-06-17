@@ -14,7 +14,7 @@
 @property (copy, nonatomic) NSString *deviceName;
 
 /// 行高
-+ (CGFloat)rowHeightForDeviceTypeViewCell;
++ (CGFloat)rowHeight;
 
 
 @end

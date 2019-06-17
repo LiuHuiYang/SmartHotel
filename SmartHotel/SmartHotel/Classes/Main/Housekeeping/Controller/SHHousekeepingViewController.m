@@ -76,7 +76,7 @@
 
     switch (operatorCode) {
         
-            // 服务反馈
+            // 查询服务反馈
         case  0x043F: {
             
             Byte servcieStatus = recivedData[startIndex];
@@ -87,7 +87,7 @@
             
         case 0x040B: {
             
-            if (recivedData[startIndex + 1]  == 0XF8) {
+            if (recivedData[startIndex + 1]  == 0xF8) {
                 
                 Byte servcieStatus = recivedData[startIndex];
                 
@@ -106,6 +106,9 @@
 //        [self setServiceStatusForButton]
         [SVProgressHUD showSuccessWithStatus:@"准备进行设置状态"];
     }
+    
+    // 0x040B // 发控制相同的
+    // 0x044F 和 读取状态是相同的
 }
 
 

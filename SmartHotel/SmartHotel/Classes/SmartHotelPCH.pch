@@ -28,6 +28,7 @@
 #import "SHUdpSocket.h"
 
 #import "SHLanguageTools.h"
+#import "SHRoomInfo.h"
 #import "SHRoomBaseInfomation.h"
 #import "SHRoomDevice.h"
 #import "SHCurtain.h"
