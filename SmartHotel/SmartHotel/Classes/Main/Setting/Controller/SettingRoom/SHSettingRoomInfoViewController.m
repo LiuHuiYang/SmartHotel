@@ -8,7 +8,7 @@
 
 #import "SHSettingRoomInfoViewController.h"
 #import "SHSettingDeiviceTypeViewCell.h"
-#import "SHSettingDeviceArgsViewCell.h"
+#import "SHDeviceParametersDetailViewCell.h"
 
 
 @interface SHSettingRoomInfoViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -270,7 +270,7 @@
         
     } else {
         
-        SHSettingDeviceArgsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class]) forIndexPath:indexPath];
+        SHDeviceParametersDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath];
         
         if (self.isSettingRoomInfo) {
             
@@ -349,9 +349,9 @@
     
     [self.deviceListView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
     
-    [self.argsListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHSettingDeviceArgsViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHSettingDeviceArgsViewCell class])];
+    [self.argsListView registerNib:[UINib nibWithNibName:NSStringFromClass([SHDeviceParametersDetailViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class])];
     
-    self.argsListView.rowHeight = [SHSettingDeviceArgsViewCell rowHeightForDeviceArgsViewCell];
+    self.argsListView.rowHeight = [SHDeviceParametersDetailViewCell rowHeight];
 }
 
 - (void)didReceiveMemoryWarning {

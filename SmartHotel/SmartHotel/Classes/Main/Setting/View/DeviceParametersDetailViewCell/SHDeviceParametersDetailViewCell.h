@@ -15,13 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  参数名称
  */
-@property (copy, nonatomic) NSString *argsName;
+@property (copy, nonatomic) NSString *argName;
 
 
 /**
  参数值
  */
-@property (copy, nonatomic) NSString *argValueText;
+@property (copy, nonatomic) NSString *argValue;
 
 /// 行高
 + (CGFloat)rowHeight;

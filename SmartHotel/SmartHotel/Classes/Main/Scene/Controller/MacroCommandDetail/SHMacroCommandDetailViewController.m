@@ -253,8 +253,8 @@
     [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SHDeviceParametersDetailViewCell class]) forIndexPath:indexPath
      ];
     
-    cell.argsName = self.argsNames[indexPath.row];
-    cell.argValueText = self.argsValues[indexPath.row];
+    cell.argName = self.argsNames[indexPath.row];
+    cell.argValue = self.argsValues[indexPath.row];
     
     return cell;
 }

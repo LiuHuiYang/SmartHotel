@@ -1,3 +1,19 @@
+
+-- 房间信息
+CREATE TABLE IF NOT EXISTS RoomInfo (
+
+    hotelName     TEXT NOT NULL DEFAULT 'Hotel',
+    remark        TEXT NOT NULL DEFAULT 'room',
+
+    buildingID    INTEGER NOT NULL DEFAULT 0,
+    floorID       INTEGER NOT NULL DEFAULT 0,
+    roomID        INTEGER NOT NULL DEFAULT 0,
+
+    temperatureSubNetID INTEGER NOT NULL DEFAULT 0,
+    temperatureDeviceID INTEGER NOT NULL DEFAULT 0,
+    temperatureChannelNo INTEGER NOT NULL DEFAULT 0
+);
+
 -- 图片ID
 CREATE TABLE IF NOT EXISTS iconList (
     iconID    INTEGER NOT NULL DEFAULT 0,

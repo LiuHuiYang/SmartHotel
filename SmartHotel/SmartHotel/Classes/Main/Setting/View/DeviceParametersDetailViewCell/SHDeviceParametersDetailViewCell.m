@@ -26,18 +26,18 @@
 
 @implementation SHDeviceParametersDetailViewCell
 
-- (void)setArgsName:(NSString *)argsName {
+- (void)setArgName:(NSString *)argName {
     
-    _argsName = argsName.copy;
+    _argName = argName.copy;
     
-    self.argsNameLabel.text = argsName;
+    self.argsNameLabel.text = argName;
 }
 
-- (void)setArgValueText:(NSString *)argValueText {
+- (void)setArgValue:(NSString *)argValue {
     
-    _argValueText = argValueText.copy;
+    _argValue = argValue.copy;
     
-    self.argsValueLabel.text = argValueText;
+    self.argsValueLabel.text = argValue;
 }
 
 /// 行高
