@@ -11,6 +11,10 @@
 
 @interface SHVIPViewController ()
 
+/// 按钮列表
+@property (weak, nonatomic) IBOutlet UIView *buttonsView;
+
+
 /// 出租车
 @property (weak, nonatomic) IBOutlet SHServiceButton *taxiButton;
 
@@ -95,6 +99,18 @@
         self.isDND =
             recivedData[startIndex + 0] ==
             SHRoomServerTypeDND;
+        
+        if (self.isDND) {
+            
+            printLog(@"设置dddd");
+            
+            for (SHServiceButton *button in self.buttonsView.subviews) {
+                
+                button.selected = NO;
+                
+                [self sendServiceRequest:button];
+            }
+        }
     }
 }
 

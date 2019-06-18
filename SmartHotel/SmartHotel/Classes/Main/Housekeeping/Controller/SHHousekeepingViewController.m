@@ -176,6 +176,7 @@
             if (button != self.dndButton && button.selected) {
                 
                 button.selected = NO;
+                [self sendServiceRequest:serverButton];
             }
         }
         
@@ -214,18 +215,24 @@
         // 其它服务发送给计算机 (主动报告状态)
     } else {
         
-        Byte data[] = {
-            serverButton.serverType,
-            serverButton.selected,
-            self.roomInfo.buildingNumber,
-            self.roomInfo.floorNumber,
-            self.roomInfo.roomNumber
-        };
-        
-        [[SHUdpSocket shareSHUdpSocket]
-         sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        [self sendServiceRequest:serverButton];
     }
     
+}
+
+/// 发送请求服务
+- (void)sendServiceRequest:(SHServiceButton *)serviceButton {
+    
+    Byte data[] = {
+        serviceButton.serverType,
+        serviceButton.selected,
+        self.roomInfo.buildingNumber,
+        self.roomInfo.floorNumber,
+        self.roomInfo.roomNumber
+    };
+    
+    [[SHUdpSocket shareSHUdpSocket]
+     sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 /// 关闭DND模式
@@ -275,9 +282,13 @@
             for (SHServiceButton *button in self.serviceButtonView.subviews) {
                 
                 button.selected = NO;
+                
+                // 关闭其它服务
+                
             }
             
             self.dndButton.selected = YES;
+            
         }
             break;
             

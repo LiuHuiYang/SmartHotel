@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="bagesButton" destination="Cgg-ne-WpT" id="hmZ-cf-hPP"/>
                 <outlet property="buttlerButton" destination="fnm-MZ-zj4" id="iIP-Xy-tQF"/>
+                <outlet property="buttonsView" destination="NAV-Z6-8cg" id="aSy-5i-w8f"/>
                 <outlet property="checkoutButton" destination="ghi-OY-pSF" id="cs7-p4-tbu"/>
                 <outlet property="doctorButton" destination="DDv-gh-nuu" id="c4z-Ws-9Lo"/>
                 <outlet property="elevtorButton" destination="jwH-Xc-vLa" id="MNo-eH-KBt"/>
