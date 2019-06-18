@@ -14,35 +14,36 @@
 
 typedef NS_ENUM(NSInteger, SHRoomServerType) {
     
-    SHRoomServerTypeCleanOver,
-    SHRoomServerTypeClean,
-    SHRoomServerTypeDND,
-    SHRoomServerTypeLaudry,
-    SHRoomServerTypeCleanLaundry,
-    SHRoomServerTypeLaundring,
-    SHRoomServerTypeRoomReady,
-    SHRoomServerTypeMaintenance,
+    SHRoomServerTypeCleanOver, // 0
+    SHRoomServerTypeClean,     // 1
+    SHRoomServerTypeDND,       // 2
+    SHRoomServerTypeLaudry,    // 3
+    SHRoomServerTypeCleanLaundry, // 4
+    SHRoomServerTypeLaundring, // 5
+    SHRoomServerTypeRoomReady, // 6
     
-    SHRoomServerTypeCleanShoes,
-    SHRoomServerTypeRefillMiniBar,
-    SHRoomServerTypeReadyBed,
-    SHRoomServerTypeTakePlates,
-    SHRoomServerTypePleaseWait,
+    SHRoomServerTypeMaintenance, // 0x07
     
-    SHRoomServerTypeDoctor,
-    SHRoomServerTypeMyCar,
-    SHRoomServerTypeMassage,
-    SHRoomServerTypeBags,
-    SHRoomServerTypeTaxi,
-    SHRoomServerTypeCheckOut,
-    SHRoomServerTypePanic,
-    SHRoomServerTypeButtler,
-    SHRoomServerTypeElevrtor,
+    SHRoomServerTypeCleanShoes, // 0x08
+    SHRoomServerTypeRefillMiniBar, // 0x09
+    SHRoomServerTypeReadyBed, // 10 0x0A
+    SHRoomServerTypeTakePlates, // 11 0x0B
+    SHRoomServerTypePleaseWait, // 12 0x0C
     
-    SHRoomServerTypeTowels,
-    SHRoomServerTypePillow,
-    SHRoomServerTypeICE,
-    SHRoomServerTypeBreakfast
+    SHRoomServerTypeDoctor, // 13 0x0D
+    SHRoomServerTypeMyCar,  // 14 0x0E
+    SHRoomServerTypeMassage, // 15 0x0F
+    SHRoomServerTypeBags,    //  16 0x10
+    SHRoomServerTypeTaxi,    // 17 0x11
+    SHRoomServerTypeCheckOut, // 18 0x12
+    SHRoomServerTypePanic,    // 19 0x13
+    SHRoomServerTypeButtler, // 20 0x14
+    SHRoomServerTypeElevrtor, // 21 0x15
+    
+    SHRoomServerTypeTowels, // 22 0x16
+    SHRoomServerTypePillow, // 23  0x17
+    SHRoomServerTypeICE,    // 24 0x18
+    SHRoomServerTypeBreakfast // 25 0x19
     
 };
 

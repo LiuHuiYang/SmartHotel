@@ -45,7 +45,7 @@
 @property (weak, nonatomic) IBOutlet SHServiceButton *panicButton;
 
 /// 打开了DND
-@property (nonatomic, assign) BOOL isDNDOpen;
+@property (nonatomic, assign) BOOL isDND;
 
 /// 旧代码一数值，不知道什么意思
 @property (nonatomic, assign) NSUInteger waitCount;
@@ -71,48 +71,30 @@
     
     Byte *recivedData = ((Byte *) [data bytes]);
     
-    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
+    UInt16 operatorCode =
+        ((recivedData[5] << 8) | recivedData[6]);
     
-    Byte subNetID = recivedData[1];
-    Byte deviceID = recivedData[2];
+    //    Byte subNetID = recivedData[1];
+    //    Byte deviceID = recivedData[2];
     
-    
-    if (subNetID != self.roomInfo.cardHolderSubNetID ||
-        deviceID != self.roomInfo.cardHolderDeviceID) {
+    if ((operatorCode != 0x043F) &&
+        (operatorCode != 0x044F)
+        ) {
         
         return;
     }
     
-    switch (operatorCode) {
-            
-            // 服务反馈
-        case  0x043F: {
-            
-            Byte servcieStatus = recivedData[startIndex];
-            
-            
-        }
-            break;
-            
-        case 0x040B: {
-            
-            if (recivedData[startIndex + 1]  == 0xF8) {
-                
-                Byte servcieStatus = recivedData[startIndex];
-                
-               
-            }
-        }
-            break;
-            
-        default:
-            break;
-    }
+
+    // 房间信息
+    if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+        self.roomInfo.floorNumber ==
+        recivedData[startIndex + 2] &&
+        self.roomInfo.roomNumber ==
+        recivedData[startIndex + 3]) {
     
-    if (operatorCode ==  0x043F || operatorCode == 0x040B) {
-        
-        // 设置状态
-        
+        self.isDND =
+            recivedData[startIndex + 0] ==
+            SHRoomServerTypeDND;
     }
 }
 
@@ -190,19 +172,19 @@
 // MARK: - 数据传递
 
 /// 服务按钮按下
-- (void)serviceButtonPress:(SHServiceButton *)serverButton {
+- (void)serviceButtonPress:(SHServiceButton *)serviceButton {
     
     // 等待
-    if (serverButton.serverType == SHRoomServerTypePleaseWait) {
+    if (serviceButton.serverType == SHRoomServerTypePleaseWait) {
         
-        if (serverButton.isSelected) {
+        if (serviceButton.isSelected) {
             
             [self turnOffPleaseWait];
             
         } else {
             
             // waitFlicke_vip:
-            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(waitVIP) userInfo:nil repeats:YES];
+            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(waitVIP) userInfo:nil repeats:YES];
             
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes] ;
             
@@ -212,14 +194,14 @@
     // 其它情况
     } else {
         
-        if (!serverButton.isSelected &&
-            (serverButton.serverType == SHRoomServerTypeCheckOut    ||
-             serverButton.serverType == SHRoomServerTypeTaxi        ||
-             serverButton.serverType == SHRoomServerTypeMyCar       ||
-             serverButton.serverType == SHRoomServerTypeDoctor      ||
-             serverButton.serverType == SHRoomServerTypePanic)) {
+        if (!serviceButton.isSelected &&
+            (serviceButton.serverType == SHRoomServerTypeCheckOut     ||
+             serviceButton.serverType == SHRoomServerTypeTaxi        ||
+             serviceButton.serverType == SHRoomServerTypeMyCar       ||
+             serviceButton.serverType == SHRoomServerTypeDoctor      ||
+             serviceButton.serverType == SHRoomServerTypePanic)) {
             
-                self.currentService = serverButton.serverType;
+                self.currentService = serviceButton.serverType;
                 
                 TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:
                     [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:
@@ -229,25 +211,9 @@
                 
                 [alertView addAction: [TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"YES"] style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
                     
-                    [self updateServerButtonStatus:serverButton];
+                    serviceButton.selected = !serviceButton.isSelected;
                     
-                    // 发送DND的指令
-                    if (self.isDNDOpen) {
-                        
-                        Byte dndServiceData[] = { SHRoomServerTypeDND, 0};
-                        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
-                         self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
-                        
-                        self.isDNDOpen = NO;
-                    }
-                    
-                    // 广播服务的状态
-                    Byte servicdeData[] = {serverButton.serverType, 1, self.roomInfo.buildingNumber,
-                        self.roomInfo.floorNumber, self.roomInfo.roomNumber
-                    };
-                    
-                    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:
-                     0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:servicdeData length:sizeof(servicdeData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+                    [self sendServiceRequest:serviceButton];
                     
                     self.currentService = -1;
                     
@@ -262,66 +228,101 @@
                 return;  
         }
         
-        if (serverButton.isSelected && (serverButton.serverType == SHRoomServerTypeMaintenance)) {
+        if (serviceButton.isSelected && (serviceButton.serverType == SHRoomServerTypeMaintenance)) {
             
-            return;
+            // FIXME: - 暂不清楚为什么修理不能取消
+//            return;
         }
         
         // 更新状态
-        [self updateServerButtonStatus:serverButton];
+        serviceButton.selected = !serviceButton.isSelected;
     }
     
     
-    // 发送DND的指令
-    if (self.isDNDOpen) {
-        
-        Byte dndServiceData[] = { SHRoomServerTypeDND, 0};
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
-         self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
-        
-        self.isDNDOpen = NO;
-    }
+    [self sendServiceRequest:serviceButton];
+}
+
+/// 发送服务请求
+- (void)sendServiceRequest:(SHServiceButton *)serviceButton {
+    
+  
+    // 关闭DND
+    [self turnOffDND];
     
     // 广播服务的状态
-    Byte servicdeData[] = {serverButton.serverType, serverButton.isSelected, self.roomInfo.buildingNumber,
-        self.roomInfo.floorNumber, self.roomInfo.roomNumber
+    Byte servicdeData[] = {
+        serviceButton.serverType,
+        serviceButton.isSelected,
+        self.roomInfo.buildingNumber,
+        self.roomInfo.floorNumber,
+        self.roomInfo.roomNumber
     };
     
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:
      0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:servicdeData length:sizeof(servicdeData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
-
-/// 更新按钮的状态
-- (void)updateServerButtonStatus:(SHServiceButton *)serviceButton {
+/// 关闭DND服务
+- (void)turnOffDND {
     
-    serviceButton.selected = !serviceButton.isSelected;
+    if (self.isDND == NO) {
+        return;
+    }
+    
+    Byte dndServiceData[] = {
+        SHRoomServerTypeDND,
+        0,
+        self.roomInfo.buildingNumber,
+        self.roomInfo.floorNumber,
+        self.roomInfo.roomNumber
+    };
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
+     self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
+     self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    self.isDND = NO;
 }
+
+
 
 /// 等待
 - (void)waitVIP {
     
     ++self.waitCount;
     
-    if (self.waitCount >= 39) {
+    // 等20s
+    if (self.waitCount >= 20) {
         
-        // ....
-        self.pleaseWaitButton.selected = NO;
-        self.waitCount = 0;
-        
-        [self.waitTimer invalidate];
-        self.waitTimer = nil;
+        [self turnOffPleaseWait];
         
         return;   
     }
 
-    self.pleaseWaitButton.selected = YES;
+    self.pleaseWaitButton.selected = !self.pleaseWaitButton.selected;
 }
 
 /// 关闭等待
 - (void)turnOffPleaseWait {
     
-    self.waitCount = 40; // 不知道为什么要设置为 40
+    
+    self.pleaseWaitButton.selected = NO;
+    self.waitCount = 0;
+    
+    [self.waitTimer invalidate];
+    self.waitTimer = nil;
+}
+
+/// 读取服务状态
+- (void)readServiceStatus {
+    
+    // 通过CardHolder读取
+    [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    // 通过DoorBell读取
+    [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 // MARK: - UI初始化
@@ -330,17 +331,13 @@
     
     [super viewWillAppear:animated];
     
-    // [DND CLEAR ] bid fid rid 共4个bytes
-    
-    // 读取门铃状态 DoorBell
-    // []
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x043E targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:nil remoteMacAddress:[SHUdpSocket getLocalSendDataWifi] needReSend:YES];
+    [self readServiceStatus];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.isDNDOpen = NO;
+    self.isDND = YES;
     
     self.navigationItem.title = [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"VIP"];
     

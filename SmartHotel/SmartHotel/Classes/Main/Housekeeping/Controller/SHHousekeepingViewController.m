@@ -57,54 +57,41 @@
 - (void)analyzeReceiveData:(NSNotification *)notification {
     
     const Byte startIndex = 9;
-
+    
     NSData *data = notification.object;
-
+    
     Byte *recivedData = ((Byte *) [data bytes]);
-
-    UInt16 operatorCode = ((recivedData[5] << 8) | recivedData[6]);
-
-    Byte subNetID = recivedData[1];
-    Byte deviceID = recivedData[2];
-  
-    switch (operatorCode) {
+    
+    UInt16 operatorCode =
+    ((recivedData[5] << 8) | recivedData[6]);
+    
+    //    Byte subNetID = recivedData[1];
+    //    Byte deviceID = recivedData[2];
+    
+    if ((operatorCode != 0x043F) &&
+        (operatorCode != 0x044F)
+        ) {
         
-            // 接收到读取状态返回
-        case 0x043F:
-            
-            // 接收到服务广播
-        case 0x044F: {
-            
-            // 房间信息
-            if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
-                self.roomInfo.floorNumber ==
-                recivedData[startIndex + 2] &&
-                self.roomInfo.roomNumber ==
-                recivedData[startIndex + 3]) {
-                
-                SHRoomServerType service = recivedData[startIndex + 0];
-                
-                [self setServiceStatusForButton:service];
-            }
-        }
-            
-        case 0x040B: {
-            
-            if (recivedData[startIndex + 1]  == 0xF8) {
-                
-                Byte servcieStatus = recivedData[startIndex];
-                
-                [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"服务状态 : %d", servcieStatus]];
-            }
-        }
-            break;
-
-        default:
-            break;
+        return;
     }
     
+    // 房间信息
+    if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+        self.roomInfo.floorNumber ==
+        recivedData[startIndex + 2] &&
+        self.roomInfo.roomNumber ==
+        recivedData[startIndex + 3]) {
+        
+        
+        // 读取固件中的服务操作
+        if (operatorCode == 0x043F) {
+            
+            SHRoomServerType service = recivedData[startIndex + 0];
+            
+            [self setGeneralServiceStatusForButton:service];
+        }
+    }
     
-    // 0x040B // 发控制相同的
 }
 
 
@@ -162,26 +149,26 @@
 
 /// 收拾餐具
 - (IBAction)takePlatesButtonClick {
-   
+    
     [self serviceButtonPress:self.takePlatesButton];
 }
 
 /// 擦鞋
 - (IBAction)cleanShoesButtonClick {
-   
+    
     [self serviceButtonPress:self.cleanShoesButton];
 }
 
 /// 洗衣服
 - (IBAction)laudryButtonClick {
- 
+    
     [self serviceButtonPress:self.laudryButton];
 }
 
-/// 服务按钮按下
+/// 发送服务请求
 - (void)serviceButtonPress:(SHServiceButton *)serverButton {
     
-    // 如果当前是打扰模式
+    // 如果当前是打扰模式 == UI 全部按钮复位
     if (serverButton.serverType == SHRoomServerTypeDND) {
         
         for (SHServiceButton *button in self.serviceButtonView.subviews) {
@@ -191,11 +178,13 @@
                 button.selected = NO;
             }
         }
-    
-    } else {  // 非打扰模式下
+        
+    } else {  // 不是DND模式下
         
         // 打扫 && 洗衣服关闭打扰模式
-        [self turnOffDNDService: (serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )];
+        //        [self turnOffDNDService: (serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )];
+        
+        [self turnOffDND];
     }
     
     // 更新当前按钮的状态
@@ -221,19 +210,26 @@
         
         // 通过DoorBell发送
         [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
-    
-    // 其它服务发送给计算机 (主动报告状态)
-    } else {
-    
-        Byte data[5] = {serverButton.serverType, serverButton.selected, self.roomInfo.buildingNumber, self.roomInfo.floorNumber, self.roomInfo.roomNumber};
         
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        // 其它服务发送给计算机 (主动报告状态)
+    } else {
+        
+        Byte data[] = {
+            serverButton.serverType,
+            serverButton.selected,
+            self.roomInfo.buildingNumber,
+            self.roomInfo.floorNumber,
+            self.roomInfo.roomNumber
+        };
+        
+        [[SHUdpSocket shareSHUdpSocket]
+         sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
     }
     
 }
 
 /// 关闭DND模式
-- (void)turnOffDNDService:(BOOL)off {
+- (void)turnOffDND {
     
     // 关闭
     if (self.dndButton.selected) {
@@ -241,23 +237,31 @@
     }
     
     // 关闭DND服务
-    if (off) {
+    Byte data[] = {
+        SHRoomServerTypeDND,
+        0,
+        self.roomInfo.buildingNumber,
+        self.roomInfo.floorNumber,
+        self.roomInfo.roomNumber
+    };
     
-        Byte data[2] = {SHRoomServerTypeDND, 0};
-        
-        [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:YES];
-    }
+    // card holder
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    // doorbell发送
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
 }
 
 
 
-/// 设置服务按钮
-- (void)setServiceStatusForButton:(SHRoomServerType)service {
+/// 设置普通服务的状态 (计算机的无法进行读取, 所以不设置, 如果是控制发送, 不解析, 直接在本身进行设置, 因为计算机广播状态无法进行读取)
+- (void)setGeneralServiceStatusForButton:(SHRoomServerType)service {
     
-    for (SHServiceButton *button in self.serviceButtonView.subviews) {
-        
-        button.selected = NO;
-    }
+    self.cleanButton.selected = NO;
+    self.dndButton.selected = NO;
+    self.laudryButton.selected = NO;
+    
     
     switch (service) {
             
@@ -267,6 +271,12 @@
             break;
             
         case SHRoomServerTypeDND: {  // DND
+            
+            for (SHServiceButton *button in self.serviceButtonView.subviews) {
+                
+                button.selected = NO;
+            }
+            
             self.dndButton.selected = YES;
         }
             break;
@@ -277,11 +287,12 @@
             break;
             
         case SHRoomServerTypeCleanLaundry: {
-        
+            
             self.cleanButton.selected = YES;
             self.laudryButton.selected = YES;
         }
             break;
+            
             
         default:
             break;
