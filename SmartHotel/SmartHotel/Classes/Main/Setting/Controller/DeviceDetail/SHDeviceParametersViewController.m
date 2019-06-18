@@ -455,12 +455,12 @@
             break;
             
         case 9:
-            self.roomInfo.bedSideDeviceID =
+            self.roomInfo.bedSideSubNetID =
             value.integerValue;
             break;
             
         case 10:
-            self.roomInfo.doorBellDeviceID = value.integerValue;
+            self.roomInfo.bedSideDeviceID = value.integerValue;
             break;
             
         case 11:
