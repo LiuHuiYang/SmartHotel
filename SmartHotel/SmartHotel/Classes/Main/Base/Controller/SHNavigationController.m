@@ -36,7 +36,7 @@
     
     if (self.childViewControllers.count > 0) {
         
-//       viewController.hidesBottomBarWhenPushed = YES;
+       viewController.hidesBottomBarWhenPushed = YES;
         viewController.navigationItem.leftBarButtonItem =
         [UIBarButtonItem barButtonItemWithImageName:@"navigationbarback" hightlightedImageName:@"navigationbarback" addTarget:self action:@selector(popBack) isLeft:true];
         

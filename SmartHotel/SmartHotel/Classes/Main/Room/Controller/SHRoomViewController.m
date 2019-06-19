@@ -22,6 +22,7 @@
 
 #import "SHModuleSwitchButton.h"
 
+
 @interface SHRoomViewController ()
 
 /// 当前的房间
@@ -51,12 +52,10 @@
     // 获得当前房间的信息
     self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomInfos] lastObject];
     
-    
     // 首页要进行传值
     SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[0]) topViewController];
     
     childController.roomInfo = self.roomInfo;
-    
 }
 
 - (void)viewDidLoad {
@@ -117,9 +116,7 @@
 /// 设置导航栏
 - (void)setUpTabBar {
     
-//    [self.tabBar removeFromSuperview];
-//    self.tabBar.hidden = YES;
-    
+   
     [self.tabBar setBackgroundImage:[[UIImage alloc] init]];
     [self.tabBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
     
@@ -177,7 +174,8 @@
     }
     
 //    [self.view addSubview:self.tabBarScrollView];
-    [self.view insertSubview:self.tabBarScrollView aboveSubview:self.tabBar];
+//    [self.view insertSubview:self.tabBarScrollView aboveSubview:self.tabBar];
+    [self.tabBar addSubview:self.tabBarScrollView];
 }
 
 
@@ -235,7 +233,16 @@
     
     [super viewDidLayoutSubviews];
     
-    self.tabBarScrollView.frame = CGRectMake(0, self.view.bounds.size.height - customToolBarHeight, self.view.frame.size.width, customToolBarHeight);
+    self.tabBar.frame =
+        CGRectMake(0,
+                   self.view.bounds.size.height - customToolBarHeight,
+                   self.view.frame.size.width,
+                   customToolBarHeight
+                );
+    
+//    self.tabBarScrollView.frame = CGRectMake(0, self.view.bounds.size.height - customToolBarHeight, self.view.frame.size.width, customToolBarHeight);
+    
+    self.tabBarScrollView.frame = self.tabBar.bounds;
     
     CGFloat buttonHeight = customToolBarHeight;
     CGFloat buttonWidth = customToolBarHeight;
