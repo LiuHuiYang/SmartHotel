@@ -14,8 +14,6 @@
 		041ACC8D22B330BF005C3731 /* SHDeviceParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041ACC8B22B330BF005C3731 /* SHDeviceParametersViewController.xib */; };
 		041ACC8E22B330BF005C3731 /* SHDeviceParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC8C22B330BF005C3731 /* SHDeviceParametersViewController.m */; };
 		041ACC9222B39EB6005C3731 /* SHIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 041ACC9122B39EB6005C3731 /* SHIcon.m */; };
-		04345C4B22B1FC4200805801 /* SHMacroCommandDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C2022B1FC4200805801 /* SHMacroCommandDetailViewController.xib */; };
-		04345C4C22B1FC4200805801 /* SHMacroCommandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C2122B1FC4200805801 /* SHMacroCommandDetailViewController.m */; };
 		04345C4D22B1FC4200805801 /* SHMacroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C2522B1FC4200805801 /* SHMacroDetailViewController.xib */; };
 		04345C4E22B1FC4200805801 /* SHMacroDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04345C2622B1FC4200805801 /* SHMacroDetailViewController.m */; };
 		04345C4F22B1FC4200805801 /* SHMacroSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04345C2822B1FC4200805801 /* SHMacroSettingViewController.xib */; };
@@ -151,9 +149,6 @@
 		041ACC8C22B330BF005C3731 /* SHDeviceParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHDeviceParametersViewController.m; sourceTree = "<group>"; };
 		041ACC9022B39EB6005C3731 /* SHIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHIcon.h; sourceTree = "<group>"; };
 		041ACC9122B39EB6005C3731 /* SHIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHIcon.m; sourceTree = "<group>"; };
-		04345C2022B1FC4200805801 /* SHMacroCommandDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMacroCommandDetailViewController.xib; sourceTree = "<group>"; };
-		04345C2122B1FC4200805801 /* SHMacroCommandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMacroCommandDetailViewController.m; sourceTree = "<group>"; };
-		04345C2222B1FC4200805801 /* SHMacroCommandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMacroCommandDetailViewController.h; sourceTree = "<group>"; };
 		04345C2422B1FC4200805801 /* SHMacroDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMacroDetailViewController.h; sourceTree = "<group>"; };
 		04345C2522B1FC4200805801 /* SHMacroDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHMacroDetailViewController.xib; sourceTree = "<group>"; };
 		04345C2622B1FC4200805801 /* SHMacroDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMacroDetailViewController.m; sourceTree = "<group>"; };
@@ -432,22 +427,11 @@
 		04345C1E22B1FC4200805801 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04345C1F22B1FC4200805801 /* MacroCommandDetail */,
 				04345C2322B1FC4200805801 /* MacroDetail */,
 				04345C2722B1FC4200805801 /* MacroSetting */,
 				04345C2B22B1FC4200805801 /* MacroImage */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		04345C1F22B1FC4200805801 /* MacroCommandDetail */ = {
-			isa = PBXGroup;
-			children = (
-				04345C2022B1FC4200805801 /* SHMacroCommandDetailViewController.xib */,
-				04345C2122B1FC4200805801 /* SHMacroCommandDetailViewController.m */,
-				04345C2222B1FC4200805801 /* SHMacroCommandDetailViewController.h */,
-			);
-			path = MacroCommandDetail;
 			sourceTree = "<group>";
 		};
 		04345C2322B1FC4200805801 /* MacroDetail */ = {
@@ -1706,7 +1690,6 @@
 				04345C7422B22EF200805801 /* SHChannelGroupViewCell.xib in Resources */,
 				04D8805C20883255006C207E /* SHCameraViewCell.xib in Resources */,
 				04D249C62079E1B200EBD1BE /* SHHomeViewController.xib in Resources */,
-				04345C4B22B1FC4200805801 /* SHMacroCommandDetailViewController.xib in Resources */,
 				04D249F72079E2C000EBD1BE /* SHWorldTimeViewController.xib in Resources */,
 				04345C8422B2442A00805801 /* SHTVChannelSettingViewController.xib in Resources */,
 				04345C5222B1FC4200805801 /* SHChangeMacroImageViewController.xib in Resources */,
@@ -1835,7 +1818,6 @@
 				041ACC7B22B32A9C005C3731 /* SHTVChannelDetailViewController.m in Sources */,
 				04DDEA9122A5147400F1BA01 /* SHLightViewController.m in Sources */,
 				04D2498E2079C77800EBD1BE /* UIImageView+ColorAtPoint.m in Sources */,
-				04345C4C22B1FC4200805801 /* SHMacroCommandDetailViewController.m in Sources */,
 				04C7996F20931A1700F86679 /* SHSoundTools.m in Sources */,
 				04DAFEC32084AA88009AA5EB /* SHChannelCollectionViewCell.m in Sources */,
 				04DC41E822A0D69700BC1BFE /* SHCurtainSettingViewController.m in Sources */,

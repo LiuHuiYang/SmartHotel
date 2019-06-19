@@ -8,8 +8,10 @@
 
 #import "SHMacroDetailViewController.h"
 #import "SHMacroDetailViewCell.h"
-#import "SHMacroCommandDetailViewController.h"
+#import "SHDeviceParametersViewController.h"
 #import "SHChangeMacroImageViewController.h"
+
+
 
 @interface SHMacroDetailViewController () <
     UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
@@ -119,8 +121,8 @@
     
     [SHSQLManager.shareSHSQLManager insertMacroCommand:macroCommand];
     
-    SHMacroCommandDetailViewController *detailController =
-        [[SHMacroCommandDetailViewController alloc] init];
+    SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
     
     detailController.macroCommand = macroCommand;
     
@@ -166,8 +168,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    SHMacroCommandDetailViewController *detailController =
-    [[SHMacroCommandDetailViewController alloc] init];
+    SHDeviceParametersViewController *detailController =
+    [[SHDeviceParametersViewController alloc] init];
     
     detailController.macroCommand =
         self.macroCommands[indexPath.row];
@@ -204,8 +206,8 @@
         
         [tableView setEditing:NO animated:YES];
         
-        SHMacroCommandDetailViewController *detailController =
-        [[SHMacroCommandDetailViewController alloc] init];
+        SHDeviceParametersViewController *detailController =
+        [[SHDeviceParametersViewController alloc] init];
         
         detailController.macroCommand =
         self.macroCommands[indexPath.row];

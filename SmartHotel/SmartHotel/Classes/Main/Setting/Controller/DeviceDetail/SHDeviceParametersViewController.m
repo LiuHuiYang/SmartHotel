@@ -81,9 +81,71 @@
     } else if (self.tv != nil) {
         
         [self getTVNameAndValues];
+    
+    } else if (self.macroCommand != nil) {
+    
+        [self getMacroCommandNameAndValues];
     }
 }
 
+/**
+ 获得Macro参数与名称
+ */
+- (void)getMacroCommandNameAndValues {
+    
+    self.argsNames = @[
+                       @"command name",
+                       @"command type",
+                       
+                       @"subnetID",
+                       @"deviceID",
+                       
+                       @"parameter1",
+                       @"parameter2",
+                       @"parameter3",
+                       @"parameter4",
+                       @"parameter5",
+                       @"parameter6",
+                       @"parameter7",
+                       @"parameter8",
+                       
+                       @"delayTime"
+                       
+                       ];
+    
+    self.argsValues = @[ self.macroCommand.remark,
+                         
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.commandType)],
+                         
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.subnetID)],
+                         
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.deviceID)],
+                         
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter1)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter2)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter3)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter4)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter5)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter6)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter7)],
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.parameter8)],
+                         
+                         [NSString stringWithFormat:@"%@",
+                          @(self.macroCommand.delayTime)]
+                         
+                         ];
+}
 
 /**
  获得房间中的基本设备信息
@@ -406,7 +468,84 @@
     
         [self updateTV:value
              indexPath:indexPath];
+    
+    } else if (self.macroCommand != nil) {
+    
+        [self updateMacroCommand:value
+                       indexPath:indexPath];
     }
+}
+
+/**
+ 更新MacroCommand的值
+ 
+ @param value 值
+ @param indexPath 位置
+ */
+- (void)updateMacroCommand:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    
+    switch (indexPath.row) {
+        case 0:
+            self.macroCommand.remark = value;
+            break;
+            
+        case 1:
+            self.macroCommand.commandType = value.integerValue;
+            break;
+            
+        case 2:
+            self.macroCommand.subnetID = value.integerValue;
+            break;
+            
+        case 3:
+            self.macroCommand.deviceID = value.integerValue;
+            break;
+            
+        case 4:
+            self.macroCommand.parameter1 = value.integerValue;
+            break;
+            
+        case 5:
+            self.macroCommand.parameter2 = value.integerValue;
+            break;
+            
+        case 6:
+            self.macroCommand.parameter3 = value.integerValue;
+            break;
+            
+        case 7:
+            self.macroCommand.parameter4 = value.integerValue;
+            break;
+            
+        case 8:
+            self.macroCommand.parameter5 = value.integerValue;
+            break;
+            
+        case 9:
+            self.macroCommand.parameter6 = value.integerValue;
+            break;
+            
+        case 10:
+            self.macroCommand.parameter7 = value.integerValue;
+            break;
+            
+        case 11:
+            self.macroCommand.parameter8 = value.integerValue;
+            break;
+            
+        case 12:
+            self.macroCommand.delayTime = value.integerValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self getMacroCommandNameAndValues];
+    
+    [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [SHSQLManager.shareSHSQLManager updateMacroCommand:self.macroCommand];
 }
 
 

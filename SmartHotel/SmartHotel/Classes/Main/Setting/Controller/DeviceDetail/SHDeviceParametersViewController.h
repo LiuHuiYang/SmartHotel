@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 电视
 @property (strong, nonatomic) SHTV *tv;
 
+/// 宏命令
+@property (strong, nonatomic) SHMacroCommand *macroCommand;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
