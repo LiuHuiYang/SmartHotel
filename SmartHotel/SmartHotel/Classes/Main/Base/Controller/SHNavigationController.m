@@ -34,10 +34,10 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
-    if (self.childViewControllers.count) {
+    if (self.childViewControllers.count > 0) {
         
 //       viewController.hidesBottomBarWhenPushed = YES;
-        viewController.navigationItem.leftBarButtonItem = 
+        viewController.navigationItem.leftBarButtonItem =
         [UIBarButtonItem barButtonItemWithImageName:@"navigationbarback" hightlightedImageName:@"navigationbarback" addTarget:self action:@selector(popBack) isLeft:true];
         
         
@@ -49,7 +49,7 @@
 
 /// 返回
 - (void)popBack {
-    
+   
     [self popViewControllerAnimated:true];
 }
 

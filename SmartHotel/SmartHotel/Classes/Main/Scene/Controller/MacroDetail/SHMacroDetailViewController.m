@@ -44,6 +44,8 @@
     
     [super viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(YES)];
+    
     
     self.macroCommands = [SHSQLManager.shareSHSQLManager getMacroCommands:self.macro];
     
