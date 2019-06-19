@@ -128,7 +128,6 @@
                         [NSString stringWithFormat:@"%@",
                          @(self.roomInfo.cardHolderDeviceID)],
                         
-                        
                         [NSString stringWithFormat:@"%@",
                          @(self.roomInfo.doorBellSubNetID)],
                         [NSString stringWithFormat:@"%@",
@@ -445,6 +444,7 @@
             
         case 6:
             self.roomInfo.cardHolderDeviceID = value.integerValue;
+            break;
             
         case 7:
             self.roomInfo.doorBellSubNetID = value.integerValue;
@@ -484,7 +484,7 @@
     
     // 刷新列表
     [self.listView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
+     
     [SHSQLManager.shareSHSQLManager updateRoom:self.roomInfo];
 }
 

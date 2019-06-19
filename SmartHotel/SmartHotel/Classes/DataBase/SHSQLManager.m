@@ -1106,7 +1106,7 @@ NSString *dataBaseName = @"SmartHotel.sqlite";
          roomInfo.temperatureChannelNo,
          roomInfo.roomID
          ];
-    
+     
     return [self executeSql:sql];
 }
 

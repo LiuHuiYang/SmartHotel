@@ -65,35 +65,61 @@
     UInt16 operatorCode =
     ((recivedData[5] << 8) | recivedData[6]);
     
-    //    Byte subNetID = recivedData[1];
-    //    Byte deviceID = recivedData[2];
+    Byte subNetID = recivedData[1];
+    Byte deviceID = recivedData[2];
     
-    if ((operatorCode != 0x043F) &&
-        (operatorCode != 0x044F)
-        ) {
-        
-        return;
-    }
     
-    // 房间信息
-    if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
-        self.roomInfo.floorNumber ==
-        recivedData[startIndex + 2] &&
-        self.roomInfo.roomNumber ==
-        recivedData[startIndex + 3]) {
+    if (operatorCode == 0x040A) {
         
-        
-        // 读取固件中的服务操作
-        if (operatorCode == 0x043F) {
+        if ((subNetID == self.roomInfo.doorBellSubNetID &&
+             deviceID == self.roomInfo.doorBellDeviceID)  ||
+            (subNetID == self.roomInfo.cardHolderSubNetID &&
+             deviceID == self.roomInfo.cardHolderDeviceID) ||
+            (subNetID == self.roomInfo.bedSideSubNetID &&
+             deviceID == self.roomInfo.bedSideDeviceID)
+            ) {
             
-            SHRoomServerType service = recivedData[startIndex + 0];
+            // 判断是否为NDN状态
+            BOOL isDND =
+                recivedData[startIndex + 0] ==
+                SHRoomServerTypeDND;
             
-            [self setGeneralServiceStatusForButton:service];
+            if (isDND && recivedData[startIndex + 1]) {
+                
+//                [SVProgressHUD showSuccessWithStatus:@"开启DND"];
+                
+                for (SHServiceButton *button in self.serviceButtonView.subviews) {
+                    
+                    button.selected = NO;
+                    
+                    [self sendServiceRequest:button];
+                }
+            }
         }
     }
     
+    else if ((operatorCode == 0x043F) ||
+             (operatorCode == 0x044F)
+        ) {
+        
+        // 房间信息
+        if (data.length == (startIndex + 4) &&
+            self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+            self.roomInfo.floorNumber ==
+            recivedData[startIndex + 2] &&
+            self.roomInfo.roomNumber ==
+            recivedData[startIndex + 3]) {
+            
+            // 读取固件中的服务操作
+            if (operatorCode == 0x043F) {
+                
+                SHRoomServerType service = recivedData[startIndex + 0];
+                
+                [self setGeneralServiceStatusForButton:service];
+            }
+        }
+    }
 }
-
 
 // MARK: - 事件交互
 

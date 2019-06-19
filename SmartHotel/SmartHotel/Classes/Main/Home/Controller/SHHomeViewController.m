@@ -83,31 +83,46 @@
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];
     
- 
     switch (operatorCode) {
+        
+        case 0x040A: {
             
-            // 接收到读取状态返回
+            if ((subNetID == self.roomInfo.doorBellSubNetID &&
+                 deviceID == self.roomInfo.doorBellDeviceID)  ||
+                (subNetID == self.roomInfo.cardHolderSubNetID &&
+                 deviceID == self.roomInfo.cardHolderDeviceID) ||
+                (subNetID == self.roomInfo.bedSideSubNetID &&
+                 deviceID == self.roomInfo.bedSideDeviceID)
+                ) {
+                
+                // 判断是否为NDN状态
+                BOOL isDND =
+                recivedData[startIndex + 0] ==
+                SHRoomServerTypeDND;
+                 
+                if (isDND) {
+                    
+                    [self.dndButton setOn:
+                     (recivedData[startIndex + 1] != 0)
+                    ];
+                }
+            }
+        }
+            break;
+            
+        // 接收到读取状态返回
         case 0x043F:
-            
-            // 接收到服务广播
+        // 接收到服务广播
         case 0x044F: {
-         
+            
             // 房间信息
             if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
                 self.roomInfo.floorNumber ==
                 recivedData[startIndex + 2] &&
                 self.roomInfo.roomNumber ==
                 recivedData[startIndex + 3]) {
-
+                
                 // 不需要判断是谁发出来的
-//                if ((subNetID == self.roomInfo.doorBellSubNetID &&
-//                     deviceID == self.roomInfo.doorBellDeviceID)  ||
-//                    (subNetID == self.roomInfo.cardHolderSubNetID &&
-//                     deviceID == self.roomInfo.cardHolderDeviceID)
-//                    ) {
-//
-//
-//                }
                 
                 // 判断是否为NDN状态
                 BOOL isDND =
@@ -117,6 +132,8 @@
                 [self.dndButton setOn:isDND];
             }
         }
+            break;
+            
             
             // 温度
         case 0xE3E8: {
@@ -132,13 +149,13 @@
             
             // 温度绝对值
             NSUInteger valueIndex =
-                startIndex +
-                self.roomInfo.temperatureChannelNo;
+            startIndex +
+            self.roomInfo.temperatureChannelNo;
             
             NSInteger temperature = recivedData[valueIndex]; // 只要第一个通道
             temperature =
-                (recivedData[valueIndex + 8]) ?
-                (0 - temperature) : temperature;
+            (recivedData[valueIndex + 8]) ?
+            (0 - temperature) : temperature;
             
             [self showCurrentTemperature:temperature];
         }

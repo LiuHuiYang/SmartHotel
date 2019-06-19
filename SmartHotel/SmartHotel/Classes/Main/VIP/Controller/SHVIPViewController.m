@@ -76,40 +76,73 @@
     Byte *recivedData = ((Byte *) [data bytes]);
     
     UInt16 operatorCode =
-        ((recivedData[5] << 8) | recivedData[6]);
+    ((recivedData[5] << 8) | recivedData[6]);
     
-    //    Byte subNetID = recivedData[1];
-    //    Byte deviceID = recivedData[2];
+    Byte subNetID = recivedData[1];
+    Byte deviceID = recivedData[2];
     
-    if ((operatorCode != 0x043F) &&
-        (operatorCode != 0x044F)
-        ) {
+    if (operatorCode == 0x040A) {
         
-        return;
-    }
-    
-
-    // 房间信息
-    if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
-        self.roomInfo.floorNumber ==
-        recivedData[startIndex + 2] &&
-        self.roomInfo.roomNumber ==
-        recivedData[startIndex + 3]) {
-    
-        self.isDND =
+        if ((subNetID == self.roomInfo.doorBellSubNetID &&
+             deviceID == self.roomInfo.doorBellDeviceID)  ||
+            (subNetID == self.roomInfo.cardHolderSubNetID &&
+             deviceID == self.roomInfo.cardHolderDeviceID) ||
+            (subNetID == self.roomInfo.bedSideSubNetID &&
+             deviceID == self.roomInfo.bedSideDeviceID)
+            ) {
+            
+            // 判断是否为NDN状态
+            BOOL isDND =
             recivedData[startIndex + 0] ==
             SHRoomServerTypeDND;
-        
-        if (self.isDND) {
             
-            printLog(@"设置dddd");
-            
-            for (SHServiceButton *button in self.buttonsView.subviews) {
+            if (isDND && recivedData[startIndex + 1]) {
+               
+                self.isDND = YES;
                 
-                button.selected = NO;
-                
-                [self sendServiceRequest:button];
+                for (SHServiceButton *button in self.buttonsView.subviews) {
+                    
+                    button.selected = NO;
+                    
+                    [self sendServiceRequest:button];
+                }
             }
+        }
+        
+    } else if (operatorCode == 0x043F ||
+               operatorCode == 0x044F) {
+        
+        
+        
+        // 房间信息
+        if (data.length == (startIndex + 4) &&
+            self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+            self.roomInfo.floorNumber ==
+            recivedData[startIndex + 2] &&
+            self.roomInfo.roomNumber ==
+            recivedData[startIndex + 3]) {
+            
+            self.isDND =
+            recivedData[startIndex + 0] ==
+            SHRoomServerTypeDND;
+            
+            if (self.isDND) {
+                
+                printLog(@"设置dddd");
+                
+                for (SHServiceButton *button in self.buttonsView.subviews) {
+                    
+                    button.selected = NO;
+                    
+                    [self sendServiceRequest:button];
+                }
+            }
+            
+            printLog(@"这是固件发出的, 这是计算机发出的");
+        
+        } else if (data.length == (startIndex + 5)) {
+            
+            printLog(@"计算机发出来的");
         }
     }
 }
@@ -143,7 +176,7 @@
 
 /// 电梯
 - (IBAction)elevtorButtonClick {
-   
+    
     [self serviceButtonPress:self.elevtorButton];
 }
 
@@ -168,13 +201,13 @@
 
 /// 需要修理
 - (IBAction)maintNeededButtonClick {
-   
+    
     [self serviceButtonPress:self.maintNeededButton];
 }
 
 /// 我的车
 - (IBAction)myCarButtonClick {
-   
+    
     [self serviceButtonPress:self.myCarButton];
 }
 
@@ -206,8 +239,8 @@
             
             self.waitTimer = timer;
         }
-    
-    // 其它情况
+        
+        // 其它情况
     } else {
         
         if (!serviceButton.isSelected &&
@@ -216,12 +249,12 @@
              serviceButton.serverType == SHRoomServerTypeMyCar       ||
              serviceButton.serverType == SHRoomServerTypeDoctor      ||
              serviceButton.serverType == SHRoomServerTypePanic)) {
-            
+                
                 self.currentService = serviceButton.serverType;
                 
                 TYCustomAlertView *alertView = [TYCustomAlertView alertViewWithTitle:
-                    [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:
-                     @"HouseKeepingAndVIP" withSubTitle:@"Are you sure to select this service?"] message:nil isCustom:YES];
+                                                [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:
+                                                 @"HouseKeepingAndVIP" withSubTitle:@"Are you sure to select this service?"] message:nil isCustom:YES];
                 
                 [alertView addAction: [TYAlertAction actionWithTitle:[[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"PUBLIC" withSubTitle:@"NO"] style:TYAlertActionStyleCancel handler:nil]];
                 
@@ -241,13 +274,13 @@
                 
                 [self presentViewController:alertController animated:YES completion:nil];
                 
-                return;  
-        }
+                return;
+            }
         
         if (serviceButton.isSelected && (serviceButton.serverType == SHRoomServerTypeMaintenance)) {
             
             // FIXME: - 暂不清楚为什么修理不能取消
-//            return;
+            // return;
         }
         
         // 更新状态
@@ -261,7 +294,6 @@
 /// 发送服务请求
 - (void)sendServiceRequest:(SHServiceButton *)serviceButton {
     
-  
     // 关闭DND
     [self turnOffDND];
     
@@ -274,8 +306,7 @@
         self.roomInfo.roomNumber
     };
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:
-     0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:servicdeData length:sizeof(servicdeData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x044F targetSubnetID:0xFF targetDeviceID:0xFF additionalContentData:[NSMutableData dataWithBytes:servicdeData length:sizeof(servicdeData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
 }
 
 /// 关闭DND服务
@@ -314,15 +345,14 @@
         
         [self turnOffPleaseWait];
         
-        return;   
+        return;
     }
-
+    
     self.pleaseWaitButton.selected = !self.pleaseWaitButton.selected;
 }
 
 /// 关闭等待
 - (void)turnOffPleaseWait {
-    
     
     self.pleaseWaitButton.selected = NO;
     self.waitCount = 0;
