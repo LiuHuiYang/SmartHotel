@@ -407,7 +407,7 @@
     // 如果是负数使用被码
     temperatureData[1] =  (temperature & 0X80) ? (0 - (0xFF - temperature + 1)) : temperature;
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0XE3D8 targetSubnetID:self.ac.subnetID targetDeviceID:self.ac.deviceID additionalContentData:[NSMutableData dataWithBytes:temperatureData length:sizeof(temperatureData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:YES];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0xE3D8 targetSubnetID:self.ac.subnetID targetDeviceID:self.ac.deviceID additionalContentData:[NSMutableData dataWithBytes:temperatureData length:sizeof(temperatureData)] remoteMacAddress:([SHUdpSocket getRemoteControlMacAddress]) needReSend:YES];
 }
 
 
@@ -449,6 +449,14 @@
     
     // 获得空调
     self.ac = [SHSQLManager.shareSHSQLManager getAirConditioners].firstObject;
+    
+    self.startAutoTemperatureRange = 16;
+    self.startCoolTemperatureRange = 16;
+    self.startHeatTemperatureRange = 16;
+    
+    self.endAutoTemperatureRange = 32;
+    self.endHeatTemperatureRange = 32;
+    self.endCoolTemperatureRange = 32;
     
     // FIXME: 统一取成0，如果有问题再说。
     Byte readHVACdata[] = { 0 };

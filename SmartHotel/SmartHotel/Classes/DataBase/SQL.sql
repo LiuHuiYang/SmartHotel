@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS RoomInfo (
 
     -- 房间的标示
     roomID        INTEGER NOT NULL DEFAULT 0,
-    hotelName     TEXT NOT NULL DEFAULT 'Hotel',
+    hotelName     TEXT NOT NULL DEFAULT 'hotel',
     remark        TEXT NOT NULL DEFAULT 'room',
 
     -- 三个确定房间参数
