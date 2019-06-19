@@ -236,7 +236,7 @@
     // 由于在 10.5/12.9的屏幕上位伸变形，所以使用每个模块控制器都添加一张图片
 //    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage resizeImage:@"Share_BG_iPad"]]];
     
-    self.view.backgroundColor = [UIColor clearColor];
+//    self.view.backgroundColor = [UIColor cololrWithHex:0x1E1E1E alpha:0.8];
     
     // 增加监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(analyzeReceiveData:) name:SHUdpSocketBroadcastNotification object:nil];
