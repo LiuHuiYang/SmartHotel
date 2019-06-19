@@ -32,8 +32,6 @@
     
     [super viewWillAppear:animated];
     
-     [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(YES)];
-    
     self.tv.channelGroups = [SHSQLManager.shareSHSQLManager getTVChannelGroups:self.tv];
     
     [self.groupListView reloadData];

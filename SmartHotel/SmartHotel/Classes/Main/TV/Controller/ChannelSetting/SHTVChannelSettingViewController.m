@@ -31,8 +31,6 @@ UITextFieldDelegate>
     
     [super viewWillAppear:animated];
     
-     [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(YES)];
-    
     self.channelGroup.channels = [SHSQLManager.shareSHSQLManager getTVChannels:self.channelGroup];
     
     [self.listView reloadData];

@@ -68,5 +68,3 @@ NSString *allDeviceMacAddressListPath = @"AllDeviceList.plist";
 /// 回到首页控制器的通知
 NSNotificationName SHControlGoBackHomeControllerNotification = @"SHControlGoBackHomeControllerNotification";
 
-/// 控制器堆栈时进行隐藏 
-NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification = @"SHNavigationBarControllerPushHidderTabBarNotification";

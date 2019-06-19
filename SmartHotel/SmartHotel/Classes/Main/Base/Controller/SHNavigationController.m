@@ -39,9 +39,6 @@
        viewController.hidesBottomBarWhenPushed = YES;
         viewController.navigationItem.leftBarButtonItem =
         [UIBarButtonItem barButtonItemWithImageName:@"navigationbarback" hightlightedImageName:@"navigationbarback" addTarget:self action:@selector(popBack) isLeft:true];
-        
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(YES)];
     }
     
     [super pushViewController:viewController animated:animated];
@@ -54,8 +51,6 @@
 }
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(NO)];
     
     return [super popViewControllerAnimated:animated];
 }

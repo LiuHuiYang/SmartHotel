@@ -22,7 +22,6 @@
 
 #import "SHModuleSwitchButton.h"
 
-
 @interface SHRoomViewController ()
 
 /// 当前的房间
@@ -52,10 +51,12 @@
     // 获得当前房间的信息
     self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomInfos] lastObject];
     
+    
     // 首页要进行传值
     SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[0]) topViewController];
     
     childController.roomInfo = self.roomInfo;
+    
 }
 
 - (void)viewDidLoad {
@@ -64,10 +65,8 @@
     [self addChildViewControllers];
     
     [self setUpTabBar];
-    
+ 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gobackhomeController) name:SHControlGoBackHomeControllerNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddTabBarScrollView:) name:SHNavigationBarControllerPushHidderTabBarNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,11 +74,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/// 隐藏tabBar
-- (void)hiddTabBarScrollView:(NSNotification *)notification {
-    
-    self.tabBarScrollView.hidden = [notification.object boolValue];
-}
 
 - (void)gobackhomeController {
     
@@ -116,7 +110,7 @@
 /// 设置导航栏
 - (void)setUpTabBar {
     
-   
+    
     [self.tabBar setBackgroundImage:[[UIImage alloc] init]];
     [self.tabBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
     
@@ -173,8 +167,6 @@
         [self.tabBarScrollView addSubview:moduleButton];
     }
     
-//    [self.view addSubview:self.tabBarScrollView];
-//    [self.view insertSubview:self.tabBarScrollView aboveSubview:self.tabBar];
     [self.tabBar addSubview:self.tabBarScrollView];
 }
 
@@ -228,19 +220,22 @@
 
 // MARK: -  布局
 
+ 
 /// 布局子控件
-- (void)viewDidLayoutSubviews {
+- (void)viewWillLayoutSubviews {
     
-    [super viewDidLayoutSubviews];
+    [super viewWillLayoutSubviews];
     
-    self.tabBar.frame =
-        CGRectMake(0,
-                   self.view.bounds.size.height - customToolBarHeight,
-                   self.view.frame.size.width,
-                   customToolBarHeight
-                );
+    // 删除系统默认创建的按钮
+    for (UIControl *tabBarButton in self.tabBar.subviews) {
+        
+        if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
+            
+            [tabBarButton removeFromSuperview];
+        }
+    }
     
-//    self.tabBarScrollView.frame = CGRectMake(0, self.view.bounds.size.height - customToolBarHeight, self.view.frame.size.width, customToolBarHeight);
+    self.tabBar.frame = CGRectMake(0, self.view.bounds.size.height - customToolBarHeight, self.view.frame.size.width, customToolBarHeight);
     
     self.tabBarScrollView.frame = self.tabBar.bounds;
     
@@ -279,7 +274,7 @@
     if (!_tabBarScrollView) {
         
         _tabBarScrollView = [[UIScrollView alloc] init];
-        _tabBarScrollView.scrollEnabled = YES;
+        _tabBarScrollView.scrollEnabled = NO;
         _tabBarScrollView.showsVerticalScrollIndicator = NO;
         _tabBarScrollView.showsHorizontalScrollIndicator = NO;
         _tabBarScrollView.pagingEnabled = NO;

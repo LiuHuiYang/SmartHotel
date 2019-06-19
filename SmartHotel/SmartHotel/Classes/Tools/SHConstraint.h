@@ -134,8 +134,6 @@ UIKIT_EXTERN NSString *allDeviceMacAddressListPath;
 /// 回到首页控制器的通知
 UIKIT_EXTERN NSNotificationName SHControlGoBackHomeControllerNotification;
 
-/// 控制器堆栈时进行隐藏
-UIKIT_EXTERN NSNotificationName SHNavigationBarControllerPushHidderTabBarNotification;
 
 
 #endif /* SHConstraint_h */

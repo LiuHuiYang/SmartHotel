@@ -28,8 +28,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-     [[NSNotificationCenter defaultCenter] postNotificationName:SHNavigationBarControllerPushHidderTabBarNotification object:@(YES)];
-    
     self.allMacros =
         [SHSQLManager.shareSHSQLManager getMacros];
     
