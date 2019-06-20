@@ -51,12 +51,10 @@
     // 获得当前房间的信息
     self.roomInfo = [[[SHSQLManager shareSHSQLManager] getRoomInfos] lastObject];
     
-    
     // 首页要进行传值
     SHModelViewController *childController = (SHModelViewController *)[(SHNavigationController *)(self.childViewControllers[0]) topViewController];
     
     childController.roomInfo = self.roomInfo;
-    
 }
 
 - (void)viewDidLoad {
@@ -281,6 +279,12 @@
     }
     
     return _tabBarScrollView;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    
+    return UIInterfaceOrientationMaskLandscapeLeft |
+    UIInterfaceOrientationMaskLandscapeRight;
 }
 
 @end

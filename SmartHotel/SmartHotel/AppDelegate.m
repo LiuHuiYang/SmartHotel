@@ -16,6 +16,8 @@
 
 @implementation AppDelegate
 
+
+
 /// 接收到了本地的闹钟通知
 - (void)recivceAlarmClock:(UILocalNotification *)notification {
     
