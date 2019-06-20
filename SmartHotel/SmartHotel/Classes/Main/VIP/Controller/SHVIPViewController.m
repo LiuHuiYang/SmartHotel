@@ -232,8 +232,13 @@
             
         } else {
             
+            if (self.waitCount != 0) {
+                return;
+            }
+            
             // waitFlicke_vip:
-            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(waitVIP) userInfo:nil repeats:YES];
+            NSTimer *timer =
+            [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(waitVIP) userInfo:nil repeats:YES];
             
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes] ;
             
