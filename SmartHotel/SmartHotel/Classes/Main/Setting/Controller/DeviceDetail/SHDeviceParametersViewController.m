@@ -938,6 +938,10 @@
     TYAlertController *alertController =
     [TYAlertController alertControllerWithAlertView:alertView preferredStyle:TYAlertControllerStyleAlert transitionAnimation:TYAlertTransitionAnimationScaleFade];
     
+    alertController.alertViewOriginY = navigationBarHeight + statusBarHeight;
+    
+    alertController.backgoundTapDismissEnable = YES;
+    
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
