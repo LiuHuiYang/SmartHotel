@@ -39,6 +39,10 @@
 /// 进入设置页面
 - (void)setting:(UIGestureRecognizer *)recognizer {
     
+    if (recognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
     // HVAC
     if ([self isKindOfClass: [SHHVACViewController class]]) {
         
@@ -196,12 +200,15 @@
 /// 设置导航
 - (void)setUpNavigationBar {
     
-    // 创建左边的按钮
-    UITapGestureRecognizer *tapGestureRecognizerSetting = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
-    
     UIFont *font = [UIFont boldSystemFontOfSize:25];
+    
+    // 创建左边的按钮
+    
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(setting:)];
+    
+    longPressGestureRecognizer.minimumPressDuration = 1.0;
 
-    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:font image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:tapGestureRecognizerSetting];
+    SHNavigationBarButton *logoButton = [SHNavigationBarButton navigationBarButton:self.roomInfo.hotelName font:font image:[UIImage imageNamed:@"logo"] isDefault:YES addGestureRecognizer:longPressGestureRecognizer];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logoButton];
 
