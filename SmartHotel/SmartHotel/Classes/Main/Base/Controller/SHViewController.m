@@ -19,7 +19,7 @@
     
     self.view.backgroundColor =
         [UIColor cololrWithHex:0x1E1E1E
-                         alpha:0.8
+                         alpha:1.0
         ];
 }
 
