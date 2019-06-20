@@ -241,6 +241,7 @@
              self.roomInfo.doorBellSubNetID,
              self.roomInfo.doorBellDeviceID);
     
+    
     self.navigationItem.title = [NSString stringWithFormat:@"%@ %zd", [[SHLanguageTools shareSHLanguageTools] getTextFromPlist:@"MAINVIEW" withSubTitle:@"Room NO"], self.roomInfo.roomNumber];
     
     self.alarmTimeLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:alarmTimeStringKey];
