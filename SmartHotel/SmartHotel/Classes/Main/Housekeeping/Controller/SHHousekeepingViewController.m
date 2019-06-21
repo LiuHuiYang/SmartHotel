@@ -68,38 +68,29 @@
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];
     
-    
     if (operatorCode == 0x040A) {
         
-        return;
-        
-        if ((subNetID == self.roomInfo.doorBellSubNetID &&
+        if (data.length == (startIndex + 5) &&
+            ((subNetID == self.roomInfo.doorBellSubNetID &&
              deviceID == self.roomInfo.doorBellDeviceID)  ||
             (subNetID == self.roomInfo.cardHolderSubNetID &&
              deviceID == self.roomInfo.cardHolderDeviceID) ||
             (subNetID == self.roomInfo.bedSideSubNetID &&
              deviceID == self.roomInfo.bedSideDeviceID)
-            ) {
+            )) {
             
             // 判断是否为NDN状态
-            BOOL isDND =
-                recivedData[startIndex + 0] ==
-                SHRoomServerTypeDND;
+            SHRoomServerType service =
+                recivedData[startIndex + 0];
             
-            BOOL isOn = recivedData[startIndex + 1];
+            BOOL isOn =
+                recivedData[startIndex + 1];
             
-            if (isDND && isOn) {
+            for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
                 
-                
-                for (SHServiceButton *button in self.serviceButtonView.subviews) {
+                if (serviceButton.serverType == service) {
                     
-                    if (button == self.dndButton) {
-                        continue;
-                    }
-                    
-                    button.selected = NO;
-                    
-                    [self sendServiceRequest:button];
+                    serviceButton.selected = isOn;
                 }
             }
         }
@@ -117,12 +108,32 @@
             self.roomInfo.roomNumber ==
             recivedData[startIndex + 3]) {
             
-            // 读取固件中的服务操作
-            if (operatorCode == 0x043F) {
+            // 检查服务类型 设置标志
+            SHRoomServerType service =
+                recivedData[startIndex + 0];
+            
+            // DND状态 - 计算机服务也应该取消
+            if (service == SHRoomServerTypeDND) {
                 
-                SHRoomServerType service = recivedData[startIndex + 0];
+                [self.serviceButtonView.subviews makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
                 
-                [self setGeneralServiceStatusForButton:service];
+                self.dndButton.selected = YES;
+                
+                return;
+            }
+            
+            for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
+                
+                if (service == SHRoomServerTypeCleanLaundry) {
+                    
+                    self.cleanButton.selected = YES;
+                    self.laudryButton.selected = YES;
+                }
+                
+                else if (serviceButton.serverType == service) {
+                    
+                    serviceButton.selected = YES;
+                }
             }
         }
     }
@@ -216,9 +227,8 @@
     } else {  // 不是DND模式下
         
         // 打扫 && 洗衣服关闭打扰模式
-        //        [self turnOffDNDService: (serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )];
         
-        [self turnOffDND];
+        [self turnOffDND:(serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )];
     }
     
     // 更新当前按钮的状态
@@ -258,7 +268,7 @@
     
     Byte data[] = {
         serviceButton.serverType,
-        serviceButton.selected,
+        serviceButton.isSelected,
         self.roomInfo.buildingNumber,
         self.roomInfo.floorNumber,
         self.roomInfo.roomNumber
@@ -269,11 +279,15 @@
 }
 
 /// 关闭DND模式
-- (void)turnOffDND {
+- (void)turnOffDND:(BOOL)off {
     
     // 关闭
     if (self.dndButton.selected) {
         self.dndButton.selected = NO;
+    }
+    
+    if (off) {
+        return;
     }
     
     // 关闭DND服务
@@ -301,7 +315,6 @@
     self.cleanButton.selected = NO;
     self.dndButton.selected = NO;
     self.laudryButton.selected = NO;
-    
     
     switch (service) {
             
