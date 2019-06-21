@@ -86,7 +86,9 @@ void pack_crc(Byte *ptr, unichar len);
     }
     
     // 准备好发送数据 只要SN2(包括)以后的内容 (总长度 - 16) (源IP + 协议头 + 开始的操作码统统不要)
-    NSData *sendData = [NSData dataWithBytes:(((Byte *) [data bytes]) + subReciveDataLength) length:data.length - subReciveDataLength];
+    
+    // 后面两个CRC也不要
+    NSData *sendData = [NSData dataWithBytes:(((Byte *) [data bytes]) + subReciveDataLength) length:data.length - subReciveDataLength - 2];
     
     // 记录一些参数方便重发使用
     Byte *recivedData = ((Byte *) [sendData bytes]);

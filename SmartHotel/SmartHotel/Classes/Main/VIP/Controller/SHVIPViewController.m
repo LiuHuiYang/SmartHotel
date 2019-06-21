@@ -128,7 +128,7 @@
             
             if (self.isDND) {
                 
-                printLog(@"设置dddd");
+                printLog(@"设置 DND");
                 
                 for (SHServiceButton *button in self.buttonsView.subviews) {
                     

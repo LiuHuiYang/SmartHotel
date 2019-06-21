@@ -14,4 +14,6 @@
  功能模块说明：
     Service(HouseKeeping) 对应的是 CardHolder (插卡模块服务)
  
+ 演示使用: https://www.youtube.com/watch?v=9bI-c8xdB_A&feature=youtu.be
+ 
  */

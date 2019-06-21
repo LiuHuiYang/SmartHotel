@@ -87,13 +87,14 @@
         
         case 0x040A: {
             
-            if ((subNetID == self.roomInfo.doorBellSubNetID &&
+            if ((data.length == (startIndex + 5)) &&
+                ((subNetID == self.roomInfo.doorBellSubNetID &&
                  deviceID == self.roomInfo.doorBellDeviceID)  ||
                 (subNetID == self.roomInfo.cardHolderSubNetID &&
                  deviceID == self.roomInfo.cardHolderDeviceID) ||
                 (subNetID == self.roomInfo.bedSideSubNetID &&
                  deviceID == self.roomInfo.bedSideDeviceID)
-                ) {
+                )) {
                 
                 // 判断是否为NDN状态
                 BOOL isDND =
@@ -116,7 +117,8 @@
         case 0x044F: {
             
             // 房间信息
-            if (self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
+            if (data.length == (startIndex + 4) &&
+                self.roomInfo.buildingNumber == recivedData[startIndex + 1] &&
                 self.roomInfo.floorNumber ==
                 recivedData[startIndex + 2] &&
                 self.roomInfo.roomNumber ==

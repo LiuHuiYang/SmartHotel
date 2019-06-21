@@ -75,10 +75,13 @@
         TYAlertAction *lightAction = [TYAlertAction actionWithTitle:@"Lights" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
             
             SHLightSettingViewController *lightSetting =
+           
             [[SHLightSettingViewController alloc] init];
             
             [self.navigationController
-             pushViewController:lightSetting animated:true];
+                pushViewController:lightSetting
+                          animated:true
+            ];
             
         }];
         

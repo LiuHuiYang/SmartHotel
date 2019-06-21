@@ -71,6 +71,8 @@
     
     if (operatorCode == 0x040A) {
         
+        return;
+        
         if ((subNetID == self.roomInfo.doorBellSubNetID &&
              deviceID == self.roomInfo.doorBellDeviceID)  ||
             (subNetID == self.roomInfo.cardHolderSubNetID &&
@@ -84,11 +86,16 @@
                 recivedData[startIndex + 0] ==
                 SHRoomServerTypeDND;
             
-            if (isDND && recivedData[startIndex + 1]) {
+            BOOL isOn = recivedData[startIndex + 1];
+            
+            if (isDND && isOn) {
                 
-//                [SVProgressHUD showSuccessWithStatus:@"开启DND"];
                 
                 for (SHServiceButton *button in self.serviceButtonView.subviews) {
+                    
+                    if (button == self.dndButton) {
+                        continue;
+                    }
                     
                     button.selected = NO;
                     
