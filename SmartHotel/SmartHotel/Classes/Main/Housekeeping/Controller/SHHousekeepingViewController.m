@@ -11,6 +11,9 @@
 
 @interface SHHousekeepingViewController ()
 
+/// 当前是DND状态
+@property (nonatomic, assign) BOOL isDND;
+
 /// 服务按钮视图
 @property (weak, nonatomic) IBOutlet UIView *serviceButtonView;
 
@@ -70,7 +73,7 @@
     
     if (operatorCode == 0x040A) {
         
-        if (data.length == (startIndex + 5) &&
+        if ((data.length == (startIndex + 5)) &&
             ((subNetID == self.roomInfo.doorBellSubNetID &&
              deviceID == self.roomInfo.doorBellDeviceID)  ||
             (subNetID == self.roomInfo.cardHolderSubNetID &&
@@ -79,7 +82,7 @@
              deviceID == self.roomInfo.bedSideDeviceID)
             )) {
             
-            // 判断是否为NDN状态
+            // 获取当前服务状态
             SHRoomServerType service =
                 recivedData[startIndex + 0];
             
@@ -112,29 +115,57 @@
             SHRoomServerType service =
                 recivedData[startIndex + 0];
             
-            // DND状态 - 计算机服务也应该取消
-            if (service == SHRoomServerTypeDND) {
+            if (service == SHRoomServerTypeDND ||
+                service == SHRoomServerTypeRoomReady) {
                 
-                [self.serviceButtonView.subviews makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
-                
-                self.dndButton.selected = YES;
-                
-                return;
+                self.cleanButton.selected = NO;
+                self.laudryButton.selected = NO;
+              
+                self.dndButton.selected =
+                    service == SHRoomServerTypeDND;
             }
             
-            for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
+            else if (service == SHRoomServerTypeCleanLaundry) {
                 
-                if (service == SHRoomServerTypeCleanLaundry) {
-                    
-                    self.cleanButton.selected = YES;
-                    self.laudryButton.selected = YES;
-                }
+                self.dndButton.selected = NO;
+                self.cleanButton.selected = YES;
+                self.laudryButton.selected = YES;
                 
-                else if (serviceButton.serverType == service) {
+            } else if (service == SHRoomServerTypeClean) {
+                
+                self.dndButton.selected = NO;
+                self.cleanButton.selected = YES;
+                
+            } else if (service == SHRoomServerTypeLaudry) {
+                
+                self.dndButton.selected = NO;
+                self.laudryButton.serverType = YES;
+            
+                // 计算机服务
+            } else {
+                
+                for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
                     
-                    serviceButton.selected = YES;
+                    if (serviceButton.serverType == service) {
+                        
+                        serviceButton.selected = YES;
+                    }
                 }
             }
+        }
+        
+        
+        else if ((data.length == (startIndex + 5)) &&
+                 (self.roomInfo.buildingNumber == recivedData[startIndex + 2] &&
+                  self.roomInfo.floorNumber ==
+                  recivedData[startIndex + 3] &&
+                  self.roomInfo.roomNumber ==
+                  recivedData[startIndex + 4])
+                 ) {
+            
+            printLog(@"计算机发出来的");
+            
+            
         }
     }
 }
@@ -217,10 +248,11 @@
         
         for (SHServiceButton *button in self.serviceButtonView.subviews) {
             
+            // 取消所有的服务
             if (button != self.dndButton && button.selected) {
                 
                 button.selected = NO;
-                [self sendServiceRequest:serverButton];
+//                [self sendServiceRequest:serverButton];
             }
         }
         
@@ -228,7 +260,9 @@
         
         // 打扫 && 洗衣服关闭打扰模式
         
-        [self turnOffDND:(serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )];
+        [self turnOffDND:
+         (serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )
+        ];
     }
     
     // 更新当前按钮的状态
@@ -241,7 +275,7 @@
         
         serverButton.serverType == SHRoomServerTypeDND) {
         
-        Byte data[] = {
+        Byte serviceData[] = {
             serverButton.serverType,
             serverButton.selected,
             self.roomInfo.buildingNumber,
@@ -249,11 +283,16 @@
             self.roomInfo.roomNumber
         };
         
+        NSMutableData *data =
+            [NSMutableData dataWithBytes:serviceData
+                                  length:sizeof(serviceData)
+            ];
+        
         // 通过CardHolder发送
-        [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:data remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
         
         // 通过DoorBell发送
-        [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+        [SHUdpSocket.shareSHUdpSocket sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:data remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
         
         // 其它服务发送给计算机 (主动报告状态)
     } else {
@@ -291,7 +330,7 @@
     }
     
     // 关闭DND服务
-    Byte data[] = {
+    Byte dndData[] = {
         SHRoomServerTypeDND,
         0,
         self.roomInfo.buildingNumber,
@@ -299,60 +338,17 @@
         self.roomInfo.roomNumber
     };
     
+    NSMutableData *data =
+    [NSMutableData dataWithBytes:dndData
+                          length:sizeof(dndData)
+    ];
+    
     // card holder
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:data remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
     
     // doorbell发送
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:data length:sizeof(data)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:data remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
     
-}
-
-
-
-/// 设置普通服务的状态 (计算机的无法进行读取, 所以不设置, 如果是控制发送, 不解析, 直接在本身进行设置, 因为计算机广播状态无法进行读取)
-- (void)setGeneralServiceStatusForButton:(SHRoomServerType)service {
-    
-    self.cleanButton.selected = NO;
-    self.dndButton.selected = NO;
-    self.laudryButton.selected = NO;
-    
-    switch (service) {
-            
-        case SHRoomServerTypeClean: {
-            self.cleanButton.selected = YES;
-        }
-            break;
-            
-        case SHRoomServerTypeDND: {  // DND
-            
-            for (SHServiceButton *button in self.serviceButtonView.subviews) {
-                
-                button.selected = NO;
-                
-                // 关闭其它服务
-                
-            }
-            
-            self.dndButton.selected = YES;
-            
-        }
-            break;
-            
-        case SHRoomServerTypeLaudry: {
-            self.laudryButton.selected = YES;
-        }
-            break;
-            
-        case SHRoomServerTypeCleanLaundry: {
-            
-            self.cleanButton.selected = YES;
-            self.laudryButton.selected = YES;
-        }
-            break;
-            
-        default:
-            break;
-    }
 }
 
 /// 读取服务状态

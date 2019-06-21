@@ -81,7 +81,10 @@
     Byte subNetID = recivedData[1];
     Byte deviceID = recivedData[2];
     
-    if (operatorCode == 0x040A) {
+      
+    if (operatorCode == 0x040A &&
+        (data.length == (startIndex + 5))
+        ) {
         
         if ((subNetID == self.roomInfo.doorBellSubNetID &&
              deviceID == self.roomInfo.doorBellDeviceID)  ||
@@ -91,28 +94,28 @@
              deviceID == self.roomInfo.bedSideDeviceID)
             ) {
             
+             // 这里只要判断是否为DND
             // 判断是否为NDN状态
-            BOOL isDND =
-            recivedData[startIndex + 0] ==
-            SHRoomServerTypeDND;
+            SHRoomServerType service =
+            recivedData[startIndex + 0];
             
-            if (isDND && recivedData[startIndex + 1]) {
-               
+            BOOL isOn =
+                recivedData[startIndex + 1];
+            
+            if (service == SHRoomServerTypeDND &&
+                isOn) {
+                
+                printLog(@"开启了DND");
                 self.isDND = YES;
                 
-                for (SHServiceButton *button in self.buttonsView.subviews) {
-                    
-                    button.selected = NO;
-                    
-                    [self sendServiceRequest:button];
-                }
+                [self.buttonsView.subviews makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
+                
+                // 关闭当前所有的服务
             }
         }
         
     } else if (operatorCode == 0x043F ||
                operatorCode == 0x044F) {
-        
-        
         
         // 房间信息
         if (data.length == (startIndex + 4) &&
@@ -124,21 +127,15 @@
             
             self.isDND =
             recivedData[startIndex + 0] ==
-            SHRoomServerTypeDND;
+                SHRoomServerTypeDND;
+            
+            printLog(@"这是固件发出的");
             
             if (self.isDND) {
                 
-                printLog(@"设置 DND");
-                
-                for (SHServiceButton *button in self.buttonsView.subviews) {
-                    
-                    button.selected = NO;
-                    
-                    [self sendServiceRequest:button];
-                }
+                [self.buttonsView.subviews makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
             }
             
-            printLog(@"这是固件发出的, 这是计算机发出的");
         
         } else if (data.length == (startIndex + 5)) {
             
@@ -282,11 +279,12 @@
                 return;
             }
         
-        if (serviceButton.isSelected && (serviceButton.serverType == SHRoomServerTypeMaintenance)) {
-            
-            // FIXME: - 暂不清楚为什么修理不能取消
-            // return;
-        }
+        // FIXME: - 暂不清楚为什么修理不能取消
+//        if (serviceButton.isSelected && (serviceButton.serverType == SHRoomServerTypeMaintenance)) {
+//
+//
+//            // return;
+//        }
         
         // 更新状态
         serviceButton.selected = !serviceButton.isSelected;
@@ -329,11 +327,16 @@
         self.roomInfo.roomNumber
     };
     
-    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
-     self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    NSMutableData *data =
+        [NSMutableData dataWithBytes:dndServiceData
+                              length:sizeof(dndServiceData)
+        ];
     
     [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
-     self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:[NSMutableData dataWithBytes:dndServiceData length:sizeof(dndServiceData)] remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+     self.roomInfo.cardHolderSubNetID targetDeviceID:self.roomInfo.cardHolderDeviceID additionalContentData:data remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
+    
+    [[SHUdpSocket shareSHUdpSocket] sendDataWithOperatorCode:0x040A targetSubnetID:
+     self.roomInfo.doorBellSubNetID targetDeviceID:self.roomInfo.doorBellDeviceID additionalContentData:data remoteMacAddress:[SHUdpSocket getRemoteControlMacAddress] needReSend:NO];
     
     self.isDND = NO;
 }

@@ -85,6 +85,7 @@
     
     switch (operatorCode) {
         
+            /*
         case 0x040A: {
             
             if ((data.length == (startIndex + 5)) &&
@@ -110,6 +111,8 @@
             }
         }
             break;
+             
+             */
             
         // 接收到读取状态返回
         case 0x043F:
