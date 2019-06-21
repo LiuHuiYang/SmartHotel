@@ -48,14 +48,15 @@
         
         // FIXME: - 由于只支持一个空调, 临时这样实现.
         // 若以后有变空, 参照窗帘和light实现.
-    
         SHDeviceParametersViewController *acDetailController =
         [[SHDeviceParametersViewController alloc] init];
         
         acDetailController.ac = [SHSQLManager.shareSHSQLManager getAirConditioners].firstObject;
         
-        [self.navigationController pushViewController:acDetailController animated:YES];
-        
+        [self.navigationController
+            pushViewController:acDetailController
+                      animated:YES
+        ];
     }
     
     // light && macro
