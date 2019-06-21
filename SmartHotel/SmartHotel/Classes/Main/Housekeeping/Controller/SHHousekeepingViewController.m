@@ -11,9 +11,6 @@
 
 @interface SHHousekeepingViewController ()
 
-/// 当前是DND状态
-@property (nonatomic, assign) BOOL isDND;
-
 /// 服务按钮视图
 @property (weak, nonatomic) IBOutlet UIView *serviceButtonView;
 
@@ -68,9 +65,10 @@
     UInt16 operatorCode =
     ((recivedData[5] << 8) | recivedData[6]);
     
-    Byte subNetID = recivedData[1];
-    Byte deviceID = recivedData[2];
+//    Byte subNetID = recivedData[1];
+//    Byte deviceID = recivedData[2];
     
+    /*
     if (operatorCode == 0x040A) {
         
         if ((data.length == (startIndex + 5)) &&
@@ -99,7 +97,9 @@
         }
     }
     
-    else if ((operatorCode == 0x043F) ||
+    else */
+    
+    if ((operatorCode == 0x043F) ||
              (operatorCode == 0x044F)
         ) {
         
@@ -115,14 +115,31 @@
             SHRoomServerType service =
                 recivedData[startIndex + 0];
             
-            if (service == SHRoomServerTypeDND ||
-                service == SHRoomServerTypeRoomReady) {
+            if (service == SHRoomServerTypeRoomReady) {
+                
+                self.dndButton.selected = NO;
+                self.cleanButton.selected = NO;
+                self.laudryButton.selected = NO;
+            }
+            
+            else if (service == SHRoomServerTypeDND) {
                 
                 self.cleanButton.selected = NO;
                 self.laudryButton.selected = NO;
-              
-                self.dndButton.selected =
-                    service == SHRoomServerTypeDND;
+               
+                // 开启DND取消所有已开通的服务
+                for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
+                    
+                    if (serviceButton.isSelected) {
+                        
+                        serviceButton.selected = NO;
+                        
+                        [self sendServiceRequest:serviceButton];
+                    }
+                }
+                
+                // DND 开启
+                self.dndButton.selected = YES;
             }
             
             else if (service == SHRoomServerTypeCleanLaundry) {
@@ -252,7 +269,7 @@
             if (button != self.dndButton && button.selected) {
                 
                 button.selected = NO;
-//                [self sendServiceRequest:serverButton];
+                [self sendServiceRequest:serverButton];
             }
         }
         
@@ -296,6 +313,8 @@
         
         // 其它服务发送给计算机 (主动报告状态)
     } else {
+        
+        
         
         [self sendServiceRequest:serverButton];
     }

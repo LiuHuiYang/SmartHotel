@@ -78,44 +78,9 @@
     UInt16 operatorCode =
     ((recivedData[5] << 8) | recivedData[6]);
     
-    Byte subNetID = recivedData[1];
-    Byte deviceID = recivedData[2];
-    
-      
-    if (operatorCode == 0x040A &&
-        (data.length == (startIndex + 5))
-        ) {
-        
-        if ((subNetID == self.roomInfo.doorBellSubNetID &&
-             deviceID == self.roomInfo.doorBellDeviceID)  ||
-            (subNetID == self.roomInfo.cardHolderSubNetID &&
-             deviceID == self.roomInfo.cardHolderDeviceID) ||
-            (subNetID == self.roomInfo.bedSideSubNetID &&
-             deviceID == self.roomInfo.bedSideDeviceID)
-            ) {
-            
-             // 这里只要判断是否为DND
-            // 判断是否为NDN状态
-            SHRoomServerType service =
-            recivedData[startIndex + 0];
-            
-            BOOL isOn =
-                recivedData[startIndex + 1];
-            
-            if (service == SHRoomServerTypeDND &&
-                isOn) {
-                
-                printLog(@"开启了DND");
-                self.isDND = YES;
-                
-                [self.buttonsView.subviews makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
-                
-                // 关闭当前所有的服务
-            }
-        }
-        
-    } else if (operatorCode == 0x043F ||
-               operatorCode == 0x044F) {
+   
+     if (operatorCode == 0x043F ||
+         operatorCode == 0x044F) {
         
         // 房间信息
         if (data.length == (startIndex + 4) &&
@@ -133,9 +98,17 @@
             
             if (self.isDND) {
                 
-                [self.buttonsView.subviews makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
+                // 开启DND取消所有已开通的服务
+                for (SHServiceButton *serviceButton in self.buttonsView.subviews) {
+                    
+                    if (serviceButton.isSelected) {
+                        
+                        serviceButton.selected = NO;
+                        
+                        [self sendServiceRequest:serviceButton];
+                    }
+                }
             }
-            
         
         } else if (data.length == (startIndex + 5)) {
             
