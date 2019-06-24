@@ -116,6 +116,7 @@
             SHRoomServerType service =
                 recivedData[startIndex + 0];
             
+            
             if (service == SHRoomServerTypeRoomReady) {
                 
                 self.dndButton.selected = NO;
@@ -125,22 +126,19 @@
             
             else if (service == SHRoomServerTypeDND) {
                 
-                self.cleanButton.selected = NO;
-                self.laudryButton.selected = NO;
-               
                 // 开启DND取消所有已开通的服务
                 for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
-                    
+
                     if (serviceButton.isSelected) {
-                        
+
                         serviceButton.selected = NO;
-                        
+
                         [self sendHouseKeepingServiceRequest:serviceButton];
                     }
                 }
-                
+
                 // DND 开启
-                self.dndButton.selected = YES;
+                [self.dndButton setSelected:YES];
             }
             
             else if (service == SHRoomServerTypeCleanLaundry) {

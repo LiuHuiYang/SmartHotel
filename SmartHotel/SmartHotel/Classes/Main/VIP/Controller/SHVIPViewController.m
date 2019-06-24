@@ -95,8 +95,6 @@
                 SHRoomServerTypeDND;
             
             
-            printLog(@"当前服务: %d", recivedData[startIndex + 0]);
-            
             if (self.isDND) {
                 
                 // 开启DND取消所有已开通的服务
@@ -294,15 +292,7 @@
     
     // 关闭DND
     
-    
-    // 如果当前是关闭服务不要关DND
-    if (serviceButton.isSelected == NO) {
-        
-        printLog(@"不要关闭DND");
-    
-    }
-    
-    else if (serviceButton.isSelected == YES &&
+    if (serviceButton.isSelected == YES &&
         self.isDND == YES) {
         
         [self turnOffVIPDND];
@@ -322,8 +312,6 @@
 
 /// 关闭DND服务
 - (void)turnOffVIPDND {
-    
-    printLog(@"主动关闭 DND %d", self.isDND);
     
     Byte dndServiceData[] = {
         SHRoomServerTypeDND,
