@@ -94,7 +94,8 @@
             recivedData[startIndex + 0] ==
                 SHRoomServerTypeDND;
             
-            printLog(@"这是固件发出的");
+            
+            printLog(@"当前服务: %d", recivedData[startIndex + 0]);
             
             if (self.isDND) {
                 
@@ -105,14 +106,35 @@
                         
                         serviceButton.selected = NO;
                         
-                        [self sendServiceRequest:serviceButton];
+                        [self sendVIPServiceRequest:serviceButton];
                     }
                 }
             }
         
-        } else if (data.length == (startIndex + 5)) {
+        }
+        
+        // 计算机出来的
+        else if ((data.length == (startIndex + 5)) &&
+                 (self.roomInfo.buildingNumber == recivedData[startIndex + 2] &&
+                  self.roomInfo.floorNumber ==
+                  recivedData[startIndex + 3] &&
+                  self.roomInfo.roomNumber ==
+                  recivedData[startIndex + 4])
+                 ) {
             
-            printLog(@"计算机发出来的");
+            SHRoomServerType service =
+                recivedData[startIndex + 0];
+            
+            BOOL isOn = recivedData[startIndex + 1];
+           
+            for (SHServiceButton *serviceButton in self.buttonsView.subviews) {
+                
+                if (serviceButton.serverType == service) {
+                    
+                    serviceButton.selected = isOn;
+                }
+                
+            }
         }
     }
 }
@@ -237,7 +259,7 @@
                     
                     serviceButton.selected = !serviceButton.isSelected;
                     
-                    [self sendServiceRequest:serviceButton];
+                    [self sendVIPServiceRequest:serviceButton];
                     
                     self.currentService = -1;
                     
@@ -264,14 +286,27 @@
     }
     
     
-    [self sendServiceRequest:serviceButton];
+    [self sendVIPServiceRequest:serviceButton];
 }
 
 /// 发送服务请求
-- (void)sendServiceRequest:(SHServiceButton *)serviceButton {
+- (void)sendVIPServiceRequest:(SHServiceButton *)serviceButton {
     
     // 关闭DND
-    [self turnOffDND];
+    
+    
+    // 如果当前是关闭服务不要关DND
+    if (serviceButton.isSelected == NO) {
+        
+        printLog(@"不要关闭DND");
+    
+    }
+    
+    else if (serviceButton.isSelected == YES &&
+        self.isDND == YES) {
+        
+        [self turnOffVIPDND];
+    }
     
     // 广播服务的状态
     Byte servicdeData[] = {
@@ -286,11 +321,9 @@
 }
 
 /// 关闭DND服务
-- (void)turnOffDND {
+- (void)turnOffVIPDND {
     
-    if (self.isDND == NO) {
-        return;
-    }
+    printLog(@"主动关闭 DND %d", self.isDND);
     
     Byte dndServiceData[] = {
         SHRoomServerTypeDND,

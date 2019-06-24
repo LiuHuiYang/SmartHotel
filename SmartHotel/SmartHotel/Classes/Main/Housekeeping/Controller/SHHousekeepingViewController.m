@@ -135,7 +135,7 @@
                         
                         serviceButton.selected = NO;
                         
-                        [self sendServiceRequest:serviceButton];
+                        [self sendHouseKeepingServiceRequest:serviceButton];
                     }
                 }
                 
@@ -174,7 +174,7 @@
             }
         }
         
-        
+        // 计算机发出来的服务
         else if ((data.length == (startIndex + 5)) &&
                  (self.roomInfo.buildingNumber == recivedData[startIndex + 2] &&
                   self.roomInfo.floorNumber ==
@@ -183,7 +183,19 @@
                   recivedData[startIndex + 4])
                  ) {
             
-            printLog(@"计算机发出来的");
+            SHRoomServerType service =
+                recivedData[startIndex + 0];
+            
+            BOOL isOn = recivedData[startIndex + 1];
+            
+            for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
+                
+                if (serviceButton.serverType == service) {
+                    
+                    serviceButton.selected = isOn;
+                }
+                
+            }
         }
     }
 }
@@ -270,7 +282,7 @@
             if (button != self.dndButton && button.selected) {
                 
                 button.selected = NO;
-                [self sendServiceRequest:serverButton];
+                [self sendHouseKeepingServiceRequest:serverButton];
             }
         }
         
@@ -278,7 +290,7 @@
         
         // 打扫 && 洗衣服关闭打扰模式
         
-        [self turnOffDND:
+        [self turnOffHouseKeepingDND:
          (serverButton.serverType == SHRoomServerTypeClean || serverButton.serverType == SHRoomServerTypeLaudry )
         ];
     }
@@ -315,15 +327,13 @@
         // 其它服务发送给计算机 (主动报告状态)
     } else {
         
-        
-        
-        [self sendServiceRequest:serverButton];
+        [self sendHouseKeepingServiceRequest:serverButton];
     }
     
 }
 
 /// 发送请求服务
-- (void)sendServiceRequest:(SHServiceButton *)serviceButton {
+- (void)sendHouseKeepingServiceRequest:(SHServiceButton *)serviceButton {
     
     Byte data[] = {
         serviceButton.serverType,
@@ -338,7 +348,7 @@
 }
 
 /// 关闭DND模式
-- (void)turnOffDND:(BOOL)off {
+- (void)turnOffHouseKeepingDND:(BOOL)off {
     
     // 关闭
     if (self.dndButton.selected) {
