@@ -98,6 +98,7 @@
     }
     
     else */
+   
     
     if ((operatorCode == 0x043F) ||
              (operatorCode == 0x044F)
@@ -151,12 +152,14 @@
             } else if (service == SHRoomServerTypeClean) {
                 
                 self.dndButton.selected = NO;
+                self.laudryButton.selected = NO;
                 self.cleanButton.selected = YES;
                 
             } else if (service == SHRoomServerTypeLaudry) {
                 
                 self.dndButton.selected = NO;
-                self.laudryButton.serverType = YES;
+                self.cleanButton.selected = NO;
+                self.laudryButton.selected = YES;
             
                 // 计算机服务
             } else {
@@ -181,8 +184,6 @@
                  ) {
             
             printLog(@"计算机发出来的");
-            
-            
         }
     }
 }
