@@ -100,7 +100,8 @@
                 // 开启DND取消所有已开通的服务
                 
                 // 启动了等待功能
-                if (self.waitCount != 0) {
+                if (self.waitCount != 0 ||
+                    self.pleaseWaitButton.isSelected) {
                     
                     [self turnOffPleaseWait];
                 }
