@@ -206,7 +206,8 @@ void pack_crc(Byte *ptr, unichar len);
         NSDate *startSendDate = [NSDate date];
         
         while ((operatorCode + 1) != self.returnOperatorCode || targetSubnetID
-               != self.sendSubNetID || self.sendDeviceID != targetDeviceID) {
+               != self.sendSubNetID ||
+               self.sendDeviceID != targetDeviceID) {
             
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:
                 [NSDate dateWithTimeIntervalSinceNow:0.003]];
@@ -417,7 +418,7 @@ void pack_crc(Byte *ptr, unichar len);
  */
 + (NSString *)getRemoteControlMacAddress {
 
-//    printLog(@"注意，这个项目暂时没有远程功能");
+    // FIXME: - 注意，这个项目暂时没有远程功能
     return nil;
 //    return [[NSKeyedUnarchiver unarchiveObjectWithFile:[[FileTools documentPath] stringByAppendingPathComponent:selectMacAddress]] macAddress];
 }

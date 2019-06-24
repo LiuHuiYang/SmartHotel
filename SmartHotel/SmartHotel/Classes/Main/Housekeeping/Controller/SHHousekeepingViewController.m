@@ -129,7 +129,8 @@
                 // 开启DND取消所有已开通的服务
                 for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
 
-                    if (serviceButton.isSelected) {
+                    if (serviceButton != self.dndButton &&
+                        serviceButton.isSelected) {
 
                         serviceButton.selected = NO;
 
@@ -181,10 +182,19 @@
                   recivedData[startIndex + 4])
                  ) {
             
+            
             SHRoomServerType service =
                 recivedData[startIndex + 0];
             
             BOOL isOn = recivedData[startIndex + 1];
+       
+            printLog(@"长度: %zd, 服务: %zd 状态 %d %#04x",
+                     data.length,
+                     service,
+                     isOn,
+                     operatorCode
+                    );
+
             
             for (SHServiceButton *serviceButton in self.serviceButtonView.subviews) {
                 
@@ -192,7 +202,6 @@
                     
                     serviceButton.selected = isOn;
                 }
-                
             }
         }
     }
@@ -277,7 +286,8 @@
         for (SHServiceButton *button in self.serviceButtonView.subviews) {
             
             // 取消所有的服务
-            if (button != self.dndButton && button.selected) {
+            if (button != self.dndButton &&
+                button.selected) {
                 
                 button.selected = NO;
                 [self sendHouseKeepingServiceRequest:serverButton];

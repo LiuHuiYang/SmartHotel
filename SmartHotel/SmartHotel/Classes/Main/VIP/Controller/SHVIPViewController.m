@@ -120,19 +120,7 @@
                   recivedData[startIndex + 4])
                  ) {
             
-            SHRoomServerType service =
-                recivedData[startIndex + 0];
-            
-            BOOL isOn = recivedData[startIndex + 1];
-           
-            for (SHServiceButton *serviceButton in self.buttonsView.subviews) {
-                
-                if (serviceButton.serverType == service) {
-                    
-                    serviceButton.selected = isOn;
-                }
-                
-            }
+ 
         }
     }
 }
