@@ -98,6 +98,13 @@
             if (self.isDND) {
                 
                 // 开启DND取消所有已开通的服务
+                
+                // 启动了等待功能
+                if (self.waitCount != 0) {
+                    
+                    [self turnOffPleaseWait];
+                }
+                
                 for (SHServiceButton *serviceButton in self.buttonsView.subviews) {
                     
                     if (serviceButton.isSelected) {
@@ -120,7 +127,35 @@
                   recivedData[startIndex + 4])
                  ) {
             
- 
+            SHRoomServerType service =
+            recivedData[startIndex + 0];
+            
+            BOOL isOn = recivedData[startIndex + 1];
+            
+            printLog(@"长度: %zd, 服务: %zd 状态 %d %#04x",
+                     data.length,
+                     service,
+                     isOn,
+                     operatorCode
+                     );
+            
+            // 关闭等待服务
+            if (service == SHRoomServerTypePleaseWait && !isOn) {
+                
+                [self turnOffPleaseWait];
+
+            } else {
+                
+                // 其它按钮设置
+                for (SHServiceButton *serviceButton in self.buttonsView.subviews) {
+                    
+                    if (serviceButton.serverType == service) {
+                        
+                        serviceButton.selected = isOn;
+                    }
+                }
+            }
+            
         }
     }
 }
@@ -214,13 +249,14 @@
                 return;
             }
             
-            // waitFlicke_vip:
             NSTimer *timer =
             [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(waitVIP) userInfo:nil repeats:YES];
             
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes] ;
             
             self.waitTimer = timer;
+            
+            [timer fire];
         }
         
         // 其它情况
@@ -279,7 +315,6 @@
 - (void)sendVIPServiceRequest:(SHServiceButton *)serviceButton {
     
     // 关闭DND
-    
     if (serviceButton.isSelected == YES &&
         self.isDND == YES) {
         
